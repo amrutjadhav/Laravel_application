@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>6GAG</title>
+    <title>{{Setting::get('sitename')}}</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">
@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <br/>
-                    <span class="text-lg text-bold text-primary">6GAG SIGNUP</span>
+                    <span class="text-lg text-bold text-primary">INSHORTS SIGNUP</span>
                     <br/><br/>
                     <form class="form floating-label" action="{{route('signupProcess')}}" accept-charset="utf-8" method="post">
                         <div class="form-group">

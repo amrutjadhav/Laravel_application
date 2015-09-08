@@ -12,7 +12,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    <title>Inshorts</title>
+    <title>{{Setting::get('sitename')}}</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -45,7 +45,7 @@
 
 <nav class="top-menu">
     <div class="nav-wrapper mat-clr">
-        <a href="#!" class="brand-logo"><img src="{{asset('inshorts/img/logo.png')}}"></a>
+        <a href="#!" class="brand-logo"><img src="{{Setting::get('logo')}}"></a>
         <!-- <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a> -->
 
         <ul class="right">
@@ -93,7 +93,7 @@
 
         <div class="footer-copyright mat-clr">
             <div class="container">
-                <p class="text-center">&copy;2015 <a class="white-text text-lighten-3" href="#">Inshorts</a></p>
+                <p class="text-center">&copy;2015 <a class="white-text text-lighten-3" href="#">{{Setting::get('footer')}}</a></p>
             </div>
         </div>
     </footer>
