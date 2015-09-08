@@ -1,0 +1,155 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+.mat-clr{background-color: #ee6e73;}
+.mat-clr1{background-color: #D76368;}
+.full-btn{    
+    width: 98%;
+    margin-top: 20px;
+  }
+.full-btn:hover{background-color: #D76368;}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+.nav-wrapper .left{position: relative;left: 50px;}
+
+nav ul a.border{  border-right: 1px solid #1A1A1A;
+  font-weight: 400;}
+
+
+ nav.top-menu,nav.search, nav .nav-wrapper i{
+ 	height: 50px;
+  line-height: 50px;
+ }
+
+.brand-logo img{
+
+  max-height: 40px;
+  margin-left: 10px;
+  margin-top: 5px;
+  }
+ .page{margin-top: 20px;}
+
+ nav.top-menu .right .btn{
+    padding-left: 1em;
+  padding-right: 1em;
+  margin-right: 10px;
+}
+
+#search-content{display: none;}
+
+nav ul a{font-weight: 300;padding: 0 12px;font-size: 0.9em;}
+.short-detail p{margin-top: 0px;}
+.card .card-action a{color: #fff;padding-left: 1em;padding-right: 1em;}
+.card .card-action a:hover{color: #fff;}
+.card-content a{color: #000;}
+.card-content a:hover{color: #00b0ff;}
+.text-right{text-align: right;}
+.text-center{text-align:center;}
+.no-right-mar{margin-right: 0px!important;}
+footer.page-footer{padding-top: 0px;}
+
+.sidebar .card{box-shadow: none;}
+.sidebar .card .card-content{padding: 0px;}
+.sidebar .card .card-content h5{font-size: 1.2rem}
+
+.sidebar .card-image{height: 130px;  overflow: hidden;}
+
+.single-post.card .card-content {
+  padding: 10px 20px;
+  }
+
+ .comment .title{font-weight: bold;}
+
+ .comment p{font-size: 14px;}
+
+ .card .card-action a.full{width: 48%;margin: 1%;float: left;}
+
+ .prof{background-color: #424242;
+  padding: 20px;
+  color: #fff;}
+
+  .prof img{  width: 100px;
+  height: 100px;}
+
+  .tabs .tab a{color: #00b0ff;}
+  .tabs .tab a:hover{color: #40c4ff;}
+  .tabs .indicator{background-color: #00b0ff;}
+  .mar-btm{margin-bottom: 20px;}
+.top-menu .right img{
+    width: 35px;
+  height: 35px;
+  margin-top: 7px;
+}
+ nav.top-menu .dropdown-content{top: 50px!important}
+  nav.top-menu .dropdown-content li > a,  nav.top-menu  .dropdown-content li > span{padding: 0.5em!important;font-size: 1em;}
+
+i.right
+{
+	margin-left: 3px;
+	  font-size: 1.5rem!important;
+
+}
+.text-justify{text-align: justify;}
+.card-title a{color: #fff;font-weight: 400;font-size: 3.5vh;}
+.card-title a:hover{color:#00b0ff;text-decoration: none;}
+.card .card-image .card-title{padding: 3vh;}
+
+.btn.submit i{
+  position: relative;
+  top: 5px;
+  }
+ .btn.submit{height: 45px;}
+
+.card .card-image .card-title{
+      width: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.footer-copyright p{margin: 0;}
+
+.cat a.cat-link{
+    width: 80px;
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+  }
+.cat a.cat-link img{width: 100%;}
+.cat{text-align: center;}
+.cat .modal-content{padding: 0px;}
+.cat .modal-content h4{background-color:#ee6e73;padding: 2vh;font-size: 3.5vh;color: #fff; }
+
+@media all and (max-width: 767px) {
+.card-action .left{
+   float: none!important;
+  display: block;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.card-action .right{
+   float: none!important;
+  display: block;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-action{text-align: center!important;}
+.card-action .text-right a{display: block;margin-left: 10px!important;margin-right: 10px!important;margin-bottom: 10px;}
+.card-action.text-center a.full,.card-action.text-center a.full-btn{width:100%;display: block;margin-left: 10px!important;margin-right: 10px!important;margin-bottom: 10px;}
+
+ nav .brand-logo {
+    left: 0!important;
+    transform: none!important;
+  }
+
+
+}

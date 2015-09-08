@@ -1,0 +1,4 @@
+.navbar-search .btn,.header-nav > li > a.btn{background-color: transparent;color: #000;}
+.navbar-search input{margin: 0px;border: 0px!important;width: 200px;}
+#content{padding-top: 40px;}
+.page{margin-top: 50px;}
