@@ -13,6 +13,8 @@
 
 Route::get('/', array('as' => 'home', 'uses' => 'HomeController@showWelcome'));
 
+Route::get('/search', array('as' => 'search', 'uses' => 'HomeController@search'));
+
 Route::get('/post/{id}', array('as' => 'single', 'uses' => 'HomeController@single'));
 
 Route::get('/selectCat/{id}', array('as' => 'selectCat', 'uses' => 'HomeController@selectCat'));

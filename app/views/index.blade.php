@@ -32,9 +32,9 @@
 
    <nav class="search" id="search-content">
     <div class="nav-wrapper mat-clr1">
-      <form>
+      <form action="{{route('search')}}" method="get">
         <div class="input-field">
-          <input id="search" type="search" required>
+          <input id="search" type="search" name="q" required>
           <label for="search"><i class="material-icons">search</i></label>
 
         </div>

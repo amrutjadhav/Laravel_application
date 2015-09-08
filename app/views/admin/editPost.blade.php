@@ -43,7 +43,7 @@
                                 <span>Choose Picture</span>
                                 <input type="file" name="post_img" />
                             </div>
-                            <input class="file-path validate" type="text"/>
+                            <input class="file-path validate" type="text" value="{{$post->image}}"/>
 
                         </div>
 

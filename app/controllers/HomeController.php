@@ -133,4 +133,13 @@ class HomeController extends BaseController {
 		return View::make('forgot_password');
 	}
 
+	public function search()
+    {
+        $user = Auth::user();
+        $cat = Category::all();
+        $segment = Input::get('q');
+        $post_details =  DB::select(DB::raw("SELECT DISTINCT * FROM posts where title like '%$segment%' and is_approved = 1"));
+        return View::make('index')->with('cats',$cat)->with('user',$user)->with('posts',$post_details);
+    }
+
 }
