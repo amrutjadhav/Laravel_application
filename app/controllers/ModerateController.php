@@ -18,6 +18,19 @@ class ModerateController extends \BaseController {
             ->with('posts',$post);
     }
 
+    public function deletePost($id)
+    {
+        $post = Post::where('id',$id)->delete();
+        if($post)
+        {
+            return Redirect::back()->with('flash_success',"Deleted successfully");
+        }
+        else
+        {
+            return Redirect::back()->with('flash_error',"Something went wrong");
+        }
+    }
+
     public function addPost()
     {
         $category = Category::all();

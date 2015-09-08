@@ -337,6 +337,30 @@ class AdminController extends \BaseController {
 		}
 	}
 
+	public function editPost($id)
+    {
+        $category = Category::all();
+        $post = Post::find($id);
+        return View::make('moderate.editPost')
+            ->with('title',"Posts Management")
+            ->with('page', "posts")
+            ->with('category',$category)
+            ->with('post',$post);
+    }
+
+    public function deletePost($id)
+    {
+        $post = Post::where('id',$id)->delete();
+        if($post)
+        {
+            return Redirect::back()->with('flash_success',"Deleted successfully");
+        }
+        else
+        {
+            return Redirect::back()->with('flash_error',"Something went wrong");
+        }
+    }
+
 	public function setting()
 	{
 		return View::make('admin.setting')
