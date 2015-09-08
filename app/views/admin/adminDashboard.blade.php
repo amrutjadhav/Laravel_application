@@ -61,8 +61,7 @@
     <ul>
         <li><a class="btn-floating green" href="{{route('adminModeratorManagement')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-person" style="line-height:40px;"></i></a></li>
 
-        <li><a class="btn-floating yellow darken-1" href="{{route('adminGetPostCounts')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-photo" style="line-height:40px;"></i></a></li>
-
+        
         <li><a class="btn-floating blue" href="{{route('adminCategory')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-loyalty" style="line-height:40px;"></i></a></li>
 
     </ul>
