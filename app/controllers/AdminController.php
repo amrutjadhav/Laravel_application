@@ -341,7 +341,7 @@ class AdminController extends \BaseController {
     {
         $category = Category::all();
         $post = Post::find($id);
-        return View::make('moderate.editPost')
+        return View::make('admin.editPost')
             ->with('title',"Posts Management")
             ->with('page', "posts")
             ->with('category',$category)
