@@ -83,7 +83,7 @@
                 <a href="http://www.facebook.com/sharer.php?u={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="full-btn waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
                 <a href="http://twitter.com/share?text={{$post->title}}&url={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="full-btn waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
                 <a href="{{{$post->url}}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More</a>
-                <a href="{{route('home')}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">More News</a>            
+                <a href="{{route('home')}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">More News</a>           
             </div>
 
             <div class="col l8 m8 s12">

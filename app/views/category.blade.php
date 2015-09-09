@@ -56,12 +56,17 @@
                     </div>
 
                     <div class="card-action text-center">
+                <?php
+                $cat_id = explode(',', $post->category);
+                $cat_data = Category::find($cat_id[0]);
+                $cat_name = $cat_data->name;
+                ?>
 
-                        <a href="http://www.facebook.com/sharer.php?u={{route('single',$post->link)}}" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-                        <a href="http://twitter.com/share?text={{$post->title}}&url={{route('single',$post->link)}}" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
-                        <a href="{{{$post->url}}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">View More</a>
+                <a href="http://www.facebook.com/sharer.php?u={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
+                <a href="http://twitter.com/share?text={{$post->title}}&url={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+                <a href="{{{$post->url}}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">View More</a>
 
-                    </div>
+              </div>
 
 
                 </div>

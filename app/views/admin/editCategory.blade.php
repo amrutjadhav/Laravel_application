@@ -24,6 +24,11 @@
                     </div>
 
                     <div class="file-field input-field col s12">
+                        <div class="tile-content">
+                                <div class="tile-icon brand-logo">
+                                    <img  src="{{$categoryDetails->pics}}" alt="">
+                                </div>
+                            </div>
                         <div class="btn light-blue accent-2" style="padding: 0px 10px;">
                             <span>Choose Picture</span>
                             <input type="file" name="picture" />

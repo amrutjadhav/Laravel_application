@@ -31,9 +31,9 @@ class HomeController extends BaseController {
 
 	}
 
-	public function single($id)
+	public function single($id,$data)
 	{
-		$segment = $id;
+		$segment = $data;
 		$cats = Category::all();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
 		return View::make('single-post')->withPost($post_details)->with('cats',$cats);
@@ -74,12 +74,23 @@ class HomeController extends BaseController {
 				}
 				elseif($user->role_id == 1)
 				{
-					return Redirect::route('moderateDashboard');
+					if($user->is_activated == 1)
+					{
+						return Redirect::route('moderateDashboard');
+					}
+					else
+					{
+						return Redirect::back()->with('flash_error',"Please activate your account, Check your mail or contact admin");
+					}
 				}
 				else
 				{
-					return Redirect::route('login');
+					return Redirect::back()->with('flash_error',"something went wrong");
 				}
+			}
+			else
+			{
+				return Redirect::back()->with('flash_error',"Invalid Email and Password");
 			}
 		}
 	}

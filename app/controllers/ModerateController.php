@@ -44,76 +44,129 @@ class ModerateController extends \BaseController {
     {
         $category = Category::all();
         $post = Post::find($id);
+        $cate = explode(',', $post->category);
         return View::make('moderate.editPost')
             ->with('title',"Posts Management")
             ->with('page', "posts")
             ->with('category',$category)
-            ->with('post',$post);
+            ->with('post',$post)
+            ->with('cate',$cate);
     }
 
     public function addPostProcess()
     {
+
+        $category = Input::get('category');
         $title = Input::get('title');
         $post_img = Input::file('post_img');
         $url = Input::get('url');
-        $category = Input::get('category');
-
+        $title_tag = Input::get('title_tag');
+        $meta_des = Input::get('meta_des');
+ 
         $validator = Validator::make(
             array(
                 'title' => $title,
-                'post_img' => $post_img,
                 'url' => $url,
+                'title_tag' => $title_tag,
+                'meta_des' => $meta_des,
+                'category' => $category,
             ), array(
                 'title' => 'required',
                 'url' => 'required',
-                'post_img' => 'required|mimes:jpeg,bmp,gif,png'
+                'title_tag' => 'required',
+                'meta_des' => 'required',
+                'category' => 'required'
             )
         );
 
         if ($validator->fails()) {
             $error_messages = $validator->messages()->all();
             return Redirect::back()->with('flash_errors', $error_messages);
-        } else {
-            if (Input::get('id') != "") {
+        } 
+        else 
+        {
+            if (Input::get('id') != "") 
+            {
                 $post = Post::find(Input::get('id'));
                 $post->title = $title;
                 $post->is_approved = 1;
-                $base64 = base64_encode(date('h-i-s'));
-                $base64url = strtr($base64, '+/', '-_');
-                $post->link = $base64url;
+                $link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
+                
+                $post->link = $link;
                 $post->url = $url;
-                $file_name = time();
-                $file_name .= rand();
-                $post->des = Input::get('des');
-                $ext = Input::file('post_img')->getClientOriginalExtension();
-                Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
-                $local_url = $file_name . "." . $ext;
+                $post->title_tag = $title_tag;
+                $post->meta_des = $meta_des;
 
-                // Upload to S3
-                $s3_url = URL::to('/') . '/uploads/' . $local_url;
+                $validator1 = Validator::make(
+                    array(
+                        'post_img' => $post_img,
+                    ), array(
+                        'post_img' => 'required|mimes:jpeg,bmp,gif,png',
+                    )
+                );
 
-                $post->image = $s3_url;
+                if ($validator1->fails()) 
+                {
+                    //do nothing
+                } 
+                else 
+                {
+                    $file_name = time();
+                    $file_name .= rand();
+                    $post->des = Input::get('des');
+                    $ext = Input::file('post_img')->getClientOriginalExtension();
+                    Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
+                    $local_url = $file_name . "." . $ext;
+
+                    // Upload to S3
+                    $s3_url = URL::to('/') . '/uploads/' . $local_url;
+
+                    $post->image = $s3_url;
+                }
                 $post->category = implode(',', $category);
-                $post->save();
-            } else {
+                $post->save();          
+            } 
+            else 
+            {
                 $post = new Post;
                 $post->title = $title;
                 $post->is_approved = 1;
                 $post->url = $url;
                 $post->des = Input::get('des');
-                $post->link = str_replace(" ", "-", Input::get('title')) . '-' . rand(0, 99);
-                $file_name = time();
-                $file_name .= rand();
-                $ext = Input::file('post_img')->getClientOriginalExtension();
-                Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
-                $local_url = $file_name . "." . $ext;
+                $link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
+                
+                $post->link = $link;
+                $post->title_tag = $title_tag;
+                $post->meta_des = $meta_des;
 
-                // Upload to S3
-                $s3_url = URL::to('/') . '/uploads/' . $local_url;
+                $validator1 = Validator::make(
+                    array(
+                        'post_img' => $post_img,
+                    ), array(
+                        'post_img' => 'required|mimes:jpeg,bmp,gif,png',
+                    )
+                );
 
-                $post->image = $s3_url;
-                $post->category = implode(',', $category);
-                $post->save();
+                if ($validator1->fails()) {
+                    $error_messages = $validator->messages()->all();
+                    return Redirect::back()->with('flash_errors', $error_messages);
+                } 
+                else
+                {
+                    $file_name = time();
+                    $file_name .= rand();
+                    $ext = Input::file('post_img')->getClientOriginalExtension();
+                    Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
+                    $local_url = $file_name . "." . $ext;
+
+                    // Upload to S3
+                    $s3_url = URL::to('/') . '/uploads/' . $local_url;
+
+                    $post->image = $s3_url;
+
+                    $post->category = implode(',', $category);
+                    $post->save();
+                }
             }
 
             if ($post) {
@@ -121,6 +174,20 @@ class ModerateController extends \BaseController {
             } else {
                 return Redirect::back()->with('flash_error', "Something went wrong");
             }
+        }
+    }
+
+    public function viewPost($id)
+    {
+        $view_post = Post::find($id);
+        if($view_post)
+        {
+            $cat = Category::all();
+            return View::make('viewPost')->withPost($view_post)->with('cats',$cat);
+        }
+        else
+        {
+            return Redirect::back()->with('flash_error', "Something went wrong");
         }
     }
 

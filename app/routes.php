@@ -15,7 +15,7 @@ Route::get('/', array('as' => 'home', 'uses' => 'HomeController@showWelcome'));
 
 Route::get('/search', array('as' => 'search', 'uses' => 'HomeController@search'));
 
-Route::get('/post/{id}', array('as' => 'single', 'uses' => 'HomeController@single'));
+Route::get('/cat/{cat}/{data}', array('as' => 'single', 'uses' => 'HomeController@single'));
 
 Route::get('/selectCat/{id}', array('as' => 'selectCat', 'uses' => 'HomeController@selectCat'));
 
@@ -38,6 +38,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 	Route::get('/addPost', array('as' => 'adminAddPost', 'uses' => 'AdminController@addPost'));
 
 	Route::post('/addPost', array('as' => 'adminAddPostProcess', 'uses' => 'AdminController@addPostProcess'));
+
+	Route::get('/viewPost/{id}', array('as' => 'adminViewPost', 'uses' => 'AdminController@viewPost'));
 
 	Route::get('/postActivate/{id}', array('as' => 'adminPostActivate', 'uses' => 'AdminController@postActivate'));
 
@@ -115,6 +117,8 @@ Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){
 
 	Route::get('/editPost/{id}', array('as' => 'moderateEditPost', 'uses' => 'ModerateController@editPost'));
 
+	Route::post('/editPost/{id}', array('as' => 'moderateEditPostProcess', 'uses' => 'ModerateController@addPostProcess'));
+
 	Route::get('/deletePost/{id}', array('as' => 'moderateDeletePost', 'uses' => 'ModerateController@deletePost'));
 
 	Route::get('/getprofile', array('as' => 'getProfile', 'uses' => 'ModerateController@getProfile'));
@@ -130,5 +134,7 @@ Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){
 	Route::post('/addPost', array('as' => 'moderateAddPostProcess', 'uses' => 'ModerateController@addPostProcess'));
 
 	Route::get('/post', array('as' => 'moderatePost', 'uses' => 'ModerateController@moderatePost'));
+
+	Route::get('/viewPost/{id}', array('as' => 'moderateViewPost', 'uses' => 'ModerateController@viewPost'));
 
 });

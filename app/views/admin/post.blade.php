@@ -34,6 +34,7 @@
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminAddPost')}}"><i class="fa fa-plus"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
+                                    <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminViewPost', array('id' => $post->id))}}"><i class="fa fa-eye"></i></a>
                                 </td>
                             </tr>
                         @endforeach
