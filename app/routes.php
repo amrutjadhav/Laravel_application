@@ -138,3 +138,10 @@ Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){
 	Route::get('/viewPost/{id}', array('as' => 'moderateViewPost', 'uses' => 'ModerateController@viewPost'));
 
 });
+
+
+Route::get('/getCategory', array('as' => 'getCategory', 'uses' => 'ApiController@getCategory'));
+
+
+
+
