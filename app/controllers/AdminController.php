@@ -189,7 +189,7 @@ class AdminController extends \BaseController {
 	public function addCategoryProcess()
 	{
 		$name = Input::get('name');
-		$cat_img = Input::get('cat_img');
+		$cat_img = Input::file('cat_img');
  		$validator = Validator::make(
 			array(
 				'name' => $name,
@@ -244,7 +244,7 @@ class AdminController extends \BaseController {
 	public function editCategoryProcess($id)
 	{
 		$name = Input::get('name');
-		$cat_img = Input::get('cat_img');
+		$cat_img = Input::file('cat_img');
 		$category = Category::find($id);
 		if($category)
 		{
