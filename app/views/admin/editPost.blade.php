@@ -66,9 +66,8 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="meta_des" name="meta_des" maxlength="140" value="{{$post->meta_des}}">
+                            <input type="text" class="form-control" id="meta_des" name="meta_des" value="{{$post->meta_des}}">
                             <label for="regular1">Meta Description</label>
-                            <div id="characterLeft1"></div>
                         </div>
 
                         <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
@@ -98,16 +97,6 @@ $('#title_tag').keyup(function () {
     }
 });
 
-$('#characterLeft1').text('140 characters left');
-$('#meta_des').keyup(function () {
-    var max = 70;
-    var len = $(this).val().length;
-    if (len >= max) {
-        $('#characterLeft1').text(' you have reached the limit');
-    } else {
-        var ch = max - len;
-        $('#characterLeft1').text(ch + ' characters left');
-    }
-});
+
 </script>
 @stop
