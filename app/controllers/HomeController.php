@@ -44,7 +44,15 @@ class HomeController extends BaseController {
 		$segment = $data;
 		$cats = Category::all();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
-		return View::make('single-post')->withPost($post_details)->with('cats',$cats);
+		if($post_details)
+		{
+			return View::make('single-post')->withPost($post_details)->with('cats',$cats);
+		}
+		else
+		{
+			return Redirect::route('home');
+		}
+		
 	}
 
 	public function logout()
