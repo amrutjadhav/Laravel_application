@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="meta_des" name="meta_des" maxlength="70" value="{{$post->meta_des}}">
+                            <input type="text" class="form-control" id="meta_des" name="meta_des" maxlength="140" value="{{$post->meta_des}}">
                             <label for="regular1">Meta Description</label>
                             <div id="characterLeft1"></div>
                         </div>
@@ -98,7 +98,7 @@ $('#title_tag').keyup(function () {
     }
 });
 
-$('#characterLeft1').text('70 characters left');
+$('#characterLeft1').text('140 characters left');
 $('#meta_des').keyup(function () {
     var max = 70;
     var len = $(this).val().length;
