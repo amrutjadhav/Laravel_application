@@ -27,7 +27,15 @@ class HomeController extends BaseController {
 		$cats = Category::all();
 		$posts = "SELECT * from posts where category LIKE '%$id%'";
 		$post = DB::select(DB::raw($posts));
-		return View::make('category')->withPosts($post)->with('cats',$cats);
+		if($post)
+		{
+			return View::make('category')->withPosts($post)->with('cats',$cats);
+		}
+		else
+		{
+			return Redirect::route('home');
+		}
+		
 
 	}
 
