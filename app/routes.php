@@ -144,6 +144,8 @@ Route::get('/getCategory', array('as' => 'getCategory', 'uses' => 'ApiController
 
 Route::get('/postDetails', array('as' => 'postDetails', 'uses' => 'ApiController@postDetails'));
 
+Route::get('/getPostCat', array('as' => 'getPostCat', 'uses' => 'ApiController@getPostCat'));
+
 
 
 
