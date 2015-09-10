@@ -41,64 +41,28 @@
       </form>
     </div>
   </nav>
-  <div class="container-fluid page">
- 	<div class="row">
-        @foreach($posts as $post)
-      <div class="col m6 s12 l4">
-          <div class="single-post card">
 
-              <div class="card-image">
-                <a href="#"><img src="{{{$post->image}}}"></a>
-                <span class="card-title"><a href="#">{{{$post->title}}}</a></span>
-              </div>
-              <div class="card-content">
-               <p class="text-justify">{{{$post->des}}}</p>
-              </div>
-
-              <div class="card-action text-center">
-                <?php
-                $cat_id = explode(',', $post->category);
-                $cat_data = Category::find($cat_id[0]);
-                $cat_name = $cat_data->name;
-                ?>
-
-                <a href="http://www.facebook.com/sharer.php?u={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-                <a href="http://twitter.com/share?text={{$post->title}}&url={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
-                <a href="{{{$post->url}}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">View More</a>
-
-              </div>
-             
-              
-          </div>  	
-      </div>
-        @endforeach
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    404 Not Found</h2>
+                <div class="error-details">
+                    Sorry, an error has occured, Requested page not found!
+                </div>
+                <div class="error-actions">
+                    <a href="{{route('home')}}" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                        Take Me Home </a><a href="#" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+                </div>
+            </div>
+        </div>
     </div>
-   </div>
+</div>
 
 
-  <footer class="page-footer mat-clr">
- 
-    <div class="footer-copyright mat-clr">
-      <div class="container">
-      <p class="text-center">&copy;2015 <a class="white-text text-lighten-3" href="#">{{Setting::get('footer')}}</a></p>
-      </div>
-    </div>
-  </footer>
-
-
-  <div id="modal1" class="modal bottom-sheet cat">
-    <div class="modal-content">
-      <h4>Select Categories</h4>
-        @foreach($cats as $cat)
-      <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
-        <img src="{{{$cat->pics}}}">
-        <span>{{{$cat->name}}}</span>
-      </a>
-        @endforeach
-    </div>
-    
-  </div>
 
 
   <!--  Scripts-->
