@@ -142,6 +142,8 @@ Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){
 
 Route::get('/getCategory', array('as' => 'getCategory', 'uses' => 'ApiController@getCategory'));
 
+Route::get('/postDetails', array('as' => 'postDetails', 'uses' => 'ApiController@postDetails'));
+
 
 
 
