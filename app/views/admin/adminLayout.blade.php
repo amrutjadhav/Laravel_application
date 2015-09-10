@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>InShort - Dashboard</title>
+    <title>{{Setting::get('sitename')}}</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">
@@ -46,7 +46,7 @@
                 <li class="header-nav-brand" >
                     <div class="brand-holder">
                         <a href="#">
-                            <span class="text-lg text-bold text-primary">Inshort DASHBOARD</span>
+                            <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} DASHBOARD</span>
                         </a>
                     </div>
                 </li>
@@ -175,7 +175,7 @@
 
             <div class="menubar-foot-panel">
                 <small class="no-linebreak hidden-folded">
-                    <span class="opacity-75">Copyright &copy; 2015</span> <strong>XMDB</strong>
+                    <span class="opacity-75">Copyright &copy; 2015</span> <strong>{{Setting::get('footer')}}</strong>
                 </small>
             </div>
         </div><!--end .menubar-scroll-panel-->

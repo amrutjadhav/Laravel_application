@@ -188,23 +188,43 @@ class AdminController extends \BaseController {
 
 	public function addCategoryProcess()
 	{
-		$category = new Category;
-		$category->name = Input::get('name');
-		$file_name = time();
-		$file_name .= rand();
-		$ext = Input::file('cat_img')->getClientOriginalExtension();
-		Input::file('cat_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
-		$local_url = $file_name . "." . $ext;
-		$s3_url = URL::to('/') . '/uploads/' . $local_url;
-		$category->pics = $s3_url;
-		$category->save();
-		if($category)
+		$name = Input::get('name');
+		$cat_img = Input::get('cat_img');
+ 		$validator = Validator::make(
+			array(
+				'name' => $name,
+				'cat_img' => $cat_img,
+			), array(
+				'name' => 'required',
+				'cat_img' => 'required|mimes:jpeg,bmp,gif,png',
+			)
+		);
+
+		if ($validator->fails()) 
 		{
-			return Redirect::back()->with('flash_success',"Added successfully");
-		}
-		else
+			$error_messages = $validator->messages()->all();
+			return Redirect::back()->with('flash_errors', $error_messages);
+		} 
+		else 
 		{
-			return Redirect::back()->with('flash_error',"Something went Wrong");
+			$category = new Category;
+			$category->name = Input::get('name');
+			$file_name = time();
+			$file_name .= rand();
+			$ext = Input::file('cat_img')->getClientOriginalExtension();
+			Input::file('cat_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
+			$local_url = $file_name . "." . $ext;
+			$s3_url = URL::to('/') . '/uploads/' . $local_url;
+			$category->pics = $s3_url;
+			$category->save();
+			if($category)
+			{
+				return Redirect::back()->with('flash_success',"Added successfully");
+			}
+			else
+			{
+				return Redirect::back()->with('flash_error',"Something went Wrong");
+			}
 		}
 	}
 
@@ -223,12 +243,27 @@ class AdminController extends \BaseController {
 
 	public function editCategoryProcess($id)
 	{
-		//dd(Input::all());
 		$name = Input::get('name');
+		$cat_img = Input::get('cat_img');
 		$category = Category::find($id);
 		if($category)
 		{
 			$category->name = $name;
+
+	 		$validator = Validator::make(
+				array(
+					'cat_img' => $cat_img,
+				), array(
+					'cat_img' => 'required|mimes:jpeg,bmp,gif,png',
+				)
+			);
+
+			if ($validator->fails()) 
+			{
+				//do nothing
+			} 
+			else 
+			{
 				$file_name = time();
 				$file_name .= rand();
 				$ext = Input::file('picture')->getClientOriginalExtension();
@@ -236,15 +271,17 @@ class AdminController extends \BaseController {
 				$local_url = $file_name . "." . $ext;
 				$s3_url = URL::to('/') . '/uploads/' . $local_url;
 				$category->pics = $s3_url;
+			}
+
 			$category->save();
-		}
-		if($category)
-		{
-			return Redirect::back()->with('flash_success',"Updated successfully");
-		}
-		else
-		{
-			return Redirect::back()->with('flash_error',"Something went Wrong");
+			if($category)
+			{
+				return Redirect::back()->with('flash_success',"Updated successfully");
+			}
+			else
+			{
+				return Redirect::back()->with('flash_error',"Something went Wrong");
+			}
 		}
 	}
 
@@ -441,11 +478,9 @@ class AdminController extends \BaseController {
 	{
 		$validator = Validator::make(array(
 			'sitename' => Input::get('sitename'),
-			'footer' => Input::get('footer'),
-			'picture' => Input::file('picture')),
+			'footer' => Input::get('footer')),
 			array('sitename' => 'required',
-				'footer' => 'required',
-				'picture' => 'required|mimes:png'));
+				'footer' => 'required'));
 		if($validator->fails())
 		{
 			$errors = $validator->messages()->all();
@@ -453,16 +488,26 @@ class AdminController extends \BaseController {
 		}
 		else
 		{
-			$file_name = time();
-			$file_name .= rand();
-			$ext = Input::file('picture')->getClientOriginalExtension();
-			Input::file('picture')->move(public_path() . "/uploads", $file_name . "." . $ext);
-			$local_url = $file_name . "." . $ext;
-			$s3_url = URL::to('/') . '/uploads/' . $local_url;
-
+			$validator1 = Validator::make(array(
+				'picture' => Input::file('picture')),
+				array('picture' => 'required|mimes:png'));
+			if($validator1->fails())
+			{
+				// do nothing
+			}
+			else
+			{
+				$file_name = time();
+				$file_name .= rand();
+				$ext = Input::file('picture')->getClientOriginalExtension();
+				Input::file('picture')->move(public_path() . "/uploads", $file_name . "." . $ext);
+				$local_url = $file_name . "." . $ext;
+				$s3_url = URL::to('/') . '/uploads/' . $local_url;
+				Setting::set('logo', $s3_url);
+			}
 			Setting::set('sitename', Input::get('sitename'));
 			Setting::set('footer', Input::get('footer'));
-			Setting::set('logo', $s3_url);
+			
 			return Redirect::back()->with('flash_success', "successfully");
 		}
 	}
