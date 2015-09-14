@@ -21,6 +21,10 @@ Route::get('/selectCat/{id}', array('as' => 'selectCat', 'uses' => 'HomeControll
 
 Route::get('/login', array('as' => 'login', 'uses' => 'HomeController@login'));
 
+Route::post('/ajaxloading', array('as' => 'ajaxloading', 'uses' => 'HomeController@ajax_loading'));
+
+Route::post('/ajaxloading-category', array('as' => 'ajaxloadingcategory', 'uses' => 'HomeController@ajax_loading_category'));
+
 Route::post('/login', array('as' => 'loginProcess', 'uses' => 'HomeController@processLogin'));
 
 Route::get('/forgot-password', array('as' => 'forgotPassword', 'uses' => 'HomeController@forgot_password'));

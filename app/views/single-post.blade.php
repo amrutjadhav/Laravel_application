@@ -109,7 +109,7 @@
 
     <div id="modal1" class="modal bottom-sheet cat">
         <div class="modal-content">
-            <h4>Select Categories</h4>
+            <h4>Select Category</h4>
             @foreach($cats as $cat)
                 <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
                     <img src="{{{$cat->pics}}}">
