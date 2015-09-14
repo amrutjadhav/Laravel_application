@@ -14,7 +14,7 @@
 <body>
 		
 
-
+<div class="static-nav">
   <nav class="top-menu">
     <div class="nav-wrapper mat-clr">
       <a href="{{route('home')}}" class="brand-logo"><img src="{{Setting::get('logo')}}"></a>
@@ -41,6 +41,9 @@
       </form>
     </div>
   </nav>
+
+</div>
+
   <div class="container-fluid page">
  	<div class="row">
         @foreach($posts as $post)
@@ -89,7 +92,9 @@
 
   <div id="modal1" class="modal bottom-sheet cat">
     <div class="modal-content">
-      <h4>Select Categories</h4>
+      <h4>Select Categories
+        <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
+      </h4>
         @foreach($cats as $cat)
       <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
         <img src="{{{$cat->pics}}}">
