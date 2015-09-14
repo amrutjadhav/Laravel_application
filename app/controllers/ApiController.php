@@ -46,7 +46,7 @@ class ApiController extends \BaseController {
 		$skip = 2;
 		if(!$cat)
 		{
-			$posts = Post::where('is_approved',1)->take(10)->skip(2)->get();
+			$posts = Post::where('is_approved',1)->take(2)->skip(0)->get();
 			$datas = array();
 			foreach ($posts as $post) 
 			{
@@ -66,7 +66,7 @@ class ApiController extends \BaseController {
 		}
 		else
 		{
-			$postss = Post::where('is_approved',1)->where('category', 'like', '%'.$cat.'%')->take(10)->skip(2)->get();
+			$postss = Post::where('is_approved',1)->where('category', 'like', '%'.$cat.'%')->take(2)->skip(1)->get();
 			$datas = array();
 			foreach ($postss as $post) 
 			{
