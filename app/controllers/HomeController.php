@@ -29,7 +29,7 @@ class HomeController extends BaseController {
 		$post = DB::select(DB::raw($posts));
 		if($post)
 		{
-			return View::make('category')->withPosts($post)->with('cats',$cats);
+			return View::make('category')->withCategory_id($id)->with('cats',$cats);
 		}
 		else
 		{
@@ -158,6 +158,99 @@ class HomeController extends BaseController {
 	public function forgot_password()
 	{
 		return View::make('forgot_password');
+	}
+
+	public function ajax_loading()
+	{
+		$offset = is_numeric(Input::get('offset')) ? Input::get('offset') : die();
+        $postnumbers = is_numeric(Input::get('number')) ? Input::get('number') : die();
+
+        Log::info('num'. $postnumbers);
+        Log::info('offset'. $offset);
+
+        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->limit($postnumbers)->offset($offset)->get();
+        
+        $data = $query;
+        $count = 0;
+        $all_data = "";
+
+        foreach ($data as $post) {
+                $cat_id = explode(',', $post->category);
+                $cat_data = Category::find($cat_id[0]);
+                $cat_name = $cat_data->name;
+                $fb = route("single",array("id" => $cat_name,"data" => $post->link));
+                $twitter = route("single",array("id" => $cat_name,"data" => $post->link));
+        	echo '<div class="col m6 s12 l4">
+		          <div class="single-post card animated zoomIn">
+
+		              <div class="card-image">
+		                <a href="#"><img src="'.$post->image.'"></a>
+		                <span class="card-title"><a href="#">'.$post->title.'</a></span>
+		              </div>
+		              <div class="card-content">
+		               <p class="text-justify">'.$post->des.'</p>
+		              </div>
+
+		              <div class="card-action text-center">
+
+		                <a href="http://www.facebook.com/sharer.php?u='.$fb.'" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
+		                <a href="http://twitter.com/share?text='.$post->title.'&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+		                <a href="'.$post->url.'" target="_blank" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">View More</a>
+
+		              </div>
+		             
+		              
+		          </div>  	
+		      </div>';
+
+        }
+	}
+
+	public function ajax_loading_category()
+	{
+		$offset = is_numeric(Input::get('offset')) ? Input::get('offset') : die();
+        $postnumbers = is_numeric(Input::get('number')) ? Input::get('number') : die();
+        $id = Input::get('category_id');
+
+        Log::info('num'. $postnumbers);
+        Log::info('offset'. $offset);
+
+        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->where('category', 'LIKE', '%'.$id.'%')->limit($postnumbers)->offset($offset)->get();
+        
+        $data = $query;
+        $count = 0;
+        $all_data = "";
+
+        foreach ($data as $post) {
+                $cat_id = explode(',', $post->category);
+                $cat_data = Category::find($cat_id[0]);
+                $cat_name = $cat_data->name;
+                $fb = route("single",array("id" => $cat_name,"data" => $post->link));
+                $twitter = route("single",array("id" => $cat_name,"data" => $post->link));
+        	echo '<div class="col m6 s12 l4">
+		          <div class="single-post card animated zoomIn">
+
+		              <div class="card-image">
+		                <a href="#"><img src="'.$post->image.'"></a>
+		                <span class="card-title"><a href="#">'.$post->title.'</a></span>
+		              </div>
+		              <div class="card-content">
+		               <p class="text-justify">'.$post->des.'</p>
+		              </div>
+
+		              <div class="card-action text-center">
+
+		                <a href="http://www.facebook.com/sharer.php?u='.$fb.'" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
+		                <a href="http://twitter.com/share?text='.$post->title.'&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+		                <a href="'.$post->url.'" target="_blank" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">View More</a>
+
+		              </div>
+		             
+		              
+		          </div>  	
+		      </div>';
+
+        }
 	}
 
 	public function search()
