@@ -64,6 +64,7 @@ class ApiController extends \BaseController {
 		{
 			if (!$cat) {
 				$posts = Post::where('is_approved', 1)->take($take)->skip($skip)->get();
+				$counts = Post::where('is_approved',1)->count();
 				$datas = array();
 				foreach ($posts as $post) {
 					$cat_id = explode(',', $post->category);
@@ -75,12 +76,14 @@ class ApiController extends \BaseController {
 					$data['description'] = $post->des;
 					$data['url'] = $post->url;
 					$data['image'] = $post->image;
+					$data['count'] = $counts;
 					$data['share_link'] = $link;
 					array_push($datas, $data);
 				}
-				$response_array = array('success' => true, 'posts' => $datas);
+				$response_array = array('success' => true, 'posts' => $datas, 'counts' => $counts);
 			} else {
 				$postss = Post::where('is_approved', 1)->where('category', 'like', '%' . $cat . '%')->take($take)->skip($skip)->get();
+				$counts = Post::where('is_approved',1)->where('category', 'like', '%' . $cat . '%')->count();
 				$datas = array();
 				foreach ($postss as $post) {
 					$cat_id = explode(',', $post->category);
@@ -93,9 +96,10 @@ class ApiController extends \BaseController {
 					$data['url'] = $post->url;
 					$data['image'] = $post->image;
 					$data['share_link'] = $link;
+
 					array_push($datas, $data);
 				}
-				$response_array = array('success' => true, 'posts' => $datas);
+				$response_array = array('success' => true, 'posts' => $datas, 'counts' => $counts);
 			}
 		}
 		return Response::json($response_array);
