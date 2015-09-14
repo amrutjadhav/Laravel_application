@@ -46,7 +46,7 @@ class ApiController extends \BaseController {
 		$skip = 2;
 		if(!$cat)
 		{
-			$posts = Post::where('is_approved',1)->take(2)->skip(0)->get();
+			$posts = Post::where('is_approved',1)->take(2)->skip(1)->get();
 			$datas = array();
 			foreach ($posts as $post) 
 			{
