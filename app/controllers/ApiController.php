@@ -42,11 +42,11 @@ class ApiController extends \BaseController {
 	public function getPostCat()
 	{
 		$cat = Input::get('category');
-		$type = 1;
-		$skip = 2;
+		$take = Input::get('take');
+		$skip = Input::get('skip');
 		if(!$cat)
 		{
-			$posts = Post::where('is_approved',1)->take(2)->skip(1)->get();
+			$posts = Post::where('is_approved',1)->take($take)->skip($skip)->get();
 			$datas = array();
 			foreach ($posts as $post) 
 			{
@@ -66,7 +66,7 @@ class ApiController extends \BaseController {
 		}
 		else
 		{
-			$postss = Post::where('is_approved',1)->where('category', 'like', '%'.$cat.'%')->take(2)->skip(1)->get();
+			$postss = Post::where('is_approved',1)->where('category', 'like', '%'.$cat.'%')->take($take)->skip($skip)->get();
 			$datas = array();
 			foreach ($postss as $post) 
 			{
