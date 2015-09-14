@@ -44,45 +44,59 @@ class ApiController extends \BaseController {
 		$cat = Input::get('category');
 		$take = Input::get('take');
 		$skip = Input::get('skip');
-		if(!$cat)
-		{
-			$posts = Post::where('is_approved',1)->take($take)->skip($skip)->get();
-			$datas = array();
-			foreach ($posts as $post) 
-			{
-				$cat_id = explode(',', $post->category);
-	            $cat_data = Category::find($cat_id[0]);
-	            $cat_name = $cat_data->name;
-	            $link = URL::to('/') . '/cat/' . $cat_name . '/' . $post->link;
-				$data = array();
-				$data['title'] = $post->title;
-				$data['description'] = $post->des;
-				$data['url'] = $post->url;
-				$data['image'] = $post->image;
-				$data['share_link'] = $link;
-				array_push($datas, $data);
-			}
-			$response_array = array('success' => true,'posts' => $datas);
+
+		$validator = Validator::make(
+			array(
+				'take' => $take,
+				'skip' => $skip,
+			), array(
+				'take' => 'required|integer',
+				'skip' => 'required|integer',
+			)
+		);
+
+		if ($validator->fails()) {
+			$error_messages = $validator->messages()->all();
+			$response_array = array('success' => false, 'error' => 'Invalid Input', 'error_code' => 401, 'error_messages' => $error_messages);
+			$response_code = 200;
 		}
 		else
 		{
-			$postss = Post::where('is_approved',1)->where('category', 'like', '%'.$cat.'%')->take($take)->skip($skip)->get();
-			$datas = array();
-			foreach ($postss as $post) 
-			{
-				$cat_id = explode(',', $post->category);
-	            $cat_data = Category::find($cat_id[0]);
-	            $cat_name = $cat_data->name;
-	            $link = URL::to('/') . '/cat/' . $cat_name . '/' . $post->link;
-				$data = array();
-				$data['title'] = $post->title;
-				$data['description'] = $post->des;
-				$data['url'] = $post->url;
-				$data['image'] = $post->image;
-				$data['share_link'] = $link;
-				array_push($datas, $data);
+			if (!$cat) {
+				$posts = Post::where('is_approved', 1)->take($take)->skip($skip)->get();
+				$datas = array();
+				foreach ($posts as $post) {
+					$cat_id = explode(',', $post->category);
+					$cat_data = Category::find($cat_id[0]);
+					$cat_name = $cat_data->name;
+					$link = URL::to('/') . '/cat/' . $cat_name . '/' . $post->link;
+					$data = array();
+					$data['title'] = $post->title;
+					$data['description'] = $post->des;
+					$data['url'] = $post->url;
+					$data['image'] = $post->image;
+					$data['share_link'] = $link;
+					array_push($datas, $data);
+				}
+				$response_array = array('success' => true, 'posts' => $datas);
+			} else {
+				$postss = Post::where('is_approved', 1)->where('category', 'like', '%' . $cat . '%')->take($take)->skip($skip)->get();
+				$datas = array();
+				foreach ($postss as $post) {
+					$cat_id = explode(',', $post->category);
+					$cat_data = Category::find($cat_id[0]);
+					$cat_name = $cat_data->name;
+					$link = URL::to('/') . '/cat/' . $cat_name . '/' . $post->link;
+					$data = array();
+					$data['title'] = $post->title;
+					$data['description'] = $post->des;
+					$data['url'] = $post->url;
+					$data['image'] = $post->image;
+					$data['share_link'] = $link;
+					array_push($datas, $data);
+				}
+				$response_array = array('success' => true, 'posts' => $datas);
 			}
-			$response_array = array('success' => true,'posts' => $datas);
 		}
 		return Response::json($response_array);
 	}
