@@ -42,9 +42,11 @@ class ApiController extends \BaseController {
 	public function getPostCat()
 	{
 		$cat = Input::get('category');
+		$type = 1;
+		$skip = 2;
 		if(!$cat)
 		{
-			$posts = Post::where('is_approved',1)->get();
+			$posts = Post::where('is_approved',1)->take(10)->skip(2)->get();
 			$datas = array();
 			foreach ($posts as $post) 
 			{
@@ -64,8 +66,7 @@ class ApiController extends \BaseController {
 		}
 		else
 		{
-			$posts = "SELECT * from posts where category LIKE '%$cat%'";
-			$postss = DB::select(DB::raw($posts));
+			$postss = Post::where('is_approved',1)->where('category', 'like', '%'.$cat.'%')->take(10)->skip(2)->get();
 			$datas = array();
 			foreach ($postss as $post) 
 			{
@@ -84,6 +85,11 @@ class ApiController extends \BaseController {
 			$response_array = array('success' => true,'posts' => $datas);
 		}
 		return Response::json($response_array);
+	}
+
+	public function register()
+	{
+//		$device =
 	}
 
 }
