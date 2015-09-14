@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="{{asset('inshorts/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="{{asset('inshorts/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('inshorts/css/animate.css')}}">
 </head>
 <body>
 
@@ -48,7 +49,7 @@
     <div class="row">
         @foreach($posts as $post)
             <div class="col m6 s12 l4">
-                <div class="single-post card">
+                <div class="single-post card animated flipInX">
 
                     <div class="card-image">
                         <a href="#"><img src="{{{$post->image}}}"></a>
