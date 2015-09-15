@@ -44,7 +44,7 @@ class ApiController extends \BaseController {
 		$cat = Input::get('category');
 		$take = Input::get('take');
 		$skip = Input::get('skip');
-
+		
 		$validator = Validator::make(
 			array(
 				'take' => $take,
