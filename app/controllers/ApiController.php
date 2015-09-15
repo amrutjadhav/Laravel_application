@@ -107,7 +107,30 @@ class ApiController extends \BaseController {
 
 	public function register()
 	{
-//		$device =
+		$device_token = Input::get('device_token');
+		$device_type = Input::get('device_type');
+
+		$validator = Validator::make(
+			array(
+				'device_token' => $device_token,
+				'device_type' => $device_type,
+			), array(
+				'device_token' => 'required|integer',
+				'device_type' => 'required|integer',
+			)
+		);
+
+		if ($validator->fails()) 
+		{
+			$error_messages = $validator->messages()->all();
+			$response_array = array('success' => false, 'error' => 'Invalid Input', 'error_code' => 401, 'error_messages' => $error_messages);
+			$response_code = 200;
+		}
+		else
+		{
+			
+		}
+
 	}
 
 }

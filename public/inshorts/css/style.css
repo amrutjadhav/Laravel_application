@@ -143,6 +143,7 @@ i.right
     position: absolute;
     right: 0px;
   }
+
 .static-nav{
     position: fixed;
     width: 100%;
@@ -150,9 +151,11 @@ i.right
     z-index: 7777;
   }
 
+
 .modal.bottom-sheet{z-index: 9999!important;}
 
 .lean-overlay{z-index: 8888!important;}
+
 
 @media all and (max-width: 767px) {
 

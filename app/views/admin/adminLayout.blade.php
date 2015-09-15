@@ -20,7 +20,8 @@
 
     <!-- BEGIN STYLESHEETS -->
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/materialize.min.css')}}"  media="screen,projection"/>
-
+    <link rel="stylesheet" type="text/css" href="{{asset('inshorts/crop/css/cropper.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('inshorts/crop/css/main.css')}}">
     <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/bootstrap.css?1422792965')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/materialadmin.css?1425466319')}}" />
@@ -28,6 +29,7 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
     <!-- END STYLESHEETS -->
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -185,11 +187,13 @@
     @yield('content')
 
     <!-- BEGIN JAVASCRIPT -->
-<script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+
+    <script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+
 <script type="text/javascript" src="{{asset('admins/js/materialize.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/bootstrap/bootstrap.min.js')}}"></script>
-<script src="{{asset('admins/s/libs/spin.js/spin.min.js')}}"></script>
+<script src="{{asset('admins/js/libs/spin.js/spin.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/autosize/jquery.autosize.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/nanoscroller/jquery.nanoscroller.min.js')}}"></script>
 <script src="{{asset('admins/js/core/source/App.js')}}"></script>
