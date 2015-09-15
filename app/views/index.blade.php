@@ -120,6 +120,16 @@
 
   <!-- ajax loading script -->
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js"></script>
+
+<script> 
+$('#content').masonry({
+// options
+itemSelector: '.card-box',
+});
+</script>
+
   <script type="text/javascript">
 var path = "{{route('ajaxloading')}}";
     (function($) {
