@@ -19,6 +19,8 @@ class HomeController extends BaseController {
 	{
 		$post = Post::all();
 		$cats = Category::all();
+		// i++ page count
+		counter('home');
 		return View::make('index')->with('posts',$post)->with('cats',$cats);
 	}
 
@@ -35,7 +37,6 @@ class HomeController extends BaseController {
 		{
 			return Redirect::route('home');
 		}
-		
 
 	}
 
@@ -45,7 +46,8 @@ class HomeController extends BaseController {
 		$cats = Category::all();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
 		if($post_details)
-		{
+		{	
+			counter($segment);
 			return View::make('single-post')->withPost($post_details)->with('cats',$cats);
 		}
 		else

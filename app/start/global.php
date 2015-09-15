@@ -49,6 +49,7 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 App::error(function(Exception $exception, $code)
 {
 	return Response::view('error_page.404', array(), 404);
+	// Log::error($exception);
 });
 
 /*
@@ -79,3 +80,7 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+// helper.php file
+
+require app_path().'/helper.php';

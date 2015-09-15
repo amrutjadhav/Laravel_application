@@ -18,7 +18,7 @@
   padding: 0 15px;
 }
 .icon-block .material-icons {
-	font-size: inherit;
+  font-size: inherit;
 }
 
 .nav-wrapper .left{position: relative;left: 50px;}
@@ -28,7 +28,7 @@ nav ul a.border{  border-right: 1px solid #1A1A1A;
 
 
  nav.top-menu,nav.search, nav .nav-wrapper i{
- 	height: 50px;
+  height: 50px;
   line-height: 50px;
  }
 
@@ -38,7 +38,16 @@ nav ul a.border{  border-right: 1px solid #1A1A1A;
   margin-left: 10px;
   margin-top: 5px;
   }
- .page{margin-top: 20px;}
+ .page{margin-top: 55px;min-height: 700px;}
+
+nav .brand-logo{
+  left: 0%;
+-webkit-transform: translateX(0%);
+-moz-transform: translateX(0%);
+-ms-transform: translateX(0%);
+-o-transform: translateX(0%);
+transform: translateX(0%); 
+}
 
  nav.top-menu .right .btn{
     padding-left: 1em;
@@ -67,6 +76,7 @@ footer.page-footer{padding-top: 0px;}
 
 .single-post.card .card-content {
   padding: 10px 20px;
+  min-height: 190px;
   }
 
  .comment .title{font-weight: bold;}
@@ -96,12 +106,12 @@ footer.page-footer{padding-top: 0px;}
 
 i.right
 {
-	margin-left: 3px;
-	  font-size: 1.5rem!important;
+  margin-left: 3px;
+    font-size: 1.5rem!important;
 
 }
 .text-justify{text-align: justify;}
-.card-title a{color: #fff;font-weight: 400;font-size: 3.5vh;}
+.card-title a{color: #fff;font-weight: 400;font-size: 20px;}
 .card-title a:hover{color:#00b0ff;text-decoration: none;}
 .card .card-image .card-title{padding: 3vh;}
 
@@ -126,14 +136,36 @@ i.right
 .cat a.cat-link img{width: 100%;}
 .cat{text-align: center;}
 .cat .modal-content{padding: 0px;}
-.cat .modal-content h4{background-color:#ee6e73;padding: 2vh;font-size: 3.5vh;color: #fff; }
+.cat .modal-content h4{background-color:#ee6e73;padding: 15px;font-size: 20px;color: #fff; }
+.cat .modal-close{
+    color: #fff;
+    top: 7px;
+    position: absolute;
+    right: 0px;
+  }
+.static-nav{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 7777;
+  }
+
+.modal.bottom-sheet{z-index: 9999!important;}
+
+.lean-overlay{z-index: 8888!important;}
 
 @media all and (max-width: 767px) {
+
+.card .card-action a.full{margin: 0px;}
 .card-action .left{
    float: none!important;
-  display: block;
+  display: inline-block;
   margin-bottom: 20px;
   text-align: center;
+}
+.card-action.text-center a.full, .card-action.text-center a.full-btn{
+  margin-left: 0;
+  margin-right: 0;
 }
 .card-action .right{
    float: none!important;
@@ -142,14 +174,23 @@ i.right
   text-align: center;
 }
 
+.card-title a{font-size: 18px;}
 .card-action{text-align: center!important;}
-.card-action .text-right a{display: block;margin-left: 10px!important;margin-right: 10px!important;margin-bottom: 10px;}
-.card-action.text-center a.full,.card-action.text-center a.full-btn{width:100%;display: block;margin-left: 10px!important;margin-right: 10px!important;margin-bottom: 10px;}
+.card-action .text-right a{display: block;margin-left: 0px!important;margin-right: 0px!important;margin-bottom: 10px;}
+.card-action.text-center a.full,.card-action.text-center a.full-btn{width:100%;display: block;margin-left: 0px!important;margin-right: 0px!important;margin-bottom: 10px;}
 
  nav .brand-logo {
     left: 0!important;
     transform: none!important;
   }
 
+
+}
+
+.card .card-image{height: 225px;overflow: hidden;}
+
+@media all and (max-width: 600px) {
+
+.card .card-image{height: 165px;overflow: hidden;}
 
 }
