@@ -561,4 +561,34 @@ class AdminController extends \BaseController {
 		}
 	}
 
+	public function approvePost($id)
+    {
+        $post = Post::where('id',$id)->first();
+        if($post)
+        {
+            $post->is_approved = 1;
+            $post->save();
+            return Redirect::back()->with('flash_success',"approved successfully");
+        }
+        else
+        {
+            return Redirect::back()->with('flash_error',"Something went Wrong");
+        }
+    }
+
+    public function declinePost($id)
+    {
+        $post = Post::where('id',$id)->first();
+        if($post)
+        {
+            $post->is_approved = 0;
+            $post->save();
+            return Redirect::back()->with('flash_success',"successfully Done");
+        }
+        else
+        {
+            return Redirect::back()->with('flash_error',"Something went Wrong");
+        }
+    }
+
 }

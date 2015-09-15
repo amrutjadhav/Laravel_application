@@ -45,9 +45,9 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::get('/viewPost/{id}', array('as' => 'adminViewPost', 'uses' => 'AdminController@viewPost'));
 
-	Route::get('/postActivate/{id}', array('as' => 'adminPostActivate', 'uses' => 'AdminController@postActivate'));
+	Route::get('/postActivate/{id}', array('as' => 'adminPostActivate', 'uses' => 'AdminController@approvePost'));
 
-	Route::get('/postDecline/{id}', array('as' => 'adminPostDecline', 'uses' => 'AdminController@postDecline'));
+	Route::get('/postDecline/{id}', array('as' => 'adminPostDecline', 'uses' => 'AdminController@declinePost'));
 
 	Route::get('/moderatorManagement', array('as' => 'adminModeratorManagement', 'uses' => 'AdminController@moderatorManagement'));
 
@@ -99,6 +99,11 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::post('/editPost/{id}', array('as' => 'adminEditProcess', 'uses' => 'AdminController@addPostProcess'));
 
+	Route::post('/croppingImage', array(
+		'as' => 'cropping-image',
+		'uses' => 'ImageCropper@croppingImage'
+	));
+
 	Route::get('/deletePost/{id}', array('as' => 'adminDeletePost', 'uses' => 'AdminController@deletePost'));
 
 });
@@ -143,6 +148,7 @@ Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){
 
 });
 
+Route::get('/register', array('as' => 'register', 'uses' => 'ApiController@register'));
 
 Route::get('/getCategory', array('as' => 'getCategory', 'uses' => 'ApiController@getCategory'));
 
