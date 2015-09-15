@@ -340,6 +340,7 @@ class AdminController extends \BaseController {
 				$post = Post::find(Input::get('id'));
 				$post->title = $title;
 				$post->is_approved = 1;
+				$post->des = Input::get('des');
 				$link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
 				
 				$post->link = $link;

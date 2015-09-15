@@ -180,7 +180,7 @@ class HomeController extends BaseController {
                 $cat_name = $cat_data->name;
                 $fb = route("single",array("id" => $cat_name,"data" => $post->link));
                 $twitter = route("single",array("id" => $cat_name,"data" => $post->link));
-        	echo '<div class="col m6 s12 l4 card-box">
+        	echo '<div class="col m6 s12 l4">
 		          <div class="single-post card animated zoomIn">
 
 		              <div class="card-image">

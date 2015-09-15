@@ -96,6 +96,7 @@ class ModerateController extends \BaseController {
                 $post->url = $url;
                 $post->title_tag = $title_tag;
                 $post->meta_des = $meta_des;
+                $post->des = Input::get('des');
 
                 $validator1 = Validator::make(
                     array(
@@ -113,7 +114,7 @@ class ModerateController extends \BaseController {
                 {
                     $file_name = time();
                     $file_name .= rand();
-                    $post->des = Input::get('des');
+
                     $ext = Input::file('post_img')->getClientOriginalExtension();
                     Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
                     $local_url = $file_name . "." . $ext;
