@@ -44,6 +44,16 @@
 
                     </div>
 
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="browser_key" value="{{Setting::get('browser_key')}}">
+                        <label for="regular1">Browser Key</label>
+                    </div>
+
+                    <div class="form-group">
+                      <textarea id="textarea1" class="materialize-textarea" name="analytics_code">{{Setting::get('analytics_code')}}</textarea>
+                      <label for="textarea1">Google Analytics Code</label>
+                    </div>
+
                     <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
                 </form>
             </div><!--end .card-body -->

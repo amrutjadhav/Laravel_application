@@ -10,8 +10,10 @@
  *
  * @author Ravi Tamada
  */
-define("GOOGLE_API_KEY", "AIzaSyCJIlMyKQ2NcN3lMPxRIal-4BTM0UUW6RA");
+define("GOOGLE_API_KEY", Setting::get('browser_key'));
 /*define("GOOGLE_API_KEY", "AIzaSyC0JjF-O72-gUvUmUm_dsHHvG5o3aWosp8");*/
+
+//change the browser key from admin panel
 
 class GCM {
 

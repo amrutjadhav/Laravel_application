@@ -417,6 +417,22 @@ class AdminController extends \BaseController {
 
 					$post->category = implode(',', $category);
 					$post->save();
+
+
+					if (Input::get('push_button') === 'yes') {
+    				// checked
+
+					$response_array = array(
+						'success' => true,
+						'description' => $meta_des,
+						'image' => $s3_url,
+					);
+
+
+					// send_notification($title,$response_array);
+				}
+
+					
 				}
 			}
 
@@ -508,6 +524,8 @@ class AdminController extends \BaseController {
 			}
 			Setting::set('sitename', Input::get('sitename'));
 			Setting::set('footer', Input::get('footer'));
+			Setting::set('browser_key', Input::get('browser_key'));
+			Setting::set('analytics_code', Input::get('analytics_code'));
 			
 			return Redirect::back()->with('flash_success', "successfully");
 		}

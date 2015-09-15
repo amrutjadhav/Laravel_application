@@ -67,6 +67,18 @@
                         <label for="regular1">Meta Description</label>
                     </div>
 
+                    <div class="form-group">
+                    <div class="switch">
+                        <label>
+                          Off
+                          <input type="checkbox" name="push_button">
+                          <span class="lever"></span>
+                          On
+                        </label>
+                      </div>
+                      <span>Send Push Notification</span>
+                  </div>
+
                     <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
                 </form>
             </div><!--end .card-body -->
