@@ -202,13 +202,13 @@
 <script src="{{asset('admins/js/core/source/AppNavSearch.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppVendor.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/Demo.js')}}"></script>
-        <script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
-    <script src="{{asset('admins/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>
-        <script src="{{asset('admins/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
+<script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
+<script src="{{asset('admins/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
 <!-- END JAVASCRIPT -->
 <script type="text/javascript">
     $("#<?= $page ?>").addClass("active");
 </script>
+
 
 </body>
 </html>

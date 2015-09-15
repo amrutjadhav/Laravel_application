@@ -1,5 +1,7 @@
 <?php 
 
+Use Carbon\Carbon;
+
 // page counter
 
 function counter($page){
@@ -139,6 +141,36 @@ function send_android_push($user_id, $message, $title) {
 }
 
 
+function total_view_count(){
+	$count = Counter::where('page','home')->sum('count');
+	return $count;
+}
 
+function average_view_count(){
+	$allvalue = Counter::where('page','home')->sum('count');
+	$allday = Counter::where('page','home')->count();
+
+	$perday = $allvalue/$allday;
+
+	$perday = round($perday);
+
+	return $perday;
+}
+
+function compare_view_count(){
+	$count_today = Counter::wherePage('home')->where('created_at', '>=', new DateTime('today'));
+
+	$count_yesterday = Counter::wherePage('home')->where('created_at', '=', Carbon::yesterday());
+
+	$status = "";
+
+	if($count_today > $count_yesterday){
+		$status = 1;
+	}else{
+		$status = 0;
+	}
+
+	return $status;
+}
 
  ?>
