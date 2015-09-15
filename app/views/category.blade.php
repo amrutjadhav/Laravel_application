@@ -35,6 +35,11 @@
         box-shadow: inset 0px 45px 30px -40px rgba(0, 0, 0, 0.05);
     }
 
+    .time-ago{
+  font-size:12px;
+  margin-top: 12px;
+}
+
 </style>
 
 </head>
