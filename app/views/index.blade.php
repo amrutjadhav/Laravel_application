@@ -34,6 +34,11 @@
     box-shadow: inset 0px 45px 30px -40px rgba(0, 0, 0, 0.05);
 }
 
+.time-ago{
+  font-size:12px;
+  margin-top: 12px;
+}
+
 </style>
 </head>
 <body>
@@ -111,6 +116,8 @@
 
   <script src="{{asset('inshorts/js/materialize.js')}}"></script>
   <script src="{{asset('inshorts/js/init.js')}}"></script>
+  <script src="{{asset('inshorts/js/moment.js')}}"></script>
+
   <!-- ajax loading script -->
 
   <script type="text/javascript">
@@ -235,7 +242,15 @@ var path = "{{route('ajaxloading')}}";
 </script>
 
 <!-- end ajax loading script -->
-
+<script type="text/javascript">
+function send_time(time,post){
+  if(time){
+     console.log(moment(time).fromNow(true));
+     console.log($("#time_"+post).html('test'));
+      $('#time_'+post).html(+' Ago');
+    }
+}
+</script>
 <!-- initiate ajax loading -->
 <script>
 
