@@ -20,8 +20,6 @@
 
     <!-- BEGIN STYLESHEETS -->
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/materialize.min.css')}}"  media="screen,projection"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('inshorts/crop/css/cropper.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('inshorts/crop/css/main.css')}}">
     <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/bootstrap.css?1422792965')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/materialadmin.css?1425466319')}}" />

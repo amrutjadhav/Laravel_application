@@ -128,8 +128,21 @@ class ApiController extends \BaseController {
 		}
 		else
 		{
+			$finding_device = MobileRegister::whereDevice_token($device_type)->count();
+			if($finding_device == 0){
+				$add_device = new MobileRegister;
+				$add_device->device_type = $device_type;
+				$add_device->device_token = $device_token;
+				$add_device->save();
+
+				$response_array = array('success' => true, 'message' => "Device Register Successfully");
+			}else{
+				$response_array = array('success' => false, 'message' => "Device Already Registered");
+			}
 			
 		}
+
+		return Response::json($response_array);
 
 	}
 
