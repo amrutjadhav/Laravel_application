@@ -185,7 +185,7 @@ class HomeController extends BaseController {
 
 		              <div class="card-image">
 		                <a href="#"><img src="'.$post->image.'"></a>
-		                <span class="card-title"><a href="#">'.$post->title.'</a></span>
+		                <span class="card-title"><a href="#">'.$post->title.'</a><em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
 		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
@@ -232,7 +232,7 @@ class HomeController extends BaseController {
 
 		              <div class="card-image">
 		                <a href="#"><img src="'.$post->image.'"></a>
-		                <span class="card-title"><a href="#">'.$post->title.'</a></span>
+		                <span class="card-title"><a href="#">'.$post->title.'</a><em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
 		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
