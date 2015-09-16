@@ -165,12 +165,38 @@ function compare_view_count(){
 	$status = "";
 
 	if($count_today > $count_yesterday){
-		$status = 1;
+
 	}else{
 		$status = 0;
 	}
 
 	return $status;
 }
+
+function last_days($days){
+
+  $views = Counter::where('created_at', '>', Carbon::now()->subDays($days))->where('page','home');
+  $arr = array();
+  $arr['count'] = $views->count();
+  $arr['get'] = $views->get();
+
+  return $arr;
+
+}
+
+function device_count(){
+
+  $ios_count = MobileRegister::where('device_type','ios')->count();
+  $android_count = MobileRegister::where('device_type','android')->count();
+
+  $response = array();
+
+  $response['ios'] = $ios_count;
+  $response['android'] = $android_count;
+
+  return $response;
+
+}
+
 
  ?>

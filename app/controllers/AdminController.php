@@ -7,9 +7,11 @@ class AdminController extends \BaseController {
 	{
 		$moderate_count = User::where('role_id',1)->get()->count();
 		$post_count = Post::all()->count();
+		$posts = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->take(10)->get();
 		return View::make('admin.adminDashboard')->withPage('dashboard')
 			->with('moderate_count',$moderate_count)
-			->with('post_count',$post_count);
+			->with('post_count',$post_count)
+			->withPosts($posts);
 	}
 
 	public function moderatorManagement()

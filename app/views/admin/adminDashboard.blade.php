@@ -99,13 +99,9 @@
 <!-- BEGIN BASE-->
 <div id="base">
 
-    
 
     <!-- BEGIN CONTENT-->
     <div id="content">
-
-
-
 
 
         <!-- BEGIN BLANK SECTION -->
@@ -185,6 +181,11 @@
 <!-- BEGIN OFFCANVAS RIGHT -->
 <div id="content">
 
+    <?php    
+     $view = last_days(10);
+    $device = device_count();
+     ?>
+
     <!-- BEGIN BLANK SECTION -->
     <section>
         <div class="section-header">
@@ -200,7 +201,7 @@
                     <div class="card">
                         <div class="card-body no-padding">
                             <div class="alert alert-callout alert-info no-margin">
-                                <h1 class="pull-right text-success"><i class="md md-photo"></i></h1>
+                                <h1 class="pull-right text-info"><i class="md md-photo"></i></h1>
                                 <strong class="text-xl">{{{$post_count}}}</strong><br>
                                 <span class="opacity-50">Total Posts</span>
                             </div>
@@ -212,7 +213,7 @@
                     <div class="card">
                         <div class="card-body no-padding">
                             <div class="alert alert-callout alert-warning no-margin">
-                                <h1 class="pull-right text-success"><i class="md md-person"></i></h1>
+                                <h1 class="pull-right text-warning"><i class="md md-person"></i></h1>
                                 <strong class="text-xl">{{{$moderate_count}}}</strong><br>
                                 <span class="opacity-50">Total Users</span>
                             </div>
@@ -225,7 +226,7 @@
                                 <div class="card">
                                     <div class="card-body no-padding">
                                         <div class="alert alert-callout alert-success no-margin">
-                                            <h1 class="pull-right text-success"><i class="md md-timer"></i></h1>
+                                            <h1 class="pull-right text-success"><i class="md md-pageview"></i></h1>
                                             <strong class="text-xl">{{{total_view_count()}}}</strong><br/>
                                             <span class="opacity-50">Total No. of Views</span>
                                         </div>
@@ -238,10 +239,15 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="card">
                                     <div class="card-body no-padding">
-                                        <div class="alert alert-callout alert-warning no-margin">
+                                        <div class="alert alert-callout alert-danger no-margin">
+                                            <h1 class="pull-right text-danger"><i class="md md-av-timer"></i></h1>
+
                                             @if(compare_view_count() == 1)
-                                            <strong class="pull-right text-success text-lg">0,38% <i class="md md-trending-up"></i></strong>
+                                            <strong class="pull-right text-success text-lg">0.58% <i class="md md-trending-up"></i></strong>
+                                            @else
+                                            <strong class="pull-right text-danger text-lg">0.03% <i class="md md-trending-down"></i></strong>
                                             @endif
+                                            
                                             <strong class="text-xl">{{{average_view_count()}}}</strong><br/>
                                             <span class="opacity-50">Avg. Visits Per Day</span>
                                             <div class="stick-bottom-right">
@@ -254,41 +260,69 @@
                             <!-- END ALERT - VISITS -->
 
 
+                             <!-- BEGIN NEW REGISTRATIONS -->
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-head">
+                                        <header>Mobile Applications Count</header>
+                                        
+                                    </div><!--end .card-head -->
+                                    <div class="card-body no-padding height-11 ">
+                                         <canvas id="chart-area" width="280" height="280"/>  </canvas>
+                                         <p style="padding-left:30px;padding-top:10px;"><strong>No. of Android Application Installed : </strong> {{{$device['android']}}}</p> 
+                                         <p style="padding-left:30px"><strong>No. of IOS Application Installed : </strong> {{{$device['ios']}}}</p>   
+                                                                            
+
+                                    </div><!--end .card-body -->
+                                </div><!--end .card -->
+                            </div><!--end .col -->
+                            <!-- END NEW REGISTRATIONS -->
+
+
+
                             <!-- BEGIN REGISTRATION HISTORY -->
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-head">
-                                        <header>Registration history</header>
-                                        <div class="tools">
-                                            <a class="btn btn-icon-toggle btn-refresh"><i class="md md-refresh"></i></a>
-                                            <a class="btn btn-icon-toggle btn-collapse"><i class="fa fa-angle-down"></i></a>
-                                            <a class="btn btn-icon-toggle btn-close"><i class="md md-close"></i></a>
-                                        </div>
+                                        <header>Last {{{$view['count']}}} Days Views Count Chart</header>
+                                        
                                     </div><!--end .card-head -->
-                                    <div class="card-body no-padding height-9">
-                                        <div class="row">
-                                            <div class="col-sm-6 hidden-xs">
-                                                <div class="force-padding text-sm text-default-light">
-                                                    <p>
-                                                        <i class="md md-mode-comment text-primary-light"></i>
-                                                        The registrations are measured from the time that the redesign was fully implemented and after the first e-mailing.
-                                                    </p>
-                                                </div>
-                                            </div><!--end .col -->
-                                            <div class="col-sm-6">
-                                                <div class="force-padding pull-right text-default-light">
-                                                    <h2 class="no-margin text-primary-dark"><span class="text-xxl">66.05%</span></h2>
-                                                    <i class="fa fa-caret-up text-success fa-fw"></i> more registrations
-                                                </div>
-                                            </div><!--end .col -->
-                                        </div><!--end .row -->
+                                    <div class="card-body no-padding height-12" style="height:500px">
                                         <div class="stick-bottom-left-right force-padding">
-                                            <div id="flot-registrations" class="flot height-5" data-title="Registration history" data-color="#0aa89e"></div>
+                                            <div class="flot height-12">
+                                                <canvas id="canvas" height="300" width="400"></canvas>
+                                            </div>
                                         </div>
                                     </div><!--end .card-body -->
                                 </div><!--end .card -->
                             </div><!--end .col -->
                             <!-- END REGISTRATION HISTORY -->
+
+                            <!-- BEGIN NEW REGISTRATIONS -->
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-head">
+                                        <header>Recent Posts</header>
+                                       
+                                    </div><!--end .card-head -->
+                                    <div class="card-body no-padding height-12 scroll">
+                                        <ul class="list divider-full-bleed">
+                                            @foreach($posts as $post)
+                                            <li class="tile">
+                                                <div class="tile-content">
+                                                    <div class="tile-icon">
+                                                        <img src="{{{$post->image}}}" alt="" />
+                                                    </div>
+                                                    <div class="tile-text">{{{$post->title}}}</div>
+                                                </div>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </div><!--end .card-body -->
+                                </div><!--end .card -->
+                            </div><!--end .col -->
+                            <!-- END NEW REGISTRATIONS -->
+
 
         </div><!--end .section-body -->
     </section>
@@ -320,166 +354,65 @@
 <script src="{{asset('admins/js/libs/spin.js/spin.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/autosize/jquery.autosize.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/nanoscroller/jquery.nanoscroller.min.js')}}"></script>
-<script src="{{asset('admins/js/libs/d3/d3.min.js')}}"></script>
-<script src="{{asset('admins/js/libs/d3/d3.v3.js')}}"></script>
 <script src="{{asset('admins/js/core/source/App.js')}}"></script>
-<script src="{{asset('admins/js/libs/jquery-knob/jquery.knob.min.js')}}"></script>
-<script src="{{asset('admins/js/libs/sparkline/jquery.sparkline.min.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppNavigation.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppOffcanvas.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppCard.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppForm.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppNavSearch.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppVendor.js')}}"></script>
-<script src="{{asset('admins/js/core/demo/Demo.js')}}"></script>
-        <script src="{{asset('admins/js/libs/flot/jquery.flot.min.js')}}"></script>
-        <script src="{{asset('admins/js/libs/flot/jquery.flot.time.min.js')}}"></script>
-        <script src="{{asset('admins/js/libs/flot/jquery.flot.resize.min.js')}}"></script>
-        <script src="{{asset('admins/js/libs/flot/jquery.flot.orderBars.js')}}"></script>
-        <script src="{{asset('admins/js/libs/flot/jquery.flot.pie.js')}}"></script>
-        <script src="{{asset('admins/js/libs/flot/curvedLines.js')}}"></script>
-        <script src="{{asset('admins/js/libs/moment/moment.min.js')}}"></script>
-
-
-        <script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
-        <script src="{{asset('admins/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
+<script src="{{asset('admins/js/Chart.min.js')}}"></script>
+<script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
+<script src="{{asset('admins/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
 <!-- END JAVASCRIPT -->
 <script type="text/javascript">
     $("#<?= $page ?>").addClass("active");
 </script>
+<script>
 
-<script type="text/javascript">
-    (function (namespace, $) {
-    "use strict";
-
-    var DemoDashboard = function () {
-        // Create reference to this instance
-        var o = this;
-        // Initialize app when document is ready
-        $(document).ready(function () {
-            o.initialize();
-        });
-
-    };
-    var p = DemoDashboard.prototype;
-
-
-    // =========================================================================
-    // INIT
-    // =========================================================================
-
-    p.initialize = function () {
-        this._initFlotRegistration();
-    };
-
-    
-    // =========================================================================
-    // FLOT
-    // =========================================================================
-
-    p._initFlotRegistration = function () {
-        var o = this;
-        var chart = $("#flot-registrations");
-        
-        // Elements check
-        if (!$.isFunction($.fn.plot) || chart.length === 0) {
-            return;
-        }
-        
-        // Chart data
-        var data = [
+    var barChartData = {
+        labels : [<?php foreach($view['get'] as $date) { echo '"'.date('d M', strtotime($date->created_at)).'",';} ?>],
+        datasets : [
             {
-                label: 'Registrations',
-                data: [
-                    [moment().subtract(11, 'month').valueOf(), 1100],
-                    [moment().subtract(10, 'month').valueOf(), 2450],
-                    [moment().subtract(9, 'month').valueOf(), 3800],
-                    [moment().subtract(8, 'month').valueOf(), 2650],
-                    [moment().subtract(7, 'month').valueOf(), 3905],
-                    [moment().subtract(6, 'month').valueOf(), 5250],
-                    [moment().subtract(5, 'month').valueOf(), 3600],
-                    [moment().subtract(4, 'month').valueOf(), 4900],
-                    [moment().subtract(3, 'month').valueOf(), 6200],
-                    [moment().subtract(2, 'month').valueOf(), 5195],
-                    [moment().subtract(1, 'month').valueOf(), 6500],
-                    [moment().valueOf(), 7805]
-                ],
-                last: true
+                fillColor : "rgba(151,187,205,0.5)",
+                strokeColor : "rgba(151,187,205,0.8)",
+                highlightFill : "rgba(151,187,205,0.75)",
+                highlightStroke : "rgba(151,187,205,1)",
+                data : [<?php foreach($view['get'] as $count) { echo $count->count.',';} ?>]
             }
-        ];
+        ]
 
-        // Chart options
-        var labelColor = chart.css('color');
-        var options = {
-            colors: chart.data('color').split(','),
-            series: {
-                shadowSize: 0,
-                lines: {
-                    show: true,
-                    lineWidth: 2
+    }
+
+        var pieData = [
+                {
+                    value: <?php echo $device['android'] ?>,
+                    color:"#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Android Application"
                 },
-                points: {
-                    show: true,
-                    radius: 3,
-                    lineWidth: 2
+                {
+                    value: <?php echo $device['ios'] ?>,
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "IOS Application"
                 }
-            },
-            legend: {
-                show: false
-            },
-            xaxis: {
-                mode: "time",
-                timeformat: "%b %y",
-                color: 'rgba(0, 0, 0, 0)',
-                font: {color: labelColor}
-            },
-            yaxis: {
-                font: {color: labelColor}
-            },
-            grid: {
-                borderWidth: 0,
-                color: labelColor,
-                hoverable: true
-            }
-        };
-        chart.width('100%');
-        
-        // Create chart
-        var plot = $.plot(chart, data, options);
 
-        // Hover function
-        var tip, previousPoint = null;
-        chart.bind("plothover", function (event, pos, item) {
-            if (item) {
-                if (previousPoint !== item.dataIndex) {
-                    previousPoint = item.dataIndex;
+            ];
 
-                    var x = item.datapoint[0];
-                    var y = item.datapoint[1];
-                    var tipLabel = '<strong>' + $(this).data('title') + '</strong>';
-                    var tipContent = y + " " + item.series.label.toLowerCase() + " on " + moment(x).format('dddd');
 
-                    if (tip !== undefined) {
-                        $(tip).popover('destroy');
-                    }
-                    tip = $('<div></div>').appendTo('body').css({left: item.pageX, top: item.pageY - 5, position: 'absolute'});
-                    tip.popover({html: true, title: tipLabel, content: tipContent, placement: 'top'}).popover('show');
-                }
-            }
-            else {
-                if (tip !== undefined) {
-                    $(tip).popover('destroy');
-                }
-                previousPoint = null;
-            }
+    window.onload = function(){
+        var ctx = document.getElementById("canvas").getContext("2d");
+        var ctxp = document.getElementById("chart-area").getContext("2d");
+        window.myBar = new Chart(ctx).Bar(barChartData, {
+            responsive : true
         });
-    };
+        window.myPie = new Chart(ctxp).Pie(pieData, {
+            responsive : true
+        });
+    }
 
-    // =========================================================================
-    namespace.DemoDashboard = new DemoDashboard;
-}(this.materialadmin, jQuery)); // pass in (namespace, jQuery):
-
-</script>
+    </script>
 
 </body>
 </html>
