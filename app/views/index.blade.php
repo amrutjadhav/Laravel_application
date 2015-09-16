@@ -40,6 +40,23 @@
 }
 
 </style>
+
+    <!-- Social Meta -->
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{Setting::get('sitename')}}" />
+    <meta property="og:description" content="Short News Content - Easy to Read - Highlighted News" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="pointblank" />
+    <meta property="og:image" content="{{Setting::get('logo')}}" />
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:description" content="Short News Content - Easy to Read - Highlighted News"/>
+    <meta name="twitter:title" content="{{Setting::get('sitename')}}"/>
+    <meta name="twitter:image:src" content="{{Setting::get('logo')}}"/>
+
+
 </head>
 <body>
 		
@@ -259,10 +276,10 @@ $(document).ready(function() {
     $('#content').scrollPagination({
 
         nop     : 3, // The number of posts per scroll to be loaded
-        offset  : 0, // Initial offset, begins at 0 in this case
+        offset  : 3, // Initial offset, begins at 0 in this case
         error   : 'No More News!', // When the user reaches the end this is the message that is
                                     // displayed. You can change this if you want.
-        delay   : 500, // When you scroll down the posts will load after a delayed amount of time.
+        delay   : 300, // When you scroll down the posts will load after a delayed amount of time.
                        // This is mainly for usability concerns. You can alter this as you see fit
         scroll  : true // The main bit, if set to false posts will not load as the user scrolls. 
                        // but will still load if the user clicks.
