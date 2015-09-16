@@ -106,6 +106,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::get('/deletePost/{id}', array('as' => 'adminDeletePost', 'uses' => 'AdminController@deletePost'));
 
+	Route::get('/sendPush/{id}', array('as' => 'sendPush', 'uses' => 'AdminController@sendPush'));
+
 });
 
 Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){
