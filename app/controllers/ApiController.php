@@ -128,7 +128,7 @@ class ApiController extends \BaseController {
 		}
 		else
 		{
-			$finding_device = MobileRegister::whereDevice_token($device_type)->count();
+			$finding_device = MobileRegister::whereDevice_token($device_token)->count();
 			if($finding_device == 0){
 				$add_device = new MobileRegister;
 				$add_device->device_type = $device_type;

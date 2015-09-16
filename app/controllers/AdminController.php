@@ -431,7 +431,7 @@ class AdminController extends \BaseController {
 					);
 
 
-					// send_notification($title,$response_array);
+					 send_notification($title,$response_array);
 				}
 
 					
@@ -483,6 +483,26 @@ class AdminController extends \BaseController {
     	else
     	{
     		return Redirect::back()->with('flash_error', "Something went wrong");
+    	}
+    }
+
+    public function sendPush($id)
+    {
+    	$post = Post::find($id);
+    	if($post)
+    	{
+    		$response_array = array(
+						'success' => true,
+						'description' => $post->meta_des,
+						'image' => $post->image,
+					);
+
+			send_notification($post->title,$response_array);
+			return Redirect::back()->with('flash_success',"push notification delivered");
+    	}
+    	else
+    	{
+    		return Redirect::back()->with('flash_error',"Push notification failed, Try again");
     	}
     }
 

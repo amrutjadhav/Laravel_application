@@ -30,12 +30,13 @@
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
                                 <td>{{{$post->des}}}</td>
-                                <td>
+                                <td style="width: 297px;">
                                     @if($post->is_approved != 0)
                                         <a class="btn ink-reaction btn-floating-action btn-warning" href="{{route('adminPostDecline', array('id' => $post->id))}}"><i class="fa fa-times"></i></a>
                                     @else
                                         <a class="btn ink-reaction btn-floating-action btn-primary" href="{{route('adminPostActivate', array('id' => $post->id))}}"><i class="fa fa-check"></i></a>
                                     @endif
+                                    <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('sendPush')}}"><i class="fa fa-paper-plane"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminAddPost')}}"><i class="fa fa-plus"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
