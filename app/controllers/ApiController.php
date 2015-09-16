@@ -115,8 +115,8 @@ class ApiController extends \BaseController {
 				'device_token' => $device_token,
 				'device_type' => $device_type,
 			), array(
-				'device_token' => 'required|integer',
-				'device_type' => 'required|integer',
+				'device_token' => 'required',
+				'device_type' => 'required',
 			)
 		);
 
