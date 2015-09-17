@@ -133,12 +133,19 @@
 
   <script src="{{asset('inshorts/js/materialize.js')}}"></script>
   <script src="{{asset('inshorts/js/init.js')}}"></script>
-  <script src="{{asset('inshorts/js/moment.js')}}"></script>
 
   <!-- ajax loading script -->
 
   <script type="text/javascript">
 var path = "{{route('ajaxloading')}}";
+var q;
+<?php if(isset($_GET['q'])){ ?>
+q = "{{$_GET['q']}}";
+<?php }else{ ?>
+q = "";
+<?php } ?>
+
+
     (function($) {
 
     $.fn.scrollPagination = function(options) {
@@ -184,6 +191,7 @@ var path = "{{route('ajaxloading')}}";
                     action        : 'scrollpagination',
                     number        : $settings.nop,
                     offset        : offset,
+                    query             : q
                         
                 }, function(data) {
                         
@@ -259,15 +267,7 @@ var path = "{{route('ajaxloading')}}";
 </script>
 
 <!-- end ajax loading script -->
-<script type="text/javascript">
-function send_time(time,post){
-  if(time){
-     console.log(moment(time).fromNow(true));
-     console.log($("#time_"+post).html('test'));
-      $('#time_'+post).html(+' Ago');
-    }
-}
-</script>
+
 <!-- initiate ajax loading -->
 <script>
 
@@ -276,7 +276,7 @@ $(document).ready(function() {
     $('#content').scrollPagination({
 
         nop     : 3, // The number of posts per scroll to be loaded
-        offset  : 3, // Initial offset, begins at 0 in this case
+        offset  : 0, // Initial offset, begins at 0 in this case
         error   : 'No More News!', // When the user reaches the end this is the message that is
                                     // displayed. You can change this if you want.
         delay   : 300, // When you scroll down the posts will load after a delayed amount of time.

@@ -166,15 +166,21 @@ class HomeController extends BaseController {
 	{
 		$offset = is_numeric(Input::get('offset')) ? Input::get('offset') : die();
         $postnumbers = is_numeric(Input::get('number')) ? Input::get('number') : die();
+        $q = Input::get('query');
 
-        Log::info('num'. $postnumbers);
+
+        Log::info('num'. $q);
         Log::info('offset'. $offset);
 
+        $query = "";
+
+        if($q == ""){
         $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->limit($postnumbers)->offset($offset)->get();
-        
+        }elseif($q != ""){
+        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->where('title','like', '%'.$q.'%')->orWhere('des','like', '%'.$q.'%')->limit($postnumbers)->offset($offset)->get();
+        }
         $data = $query;
-        $count = 0;
-        $all_data = "";
+
 
         foreach ($data as $post) {
                 $cat_id = explode(',', $post->category);
@@ -184,10 +190,9 @@ class HomeController extends BaseController {
                 $twitter = route("single",array("id" => $cat_name,"data" => $post->link));
         	echo '<div class="col m6 s12 l4">
 		          <div class="single-post card animated zoomIn">
-
 		              <div class="card-image">
-		                <a href="#"><img src="'.$post->image.'"></a>
-		                <span class="card-title"><a href="#">'.$post->title.'</a><em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
+		                <a href="javascript:void(0);"><img src="'.$post->image.'"></a>
+		                <span class="card-title"><a href="javascript:void(0);">'.$post->title.'</a><em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
 		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
@@ -220,8 +225,6 @@ class HomeController extends BaseController {
         $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->where('category', 'LIKE', '%'.$id.'%')->limit($postnumbers)->offset($offset)->get();
         
         $data = $query;
-        $count = 0;
-        $all_data = "";
 
         foreach ($data as $post) {
                 $cat_id = explode(',', $post->category);
@@ -233,8 +236,8 @@ class HomeController extends BaseController {
 		          <div class="single-post card animated zoomIn">
 
 		              <div class="card-image">
-		                <a href="#"><img src="'.$post->image.'"></a>
-		                <span class="card-title"><a href="#">'.$post->title.'</a><em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
+		                <a href="javascript:void(0);"><img src="'.$post->image.'"></a>
+		                <span class="card-title"><a href="javascript:void(0);">'.$post->title.'</a><em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
 		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
