@@ -77,6 +77,7 @@ class ApiController extends \BaseController {
 					$data['description'] = $post->des;
 					$data['url'] = $post->url;
 					$data['image'] = $post->image;
+					$data['time'] = $post->created_at->diffForHumans();
 					$data['share_link'] = $link;
 					array_push($datas, $data);
 				}
@@ -96,6 +97,7 @@ class ApiController extends \BaseController {
 					$data['description'] = $post->des;
 					$data['url'] = $post->url;
 					$data['image'] = $post->image;
+					$data['time'] = $post->created_at->diffForHumans();
 					$data['share_link'] = $link;
 
 					array_push($datas, $data);
