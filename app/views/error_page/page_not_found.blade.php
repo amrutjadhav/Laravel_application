@@ -27,8 +27,6 @@
 				<h1>404</h1>
 				<h2>Page not found! Don't worry, <br/>sometimes it happens even for the best of us.</h2>
 				<a class="btn-orange" href="{{route('home')}}">Back to Home</a>
-				<a class="btn-orange" href="#"> Contact Support </a>
-
 		</div>
     </div>
     <div class="right">
