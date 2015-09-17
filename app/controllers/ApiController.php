@@ -4,7 +4,7 @@ class ApiController extends \BaseController {
 
 	public function getCategory()
 	{
-		$category = Category::all();
+		$category = Category::orderBy('order_type')->get();
 		if($category)
 		{
 			$response_array = array('success' => true,'category' => $category);

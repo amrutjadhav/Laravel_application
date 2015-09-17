@@ -18,7 +18,7 @@ class HomeController extends BaseController {
 	public function showWelcome()
 	{
 		$post = Post::all();
-		$cats = Category::all();
+		$cats = Category::orderBy('order_type')->get();
 		// i++ page count
 		counter('home');
 		return View::make('index')->with('posts',$post)->with('cats',$cats);
@@ -26,7 +26,7 @@ class HomeController extends BaseController {
 
 	public function selectCat($id)
 	{
-		$cats = Category::all();
+		$cats = Category::orderBy('order_type')->get();
 		$posts = "SELECT * from posts where category LIKE '%$id%'";
 		$post = DB::select(DB::raw($posts));
 		if($post)
@@ -43,7 +43,7 @@ class HomeController extends BaseController {
 	public function single($id,$data)
 	{
 		$segment = $data;
-		$cats = Category::all();
+		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
 		if($post_details)
 		{	

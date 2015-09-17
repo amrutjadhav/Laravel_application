@@ -22,6 +22,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Action</th>
+                        <th>Order</th>
 
                     </tr>
                     </thead>
@@ -39,7 +40,7 @@
                             <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('editCategory', array('id' => $category->id))}}"><i class="fa fa-edit"></i></a>
                         </td>
                         <td>
-                            <div class="form-group">
+                            <div class="form-group" style="width:50px;">
                                 <input type="text" class="form-control" id="regular1" name="name[{{$category->id}}]" value="{{$category->order_type}}">
                             </div>
                         </td>   
@@ -49,7 +50,7 @@
                     </tbody>
 
                 </table>
-                <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                <button type="submit" class="btn ink-reaction btn-raised btn-primary pull-right">Submit</button>
                 </form>
                 <div align="right" id="paglink"><?php echo $categories->links(); ?></div>
             </div><!--end .card-body -->
