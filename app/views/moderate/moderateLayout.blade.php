@@ -60,22 +60,11 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="headerbar-right">
-            <ul class="header-nav header-nav-options">
-                <li>
-                    <!-- Search form -->
-                    <form class="navbar-search" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="headerSearch" placeholder="Enter your keyword">
-                        </div>
-                        <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
-                    </form>
-                </li>
-            </ul><!--end .header-nav-options -->
             <ul class="header-nav header-nav-profile">
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
                         <img src="{{asset('admins/img/user.png')}}" alt="" />
-								<span class="profile-info">
+								<span class="profile-info">{{{Auth::user()->first_name}}}
 									<smallpngministrator</small>
 								</span>
                     </a>
