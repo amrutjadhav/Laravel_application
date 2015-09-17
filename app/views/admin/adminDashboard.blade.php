@@ -268,14 +268,11 @@
                                         
                                     </div><!--end .card-head -->
                                     <div class="card-body no-padding height-12">
-                                            <div style="width:220px;height:220px;margin:0 auto;"> <canvas id="chart-area" width="250" height="250"/>  </canvas></div>
+                                            <div style="width:270px;height:270px;margin:0 auto;"> <canvas id="chart-area" width="250" height="250"/>  </canvas></div>
                                          <p style="padding-left:30px;padding-top:10px;"><strong>No. of Android Application Installed : </strong> {{{$device['android']}}}</p> 
                                          <p style="padding-left:30px"><strong>No. of IOS Application Installed : </strong> {{{$device['ios']}}}</p>   
-                                         <div class="alert alert-callout alert-danger no-margin">
-                                            <input type="date" name="date" id="getting_date" value=""><input type="button" id="submit_date" class="btn btn-danger" value="Submit"></br>
-                                            <strong id="text-1" class="text-xl" style="display:none;"></strong><br/>
-                                            <span id="text-2" class="opacity-50" style="display:none;"></span>
-                                        </div>                                   
+                                        
+                                                                        
 
                                     </div><!--end .card-body -->
                                 </div><!--end .card -->
@@ -306,10 +303,31 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-head">
+                                        <header>Search View Count</header>
+                                       
+                                    </div>
+                                    
+                                    <div class="card-body no-padding height-4">
+                                        <div class="alert alert-callout alert-info no-margin">
+                                            <input type="date" name="date" id="getting_date" value=""><input type="button" id="submit_date" class="btn btn-info" value="Submit"></br>
+                                            <strong id="text-1" class="text-xl"></strong><br/>
+                                            <span id="text-2" class="opacity-50"></span>
+                                        </div>  
+                                          
+                                    </div><!--end .card-body -->
+                                </div><!--end .card -->
+                            </div><!--end .col -->
+                            <!-- END NEW REGISTRATIONS -->
+
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-head">
                                         <header>Recent Posts</header>
                                        
-                                    </div><!--end .card-head -->
-                                    <div class="card-body no-padding height-12 scroll">
+                                    </div>
+                                    
+                                    <div class="card-body no-padding height-6 scroll">                                        
+
                                         <ul class="list divider-full-bleed">
                                             @foreach($posts as $post)
                                             <li class="tile">
@@ -322,6 +340,7 @@
                                             </li>
                                             @endforeach
                                         </ul>
+                                          
                                     </div><!--end .card-body -->
                                 </div><!--end .card -->
                             </div><!--end .col -->
