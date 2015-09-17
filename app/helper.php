@@ -147,6 +147,12 @@ function total_view_count(){
 	return $count;
 }
 
+function get_view_by_date($date){
+  $query = "SELECT sum(count) as count from counter where page='home' and DATE(created_at) = '".$date."'";
+  $count = DB::select(DB::raw($query));
+  return $count[0]->count;
+}
+
 function average_view_count(){
 	$allvalue = Counter::where('page','home')->sum('count');
 	$allday = Counter::where('page','home')->count();

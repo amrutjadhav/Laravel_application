@@ -267,11 +267,15 @@
                                         <header>Mobile Applications Count</header>
                                         
                                     </div><!--end .card-head -->
-                                    <div class="card-body no-padding height-11 ">
-                                         <canvas id="chart-area" width="280" height="280"/>  </canvas>
+                                    <div class="card-body no-padding height-12">
+                                            <div style="width:220px;height:220px;margin:0 auto;"> <canvas id="chart-area" width="250" height="250"/>  </canvas></div>
                                          <p style="padding-left:30px;padding-top:10px;"><strong>No. of Android Application Installed : </strong> {{{$device['android']}}}</p> 
                                          <p style="padding-left:30px"><strong>No. of IOS Application Installed : </strong> {{{$device['ios']}}}</p>   
-                                                                            
+                                         <div class="alert alert-callout alert-danger no-margin">
+                                            <input type="date" name="date" id="getting_date" value=""><input type="button" id="submit_date" class="btn btn-danger" value="Submit"></br>
+                                            <strong id="text-1" class="text-xl" style="display:none;"></strong><br/>
+                                            <span id="text-2" class="opacity-50" style="display:none;"></span>
+                                        </div>                                   
 
                                     </div><!--end .card-body -->
                                 </div><!--end .card -->
@@ -412,6 +416,26 @@
         });
     }
 
+    </script>
+
+    <script type="text/javascript">
+    var submit_path = "{{route('viewCount')}}";
+        $(document).ready(function(){
+            $('#submit_date').click(function(){
+            var date = $('#getting_date').val();
+                
+                        $.post(submit_path, {
+                        date        : date
+                            
+                    }, function(data) {
+                        console.log(data);
+                        $('#text-1').show().html(data);
+                        $('#text-2').show().html("Total No. of Views on "+ date);
+
+                    });
+                
+            });
+        });
     </script>
 
 </body>

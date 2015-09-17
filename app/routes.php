@@ -33,6 +33,8 @@ Route::post('/forgot-password', array('as' => 'processForgotpassword', 'uses' =>
 
 Route::get('/logout', array('as' => 'logout', 'uses' => 'HomeController@logout'));
 
+Route::post('/find-count', array('as' => 'viewCount', 'uses' => 'AdminController@viewCount'));
+
 Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::get('/', array('as' => 'adminDashboard', 'uses' => 'AdminController@adminDashboard'));

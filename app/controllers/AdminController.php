@@ -631,4 +631,20 @@ class AdminController extends \BaseController {
         }
     }
 
+    public function viewCount()
+    {
+    	$date = date("Y-m-d", strtotime(Input::get('date')));
+    	
+    	if($date != ""){
+    		$count = get_view_by_date($date);
+    	
+
+	    	if($count){
+	    		return $count;
+	    	}else{
+	    		return "0";
+	    	}
+	    }	
+    }
+
 }
