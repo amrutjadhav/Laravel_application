@@ -72,6 +72,7 @@ class ApiController extends \BaseController {
 					$cat_name = $cat_data->name;
 					$link = URL::to('/') . '/cat/' . $cat_name . '/' . $post->link;
 					$data = array();
+					$data['id'] = $post->id;
 					$data['title'] = $post->title;
 					$data['description'] = $post->des;
 					$data['url'] = $post->url;
@@ -90,6 +91,7 @@ class ApiController extends \BaseController {
 					$cat_name = $cat_data->name;
 					$link = URL::to('/') . '/cat/' . $cat_name . '/' . $post->link;
 					$data = array();
+					$data['id'] = $post->id;
 					$data['title'] = $post->title;
 					$data['description'] = $post->des;
 					$data['url'] = $post->url;
