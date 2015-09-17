@@ -32,7 +32,7 @@
 <!-- BEGIN LOGIN SECTION -->
 <section class="section-account">
 
-    <div class="img-backdrop" style="background-image: url('admin/img/signin-bg.jpg')"></div>
+    <div class="img-backdrop" style="background-image: url('admins/img/signin-bg.jpg')"></div>
     <div class="spacer"></div>
     <div class="card contain-sm style-transparent">
         <div class="card-body">

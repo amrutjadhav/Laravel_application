@@ -172,7 +172,7 @@ function compare_view_count(){
 	$status = "";
 
 	if($count_today > $count_yesterday){
-
+    $status = 1;
 	}else{
 		$status = 0;
 	}
@@ -182,7 +182,7 @@ function compare_view_count(){
 
 function last_days($days){
 
-  $views = Counter::where('created_at', '>', Carbon::now()->subDays($days))->where('page','home');
+  $views = Counter::orderBy('created_at','asc')->where('created_at', '>', Carbon::now()->subDays($days))->where('page','home');
   $arr = array();
   $arr['count'] = $views->count();
   $arr['get'] = $views->get();
