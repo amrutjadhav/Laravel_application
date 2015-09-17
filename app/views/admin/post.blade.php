@@ -10,6 +10,8 @@
 
 @section('content')
 
+@include('notification.notify')
+
     <div class="page">
         <div class="col-md-12">
             <div class="card">

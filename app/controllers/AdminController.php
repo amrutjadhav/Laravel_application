@@ -176,6 +176,33 @@ class AdminController extends \BaseController {
 		}
 	}
 
+	public function catOrderType()
+	{
+		$ids = Input::get('id');
+		$names = Input::get('name');
+		$cate = Category::all();
+		$na = 0;
+		$i = 1;
+		foreach ($names as $name)
+		{
+			if($na == $name)
+			{
+				return Redirect::back()->with('flash_error',"order id is are same");
+			}
+			$na = $name;
+		}
+		foreach ($cate as $cat) 
+		{
+			$cates = Category::find($ids[$cat->id]);
+			if($cates)
+			{
+				$cates->order_type = $names[$cat->id];
+				$cates->save();
+			}
+		}
+		return Redirect::back()->with('flash_success',"Updated successfully");
+	}
+
 	public function category()
 	{
 		$category = Category::paginate(10);
