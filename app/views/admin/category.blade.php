@@ -10,6 +10,8 @@
 
 @section('content')
 
+@include('notification.notify')
+
 <div class="page">
     <div class="col-md-12">
         <div class="card">
@@ -24,8 +26,11 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <form action="{{route('catOrderType')}}" method="post">
+                        <?php $i=1; ?>
                     @foreach($categories as $category)
                     <tr>
+                        <input type = "hidden" name="id[{{$category->id}}]" value = "{{$category->id}}">
                         <td>{{$category->id}}</td>
                         <td>{{$category->name}}</td>
                         <td>
@@ -33,10 +38,19 @@
                             <a class="btn ink-reaction btn-floating-action btn-danger" href="{{route('deleteCategory',array('id' => $category->id))}}"><i class="fa fa-trash"></i></a>
                             <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('editCategory', array('id' => $category->id))}}"><i class="fa fa-edit"></i></a>
                         </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="regular1" name="name[{{$category->id}}]" value="{{$category->order_type}}">
+                            </div>
+                        </td>   
                     </tr>
+                    <?php $i++; ?>
                     @endforeach
                     </tbody>
+
                 </table>
+                <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                </form>
                 <div align="right" id="paglink"><?php echo $categories->links(); ?></div>
             </div><!--end .card-body -->
         </div><!--end .card -->

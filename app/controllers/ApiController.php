@@ -63,7 +63,7 @@ class ApiController extends \BaseController {
 		else
 		{
 			if (!$cat) {
-				$posts = Post::where('is_approved', 1)->take($take)->skip($skip)->get();
+				$posts = Post::where('is_approved', 1)->take($take)->skip($skip)->orderBy('created_at','desc')->get();
 				$counts = Post::where('is_approved',1)->count();
 				$datas = array();
 				foreach ($posts as $post) {
@@ -76,13 +76,12 @@ class ApiController extends \BaseController {
 					$data['description'] = $post->des;
 					$data['url'] = $post->url;
 					$data['image'] = $post->image;
-					$data['count'] = $counts;
 					$data['share_link'] = $link;
 					array_push($datas, $data);
 				}
 				$response_array = array('success' => true, 'posts' => $datas, 'counts' => $counts);
 			} else {
-				$postss = Post::where('is_approved', 1)->where('category', 'like', '%' . $cat . '%')->take($take)->skip($skip)->get();
+				$postss = Post::where('is_approved', 1)->where('category', 'like', '%' . $cat . '%')->take($take)->skip($skip)->orderBy('created_at','desc')->get();
 				$counts = Post::where('is_approved',1)->where('category', 'like', '%' . $cat . '%')->count();
 				$datas = array();
 				foreach ($postss as $post) {

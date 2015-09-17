@@ -75,6 +75,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::get('/category', array('as' => 'adminCategory', 'uses' => 'AdminController@category'));
 
+	Route::post('/category', array('as' => 'catOrderType', 'uses' => 'AdminController@catOrderType'));
+
 	Route::get('/addCategory', array('as' => 'addCategory', 'uses' => 'AdminController@addCategory'));
 
 	Route::post('/addCategory', array('as' => 'addCategoryProcess', 'uses' => 'AdminController@addCategoryProcess'));
