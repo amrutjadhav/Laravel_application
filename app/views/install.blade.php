@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <title>6GAG - Dashboard</title>
+    <title>PNB - Installation</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">
@@ -91,15 +91,15 @@
 													<div class="tab-pane active" id="tab1">
 														<br/><br/>
 														<div class="form-group">
-															<input type="text" name="database_name" id="Address" class="form-control">
+															<input type="text" id="database_name" name="database_name" id="Address" class="form-control">
 															<label for="Address" class="control-label">DATABASE NAME</label>
 														</div>
 														<div class="form-group">
-															<input type="text" name="username" id="Address" class="form-control">
+															<input type="text" id="username" name="username" id="Address" class="form-control">
 															<label for="Address" class="control-label">DATABASE USERNAME</label>
 														</div>
 														<div class="form-group">
-															<input type="text" name="password" id="Address" class="form-control">
+															<input type="password" id="password" name="password" id="Address" class="form-control">
 															<label for="Address" class="control-label">DATABASE PASSWORD</label>
 														</div>
 														
@@ -107,15 +107,11 @@
 													<div class="tab-pane" id="tab2">
 														<br/><br/>
 														<div class="form-group">
-															<input type="text" name="admin_username" id="Address" class="form-control">
+															<input type="email" id="admin_username" name="admin_username" id="Address" class="form-control">
 															<label for="Address" class="control-label">ADMIN EMAIL</label>
 														</div>
 														<div class="form-group">
-															<input type="text" name="client_id" id="Address" class="form-control">
-															<label for="Address" class="control-label">GOOGLE CLIENT ID</label>
-														</div>
-														<div class="form-group">
-															<input type="text" name="admin_password" id="Address" class="form-control">
+															<input type="password" id="admin_password" name="admin_password" id="Address" class="form-control">
 															<label for="Address" class="control-label">ADMIN PASSWORD</label>
 														</div>
 													</div><!--end #tab2 -->
@@ -178,21 +174,22 @@
 <script src="{{asset('admins/js/core/source/AppForm.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppNavSearch.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppVendor.js')}}"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
 <script src="{{asset('admins/js/libs/jquery-validation/dist/jquery.validate.min.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/Demo.js')}}"></script>
         <script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
-    <script src="{{asset('admins/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>
         <script src="{{asset('admins/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
 <!-- END JAVASCRIPT -->
 <script type="text/javascript">
     $(document).ready(function(){
+
         $("#install_form").validate({
             rules: {
                 database_name: "required",
-                username: "required",
-                password: "required",
-                admin_username: "required",
-                admin_password: "required"
+                // username: "required",
+                // password: "required",
+                // admin_username: "required",
+                // admin_password: "required"
             }
         });
     });
