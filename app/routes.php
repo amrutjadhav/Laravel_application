@@ -11,6 +11,14 @@
 |
 */
 
+// installtion routes
+
+Route::get('/install', array('as' => 'install', 'uses' => 'HomeController@install'));
+
+Route::post('/install', array('as' => 'installSubmit', 'uses' => 'HomeController@install_submit'));
+
+
+
 Route::get('/', array('as' => 'home', 'uses' => 'HomeController@showWelcome'));
 
 Route::get('/search', array('as' => 'search', 'uses' => 'HomeController@showWelcome'));

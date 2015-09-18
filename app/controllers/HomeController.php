@@ -16,12 +16,21 @@ class HomeController extends BaseController {
 	*/
 
 	public function showWelcome()
-	{
-		$post = Post::all();
-		$cats = Category::orderBy('order_type')->get();
-		// i++ page count
-		counter('home');
-		return View::make('index')->with('posts',$post)->with('cats',$cats);
+	{	
+		try{
+      		 DB::connection()->getDatabaseName();
+      
+       		$post = Post::all();
+			$cats = Category::orderBy('order_type')->get();
+			// i++ page count
+			counter('home');
+			return View::make('index')->with('posts',$post)->with('cats',$cats);
+        }
+
+        catch(Exception $e){
+       		return Redirect::route('install');
+        }
+
 	}
 
 	public function selectCat($id)
@@ -257,5 +266,78 @@ class HomeController extends BaseController {
 
         }
 	}
+
+	public function install()
+	{
+    	return View::make('install');
+    }
+
+        public function install_submit()
+    {
+        $username = Input::get('username');
+        $password = Input::get('password');
+        $admin_username = Input::get('admin_username');
+        $admin_password = Input::get('admin_password');
+        $sitename = Input::get('sitename');
+        $footer = Input::get('footer');
+        $database_name = Input::get('database_name');
+        $picture = Input::file('picture');
+
+
+        $validator = Validator::make(
+            array(
+                'password' => $password,
+                'username' => $username,
+                'database_name' => $database_name,
+                'admin_username' => $admin_username,
+                'admin_password' => $admin_password,
+                'sitename' => $sitename,
+                'footer' => $footer,
+                'picture' => $picture,
+                
+            ), array(
+                'password' => '',
+                'username' => 'required',
+                'sitename' => 'required',
+                'database_name' => 'required',
+                'footer' => 'required',
+                'admin_password' => 'required',
+                'admin_username' => 'required',
+                'picture' => 'mimes:png,jpg'
+            )
+        );
+
+        if ($validator->fails())
+        {
+            $error_messages = $validator->messages()->all();
+            return Redirect::back()->with('flash_errors',$error_messages);
+        }
+        else
+        {
+            $file_name = time();
+            $file_name .= rand();
+            $ext = Input::file('picture')->getClientOriginalExtension();
+            Input::file('picture')->move(public_path() . "/uploads", $file_name . "." . $ext);
+            $local_url = $file_name . "." . $ext;
+            $s3_url = URL::to('/') . '/uploads/' . $local_url;
+
+            Setting::set('sitename',$sitename);
+            Setting::set('footer',$footer);
+            Setting::set('username',$username);
+            Setting::set('password',$password);
+            Setting::set('database_name',$database_name);
+            Setting::set('logo',$s3_url);
+
+            import_db($username,$password,'localhost',$database_name);
+
+            $admin = new User;
+            $admin->email = $admin_username;
+            $admin->password = Hash::make($admin_password);
+            $admin->role_id = 2;
+            $admin->save();
+
+            return Redirect::to('/');
+        }
+    }
 
 }

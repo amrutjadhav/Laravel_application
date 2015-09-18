@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <title>{{Setting::get('sitename')}} - Dashboard</title>
+    <title>6GAG - Dashboard</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">
@@ -11,14 +11,14 @@
     <!-- END META -->
 
     <!-- BEGIN STYLESHEETS -->
-    <link type="text/css" rel="stylesheet" href="{{asset('admin/css/materialize.min.css')}}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/materialize.min.css')}}"  media="screen,projection"/>
 
     <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
-    <link type="text/css" rel="stylesheet" href="{{asset('admin/css/theme-default/bootstrap.css?1422792965')}}" />
-    <link type="text/css" rel="stylesheet" href="{{asset('admin/css/theme-default/materialadmin.css?1425466319')}}" />
-    <link type="text/css" rel="stylesheet" href="{{asset('admin/css/theme-default/font-awesome.min.css?1422529194')}}" />
-    <link type="text/css" rel="stylesheet" href="{{asset('admin/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
-    <link type="text/css" rel="stylesheet" href="{{asset('admin/css/style.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/bootstrap.css?1422792965')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/materialadmin.css?1425466319')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/font-awesome.min.css?1422529194')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
     <!-- END STYLESHEETS -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -38,7 +38,7 @@
 						<li class="header-nav-brand" >
 							<div class="brand-holder">
 								
-									<span class="text-lg text-bold text-primary">CUSTOMIZE</span>
+									<span class="text-lg text-bold text-primary">CUSTOMIZE POINT BLANK NEWS</span>
 								
 							</div>
 						</li>
@@ -69,13 +69,6 @@
 							<div class="col-lg-12">
 								<h1 class="text-primary">Website Configuration wizard</h1>
 							</div><!--end .col -->
-							<div class="col-lg-8">
-								<article class="margin-bottom-xxl">
-									<p class="lead">
-										A form wizard let's you define how the data is grouped and sorted.
-									</p>
-								</article>
-							</div><!--end .col -->
 						</div><!--end .row -->
 						<!-- END INTRO -->
 
@@ -85,9 +78,9 @@
 								<div class="card">
 									<div class="card-body ">
 										<div id="rootwizard1" class="form-wizard form-wizard-horizontal">
-											<form class="form floating-label" id="basic" method="POST" enctype="multipart/form-data" action="{{route('installSubmit')}}">
+											<form class="form floating-label" id="install_form" method="POST" enctype="multipart/form-data" action="{{route('installSubmit')}}">
 												<div class="form-wizard-nav">
-													<div class="progress"><div class="progress-bar progress-bar-primary"></div></div>
+													<div class="progress" style="width:100% !important;"><div class="progress-bar progress-bar-primary"></div></div>
 													<ul class="nav nav-justified">
 														<li class="active"><a href="#tab1" data-toggle="tab"><span class="title">DATABASE CONFIGURATION</span></a></li>
 														<li><a href="#tab2" data-toggle="tab"><span class="title">ADMIN CONFIGURATION</span></a></li>
@@ -103,11 +96,11 @@
 														</div>
 														<div class="form-group">
 															<input type="text" name="username" id="Address" class="form-control">
-															<label for="Address" class="control-label">USERNAME</label>
+															<label for="Address" class="control-label">DATABASE USERNAME</label>
 														</div>
 														<div class="form-group">
 															<input type="text" name="password" id="Address" class="form-control">
-															<label for="Address" class="control-label">PASSWORD</label>
+															<label for="Address" class="control-label">DATABASE PASSWORD</label>
 														</div>
 														
 													</div><!--end #tab1 -->
@@ -118,6 +111,10 @@
 															<label for="Address" class="control-label">ADMIN EMAIL</label>
 														</div>
 														<div class="form-group">
+															<input type="text" name="client_id" id="Address" class="form-control">
+															<label for="Address" class="control-label">GOOGLE CLIENT ID</label>
+														</div>
+														<div class="form-group">
 															<input type="text" name="admin_password" id="Address" class="form-control">
 															<label for="Address" class="control-label">ADMIN PASSWORD</label>
 														</div>
@@ -126,12 +123,12 @@
 														<br/><br/>
 														<div class="form-group">
 									                        <input type="text" class="form-control" id="regular1" name="sitename" value="{{Setting::get('sitename')}}">
-									                        <label for="regular1">Site Title</label>
+									                        <label for="regular1">SITE TITLE</label>
 									                    </div>
 
 									                    <div class="form-group">
 									                        <input type="text" class="form-control" id="regular1" name="footer" value="{{Setting::get('footer')}}">
-									                        <label for="regular1">Footer</label>￼
+									                        <label for="regular1">FOOTER TEXT</label>￼
 									                    </div>
 
 									                    <div class="file-field input-field col s12">
@@ -167,29 +164,29 @@
 			
 
     <!-- BEGIN JAVASCRIPT -->
-<script src="{{asset('admin/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('admin/js/materialize.min.js')}}"></script>
-<script src="{{asset('admin/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
-<script src="{{asset('admin/js/libs/bootstrap/bootstrap.min.js')}}"></script>
-<script src="{{asset('admin/js/libs/spin.js/spin.min.js')}}"></script>
-<script src="{{asset('admin/js/libs/autosize/jquery.autosize.min.js')}}"></script>
-<script src="{{asset('admin/js/libs/nanoscroller/jquery.nanoscroller.min.js')}}"></script>
-<script src="{{asset('admin/js/core/source/App.js')}}"></script>
-<script src="{{asset('admin/js/core/source/AppNavigation.js')}}"></script>
-<script src="{{asset('admin/js/core/source/AppOffcanvas.js')}}"></script>
-<script src="{{asset('admin/js/core/source/AppCard.js')}}"></script>
-<script src="{{asset('admin/js/core/source/AppForm.js')}}"></script>
-<script src="{{asset('admin/js/core/source/AppNavSearch.js')}}"></script>
-<script src="{{asset('admin/js/core/source/AppVendor.js')}}"></script>
-<script src="{{asset('admin/js/libs/jquery-validation/dist/jquery.validate.min.js')}}"></script>
-<script src="{{asset('admin/js/core/demo/Demo.js')}}"></script>
-        <script src="{{asset('admin/js/core/demo/DemoFormWizard.js')}}"></script>
-    <script src="{{asset('admin/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>
-        <script src="{{asset('admin/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
+<script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('admins/js/materialize.min.js')}}"></script>
+<script src="{{asset('admins/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
+<script src="{{asset('admins/js/libs/bootstrap/bootstrap.min.js')}}"></script>
+<script src="{{asset('admins/js/libs/spin.js/spin.min.js')}}"></script>
+<script src="{{asset('admins/js/libs/autosize/jquery.autosize.min.js')}}"></script>
+<script src="{{asset('admins/js/libs/nanoscroller/jquery.nanoscroller.min.js')}}"></script>
+<script src="{{asset('admins/js/core/source/App.js')}}"></script>
+<script src="{{asset('admins/js/core/source/AppNavigation.js')}}"></script>
+<script src="{{asset('admins/js/core/source/AppOffcanvas.js')}}"></script>
+<script src="{{asset('admins/js/core/source/AppCard.js')}}"></script>
+<script src="{{asset('admins/js/core/source/AppForm.js')}}"></script>
+<script src="{{asset('admins/js/core/source/AppNavSearch.js')}}"></script>
+<script src="{{asset('admins/js/core/source/AppVendor.js')}}"></script>
+<script src="{{asset('admins/js/libs/jquery-validation/dist/jquery.validate.min.js')}}"></script>
+<script src="{{asset('admins/js/core/demo/Demo.js')}}"></script>
+        <script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
+    <script src="{{asset('admins/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>
+        <script src="{{asset('admins/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
 <!-- END JAVASCRIPT -->
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#basic").validate({
+        $("#install_form").validate({
             rules: {
                 database_name: "required",
                 username: "required",
