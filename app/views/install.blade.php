@@ -21,7 +21,7 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
     <link rel="shortcut icon" type="image/png" href="{{Setting::get('logo')}}"/>
 
-    
+
     <!-- END STYLESHEETS -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -136,6 +136,7 @@
 									                            <input type="file" name="picture" />
 									                        </div>
 									                        <input class="file-path validate" type="text"/>
+									                        <p>Note: Upload Only .png images</p>
 
 									                    </div>
 									                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
