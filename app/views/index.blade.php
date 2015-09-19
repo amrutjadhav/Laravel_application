@@ -140,7 +140,7 @@
   <!-- ajax loading script -->
 
   <script type="text/javascript">
-var path = "{{route('ajaxloading')}}";
+var path = "{{{route('ajaxloading')}}}";
 var q;
 <?php if(isset($_GET['q'])){ ?>
 q = "{{$_GET['q']}}";

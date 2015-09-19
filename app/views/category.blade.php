@@ -49,16 +49,15 @@
 
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="{{Setting::get('sitename')}}" />
+    <meta property="og:title" content="{{{Setting::get('sitename')}}}" />
     <meta property="og:description" content="Short News Content - Easy to Read - Highlighted News" />
     <meta property="og:url" content="" />
     <meta property="og:site_name" content="pointblank" />
-    <meta property="og:image" content="{{Setting::get('logo')}}" />
-
+    <meta property="og:image" content="{{{Setting::get('logo')}}}" />
     <meta name="twitter:card" content="summary"/>
     <meta name="twitter:description" content="Short News Content - Easy to Read - Highlighted News"/>
-    <meta name="twitter:title" content="{{Setting::get('sitename')}}"/>
-    <meta name="twitter:image:src" content="{{Setting::get('logo')}}"/>
+    <meta name="twitter:title" content="{{{Setting::get('sitename')}}}"/>
+    <meta name="twitter:image:src" content="{{{Setting::get('logo')}}}"/>
 
 </head>
 <body>
@@ -67,7 +66,7 @@
 <div class="static-nav">
 <nav class="top-menu">
     <div class="nav-wrapper mat-clr">
-        <a href="{{route('home')}}" class="brand-logo"><img src="{{Setting::get('logo')}}"></a>
+        <a href="{{{route('home')}}}" class="brand-logo"><img src="{{{Setting::get('logo')}}}"></a>
         <!-- <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a> -->
 
         <ul class="right">
@@ -82,7 +81,7 @@
 
 <nav class="search" id="search-content">
     <div class="nav-wrapper mat-clr1">
-        <form action="{{route('search')}}" method="get">
+        <form action="{{{route('search')}}}" method="get">
             <div class="input-field">
                 <input id="search" type="search" name="q" required>
                 <label for="search"><i class="material-icons">search</i></label>
@@ -107,7 +106,7 @@
 
     <div class="footer-copyright mat-clr">
         <div class="container">
-            <p class="text-center">&copy;2015 <a class="white-text text-lighten-3" href="#">{{Setting::get('footer')}}</a></p>
+            <p class="text-center">&copy;2015 <a class="white-text text-lighten-3" href="#">{{{Setting::get('footer')}}}</a></p>
         </div>
     </div>
 </footer>
@@ -119,7 +118,7 @@
             <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
         </h4>
         @foreach($cats as $cat)
-            <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
+            <a href="{{{route('selectCat',array('id' => $cat->id))}}}" class="cat-link">
                 <img src="{{{$cat->pics}}}">
                 <span>{{{$cat->name}}}</span>
             </a>
@@ -132,14 +131,14 @@
 <!--  Scripts-->
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-<script src="{{asset('inshorts/js/materialize.js')}}"></script>
-<script src="{{asset('inshorts/js/init.js')}}"></script>
+<script src="{{{asset('inshorts/js/materialize.js')}}}"></script>
+<script src="{{{asset('inshorts/js/init.js')}}}"></script>
 
  <!-- ajax loading script -->
 
   <script type="text/javascript">
-var path = "{{route('ajaxloadingcategory')}}";
-var category_id ="<?php echo $category_id; ?>";
+var path = "{{{route('ajaxloadingcategory')}}}";
+var category_id ="{{{$category_id}}}";
     (function($) {
 
     $.fn.scrollPagination = function(options) {
