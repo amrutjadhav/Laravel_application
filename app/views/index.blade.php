@@ -11,6 +11,9 @@
   <link href="{{asset('inshorts/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{{asset('inshorts/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="stylesheet" type="text/css" href="{{asset('inshorts/css/animate.css')}}">
+    <link rel="shortcut icon" type="image/png" href="{{Setting::get('logo')}}"/>
+
+    
   <style type="text/css">
 
 .loading-bar {

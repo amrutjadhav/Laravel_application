@@ -17,6 +17,9 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/font-awesome.min.css?1422529194')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('inshorts/css/animate.css')}}">
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
+    <link rel="shortcut icon" type="image/png" href="{{Setting::get('logo')}}"/>
+    
+    
     <!-- END STYLESHEETS -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
