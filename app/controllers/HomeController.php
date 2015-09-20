@@ -20,7 +20,7 @@ class HomeController extends BaseController {
 		try{
       		 DB::connection()->getDatabaseName();
       
-       		$post = Post::all();
+       		$post = Post::get();
 			$cats = Category::orderBy('order_type')->get();
 			// i++ page count
 			counter('home');
