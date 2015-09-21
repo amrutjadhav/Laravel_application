@@ -25,7 +25,7 @@ Route::get('/search', array('as' => 'search', 'uses' => 'HomeController@showWelc
 
 Route::get('/cat/{cat}/{data}', array('as' => 'single', 'uses' => 'HomeController@single'));
 
-Route::get('/selectCat/{id}', array('as' => 'selectCat', 'uses' => 'HomeController@selectCat'));
+Route::get('/category-type/{id}', array('as' => 'selectCat', 'uses' => 'HomeController@selectCat'));
 
 Route::get('/login', array('as' => 'login', 'uses' => 'HomeController@login'));
 
