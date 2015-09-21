@@ -32,7 +32,7 @@
                 <table width="660" class="resp-full-table" align="center" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td width="50%" style="text-align:left;">
-                            <a href="#" style="text-decoration:none;"><h3 style="font-size: 25px;font-family: 'Helvetica Neue', helvetica, arial, sans-serif;font-weight: bold;color: #6B6B6B;margin: 0;">XMDB</h3></a>
+                            <a href="#" style="text-decoration:none;"><h3 style="font-size: 25px;font-family: 'Helvetica Neue', helvetica, arial, sans-serif;font-weight: bold;color: #6B6B6B;margin: 0;">Point Blank News</h3></a>
                         </td>
                         <td width="50%" style="text-align:right;">
                             <table align="right" border="0" cellspacing="0" cellpadding="0">
@@ -62,7 +62,7 @@
                 <table width="660" class="resp-full-table" align="center" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td class="resp-full-td" valign="top" style="padding:20px; text-align:center;">
-                            <span style="font-size:25px; font-family:'Helvetica Neue', helvetica, arial, sans-serif; font-weight:100; color:#ffffff"><a href="#" style="color:#ffffff; outline:none; text-decoration:none;">Welcome to XMDB</a> </span>
+                            <span style="font-size:25px; font-family:'Helvetica Neue', helvetica, arial, sans-serif; font-weight:100; color:#ffffff"><a href="#" style="color:#ffffff; outline:none; text-decoration:none;">Welcome to Point Blank News</a> </span>
                         </td>
                     </tr>
 
@@ -92,7 +92,7 @@
 
 
                             <p style="font-size: 16px;line-height: 26px;">Thank you!</p>
-                            <p style="font-size: 16px;line-height: 5px;">XMDB</p>
+                            <p style="font-size: 16px;line-height: 5px;">Point Blank News</p>
                         </td>
                     </tr>
                 </table>
