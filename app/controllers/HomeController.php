@@ -173,6 +173,7 @@ class HomeController extends BaseController {
 
 	public function ajax_loading()
 	{
+		dd('log');
 		$offset = is_numeric(Input::get('offset')) ? Input::get('offset') : die();
         $postnumbers = is_numeric(Input::get('number')) ? Input::get('number') : die();
         $q = Input::get('query');
