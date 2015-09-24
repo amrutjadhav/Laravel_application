@@ -111,6 +111,7 @@
     <div id="modal1" class="modal bottom-sheet cat">
         <div class="modal-content">
             <h4>Select Category</h4>
+             <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
             @foreach($cats as $cat)
                 <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
                     <img src="{{{$cat->pics}}}">
