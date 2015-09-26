@@ -283,6 +283,15 @@ $(document).ready(function() {
 
 </script>
 
+<!-- other scripts -->
+
+<!-- including google analytics script -->
+
+@if(Setting::get('analytics_code') != "")
+  {{Setting::get('analytics_code')}}
+@endif
+
+
 <script type="text/javascript">
     $(document).ready(function(){
 

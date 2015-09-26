@@ -127,6 +127,14 @@
 
     <script src="{{asset('inshorts/js/materialize.js')}}"></script>
     <script src="{{asset('inshorts/js/init.js')}}"></script>
+    <!-- other scripts -->
+
+<!-- including google analytics script -->
+
+@if(Setting::get('analytics_code') != "")
+  {{Setting::get('analytics_code')}}
+@endif
+
     <script type="text/javascript">
         $(document).ready(function(){
 
@@ -144,7 +152,7 @@
             );
 
         });
-    </script
+    </script>
 
 
 </body>
