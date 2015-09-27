@@ -58,6 +58,10 @@
     <meta name="twitter:description" content="Short News Content - Easy to Read - Highlighted News"/>
     <meta name="twitter:title" content="{{{Setting::get('sitename')}}}"/>
     <meta name="twitter:image:src" content="{{{Setting::get('logo')}}}"/>
+    
+@if(Setting::get('analytics_code') != "")
+  {{Setting::get('analytics_code')}}
+@endif
 
 </head>
 <body>
@@ -287,9 +291,6 @@ $(document).ready(function() {
 
 <!-- including google analytics script -->
 
-@if(Setting::get('analytics_code') != "")
-  {{Setting::get('analytics_code')}}
-@endif
 
 
 <script type="text/javascript">

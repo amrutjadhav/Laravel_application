@@ -37,6 +37,12 @@
     <meta name="twitter:description" content="{{$post->des}}"/>
     <meta name="twitter:title" content="{{$post->title}}"/>
     <meta name="twitter:image:src" content="{{$post->image}}"/>
+    <!-- including google analytics script -->
+
+@if(Setting::get('analytics_code') != "")
+  {{Setting::get('analytics_code')}}
+@endif
+
 
 
 
@@ -129,11 +135,6 @@
     <script src="{{asset('inshorts/js/init.js')}}"></script>
     <!-- other scripts -->
 
-<!-- including google analytics script -->
-
-@if(Setting::get('analytics_code') != "")
-  {{Setting::get('analytics_code')}}
-@endif
 
     <script type="text/javascript">
         $(document).ready(function(){
