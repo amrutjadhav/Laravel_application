@@ -51,6 +51,7 @@
         <!-- <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a> -->
 
         <ul class="right">
+            <li><a data-target="modal2" class="waves-effect waves-light modal-trigger"><i class="fa fa-mobile"></i></a></li> 
             <li><a data-target="modal1" class="waves-effect waves-light modal-trigger"><i class="fa fa-bars"></i></a></li>
             <li><a class="waves-effect waves-light search-btn" href="#!" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">search</i></a></li>
 
@@ -126,6 +127,28 @@
         </div>
 
     </div>
+
+      <div id="modal2" class="modal bottom-sheet cat">
+    <div class="modal-content">
+      <h4>Get it on
+        <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
+      </h4>
+      
+      <a href="#" class="cat-link app">
+        <img src="{{asset('image/appstore.png')}}">
+      </a>
+
+      <a href="#" class="cat-link app">
+        <img src="{{asset('image/playstore.png')}}">
+      </a>
+
+      <a href="#" class="cat-link app">
+        <img src="{{asset('image/webapp.png')}}">
+      </a>
+      
+    </div>
+    
+  </div>
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

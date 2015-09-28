@@ -133,6 +133,8 @@ i.right
     text-align: center;
     margin: 10px;
   }
+
+.cat a.cat-link.app{width: 200px;}
 .cat a.cat-link img{width: 100%;}
 .cat{text-align: center;}
 .cat .modal-content{padding: 0px;}
