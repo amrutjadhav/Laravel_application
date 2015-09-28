@@ -67,7 +67,7 @@
                         <label for="regular1">Meta Description</label>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                     <div class="switch">
                         <label>
                           Off
@@ -77,7 +77,7 @@
                         </label>
                       </div>
                       <span>Send Push Notification</span>
-                  </div>
+                  </div> -->
 
                     <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
                 </form>
