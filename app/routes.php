@@ -83,6 +83,10 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::post('/adminProfile', array('as' => 'adminProfileProcess', 'uses' => 'AdminController@adminProfileProcess'));
 
+	Route::post('/profilePics', array('as' => 'adminProfilePics', 'uses' => 'AdminController@profilePics'));
+
+	Route::post('/adminPassword', array('as' => 'adminPassword', 'uses' => 'AdminController@adminPassword'));
+
 	Route::get('/category', array('as' => 'adminCategory', 'uses' => 'AdminController@category'));
 
 	Route::post('/category', array('as' => 'catOrderType', 'uses' => 'AdminController@catOrderType'));
