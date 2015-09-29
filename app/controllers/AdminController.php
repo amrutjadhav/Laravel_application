@@ -575,6 +575,9 @@ class AdminController extends \BaseController {
 			Setting::set('footer', Input::get('footer'));
 			Setting::set('browser_key', Input::get('browser_key'));
 			Setting::set('analytics_code', Input::get('analytics_code'));
+			Setting::set('google_play', Input::get('google_play'));
+			Setting::set('ios_app', Input::get('ios_app'));
+			Setting::set('website_link', Input::get('website_link'));
 			
 			return Redirect::back()->with('flash_success', "successfully");
 		}

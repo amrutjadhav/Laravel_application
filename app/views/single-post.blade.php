@@ -135,15 +135,15 @@
         <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
       </h4>
       
-      <a href="#" class="cat-link app">
+      <a href="{{Setting::get('ios_app')}}" class="cat-link app" target="_blank">
         <img src="{{asset('image/appstore.png')}}">
       </a>
 
-      <a href="#" class="cat-link app">
+      <a href="{{Setting::get('google_play')}}" class="cat-link app" target="_blank">
         <img src="{{asset('image/playstore.png')}}">
       </a>
 
-      <a href="#" class="cat-link app">
+      <a href="{{Setting::get('website_link')}}" class="cat-link app" target="_blank">
         <img src="{{asset('image/webapp.png')}}">
       </a>
       

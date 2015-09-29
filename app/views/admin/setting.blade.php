@@ -54,6 +54,22 @@
                       <label for="textarea1">Google Analytics Code</label>
                     </div>
 
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="google_play" value="{{Setting::get('google_play')}}">
+                        <label for="regular1">Google play store link</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="ios_app" value="{{Setting::get('ios_app')}}">
+                        <label for="regular1">Apple app store link</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="website_link" value="{{Setting::get('website_link')}}">
+                        <label for="regular1">Website link</label>
+                    </div>
+
+
                     <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
                 </form>
             </div><!--end .card-body -->
