@@ -272,14 +272,13 @@ class HomeController extends BaseController {
     	return View::make('install');
     }
 
-        public function install_submit()
+    public function install_submit()
     {
         $username = Input::get('username');
         $password = Input::get('password');
         $admin_username = Input::get('admin_username');
         $admin_password = Input::get('admin_password');
         $sitename = Input::get('sitename');
-        $footer = Input::get('footer');
         $database_name = Input::get('database_name');
         $picture = Input::file('picture');
 
@@ -292,7 +291,6 @@ class HomeController extends BaseController {
                 'admin_username' => $admin_username,
                 'admin_password' => $admin_password,
                 'sitename' => $sitename,
-                'footer' => $footer,
                 'picture' => $picture,
                 
             ), array(
@@ -300,7 +298,6 @@ class HomeController extends BaseController {
                 'username' => 'required',
                 'sitename' => 'required',
                 'database_name' => 'required',
-                'footer' => 'required',
                 'admin_password' => 'required',
                 'admin_username' => 'required',
                 'picture' => 'mimes:png,jpg'
@@ -322,7 +319,7 @@ class HomeController extends BaseController {
             $s3_url = URL::to('/') . '/uploads/' . $local_url;
 
             Setting::set('sitename',$sitename);
-            Setting::set('footer',$footer);
+            Setting::set('footer',"Powered by APPOETS");
             Setting::set('username',$username);
             Setting::set('password',$password);
             Setting::set('database_name',$database_name);
