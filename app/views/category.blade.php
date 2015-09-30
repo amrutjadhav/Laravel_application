@@ -122,6 +122,7 @@
         <h4>Select Category
             <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
         </h4>
+        <div class="popup-top"></div>
         @foreach($cats as $cat)
             <a href="{{{route('selectCat',array('id' => $cat->id))}}}" class="cat-link">
                 <img src="{{{$cat->pics}}}">
@@ -138,6 +139,7 @@
       <h4>Get it on
         <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
       </h4>
+      <div class="popup-top"></div>
       
       <a href="{{Setting::get('ios_app')}}" class="cat-link app" target="_blank">
         <img src="{{asset('image/appstore.png')}}">
@@ -173,7 +175,7 @@ var category_id ="{{{$category_id}}}";
     $.fn.scrollPagination = function(options) {
         
         var settings = { 
-            nop     : 2, // The number of posts per scroll to be loaded
+            nop     : 6, // The number of posts per scroll to be loaded
             offset  : 0, // Initial offset, begins at 0 in this case
             error   : 'No More Posts!', // When the user reaches the end this is the message that is
                                         // displayed. You can change this if you want.
@@ -297,8 +299,8 @@ $(document).ready(function() {
 
     $('#content').scrollPagination({
 
-        nop     : 3, // The number of posts per scroll to be loaded
-        offset  : 3, // Initial offset, begins at 0 in this case
+        nop     : 6, // The number of posts per scroll to be loaded
+        offset  : 0, // Initial offset, begins at 0 in this case
         error   : 'No More News!', // When the user reaches the end this is the message that is
                                     // displayed. You can change this if you want.
         delay   : 300, // When you scroll down the posts will load after a delayed amount of time.

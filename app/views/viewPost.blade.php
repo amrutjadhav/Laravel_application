@@ -7,7 +7,7 @@
  */
 ?>
 
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -118,6 +118,7 @@
             <h4>Select Categories
                 <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
             </h4>
+            <div class="popup-top"></div>
             @foreach($cats as $cat)
                 <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
                     <img src="{{{$cat->pics}}}">
@@ -133,6 +134,7 @@
       <h4>Get it on
         <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
       </h4>
+      <div class="popup-top"></div>
       
       <a href="{{Setting::get('ios_app')}}" class="cat-link app" target="_blank">
         <img src="{{asset('image/appstore.png')}}">
@@ -172,7 +174,7 @@
             );
 
         });
-    </script
+    </script>
 
 
 </body>

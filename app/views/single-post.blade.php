@@ -118,6 +118,7 @@
     <div id="modal1" class="modal bottom-sheet cat">
         <div class="modal-content">
             <h4>Select Category</h4>
+            <div class="popup-top"></div>
              <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
             @foreach($cats as $cat)
                 <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
@@ -134,6 +135,7 @@
       <h4>Get it on
         <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
       </h4>
+      <div class="popup-top"></div>
       
       <a href="{{Setting::get('ios_app')}}" class="cat-link app" target="_blank">
         <img src="{{asset('image/appstore.png')}}">
