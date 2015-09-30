@@ -543,10 +543,8 @@ class AdminController extends \BaseController {
 	public function settingProcess()
 	{
 		$validator = Validator::make(array(
-			'sitename' => Input::get('sitename'),
-			'footer' => Input::get('footer')),
-			array('sitename' => 'required',
-				'footer' => 'required'));
+			'sitename' => Input::get('sitename')),
+			array('sitename' => 'required'));
 		if($validator->fails())
 		{
 			$errors = $validator->messages()->all();
@@ -572,7 +570,6 @@ class AdminController extends \BaseController {
 				Setting::set('logo', $s3_url);
 			}
 			Setting::set('sitename', Input::get('sitename'));
-			Setting::set('footer', Input::get('footer'));
 			Setting::set('browser_key', Input::get('browser_key'));
 			Setting::set('analytics_code', Input::get('analytics_code'));
 			Setting::set('google_play', Input::get('google_play'));

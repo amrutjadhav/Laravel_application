@@ -107,7 +107,7 @@
 
         <div class="footer-copyright mat-clr">
             <div class="container">
-                <p class="text-center">&copy;2015 <a class="white-text text-lighten-3" href="#">{{Setting::get('footer')}}</a></p>
+                <p class="text-center">&copy;2015 <a class="white-text text-lighten-3" href="http://appoets.com">{{Setting::get('footer')}}</a></p>
             </div>
         </div>
     </footer>
