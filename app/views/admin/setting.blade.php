@@ -25,17 +25,17 @@
                         <label for="regular1">Site Title</label>
                     </div>
 
-                    <div class="form-group">
+                   <!--  <div class="form-group">
                         <input type="text" class="form-control" id="regular1" name="footer" value="{{Setting::get('footer')}}">
                         <label for="regular1">Footer</label>￼
-                    </div>
+                    </div> -->
 
                     <div class="file-field input-field col s12">
-                       <!--  <div class="tile-content">
+                        <div class="tile-content">
                                 <div class="tile-icon brand-logo">
                                     <img  src="{{Setting::get('logo')}}" alt="">
                                 </div>
-                            </div> -->
+                            </div>
                         <div class="btn light-blue accent-2" style="padding: 0px 10px;">
                             <span>Choose Logo</span>
                             <input type="file" name="picture" />
