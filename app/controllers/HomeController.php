@@ -17,20 +17,20 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{	
-		echo "Coming Soon";
-		// try{
-  //     		 DB::connection()->getDatabaseName();
+		//echo "Coming Soon";
+		try{
+      		 DB::connection()->getDatabaseName();
       
-  //      		$post = Post::get();
-		// 	$cats = Category::orderBy('order_type')->get();
-		// 	// i++ page count
-		// 	counter('home');
-		// 	return View::make('index')->with('posts',$post)->with('cats',$cats);
-  //       }
+       		$post = Post::get();
+			$cats = Category::orderBy('order_type')->get();
+			// i++ page count
+			counter('home');
+			return View::make('index')->with('posts',$post)->with('cats',$cats);
+        }
 
-  //       catch(Exception $e){
-  //      		return Redirect::route('install');
-  //       }
+        catch(Exception $e){
+       		return Redirect::route('install');
+        }
 
 	}
 
