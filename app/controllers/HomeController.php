@@ -338,4 +338,75 @@ class HomeController extends BaseController {
         }
     }
 
+    public function feed_collector(){
+    	//  please dont change the categories id's else the application will collapse
+    	
+    	$response = file_get_contents('http://read-api.newsinshorts.com/v1/news');
+    	$response = json_decode($response);
+    	$inc = 0;
+
+    	foreach ($response->news_list as $key) {
+    		$check_count = Post::where('timestamp',$key->created_at)->count();
+    		if($check_count == 0){
+	    		if($key->category_names){
+	    			$getting_categories = array();
+	    			if(in_array("entertainment", $key->category_names)){
+	    				array_push($getting_categories, 6);
+	    			}
+
+	    			if(in_array("national", $key->category_names)){
+	    				array_push($getting_categories, 1);
+	    			}
+
+	    			if(in_array("world", $key->category_names)){
+	    				array_push($getting_categories, 7);
+	    			}
+
+	    			if(in_array("miscellaneous", $key->category_names)){
+	    				array_push($getting_categories, 8);
+	    			}
+
+	    			if(in_array("sports", $key->category_names)){
+	    				array_push($getting_categories, 4);
+	    			}
+
+	    			if(in_array("business", $key->category_names)){
+	    				array_push($getting_categories, 2);
+	    			}
+
+	    			if(in_array("politics", $key->category_names)){
+	    				array_push($getting_categories, 3);
+	    			}
+
+	    			if(in_array("startup", $key->category_names)){
+	    				array_push($getting_categories, 5);
+	    			}
+	    		}
+
+	    		$post = new Post;
+				$post->title = $key->title;
+				$post->is_approved = 1;
+				$post->url = $key->source_url;
+				$post->des = $key->content;
+				$link = str_replace(" ", "-", $key->title) . '-' . rand(0, 99);
+				
+				$post->link = $link;
+				$post->title_tag = $key->title;
+				$post->meta_des = $key->title;
+				$post->image = $key->image_url;
+				$post->category= implode(',', $getting_categories);
+				$post->timestamp = $key->created_at;
+				$post->save();
+
+				// if($inc == 5){
+				// 	break;
+				// }
+
+    		}else{
+    			break;
+    		}
+    		$inc++;
+    	}
+    }
+
 }
