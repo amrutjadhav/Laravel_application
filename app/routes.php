@@ -17,6 +17,10 @@ Route::get('/install', array('as' => 'install', 'uses' => 'HomeController@instal
 
 Route::post('/install', array('as' => 'installSubmit', 'uses' => 'HomeController@install_submit'));
 
+// feed collector
+
+Route::get('/newsinshort/feed-collector', array('as' => 'feed', 'uses' => 'HomeController@feed_collector'));
+
 
 
 Route::get('/', array('as' => 'home', 'uses' => 'HomeController@showWelcome'));
