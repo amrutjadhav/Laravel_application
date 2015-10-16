@@ -464,7 +464,7 @@ class AdminController extends \BaseController {
             }
 
             if ($post) {
-                return Redirect::back()->with('flash_success', "New Post added");
+                return Redirect::back()->with('flash_success', "Post Updated");
             } else {
                 return Redirect::back()->with('flash_error', "Something went wrong");
             }
