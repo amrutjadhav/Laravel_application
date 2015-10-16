@@ -202,3 +202,6 @@ i.right
 .card .card-image{height: 165px;overflow: hidden;}
 
 }
+.card .card-image img{
+  min-height:225px;
+}
