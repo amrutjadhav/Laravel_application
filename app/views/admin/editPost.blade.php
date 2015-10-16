@@ -57,13 +57,13 @@
                             <label for="textarea1">Description</label>
                         </div>
 
-                        <div class="form-group">
+<!--                         <div class="form-group">
 
                         <input type="text" class="form-control" id="title_tag" name="title_tag" maxlength="70" value="{{$post->title_tag}}">
                         <label for="regular1">Title Tag</label>
                         <div id="characterLeft"></div>
 
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="meta_des" name="meta_des" value="{{$post->meta_des}}">

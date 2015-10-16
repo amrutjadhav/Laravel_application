@@ -332,146 +332,144 @@ class AdminController extends \BaseController {
 			->with('category',$category);
 	}
 
+	
 	public function addPostProcess()
-	{
+    {
 
-		$category = Input::get('category');
-		$title = Input::get('title');
-		$post_img = Input::file('post_img');
-		$url = Input::get('url');
-		$title_tag = Input::get('title_tag');
-		$meta_des = Input::get('meta_des');
+        $category = Input::get('category');
+        $title = Input::get('title');
+        $post_img = Input::file('post_img');
+        $url = Input::get('url');
+        $title_tag = Input::get('title_tag');
+        $meta_des = Input::get('meta_des');
  
-		$validator = Validator::make(
-			array(
-				'title' => $title,
-				'url' => $url,
-				'title_tag' => $title_tag,
-				'meta_des' => $meta_des,
-				'category' => $category,
-			), array(
-				'title' => 'required',
-				'url' => 'required',
-				'title_tag' => 'required',
-				'meta_des' => 'required',
-				'category' => 'required'
-			)
-		);
+        $validator = Validator::make(
+            array(
+                'title' => $title,
+                'url' => $url,
+                'meta_des' => $meta_des,
+                'category' => $category,
+            ), array(
+                'title' => 'required',
+                'url' => 'required',
+                'meta_des' => 'required',
+                'category' => 'required'
+            )
+        );
 
-		if ($validator->fails()) {
-			$error_messages = $validator->messages()->all();
-			return Redirect::back()->with('flash_errors', $error_messages);
-		} 
-		else 
-		{
-			if (Input::get('id') != "") 
-			{
-				$post = Post::find(Input::get('id'));
-				$post->title = $title;
-				$post->is_approved = 1;
-				$post->des = Input::get('des');
-				$link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
-				
-				$post->link = $link;
-				$post->url = $url;
-				$post->title_tag = $title_tag;
-				$post->meta_des = $meta_des;
+        if ($validator->fails()) {
+            $error_messages = $validator->messages()->all();
+            return Redirect::back()->with('flash_errors', $error_messages);
+        } 
+        else 
+        {
+            if (Input::get('id') != "") 
+            {
+                $post = Post::find(Input::get('id'));
+                $post->title = $title;
+                $post->is_approved = 1;
+                $post->des = Input::get('des');
+                $post->url = $url;
+                $post->meta_des = $meta_des;
 
-				$validator1 = Validator::make(
-					array(
-						'post_img' => $post_img,
-					), array(
-						'post_img' => 'required|mimes:jpeg,bmp,gif,png',
-					)
-				);
+                $validator1 = Validator::make(
+                    array(
+                        'post_img' => $post_img,
+                    ), array(
+                        'post_img' => 'required|mimes:jpeg,bmp,gif,png',
+                    )
+                );
 
-				if ($validator1->fails()) 
-				{
-					//do nothing
-				} 
-				else 
-				{
-					$file_name = time();
-					$file_name .= rand();
-					$post->des = Input::get('des');
-					$ext = Input::file('post_img')->getClientOriginalExtension();
-					Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
-					$local_url = $file_name . "." . $ext;
+                if ($validator1->fails()) 
+                {
+                    //do nothing
+                } 
+                else 
+                {
+                    $file_name = time();
+                    $file_name .= rand();
+                    $post->des = Input::get('des');
+                    $ext = Input::file('post_img')->getClientOriginalExtension();
+                    Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
+                    $local_url = $file_name . "." . $ext;
 
-					// Upload to S3
-					$s3_url = URL::to('/') . '/uploads/' . $local_url;
+                    // Upload to S3
+                    $s3_url = URL::to('/') . '/uploads/' . $local_url;
 
-					$post->image = $s3_url;
-				}
-				$post->category = implode(',', $category);
-				$post->save();			
-			} 
-			else 
-			{
-				$post = new Post;
-				$post->title = $title;
-				$post->is_approved = 1;
-				$post->url = $url;
-				$post->des = Input::get('des');
-				$link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
-				
-				$post->link = $link;
-				$post->title_tag = $title_tag;
-				$post->meta_des = $meta_des;
+                    $post->image = $s3_url;
+                }
+                $post->category = implode(',', $category);
+                $post->save();          
+            } 
+            else 
+            {
+                $post = new Post;
+                $post->title = $title;
+                $post->is_approved = 1;
+                $post->url = $url;
+                $post->des = Input::get('des');
+                $post->meta_des = $meta_des;
 
-				$validator1 = Validator::make(
-					array(
-						'post_img' => $post_img,
-					), array(
-						'post_img' => 'required|mimes:jpeg,bmp,gif,png',
-					)
-				);
+                $validator1 = Validator::make(
+                    array(
+                        'title_tag' => $title_tag,
+                        'post_img' => $post_img,
+                    ), array(
+                        'title_tag' => 'required',
+                        'post_img' => 'required|mimes:jpeg,bmp,gif,png',
+                    )
+                );
 
-				if ($validator1->fails()) {
-					$error_messages = $validator->messages()->all();
-					return Redirect::back()->with('flash_errors', $error_messages);
-				} 
-				else
-				{
-					$file_name = time();
-					$file_name .= rand();
-					$ext = Input::file('post_img')->getClientOriginalExtension();
-					Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
-					$local_url = $file_name . "." . $ext;
+                if ($validator1->fails()) {
+                    $error_messages = $validator->messages()->all();
+                    return Redirect::back()->with('flash_errors', $error_messages);
+                } 
+                else
+                {
+                    $file_name = time();
+                    $file_name .= rand();
+                    $ext = Input::file('post_img')->getClientOriginalExtension();
+                    Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
+                    $local_url = $file_name . "." . $ext;
 
-					// Upload to S3
-					$s3_url = URL::to('/') . '/uploads/' . $local_url;
+                    // Upload to S3
+                    $s3_url = URL::to('/') . '/uploads/' . $local_url;
 
-					$post->image = $s3_url;
+                    $post->image = $s3_url;
 
-					$post->category = implode(',', $category);
-					$post->save();
+                    $post->category = implode(',', $category);
+
+                    $link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
+                    
+                    $post->link = $link;
+                    $post->title_tag = $title_tag;
+                    $post->save();
 
 
-					if (Input::get('push_button') === 'yes') {
-    				// checked
+                    if (Input::get('push_button') === 'yes') {
+                    // checked
 
-					$response_array = array(
-						'success' => true,
-						'description' => $meta_des,
-						'image' => $s3_url,
-					);
+                    $response_array = array(
+                        'success' => true,
+                        'description' => $meta_des,
+                        'image' => $s3_url,
+                    );
 
 
-					 send_notification($title,$response_array);
-				}
+                     send_notification($title,$response_array);
+                    }
 
-					
-				}
-			}
+                    
+                }
+            }
 
-			if ($post) {
-				return Redirect::back()->with('flash_success', "New Post added");
-			} else {
-				return Redirect::back()->with('flash_error', "Something went wrong");
-			}
-		}
-	}
+            if ($post) {
+                return Redirect::back()->with('flash_success', "New Post added");
+            } else {
+                return Redirect::back()->with('flash_error', "Something went wrong");
+            }
+        }
+    }
 
 	public function editPost($id)
     {
