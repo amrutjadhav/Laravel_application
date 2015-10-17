@@ -167,7 +167,7 @@
                 <li id="help">
                     <a href="{{route('help')}}" >
                         <div class="gui-icon"><i class="md md-star"></i></div>
-                        <span class="title">Need something changed?</span>
+                        <span class="title">Need something?</span>
                     </a>
                 </li><!--end /menu-li -->
 

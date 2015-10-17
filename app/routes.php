@@ -180,6 +180,16 @@ Route::get('/postDetails', array('as' => 'postDetails', 'uses' => 'ApiController
 
 Route::get('/getPostCat', array('as' => 'getPostCat', 'uses' => 'ApiController@getPostCat'));
 
+// Admin panel App's API
+
+Route::get('/postlist', array('as' => 'postList', 'uses' => 'ApiController@postList'));
+
+Route::get('/postDetail', array('as' => 'postDetail', 'uses' => 'ApiController@postDetail'));
+
+Route::post('/addPostProcess', array('as' => 'addApiPostProcess', 'uses' => 'ApiController@addApiPostProcess'));
+
+
+
 
 
 
