@@ -316,7 +316,7 @@ class AdminController extends \BaseController {
 
 	public function adminPost()
 	{
-		$post = Post::paginate(10);
+		$post = Post::orderBy('created_at', 'desc')->paginate(10);
 		return View::make('admin.post')
 			->with('title',"Posts Management")
 			->with('page', "posts")
@@ -399,7 +399,12 @@ class AdminController extends \BaseController {
                     $post->image = $s3_url;
                 }
                 $post->category = implode(',', $category);
-                $post->save();          
+                $post->save();
+				if ($post) {
+					return Redirect::back()->with('flash_success', "Post Updated");
+				} else {
+					return Redirect::back()->with('flash_error', "Something went wrong");
+				}
             } 
             else 
             {
@@ -461,12 +466,11 @@ class AdminController extends \BaseController {
 
                     
                 }
-            }
-
-            if ($post) {
-                return Redirect::back()->with('flash_success', "Post Updated");
-            } else {
-                return Redirect::back()->with('flash_error', "Something went wrong");
+				if ($post) {
+					return Redirect::back()->with('flash_success', "Post created");
+				} else {
+					return Redirect::back()->with('flash_error', "Something went wrong");
+				}
             }
         }
     }

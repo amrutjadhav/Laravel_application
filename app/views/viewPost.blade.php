@@ -47,7 +47,7 @@
 
 <nav class="top-menu">
     <div class="nav-wrapper mat-clr">
-        <a href="#!" class="brand-logo"><img src="{{Setting::get('logo')}}"></a>
+        <a href="{{route('home')}}" class="brand-logo"><img src="{{Setting::get('logo')}}"></a>
         <!-- <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a> -->
 
         <ul class="right">

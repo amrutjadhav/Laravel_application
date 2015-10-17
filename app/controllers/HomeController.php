@@ -202,7 +202,7 @@ class HomeController extends BaseController {
 		          <div class="single-post card animated zoomIn">
 		              <div class="card-image">
 		                <a href="javascript:void(0);"><img src="'.$post->image.'"></a>
-		                <span class="card-title"><a href="javascript:void(0);">'.$post->title.'</a><em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
+		                <span class="card-title">'.$post->title.'<em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
 		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
@@ -247,7 +247,7 @@ class HomeController extends BaseController {
 
 		              <div class="card-image">
 		                <a href="javascript:void(0);"><img src="'.$post->image.'"></a>
-		                <span class="card-title"><a href="javascript:void(0);">'.$post->title.'</a><em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
+		                <span class="card-title">'.$post->title.'<em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
 		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
