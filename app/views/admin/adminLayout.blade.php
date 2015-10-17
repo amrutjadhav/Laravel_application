@@ -170,7 +170,7 @@
 
                 <li id="help">
                     <a href="{{route('help')}}" >
-                        <div class="gui-icon"><i class="md md-account-box"></i></div>
+                        <div class="gui-icon"><i class="md md-star"></i></div>
                         <span class="title">Need something changed?</span>
                     </a>
                 </li><!--end /menu-li -->
