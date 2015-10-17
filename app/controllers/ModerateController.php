@@ -53,7 +53,7 @@ class ModerateController extends \BaseController {
             ->with('cate',$cate);
     }
 
-    public function addPostProcess()
+   public function addPostProcess()
     {
 
         $category = Input::get('category');
@@ -67,13 +67,11 @@ class ModerateController extends \BaseController {
             array(
                 'title' => $title,
                 'url' => $url,
-                'title_tag' => $title_tag,
                 'meta_des' => $meta_des,
                 'category' => $category,
             ), array(
                 'title' => 'required',
                 'url' => 'required',
-                'title_tag' => 'required',
                 'meta_des' => 'required',
                 'category' => 'required'
             )
@@ -90,13 +88,9 @@ class ModerateController extends \BaseController {
                 $post = Post::find(Input::get('id'));
                 $post->title = $title;
                 $post->is_approved = 1;
-                $link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
-                
-                $post->link = $link;
-                $post->url = $url;
-                $post->title_tag = $title_tag;
-                $post->meta_des = $meta_des;
                 $post->des = Input::get('des');
+                $post->url = $url;
+                $post->meta_des = $meta_des;
 
                 $validator1 = Validator::make(
                     array(
@@ -114,7 +108,7 @@ class ModerateController extends \BaseController {
                 {
                     $file_name = time();
                     $file_name .= rand();
-
+                    $post->des = Input::get('des');
                     $ext = Input::file('post_img')->getClientOriginalExtension();
                     Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
                     $local_url = $file_name . "." . $ext;
@@ -134,16 +128,14 @@ class ModerateController extends \BaseController {
                 $post->is_approved = 1;
                 $post->url = $url;
                 $post->des = Input::get('des');
-                $link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
-                
-                $post->link = $link;
-                $post->title_tag = $title_tag;
                 $post->meta_des = $meta_des;
 
                 $validator1 = Validator::make(
                     array(
+                        'title_tag' => $title_tag,
                         'post_img' => $post_img,
                     ), array(
+                        'title_tag' => 'required',
                         'post_img' => 'required|mimes:jpeg,bmp,gif,png',
                     )
                 );
@@ -166,12 +158,33 @@ class ModerateController extends \BaseController {
                     $post->image = $s3_url;
 
                     $post->category = implode(',', $category);
+
+                    $link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
+                    
+                    $post->link = $link;
+                    $post->title_tag = $title_tag;
                     $post->save();
+
+
+                    if (Input::get('push_button') === 'yes') {
+                    // checked
+
+                    $response_array = array(
+                        'success' => true,
+                        'description' => $meta_des,
+                        'image' => $s3_url,
+                    );
+
+
+                     send_notification($title,$response_array);
+                    }
+
+                    
                 }
             }
 
             if ($post) {
-                return Redirect::back()->with('flash_success', "New Post added");
+                return Redirect::back()->with('flash_success', "Post Updated");
             } else {
                 return Redirect::back()->with('flash_error', "Something went wrong");
             }

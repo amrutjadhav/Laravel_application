@@ -339,8 +339,10 @@ class HomeController extends BaseController {
     }
 
     public function feed_collector(){
+
+
     	//  please dont change the categories id's else the application will collapse
-    	
+
     	$response = file_get_contents('http://read-api.newsinshorts.com/v1/news');
     	$response = json_decode($response);
     	$inc = 0;
@@ -386,14 +388,32 @@ class HomeController extends BaseController {
 	    		$post = new Post;
 				$post->title = $key->title;
 				$post->is_approved = 1;
-				$post->url = $key->source_url;
+				// dnt remove the commanded lines
+				
+					// $url = $key->source_url;
+					// if(file_get_contents($url)){
+					// 	preg_match('/(Location:|URI:)(.*?)\n/', implode("\n", $http_response_header), $matches);
+					// 	if (isset($matches[0]))
+					// 	{
+					// 	    $post->url = strtok($matches[2], '?');
+					// 	}
+					// }else{
+						$post->url = $key->source_url;
+					// }
+
+				
 				$post->des = $key->content;
 				$link = str_replace(" ", "-", $key->title) . '-' . rand(0, 99);
-				
+
 				$post->link = $link;
 				$post->title_tag = $key->title;
 				$post->meta_des = $key->title;
-				$post->image = $key->image_url;
+				$content = file_get_contents($key->image_url);
+				$file_name = time();
+            	$file_name .= rand();
+				file_put_contents(public_path() . "/uploads"."/".$file_name.".jpg", $content);
+
+				$post->image = URL::to('/') . "/uploads"."/".$file_name.".jpg";
 				$post->category= implode(',', $getting_categories);
 				$post->timestamp = $key->created_at;
 				$post->save();
