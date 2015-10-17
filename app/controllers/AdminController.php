@@ -273,7 +273,7 @@ class AdminController extends \BaseController {
 	public function editCategoryProcess($id)
 	{
 		$name = Input::get('name');
-		$cat_img = Input::file('cat_img');
+		$cat_img = Input::file('picture');
 		$category = Category::find($id);
 		if($category)
 		{
@@ -281,9 +281,9 @@ class AdminController extends \BaseController {
 
 	 		$validator = Validator::make(
 				array(
-					'cat_img' => $cat_img,
+					'picture' => $cat_img,
 				), array(
-					'cat_img' => 'required|mimes:jpeg,bmp,gif,png',
+					'picture' => 'required|mimes:jpeg,bmp,gif,png',
 				)
 			);
 
