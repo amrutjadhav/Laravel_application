@@ -128,6 +128,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::get('/sendPush/{id}', array('as' => 'sendPush', 'uses' => 'AdminController@sendPush'));
 
+	Route::get('/help', array('as' => 'help', 'uses' => 'AdminController@help'));
+
 });
 
 Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){

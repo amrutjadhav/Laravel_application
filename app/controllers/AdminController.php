@@ -727,4 +727,9 @@ class AdminController extends \BaseController {
 	    }	
     }
 
+	public function help()
+	{
+		return View::make('admin.help')->withPage('help');
+	}
+
 }
