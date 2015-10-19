@@ -245,6 +245,8 @@ Route::get('/postlist', array('as' => 'postList', 'uses' => 'ApiController@postL
 
 Route::get('/postDetail', array('as' => 'postDetail', 'uses' => 'ApiController@postDetail'));
 
+Route::post('/ajax_now', array('as' => 'post_api_ajax', 'uses' => 'ApiController@api_ajax_loading'));
+
 Route::post('/addPostProcess', array('as' => 'addApiPostProcess', 'uses' => 'ApiController@addApiPostProcess'));
 
 

@@ -49,7 +49,7 @@
                             <div class="alert alert-callout alert-warning no-margin">
                                 <h1 class="pull-right text-warning"><i class="md md-person"></i></h1>
                                 <strong class="text-xl">{{{$moderate_count}}}</strong><br>
-                                <span class="opacity-50">Total Users</span>
+                                <span class="opacity-50">Total No. of Moderators</span>
                             </div>
                         </div><!--end .card-body -->
                     </div><!--end .card -->
