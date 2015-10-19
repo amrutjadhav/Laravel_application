@@ -289,10 +289,6 @@ class ApiController extends \BaseController
          $offset = is_numeric(Input::get('offset')) ? Input::get('offset') : die();
         $postnumbers = is_numeric(Input::get('number')) ? Input::get('number') : die();
 
-
-        Log::info('num'. $q);
-        Log::info('offset'. $offset);
-
         $query = "";
 
         $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->limit($postnumbers)->offset($offset)->get();
