@@ -26,6 +26,18 @@
                             <input type="text" class="form-control" id="regular1" name="title" value="{{{$post->title}}}">
                             <label for="regular1">Title</label>
                         </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="regular1" name="author" value="{{{$post->author}}}">
+                            <label for="regular1">Author</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="regular1" name="publisher" value="{{{$post->publisher}}}">
+                            <label for="regular1">Publisher</label>
+                        </div>
+
+
                         <input type="hidden" name="id" value="{{{$post->id}}}">
 
                         <div class="input-field col s12 check-box-inline">
@@ -73,6 +85,7 @@
                             <label for="regular1">Meta Description</label>
                         </div>
 
+
                         <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
                     </form>
                 </div><!--end .card-body -->
@@ -86,20 +99,5 @@
     </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript">
-$('#characterLeft').text('70 characters left');
-$('#title_tag').keyup(function () {
-    var max = 70;
-    var len = $(this).val().length;
-    if (len >= max) {
-        $('#characterLeft').text(' you have reached the limit');
-    } else {
-        var ch = max - len;
-        $('#characterLeft').text(ch + ' characters left');
-    }
-});
-
-
-</script>
 @stop
+

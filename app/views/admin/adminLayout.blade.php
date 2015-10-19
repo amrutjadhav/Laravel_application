@@ -26,6 +26,7 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/font-awesome.min.css?1422529194')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/date_time.css')}}" />
     <!-- END STYLESHEETS -->
 
 
@@ -248,6 +249,21 @@
     $("#<?= $page ?>").addClass("active");
 </script>
 
+
+    <script type="text/javascript">
+        $('#characterLeft').text('70 characters left');
+        $('#title_tag').keyup(function () {
+            var max = 70;
+            var len = $(this).val().length;
+            if (len >= max) {
+                $('#characterLeft').text(' you have reached the limit');
+            } else {
+                var ch = max - len;
+                $('#characterLeft').text(ch + ' characters left');
+            }
+        });
+
+    </script>
 
 </body>
 </html>

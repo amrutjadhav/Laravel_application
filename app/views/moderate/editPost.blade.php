@@ -26,6 +26,18 @@
                             <input type="text" class="form-control" id="regular1" name="title" value="{{{$post->title}}}">
                             <label for="regular1">Title</label>
                         </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="regular1" name="author" value="{{{$post->author}}}">
+                            <label for="regular1">Author</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="regular1" name="publisher" value="{{{$post->publisher}}}">
+                            <label for="regular1">Publisher</label>
+                        </div>
+
+
                         <input type="hidden" name="id" value="{{{$post->id}}}">
 
                         <div class="input-field col s12 check-box-inline">

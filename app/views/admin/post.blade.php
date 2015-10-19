@@ -35,6 +35,7 @@
                             <th>Description</th>
                             <th>Roles</th>
                             <th>Username</th>
+                            <th>Author</th>
                             <th>Action</th>
 
                         </tr>
@@ -81,6 +82,7 @@
                                         }
                                     ?>
                                 </td>
+                                <td>{{$post->author}}</td>
                                 <td style="width: 297px;">
                                     @if($post->is_approved != 0)
                                         <a class="btn ink-reaction btn-floating-action btn-warning" href="{{route('adminPostDecline', array('id' => $post->id))}}"><i class="fa fa-times"></i></a>

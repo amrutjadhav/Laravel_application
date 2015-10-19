@@ -543,6 +543,8 @@ class AdminController extends \BaseController {
         $meta_des = Input::get('meta_des');
 		$share_link = Input::get('share_link');
 		$share_cat = Input::get('share_cat');
+		$author = Input::get('author');
+		$publisher = Input::get('publisher');
  
         $validator = Validator::make(
             array(
@@ -550,11 +552,15 @@ class AdminController extends \BaseController {
                 'url' => $url,
                 'meta_des' => $meta_des,
                 'category' => $category,
+				'author' => $author,
+				'publisher' => $publisher
             ), array(
                 'title' => 'required',
                 'url' => 'required',
                 'meta_des' => 'required',
-                'category' => 'required'
+                'category' => 'required',
+				'author' => 'required',
+				'publisher' => 'required'
             )
         );
 
@@ -573,6 +579,8 @@ class AdminController extends \BaseController {
                 $post->url = $url;
                 $post->meta_des = $meta_des;
 				$post->user_id = Auth::user()->id;
+				$post->publisher = $publisher;
+				$post->author = $author;
 
                 $validator1 = Validator::make(
                     array(
@@ -617,6 +625,8 @@ class AdminController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->meta_des = $meta_des;
 				$post->user_id = Auth::user()->id;
+				$post->publisher = $publisher;
+				$post->author = $author;
 
                 $validator1 = Validator::make(
                     array(
