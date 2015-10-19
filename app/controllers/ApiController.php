@@ -242,8 +242,8 @@ class ApiController extends \BaseController
 				'title' => 'required',
 				'url' => 'required',
 				'meta_des' => 'required',
-				'category' => 'required',
-				'post_img' => 'required|mimes:jpeg,bmp,gif,png'
+				'category' => '',
+				'post_img' => 'mimes:jpeg,bmp,gif,png'
 			)
 		);
 
@@ -261,7 +261,9 @@ class ApiController extends \BaseController
 
 			$file_name = time();
 			$file_name .= rand();
-			$ext = Input::file('post_img')->getClientOriginalExtension();
+			$path = $_FILES['file']['name'];
+			$ext = pathinfo($path, PATHINFO_EXTENSION);
+			// $ext = Input::file('post_img')->getClientOriginalExtension();
 			Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
 			$local_url = $file_name . "." . $ext;
 
