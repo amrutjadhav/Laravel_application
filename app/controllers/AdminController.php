@@ -572,6 +572,7 @@ class AdminController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->url = $url;
                 $post->meta_des = $meta_des;
+				$post->user_id = Auth::user()->id;
 
                 $validator1 = Validator::make(
                     array(
@@ -615,6 +616,7 @@ class AdminController extends \BaseController {
                 $post->url = $url;
                 $post->des = Input::get('des');
                 $post->meta_des = $meta_des;
+				$post->user_id = Auth::user()->id;
 
                 $validator1 = Validator::make(
                     array(
