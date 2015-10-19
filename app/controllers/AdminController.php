@@ -39,10 +39,12 @@ class AdminController extends \BaseController {
 		$validator = Validator::make(array(
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
-			'email' => Input::get('email')),
+			'email' => Input::get('email'),
+			'username' => Input::get('username')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
-				'email' => 'required|email'));
+				'email' => 'required|email',
+				'username' => 'required|unique:users,username'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -60,6 +62,7 @@ class AdminController extends \BaseController {
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
 			$user->role_id = 1;
+			$user->username = Input::get('username');
 
 			$new_password = time();
 			$new_password .= rand();
@@ -137,10 +140,12 @@ class AdminController extends \BaseController {
 		$validator = Validator::make(array(
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
-			'email' => Input::get('email')),
+			'email' => Input::get('email'),
+			'username' => Input::get('username')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
-				'email' => 'required|email'));
+				'email' => 'required|email',
+				'username' => 'required|unique:users,username'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -167,6 +172,174 @@ class AdminController extends \BaseController {
 	{
 		$moderate = User::find($id)->delete();
 		if($moderate)
+		{
+			return Redirect::back()->with('flash_success',"User deleted successfully");
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',"Something went Wrong");
+		}
+	}
+
+	public function contributorsManagement()
+	{
+		if($contributors = User::where('role_id',3)->paginate(10))
+		{
+			return View::make('admin.contributorsManagement')
+				->with('title',"ContributorsManagement")
+				->with('page',"contributors")
+				->with('contributors',$contributors);
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',"Something went wrong");
+		}
+	}
+
+	public function addContributors()
+	{
+		return View::make('admin.addContributors')->withPage('contributors');
+	}
+
+	public function addContributorsProcess()
+	{
+		$validator = Validator::make(array(
+			'first_name' => Input::get('first_name'),
+			'last_name' => Input::get('last_name'),
+			'email' => Input::get('email'),
+			'username' => Input::get('username')),
+			array('first_name' => 'required',
+				'last_name' => 'required',
+				'email' => 'required|email',
+				'username' => 'required|unique:users,username'));
+		$email = Input::get('email');
+		if($validator->fails())
+		{
+			$errors = $validator->messages()->all();
+			return Redirect::back()->with('flash_errors',$errors);
+		}
+		else {
+			$user = User::where('email', $email)->first();
+			if ($user) {
+				$error = "User already exists";
+				return Redirect::back()->with('flash_error', $error);
+			}
+			$user = new User;
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->email = Input::get('email');
+			$user->username = Input::get('username');
+			$user->role_id = 3;
+
+			$new_password = time();
+			$new_password .= rand();
+			$new_password = sha1($new_password);
+			$new_password = substr($new_password, 0, 8);
+			$user->password = Hash::make($new_password);
+
+
+			$subject = "Welcome On Board";
+			$email_data['name'] = $user->username;
+			$email_data['password'] = $new_password;
+			$email_data['email'] = $user->email;
+
+			if ($user) {
+				Mail::send('emails.newmoderator', array('email_data' => $email_data), function ($message) use ($email, $subject) {
+					$message->to($email)->subject($subject);
+				});
+			}
+
+			$user->save();
+
+			if ($user) {
+				return Redirect::back()->with('flash_success', "Contributor Added Successfully <br> please activate");
+			} else {
+				return Redirect::back()->with('flash_error', "Something went wrong");
+			}
+		}
+	}
+
+	public function contributorsActivate($id)
+	{
+		$contributors = User::find($id);
+		$contributors->is_activated = 1;
+		$contributors->save();
+		if($contributors)
+		{
+			return Redirect::back()->with('flash_success',"User Activated successfully");
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',"Something went Wrong");
+		}
+	}
+
+	public function contributorsDecline($id)
+	{
+		$contributors = User::find($id);
+		$contributors->is_activated = 0;
+		$contributors->save();
+		if($contributors)
+		{
+			return Redirect::back()->with('flash_success',"User Declined successfully");
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',"Something went Wrong");
+		}
+	}
+
+	public function editContributors($id)
+	{
+		$contributors = User::find($id);
+		if($contributors)
+		{
+			return View::make('admin.editContributors')->withPage('contributors')->with('contributors',$contributors);
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',"Something went wrong");
+		}
+	}
+
+	public function contributorsEditProcess()
+	{
+		$validator = Validator::make(array(
+			'first_name' => Input::get('first_name'),
+			'last_name' => Input::get('last_name'),
+			'email' => Input::get('email'),
+			'username' => Input::get('username')),
+			array('first_name' => 'required',
+				'last_name' => 'required',
+				'email' => 'required|email',
+				'username' => 'required|unique:users,username'));
+		$email = Input::get('email');
+		if($validator->fails())
+		{
+			$errors = $validator->messages()->all();
+			return Redirect::back()->with('flash_errors',$errors);
+		}
+		else {
+
+			$user = User::find(Input::get('id'));
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->email = Input::get('email');
+			$user->username = Input::get('username');
+
+			$user->save();
+			if ($user) {
+				return Redirect::back()->with('flash_success', "Contributors updated successfully");
+			} else {
+				return Redirect::back()->with('flash_error', "Something went wrong");
+			}
+		}
+	}
+
+	public function contributorsDelete($id)
+	{
+		$contributors = User::find($id)->delete();
+		if($contributors)
 		{
 			return Redirect::back()->with('flash_success',"User deleted successfully");
 		}
@@ -323,6 +496,32 @@ class AdminController extends \BaseController {
 			->with('posts',$post);
 	}
 
+	public function adminPostSearch()
+	{
+		$keyword = Input::get('keyword');
+		$user = User::where('username','like', '%'.$keyword.'%')->first();
+		if($user)
+		{
+			$post = Post::where('user_id',$user->id)->orderBy('created_at', 'desc')->paginate(10);
+			if($post)
+			{
+				return View::make('admin.post')
+					->with('title',"Posts Management")
+					->with('page', "posts")
+					->with('posts',$post);
+			}
+			else
+			{
+				return Redirect::back()->with('flash_error',"Not found");
+			}
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',"Not found");
+		}
+
+	}
+
 	public function addPost()
 	{
 		$category = Category::all();
@@ -342,6 +541,8 @@ class AdminController extends \BaseController {
         $url = Input::get('url');
         $title_tag = Input::get('title_tag');
         $meta_des = Input::get('meta_des');
+		$share_link = Input::get('share_link');
+		$share_cat = Input::get('share_cat');
  
         $validator = Validator::make(
             array(
@@ -419,8 +620,12 @@ class AdminController extends \BaseController {
                     array(
                         'title_tag' => $title_tag,
                         'post_img' => $post_img,
+						'share_link' => $share_link,
+						'share_cat' => $share_cat,
                     ), array(
                         'title_tag' => 'required',
+						'share_link' => 'required',
+						'share_cat' => 'required',
                         'post_img' => 'required|mimes:jpeg,bmp,gif,png',
                     )
                 );
@@ -444,7 +649,9 @@ class AdminController extends \BaseController {
 
                     $post->category = implode(',', $category);
 
-                    $link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
+					$post->share_cat = $share_cat;
+
+                    $link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
                     
                     $post->link = $link;
                     $post->title_tag = $title_tag;
@@ -463,8 +670,6 @@ class AdminController extends \BaseController {
 
                      send_notification($title,$response_array);
                     }
-
-                    
                 }
 				if ($post) {
 					return Redirect::back()->with('flash_success', "Post created");

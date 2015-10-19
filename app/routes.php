@@ -27,7 +27,7 @@ Route::get('/', array('as' => 'home', 'uses' => 'HomeController@showWelcome'));
 
 Route::get('/search', array('as' => 'search', 'uses' => 'HomeController@showWelcome'));
 
-Route::get('/cat/{cat}/{data}', array('as' => 'single', 'uses' => 'HomeController@single'));
+Route::get('/read/{id}/{data}', array('as' => 'shareLink', 'uses' => 'HomeController@shareLink'));
 
 Route::get('/category-type/{id}', array('as' => 'selectCat', 'uses' => 'HomeController@selectCat'));
 
@@ -52,6 +52,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 	Route::get('/', array('as' => 'adminDashboard', 'uses' => 'AdminController@adminDashboard'));
 
 	Route::get('/adminPost', array('as' => 'adminPost', 'uses' => 'AdminController@adminPost'));
+
+	Route::get('/postSearch', array('as' => 'adminPostSearch', 'uses' => 'AdminController@adminPostSearch'));
 
 	Route::get('/addPost', array('as' => 'adminAddPost', 'uses' => 'AdminController@addPost'));
 
@@ -78,6 +80,22 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 	Route::post('/moderatorEditProcess', array('as' => 'moderatorEditProcess', 'uses' => 'AdminController@moderatorEditProcess'));
 
 	Route::get('/moderatorDelete/{id}', array('as' => 'adminModeratorDelete', 'uses' => 'AdminController@moderatorDelete'));
+
+	Route::get('/contributorsManagement', array('as' => 'adminContributorsManagement', 'uses' => 'AdminController@contributorsManagement'));
+
+	Route::get('/addcontributors', array('as' => 'addContributors', 'uses' => 'AdminController@addContributors'));
+
+	Route::post('/addcontributors', array('as' => 'addContributorsProcess', 'uses' => 'AdminController@addContributorsProcess'));
+
+	Route::get('/contributorsActivate/{id}', array('as' => 'adminContributorsActivate', 'uses' => 'AdminController@contributorsActivate'));
+
+	Route::get('/contributorsDecline/{id}', array('as' => 'adminContributorsDecline', 'uses' => 'AdminController@contributorsDecline'));
+
+	Route::get('/contributorsEdit/{id}', array('as' => 'adminContributorsEdit', 'uses' => 'AdminController@editContributors'));
+
+	Route::post('/contributorsEditProcess', array('as' => 'contributorsEditProcess', 'uses' => 'AdminController@contributorsEditProcess'));
+
+	Route::get('/contributorsDelete/{id}', array('as' => 'adminContributorsDelete', 'uses' => 'AdminController@contributorsDelete'));
 
 	Route::get('/setting', array('as' => 'adminSetting', 'uses' => 'AdminController@setting'));
 
@@ -171,6 +189,47 @@ Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){
 	Route::get('/viewPost/{id}', array('as' => 'moderateViewPost', 'uses' => 'ModerateController@viewPost'));
 
 });
+
+Route::group(array('prefix' => 'contributor', 'before' => 'contributor'), function(){
+
+	Route::get('/', array('as' => 'contributorDashboard', 'uses' => 'ContributorController@contributorDashboard'));
+
+	Route::get('/getallpost', array('as' => 'contributorGetAllPost', 'uses' => 'ContributorController@getAllPost'));
+
+	Route::get('/getpublishedposts', array('as' => 'contributorGetPublishedPosts', 'uses' => 'ContributorController@getPublished'));
+
+	Route::get('/getpendingposts', array('as' => 'contributorGetPendingPosts', 'uses' => 'ContributorController@getPending'));
+
+	Route::get('/getflaggedposts', array('as' => 'contributorGetFlaggedPosts', 'uses' => 'ContributorController@getFlagged'));
+
+	Route::get('/approvepost/{id}', array('as' => 'contributorApprovePost', 'uses' => 'ContributorController@approvePost'));
+
+	Route::get('/declinepost/{id}', array('as' => 'contributorDeclinePost', 'uses' => 'ContributorController@declinePost'));
+
+	Route::get('/editPost/{id}', array('as' => 'contributorEditPost', 'uses' => 'ContributorController@editPost'));
+
+	Route::post('/editPost/{id}', array('as' => 'contributorEditPostProcess', 'uses' => 'ContributorController@addPostProcess'));
+
+	Route::get('/deletePost/{id}', array('as' => 'contributorDeletePost', 'uses' => 'ContributorController@deletePost'));
+
+	Route::get('/getprofile', array('as' => 'getProfile', 'uses' => 'ContributorController@getProfile'));
+
+	Route::post('/updateProfile', array('as' => 'updateProfile', 'uses' => 'ContributorController@updateProfile'));
+
+	Route::get('/contributorProfile', array('as' => 'contributorProfile', 'uses' => 'ContributorController@contributorProfile'));
+
+	Route::post('/contributorProfile', array('as' => 'contributorProfileProcess', 'uses' => 'ContributorController@contributorProfileProcess'));
+
+	Route::get('/addPost', array('as' => 'contributorAddPost', 'uses' => 'ContributorController@addPost'));
+
+	Route::post('/addPost', array('as' => 'contributorAddPostProcess', 'uses' => 'ContributorController@addPostProcess'));
+
+	Route::get('/post', array('as' => 'contributorPost', 'uses' => 'ContributorController@contributorPost'));
+
+	Route::get('/viewPost/{id}', array('as' => 'contributorViewPost', 'uses' => 'ContributorController@viewPost'));
+
+});
+
 
 Route::get('/register', array('as' => 'register', 'uses' => 'ApiController@register'));
 

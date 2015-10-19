@@ -19,10 +19,8 @@ class ApiController extends \BaseController
 		$posts = Post::where('is_approved', 1)->get();
 		$datas = array();
 		foreach ($posts as $post) {
-			$cat_id = explode(',', $post->category);
-			$cat_data = Category::find($cat_id[0]);
-			$cat_name = $cat_data->name;
-			$link = URL::to('/') . '/cat/' . $cat_name . '/' . $post->link;
+			$cat_name = $post->share_cat;
+			$link = URL::to('/') . '/read/' . $cat_name . '/' . $post->link;
 			$data = array();
 			$data['title'] = $post->title;
 			$data['description'] = $post->des;
@@ -62,10 +60,8 @@ class ApiController extends \BaseController
 				$counts = Post::where('is_approved', 1)->count();
 				$datas = array();
 				foreach ($posts as $post) {
-					$cat_id = explode(',', $post->category);
-					$cat_data = Category::find($cat_id[0]);
-					$cat_name = $cat_data->name;
-					$link = URL::to('/') . '/cat/' . $cat_name . '/' . $post->link;
+					$cat_name = $post->share_cat;
+					$link = URL::to('/'). '/read/' . $cat_name . '/' . $post->link;
 					$data = array();
 					$data['id'] = $post->id;
 					$data['title'] = $post->title;
@@ -82,10 +78,8 @@ class ApiController extends \BaseController
 				$counts = Post::where('is_approved', 1)->where('category', 'like', '%' . $cat . '%')->count();
 				$datas = array();
 				foreach ($postss as $post) {
-					$cat_id = explode(',', $post->category);
-					$cat_data = Category::find($cat_id[0]);
-					$cat_name = $cat_data->name;
-					$link = URL::to('/') . '/cat/' . $cat_name . '/' . $post->link;
+					$cat_name = $post->share_cat;
+					$link = URL::to('/') . '/read/' . $cat_name . '/' . $post->link;
 					$data = array();
 					$data['id'] = $post->id;
 					$data['title'] = $post->title;
@@ -230,6 +224,8 @@ class ApiController extends \BaseController
 		$url = Input::get('url');
 		$title_tag = Input::get('title_tag');
 		$meta_des = Input::get('meta_des');
+		$share_link = Input::get('share_link');
+		$share_cat = Input::get('share_cat');
 
 		$validator = Validator::make(
 			array(
@@ -237,12 +233,16 @@ class ApiController extends \BaseController
 				'url' => $url,
 				'meta_des' => $meta_des,
 				'category' => $category,
-				'post_img' => $post_img
+				'post_img' => $post_img,
+				'share_link' => $share_link,
+				'share_cat' => $share_cat,
 			), array(
 				'title' => 'required',
 				'url' => 'required',
 				'meta_des' => 'required',
 				'category' => 'required',
+				'share_link' => 'required',
+				'share_cat' => 'required',
 				'post_img' => 'required|mimes:jpeg,bmp,gif,png'
 			)
 		);
@@ -272,7 +272,9 @@ class ApiController extends \BaseController
 
 			$post->category = implode(',', $category);
 
-			$link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
+			$post->share_cat = $share_cat;
+
+			$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
 
 			$post->link = $link;
 			$post->title_tag = $title_tag;

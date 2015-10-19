@@ -18,6 +18,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <div class="text-right">
+                        <a class="btn ink-reaction btn-raised btn-primary" href="{{route('moderatePost')}}">BACK</a>
+                    </div>
                     <form class="form" action="{{route('moderateEditPostProcess')}}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="title" value="{{{$post->title}}}">

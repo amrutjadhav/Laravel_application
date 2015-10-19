@@ -7,7 +7,7 @@
  */
 ?>
 
-@extends('admin.adminLayout')
+@extends('contributor.contributorLayout')
 
 @section('content')
 
@@ -19,9 +19,9 @@
         <div class="card">
             <div class="card-body">
                 <div class="text-right">
-                    <a class="btn ink-reaction btn-raised btn-primary" href="{{route('adminPost')}}">BACK</a>
+                    <a class="btn ink-reaction btn-raised btn-primary" href="{{route('contributorPost')}}">BACK</a>
                 </div>
-                <form class="form" action="{{route('adminAddPostProcess')}}" method="post" enctype="multipart/form-data">
+                <form class="form" action="{{route('contributorAddPostProcess')}}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" class="form-control" id="regular1" name="title" >
                         <label for="regular1">Title</label>
@@ -41,8 +41,6 @@
                         <label for="regular1">URL</label>
                     </div>
                     <div class="file-field input-field col s12">
-
-                       
                             
                         <div class="btn light-blue accent-2" style="padding: 0px 10px;">
                             <span>Choose Picture</span>
@@ -87,18 +85,6 @@
                         <label for="regular1">Meta Description</label>
                     </div>
 
-                    <!-- <div class="form-group">
-                    <div class="switch">
-                        <label>
-                          Off
-                          <input type="checkbox" name="push_button">
-                          <span class="lever"></span>
-                          On
-                        </label>
-                      </div>
-                      <span>Send Push Notification</span>
-                  </div> -->
-
                     <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
                 </form>
             </div><!--end .card-body -->
@@ -111,7 +97,7 @@
 </div>
 </div>
 
-<script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
 $('#characterLeft').text('70 characters left');
 $('#title_tag').keyup(function () {
@@ -124,7 +110,6 @@ $('#title_tag').keyup(function () {
         $('#characterLeft').text(ch + ' characters left');
     }
 });
-
 
 </script>
 @stop

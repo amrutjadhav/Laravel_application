@@ -121,12 +121,20 @@
                     </a>
                 </li><!--end /menu-li -->
 
-                <li id="posts">
-                     <a href="{{route('moderatePost')}}" >
-                        <div class="gui-icon"><i class="md md-account-box"></i></div>
-                        <span class="title">Post</span>
+                <li class="gui-folder" id="posts">
+                    <a>
+                        <div class="gui-icon"><i class="fa fa-newspaper-o"></i></div>
+                        <span class="title">Posts</span>
+
                     </a>
-                </li><!--end /menu-li -->
+                    <!--start submenu -->
+                    <ul style="display: none;">
+                        <li><a href="{{route('moderatePost')}}"><span class="title">View Post</span></a></li>
+
+                        <li><a href="{{route('moderateAddPost')}}"><span class="title">Add Post</span></a></li>
+
+                    </ul><!--end /submenu -->
+                </li>
 
                 <li id="account">
                     <a href="{{route('moderateProfile')}}" >

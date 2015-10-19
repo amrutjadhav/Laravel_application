@@ -7,7 +7,7 @@
  */
 ?>
 
-@extends('admin.adminLayout')
+@extends('contributor.contributorLayout')
 
 @section('content')
 
@@ -19,9 +19,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-right">
-                        <a class="btn ink-reaction btn-raised btn-primary" href="{{route('adminPost')}}">BACK</a>
+                        <a class="btn ink-reaction btn-raised btn-primary" href="{{route('contributorPost')}}">BACK</a>
                     </div>
-                    <form class="form" action="{{route('adminEditProcess')}}" method="post" enctype="multipart/form-data">
+                    <form class="form" action="{{route('contributorEditPostProcess')}}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="title" value="{{{$post->title}}}">
                             <label for="regular1">Title</label>
@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea name="des" id="textarea1" class="form-control" maxlength="450" rows="3">{{{$post->des}}}</textarea>
+                            <textarea name="des" id="textarea1" maxlength="450" class="form-control" rows="3">{{{$post->des}}}</textarea>
                             <label for="textarea1">Description</label>
                         </div>
 
@@ -71,6 +71,7 @@
                         <div class="form-group">
                             <input type="text" class="form-control" id="meta_des" name="meta_des" value="{{$post->meta_des}}">
                             <label for="regular1">Meta Description</label>
+                            <div id="characterLeft1"></div>
                         </div>
 
                         <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
@@ -99,7 +100,6 @@ $('#title_tag').keyup(function () {
         $('#characterLeft').text(ch + ' characters left');
     }
 });
-
 
 </script>
 @stop

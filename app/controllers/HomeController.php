@@ -111,6 +111,17 @@ class HomeController extends BaseController {
 						return Redirect::back()->with('flash_error',"Please activate your account, Check your mail or contact admin");
 					}
 				}
+				elseif($user->role_id == 3)
+				{
+					if($user->is_activated == 1)
+					{
+						return Redirect::route('contributorDashboard');
+					}
+					else
+					{
+						return Redirect::back()->with('flash_error',"Please activate your account, Check your mail or contact admin");
+					}
+				}
 				else
 				{
 					return Redirect::back()->with('flash_error',"something went wrong");
@@ -193,11 +204,9 @@ class HomeController extends BaseController {
 
 
         foreach ($data as $post) {
-                $cat_id = explode(',', $post->category);
-                $cat_data = Category::find($cat_id[0]);
-                $cat_name = $cat_data->name;
-                $fb = route("single",array("id" => $cat_name,"data" => $post->link));
-                $twitter = route("single",array("id" => $cat_name,"data" => $post->link));
+				$cat_name = $post->share_cat;
+                $fb = route("shareLink",array("id" => $cat_name,"data" => $post->link));
+                $twitter = route("shareLink",array("id" => $cat_name,"data" => $post->link));
         	echo '<div class="col m6 s12 l4">
 		          <div class="single-post card animated zoomIn">
 		              <div class="card-image">
@@ -237,11 +246,9 @@ class HomeController extends BaseController {
         $data = $query;
 
         foreach ($data as $post) {
-                $cat_id = explode(',', $post->category);
-                $cat_data = Category::find($cat_id[0]);
-                $cat_name = $cat_data->name;
-                $fb = route("single",array("id" => $cat_name,"data" => $post->link));
-                $twitter = route("single",array("id" => $cat_name,"data" => $post->link));
+				$cat_name = $post->share_cat;
+                $fb = route("shareLink",array("id" => $cat_name,"data" => $post->link));
+                $twitter = route("shareLink",array("id" => $cat_name,"data" => $post->link));
         	echo '<div class="col m6 s12 l4">
 		          <div class="single-post card animated zoomIn">
 
@@ -428,5 +435,22 @@ class HomeController extends BaseController {
     		$inc++;
     	}
     }
+
+	public function shareLink($id,$data)
+	{
+
+		$segment = $data;
+		$cats = Category::orderBy('order_type')->get();
+		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
+		if($post_details)
+		{
+			counter($segment);
+			return View::make('single-post')->withPost($post_details)->with('cats',$cats);
+		}
+		else
+		{
+			return Redirect::route('home');
+		}
+	}
 
 }

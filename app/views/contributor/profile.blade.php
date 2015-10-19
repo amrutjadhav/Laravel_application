@@ -7,7 +7,7 @@
  */
 ?>
 
-@extends('moderate.moderateLayout')
+@extends('contributor.contributorLayout')
 
 @section('content')
 
@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form class="form" action="{{route('moderateProfileProcess')}}" method="post" enctype="multipart/form-data">
+                    <form class="form" action="{{route('contributorProfileProcess')}}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="{{$admin->id}}">
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="first_name" value="{{$admin->first_name}}">
