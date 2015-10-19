@@ -305,7 +305,6 @@ class ApiController extends \BaseController
         	echo '<div class="col m6 s12 l4">
 		          <div class="single-post card animated zoomIn">
 		              <div class="card-image">
-		                <a href="javascript:void(0);"><img src="'.$post->image.'"></a>
 		                <span class="card-title">'.$post->title.'<em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
 		              </div>
 		              <div class="card-content">
