@@ -302,11 +302,9 @@ class ApiController extends \BaseController
                 $cat_name = $cat_data->name;
                 $fb = route("single",array("id" => $cat_name,"data" => $post->link));
                 $twitter = route("single",array("id" => $cat_name,"data" => $post->link));
-        	echo '<div class="col m6 s12 l4">
+        	echo '<div class="col-md-3">
 		          <div class="single-post card animated zoomIn">
-		              <div class="card-image">
 		                <span class="card-title">'.$post->title.'<em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
-		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
 		              </div>
