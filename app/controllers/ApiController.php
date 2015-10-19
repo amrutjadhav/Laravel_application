@@ -285,6 +285,52 @@ class ApiController extends \BaseController
 		return Response::json($response_array);
 	}
 
+	public function api_ajax_loading(){
+         $offset = is_numeric(Input::get('offset')) ? Input::get('offset') : die();
+        $postnumbers = is_numeric(Input::get('number')) ? Input::get('number') : die();
+
+
+        Log::info('num'. $q);
+        Log::info('offset'. $offset);
+
+        $query = "";
+
+        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->limit($postnumbers)->offset($offset)->get();
+        
+        $data = $query;
+
+
+        foreach ($data as $post) {
+                $cat_id = explode(',', $post->category);
+                $cat_data = Category::find($cat_id[0]);
+                $cat_name = $cat_data->name;
+                $fb = route("single",array("id" => $cat_name,"data" => $post->link));
+                $twitter = route("single",array("id" => $cat_name,"data" => $post->link));
+        	echo '<div class="col m6 s12 l4">
+		          <div class="single-post card animated zoomIn">
+		              <div class="card-image">
+		                <a href="javascript:void(0);"><img src="'.$post->image.'"></a>
+		                <span class="card-title">'.$post->title.'<em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
+		              </div>
+		              <div class="card-content">
+		               <p class="text-justify">'.$post->des.'</p>
+		              </div>
+
+		              <div class="card-action text-center">
+
+		                <a href="http://www.facebook.com/sharer.php?u='.$fb.'" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
+		                <a href="http://twitter.com/share?text='.$post->title.'&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+		                <a href="'.$post->url.'" target="_blank" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More </a>
+
+		              </div>
+		             
+		              
+		          </div>  	
+		      </div>';
+
+        }
+    }
+
 
 }
 
