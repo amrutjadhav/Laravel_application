@@ -180,6 +180,10 @@ Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){
 
 	Route::post('/moderateProfile', array('as' => 'moderateProfileProcess', 'uses' => 'ModerateController@moderateProfileProcess'));
 
+	Route::post('/profilePics', array('as' => 'moderateProfilePics', 'uses' => 'ModerateController@profilePics'));
+
+	Route::post('/moderatePassword', array('as' => 'moderatePassword', 'uses' => 'ModerateController@moderatePassword'));
+
 	Route::get('/addPost', array('as' => 'moderateAddPost', 'uses' => 'ModerateController@addPost'));
 
 	Route::post('/addPost', array('as' => 'moderateAddPostProcess', 'uses' => 'ModerateController@addPostProcess'));
@@ -215,6 +219,12 @@ Route::group(array('prefix' => 'contributor', 'before' => 'contributor'), functi
 	Route::get('/getprofile', array('as' => 'getProfile', 'uses' => 'ContributorController@getProfile'));
 
 	Route::post('/updateProfile', array('as' => 'updateProfile', 'uses' => 'ContributorController@updateProfile'));
+
+	Route::post('/contributorProfile', array('as' => 'contributorProfileProcess', 'uses' => 'ContributorController@contributorProfileProcess'));
+
+	Route::post('/profilePics', array('as' => 'contributorProfilePics', 'uses' => 'ContributorController@profilePics'));
+
+	Route::post('/contributorPassword', array('as' => 'contributorPassword', 'uses' => 'ContributorController@contributorPassword'));
 
 	Route::get('/contributorProfile', array('as' => 'contributorProfile', 'uses' => 'ContributorController@contributorProfile'));
 

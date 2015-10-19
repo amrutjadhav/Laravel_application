@@ -63,7 +63,11 @@
             <ul class="header-nav header-nav-profile">
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
-                        <img src="{{asset('admins/img/user.png')}}" alt="" />
+                        @if(Auth::user()->profile_pic != "")
+                            <img src="{{Auth::user()->profile_pic}}" alt="" />
+                        @else
+                            <img src="{{asset('admins/img/user.png')}}" alt="" />
+                        @endif
 								<span class="profile-info">{{{Auth::user()->first_name}}}
 									<smallpngministrator</small>
 								</span>

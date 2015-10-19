@@ -234,14 +234,10 @@ class ModerateController extends \BaseController {
         $validator = Validator::make(array(
             'first_name' => Input::get('first_name'),
             'last_name' => Input::get('last_name'),
-            'email' => Input::get('email'),
-            'password' => Input::get('password'),
-            'con_password' => Input::get('con_password')),
+            'email' => Input::get('email')),
             array('first_name' => 'required',
                 'last_name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required',
-                'con_password' => 'required'));
+                'email' => 'required|email'));
         if($validator->fails())
         {
             $error = $validator->messages()->all();
@@ -251,17 +247,72 @@ class ModerateController extends \BaseController {
             $first_name = Input::get('first_name');
             $last_name = Input::get('last_name');
             $email = Input::get('email');
-            $password = Input::get('password');
-            $con_password = Input::get('con_password');
             $admin = User::find(Auth::user()->id);
             $admin->first_name = $first_name;
             $admin->last_name = $last_name;
             $admin->email = $email;
+            $admin->save();
+
+            if ($admin) {
+                return Redirect::back()->with('flash_success', "Updated successfully");
+            } else {
+                return Redirect::back()->with('flash_error', "Something went wrong");
+            }
+        }
+    }
+
+    public function moderatePassword()
+    {
+        $validator = Validator::make(array(
+            'password' => Input::get('password'),
+            'con_password' => Input::get('con_password')),
+            array('password' => 'required',
+                'con_password' => 'required'));
+        if($validator->fails())
+        {
+            $error = $validator->messages()->all();
+            return Redirect::back()->with('flash_errors',$error);
+        }
+        else
+        {
+            $password = Input::get('password');
+            $con_password = Input::get('con_password');
+            $admin = User::find(Auth::user()->id);
             $admin->password = Hash::make($con_password);
             $admin->save();
 
             if ($admin) {
-                return Redirect::back()->with('flash_success', "Admin updated successfully");
+                return Redirect::back()->with('flash_success', "Updated successfully");
+            } else {
+                return Redirect::back()->with('flash_error', "Something went wrong");
+            }
+        }
+    }
+
+    public function profilePics()
+    {
+        $validator = Validator::make(array(
+            'profile_pic' => Input::file('profile_pic')),
+            array('profile_pic' => 'required|mimes:jpeg,bmp,gif,png'));
+        if($validator->fails())
+        {
+            $error = $validator->messages()->all();
+            return Redirect::back()->with('flash_errors',$error);
+        }
+        else
+        {
+            $admin = User::find(Auth::user()->id);
+            $file_name = time();
+            $file_name .= rand();
+            $ext = Input::file('profile_pic')->getClientOriginalExtension();
+            Input::file('profile_pic')->move(public_path() . "/uploads", $file_name . "." . $ext);
+            $local_url = $file_name . "." . $ext;
+            $s3_url = URL::to('/') . '/uploads/' . $local_url;
+            $admin->profile_pic = $s3_url;
+            $admin->save();
+
+            if ($admin) {
+                return Redirect::back()->with('flash_success', "Updated successfully");
             } else {
                 return Redirect::back()->with('flash_error', "Something went wrong");
             }
