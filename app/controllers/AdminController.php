@@ -545,6 +545,9 @@ class AdminController extends \BaseController {
 		$share_cat = Input::get('share_cat');
 		$author = Input::get('author');
 		$publisher = Input::get('publisher');
+		$pub_date = Input::get('pub_date');
+		$pub_time = Input::get('pub_time');
+
  
         $validator = Validator::make(
             array(
@@ -553,14 +556,20 @@ class AdminController extends \BaseController {
                 'meta_des' => $meta_des,
                 'category' => $category,
 				'author' => $author,
-				'publisher' => $publisher
+				'publisher' => $publisher,
+				'pub_date' => $pub_date,
+				'pub_time' => $pub_time
+
             ), array(
                 'title' => 'required',
                 'url' => 'required',
                 'meta_des' => 'required',
                 'category' => 'required',
 				'author' => 'required',
-				'publisher' => 'required'
+				'publisher' => 'required',
+				'pub_date' => 'required',
+				'pub_time' => 'required'
+
             )
         );
 
@@ -581,6 +590,7 @@ class AdminController extends \BaseController {
 				$post->user_id = Auth::user()->id;
 				$post->publisher = $publisher;
 				$post->author = $author;
+				$post->created_at = date('Y-m-d H:i:s', strtotime("$pub_date $pub_time"));
 
                 $validator1 = Validator::make(
                     array(

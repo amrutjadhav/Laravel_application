@@ -37,6 +37,16 @@
                             <label for="regular1">Publisher</label>
                         </div>
 
+                         <div class="form-group">
+                            <input type="date" class="form-control" id="regular1" name="pub_date" value="{{date('Y-m-d',strtotime($post->created_at))}}">
+                            <label for="regular1">Change Publish Date</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control time-mask" id="pub" name="pub_time" value="{{{date('H:m',strtotime($post->created_at))}}}">
+                            <label for="regular1">Change Publish Time</label>
+                        </div>
+
 
                         <input type="hidden" name="id" value="{{{$post->id}}}">
 

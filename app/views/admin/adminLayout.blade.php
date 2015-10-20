@@ -26,7 +26,6 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/font-awesome.min.css?1422529194')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
-    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/date_time.css')}}" />
     <!-- END STYLESHEETS -->
 
 
@@ -238,12 +237,15 @@
 <script src="{{asset('admins/js/core/source/AppNavigation.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppOffcanvas.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppCard.js')}}"></script>
+<script src="{{asset('admins/js/libs/inputmask/jquery.inputmask.bundle.min.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppForm.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppNavSearch.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppVendor.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/Demo.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
+<script src="{{asset('admins/js/core/demo/DemoFormComponents.js')}}"></script>
 <script src="{{asset('admins/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
+
 <!-- END JAVASCRIPT -->
 <script type="text/javascript">
     $("#<?= $page ?>").addClass("active");
@@ -264,6 +266,7 @@
         });
 
     </script>
+
 
 </body>
 </html>
