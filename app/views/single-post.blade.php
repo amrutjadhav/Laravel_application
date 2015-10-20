@@ -5,7 +5,7 @@
  * Date: 06/09/15
  * Time: 12:07 PM
  */
-?>
+?> 
 
 <html lang="en">
 <head>
@@ -78,27 +78,43 @@
     </div>
 </nav>
 <div class="contasiner-fluid page">
-    <div class="row" style="min-height: 600px;">
-        <div class="col m12 s12 l12 single-card">
+    <div class="row" style="min-height: 700px;">
+
+
+
+
+        <div class="col m12 s12 l12 single-card card">
             <?php
                 $cat_id = explode(',', $post->category);
                 $cat_data = Category::find($cat_id[0]);
                 $cat_name = $cat_data->name;
                 ?>
+            <br>
+            <div class="row">
+                <div class="col l3 m4 s4">
+                    <img style="width: 100%;" src="{{$post->image}}">
+                               
+                </div>
 
-            <div class="col l4 m4 s12">
-                <img style="width: 100%;" src="{{$post->image}}">
-                <a href="http://www.facebook.com/sharer.php?u={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="full-btn waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-                <a href="http://twitter.com/share?text={{$post->title}}&url={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="full-btn waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
-                <a href="{{{$post->url}}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More</a>
-                <a href="{{route('home')}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">More News</a>            
+                <div class="col l9 m8 s8">
+                    <h3 style="font-size: 3.5vh;margin-top: 0px;">{{$post->title}}</h3>
+                    <p class="text-justify">{{$post->des}}</p>
+
+                
+
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+
+                <a href="http://www.facebook.com/sharer.php?u={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
+                    <a href="http://twitter.com/share?text={{$post->title}}&url={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+                    <a href="{{{$post->url}}}" class="waves-effect waves-light btn no-right-mar dark-blue darken">Read More</a>
+                    <a href="{{route('home')}}" class="waves-effect waves-light btn no-right-mar mat-clr">More News</a> 
+
             </div>
 
-            <div class="col l8 m8 s12">
-                <h3 style="font-size: 3.5vh;margin-top: 0px;">{{$post->title}}</h3>
-                <p class="text-justify">{{$post->des}}</p>
-
-            </div>
         </div>
 
 
