@@ -85,9 +85,8 @@
 
         <div class="col m12 s12 l12 single-card card">
             <?php
-                $cat_id = explode(',', $post->category);
-                $cat_data = Category::find($cat_id[0]);
-                $cat_name = $cat_data->name;
+
+                $cat_name = $post->share_cat;
                 ?>
             <br>
             <div class="row">

@@ -53,7 +53,7 @@ class ModerateController extends \BaseController {
             ->with('cate',$cate);
     }
 
-   public function addPostProcess()
+    public function addPostProcess()
     {
 
         $category = Input::get('category');
@@ -62,28 +62,36 @@ class ModerateController extends \BaseController {
         $url = Input::get('url');
         $title_tag = Input::get('title_tag');
         $meta_des = Input::get('meta_des');
- 
+        $share_link = Input::get('share_link');
+        $share_cat = Input::get('share_cat');
+        $author = Input::get('author');
+        $publisher = Input::get('publisher');
+
         $validator = Validator::make(
             array(
                 'title' => $title,
                 'url' => $url,
                 'meta_des' => $meta_des,
                 'category' => $category,
+                'author' => $author,
+                'publisher' => $publisher
             ), array(
                 'title' => 'required',
                 'url' => 'required',
                 'meta_des' => 'required',
-                'category' => 'required'
+                'category' => 'required',
+                'author' => 'required',
+                'publisher' => 'required'
             )
         );
 
         if ($validator->fails()) {
             $error_messages = $validator->messages()->all();
             return Redirect::back()->with('flash_errors', $error_messages);
-        } 
-        else 
+        }
+        else
         {
-            if (Input::get('id') != "") 
+            if (Input::get('id') != "")
             {
                 $post = Post::find(Input::get('id'));
                 $post->title = $title;
@@ -91,6 +99,9 @@ class ModerateController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->url = $url;
                 $post->meta_des = $meta_des;
+                $post->user_id = Auth::user()->id;
+                $post->publisher = $publisher;
+                $post->author = $author;
 
                 $validator1 = Validator::make(
                     array(
@@ -100,11 +111,11 @@ class ModerateController extends \BaseController {
                     )
                 );
 
-                if ($validator1->fails()) 
+                if ($validator1->fails())
                 {
                     //do nothing
-                } 
-                else 
+                }
+                else
                 {
                     $file_name = time();
                     $file_name .= rand();
@@ -119,9 +130,14 @@ class ModerateController extends \BaseController {
                     $post->image = $s3_url;
                 }
                 $post->category = implode(',', $category);
-                $post->save();          
-            } 
-            else 
+                $post->save();
+                if ($post) {
+                    return Redirect::back()->with('flash_success', "Post Updated");
+                } else {
+                    return Redirect::back()->with('flash_error', "Something went wrong");
+                }
+            }
+            else
             {
                 $post = new Post;
                 $post->title = $title;
@@ -129,13 +145,20 @@ class ModerateController extends \BaseController {
                 $post->url = $url;
                 $post->des = Input::get('des');
                 $post->meta_des = $meta_des;
+                $post->user_id = Auth::user()->id;
+                $post->publisher = $publisher;
+                $post->author = $author;
 
                 $validator1 = Validator::make(
                     array(
                         'title_tag' => $title_tag,
                         'post_img' => $post_img,
+                        'share_link' => $share_link,
+                        'share_cat' => $share_cat,
                     ), array(
                         'title_tag' => 'required',
+                        'share_link' => 'required',
+                        'share_cat' => 'required',
                         'post_img' => 'required|mimes:jpeg,bmp,gif,png',
                     )
                 );
@@ -143,7 +166,7 @@ class ModerateController extends \BaseController {
                 if ($validator1->fails()) {
                     $error_messages = $validator->messages()->all();
                     return Redirect::back()->with('flash_errors', $error_messages);
-                } 
+                }
                 else
                 {
                     $file_name = time();
@@ -159,34 +182,35 @@ class ModerateController extends \BaseController {
 
                     $post->category = implode(',', $category);
 
-                    $link = str_replace(" ", "-", Input::get('title_tag')) . '-' . rand(0, 99);
-                    
+                    $post->share_cat = $share_cat;
+
+                    $link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
+
                     $post->link = $link;
                     $post->title_tag = $title_tag;
                     $post->save();
 
 
                     if (Input::get('push_button') === 'yes') {
-                    // checked
+                        // checked
 
-                    $response_array = array(
-                        'success' => true,
-                        'description' => $meta_des,
-                        'image' => $s3_url,
-                    );
+                        $response_array = array(
+                            'success' => true,
+                            'description' => $meta_des,
+                            'image' => $s3_url,
+                        );
 
 
-                     send_notification($title,$response_array);
+                        send_notification($title,$response_array);
                     }
 
-                    
-                }
-            }
 
-            if ($post) {
-                return Redirect::back()->with('flash_success', "Post Updated");
-            } else {
-                return Redirect::back()->with('flash_error', "Something went wrong");
+                }
+                if ($post) {
+                    return Redirect::back()->with('flash_success', "Post created");
+                } else {
+                    return Redirect::back()->with('flash_error', "Something went wrong");
+                }
             }
         }
     }
@@ -205,42 +229,6 @@ class ModerateController extends \BaseController {
         }
     }
 
-    public function setting()
-    {
-        return View::make('admin.setting')
-            ->with('title',"Flagged Posts")
-            ->with('page', "admin_setting");
-    }
-
-    public function settingProcess()
-    {
-        $validator = Validator::make(array(
-            'sitename' => Input::get('sitename'),
-            'footer' => Input::get('footer'),
-            'picture' => Input::file('picture')),
-            array('sitename' => 'required',
-                'footer' => 'required',
-                'picture' => 'required|mimes:png'));
-        if($validator->fails())
-        {
-            $errors = $validator->messages()->all();
-            return Redirect::back()->with('flash_errors',$errors);
-        }
-        else
-        {
-            $file_name = time();
-            $file_name .= rand();
-            $ext = Input::file('picture')->getClientOriginalExtension();
-            Input::file('picture')->move(public_path() . "/uploads", $file_name . "." . $ext);
-            $local_url = $file_name . "." . $ext;
-            $s3_url = URL::to('/') . '/uploads/' . $local_url;
-
-            Setting::set('sitename', Input::get('sitename'));
-            Setting::set('footer', Input::get('footer'));
-            Setting::set('logo', $s3_url);
-            return Redirect::back()->with('flash_success', "successfully");
-        }
-    }
 
     public function moderateProfile()
     {
@@ -256,14 +244,10 @@ class ModerateController extends \BaseController {
         $validator = Validator::make(array(
             'first_name' => Input::get('first_name'),
             'last_name' => Input::get('last_name'),
-            'email' => Input::get('email'),
-            'password' => Input::get('password'),
-            'con_password' => Input::get('con_password')),
+            'email' => Input::get('email')),
             array('first_name' => 'required',
                 'last_name' => 'required',
-                'email' => 'required|email',
-                'password' => 'required',
-                'con_password' => 'required'));
+                'email' => 'required|email'));
         if($validator->fails())
         {
             $error = $validator->messages()->all();
@@ -273,17 +257,72 @@ class ModerateController extends \BaseController {
             $first_name = Input::get('first_name');
             $last_name = Input::get('last_name');
             $email = Input::get('email');
-            $password = Input::get('password');
-            $con_password = Input::get('con_password');
             $admin = User::find(Auth::user()->id);
             $admin->first_name = $first_name;
             $admin->last_name = $last_name;
             $admin->email = $email;
+            $admin->save();
+
+            if ($admin) {
+                return Redirect::back()->with('flash_success', "Updated successfully");
+            } else {
+                return Redirect::back()->with('flash_error', "Something went wrong");
+            }
+        }
+    }
+
+    public function moderatePassword()
+    {
+        $validator = Validator::make(array(
+            'password' => Input::get('password'),
+            'con_password' => Input::get('con_password')),
+            array('password' => 'required',
+                'con_password' => 'required'));
+        if($validator->fails())
+        {
+            $error = $validator->messages()->all();
+            return Redirect::back()->with('flash_errors',$error);
+        }
+        else
+        {
+            $password = Input::get('password');
+            $con_password = Input::get('con_password');
+            $admin = User::find(Auth::user()->id);
             $admin->password = Hash::make($con_password);
             $admin->save();
 
             if ($admin) {
-                return Redirect::back()->with('flash_success', "Admin updated successfully");
+                return Redirect::back()->with('flash_success', "Updated successfully");
+            } else {
+                return Redirect::back()->with('flash_error', "Something went wrong");
+            }
+        }
+    }
+
+    public function profilePics()
+    {
+        $validator = Validator::make(array(
+            'profile_pic' => Input::file('profile_pic')),
+            array('profile_pic' => 'required|mimes:jpeg,bmp,gif,png'));
+        if($validator->fails())
+        {
+            $error = $validator->messages()->all();
+            return Redirect::back()->with('flash_errors',$error);
+        }
+        else
+        {
+            $admin = User::find(Auth::user()->id);
+            $file_name = time();
+            $file_name .= rand();
+            $ext = Input::file('profile_pic')->getClientOriginalExtension();
+            Input::file('profile_pic')->move(public_path() . "/uploads", $file_name . "." . $ext);
+            $local_url = $file_name . "." . $ext;
+            $s3_url = URL::to('/') . '/uploads/' . $local_url;
+            $admin->profile_pic = $s3_url;
+            $admin->save();
+
+            if ($admin) {
+                return Redirect::back()->with('flash_success', "Updated successfully");
             } else {
                 return Redirect::back()->with('flash_error', "Something went wrong");
             }

@@ -6,7 +6,7 @@
  * Time: 11:59 PM
  */
 ?>
-@extends('moderate.moderateLayout')
+@extends('contributor.contributorLayout')
 
 @section('content')
 
@@ -31,10 +31,10 @@
                                 <td>{{$post->title}}</td>
                                 <td>{{{$post->des}}}</td>
                                 <td>
-                                    <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('moderateAddPost')}}"><i class="fa fa-plus"></i></a> -->
-                                    <a class="btn ink-reaction btn-floating-action btn-danger" href="{{route('moderateDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
-                                    <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('moderateEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
-                                    <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('moderateViewPost', array('id' => $post->id))}}"><i class="fa fa-eye"></i></a>
+                                    <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('contributorAddPost')}}"><i class="fa fa-plus"></i></a> -->
+                                    <a class="btn ink-reaction btn-floating-action btn-danger" href="{{route('contributorDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
+                                    <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('contributorEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
+                                    <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('contributorViewPost', array('id' => $post->id))}}"><i class="fa fa-eye"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -52,9 +52,9 @@
             <i class="md md-star" style="font-size: 25px;line-height: 65px;"></i>
         </a>
         <ul>
-            <li><a class="btn-floating yellow darken-1" href="{{route('moderatePost')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-visibility" style="line-height:40px;"></i></a></li>
+            <li><a class="btn-floating yellow darken-1" href="{{route('contributorPost')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-visibility" style="line-height:40px;"></i></a></li>
 
-            <li><a class="btn-floating blue" href="{{route('moderateAddPost')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-add" style="line-height:40px;"></i></a></li>
+            <li><a class="btn-floating blue" href="{{route('contributorAddPost')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-add" style="line-height:40px;"></i></a></li>
 
         </ul>
     </div>

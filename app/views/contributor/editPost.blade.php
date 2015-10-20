@@ -7,7 +7,7 @@
  */
 ?>
 
-@extends('moderate.moderateLayout')
+@extends('contributor.contributorLayout')
 
 @section('content')
 
@@ -19,9 +19,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-right">
-                        <a class="btn ink-reaction btn-raised btn-primary" href="{{route('moderatePost')}}">BACK</a>
+                        <a class="btn ink-reaction btn-raised btn-primary" href="{{route('contributorPost')}}">BACK</a>
                     </div>
-                    <form class="form" action="{{route('moderateEditPostProcess')}}" method="post" enctype="multipart/form-data">
+                    <form class="form" action="{{route('contributorEditPostProcess')}}" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="title" value="{{{$post->title}}}">
                             <label for="regular1">Title</label>
@@ -36,7 +36,6 @@
                             <input type="text" class="form-control" id="regular1" name="publisher" value="{{{$post->publisher}}}">
                             <label for="regular1">Publisher</label>
                         </div>
-
 
                         <input type="hidden" name="id" value="{{{$post->id}}}">
 

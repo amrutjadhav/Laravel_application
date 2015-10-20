@@ -28,6 +28,10 @@
                         <label for="regular1">Last Name</label>
                     </div>
                     <div class="form-group">
+                        <input type="text" class="form-control" id="regular1" name="username" value="{{$moderate->username}}">
+                        <label for="regular1">User Name</label>
+                    </div>
+                    <div class="form-group">
                         <input type="email" class="form-control" id="password1" name="email" value="{{$moderate->email}}">
                         <label for="password1">Email</label>
                     </div>

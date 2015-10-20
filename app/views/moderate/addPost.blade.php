@@ -18,10 +18,23 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
+                <div class="text-right">
+                    <a class="btn ink-reaction btn-raised btn-primary" href="{{route('moderatePost')}}">BACK</a>
+                </div>
                 <form class="form" action="{{route('moderateAddPostProcess')}}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" class="form-control" id="regular1" name="title" >
                         <label for="regular1">Title</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="regular1" name="author" >
+                        <label for="regular1">Author</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="regular1" name="publisher" >
+                        <label for="regular1">Publisher</label>
                     </div>
 
                     <div class="input-field col s12 check-box-inline">
@@ -50,6 +63,36 @@
                     <div class="form-group">
                         <textarea name="des" id="textarea1" class="form-control" maxlength="450" rows="3"></textarea>
                         <label for="textarea1">Description</label>
+                    </div>
+
+                    <div class="row">
+
+
+                        <h4>Permalink</h4>
+
+                        <div class="form-group col-md-3 col-sm-4">
+
+                            <h5>{{URL::to('/')}}</h5>
+
+                        </div>
+
+                        <div class="form-group floating-label col-md-4 col-sm-4" style="padding-left: 0px;">
+                            <select id="select2" name="share_cat" class="form-control">
+                                <option value="">&nbsp;</option>
+                                <?php foreach($category as $cat) {?>
+                                <option value="{{$cat->name}}">{{$cat->name}}</option>
+                                <?php } ?>
+                            </select>
+                            <label for="select2">Select</label>
+                        </div>
+
+                        <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
+
+                            <input type="text" class="form-control" name="share_link" >
+                            <label for="regular1">Permalink</label>
+
+                        </div>
+
                     </div>
 
                     <div class="form-group">

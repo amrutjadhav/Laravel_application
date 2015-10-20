@@ -16,12 +16,26 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <ul class="pull-right">
+                        <li>
+                            <!-- Search form -->
+                            <form class="navbar-search" role="search" action="{{route('adminPostSearch')}}">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="keyword" placeholder="Enter username">
+                                </div>
+                                <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
+                            </form>
+                        </li>
+                    </ul>
                     <table class="table no-margin">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>Title</th>
                             <th>Description</th>
+                            <th>Roles</th>
+                            <th>Username</th>
+                            <th>Author</th>
                             <th>Action</th>
 
                         </tr>
@@ -32,6 +46,43 @@
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
                                 <td>{{{$post->des}}}</td>
+                                <?php $user = User::where('id',$post->user_id)->first(); ?>
+                                <td>
+                                    <?php
+                                        if($user)
+                                        {
+                                            if($user->role_id == 1)
+                                            {
+                                                echo "Moderator";
+                                            }
+                                            elseif($user->role_id == 3)
+                                            {
+                                                echo "Contributor";
+                                            }
+                                            else
+                                            {
+                                                echo "Admin";
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo "";
+                                        }
+                                    ?>
+                                </td>
+                                <td>
+                                    <?php
+                                        if($user)
+                                        {
+                                            echo "$user->username";
+                                        }
+                                        else
+                                        {
+                                            echo "";
+                                        }
+                                    ?>
+                                </td>
+                                <td>{{$post->author}}</td>
                                 <td style="width: 297px;">
                                     @if($post->is_approved != 0)
                                         <a class="btn ink-reaction btn-floating-action btn-warning" href="{{route('adminPostDecline', array('id' => $post->id))}}"><i class="fa fa-times"></i></a>
