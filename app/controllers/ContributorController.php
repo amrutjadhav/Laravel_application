@@ -243,7 +243,7 @@ class ContributorController extends \BaseController {
 		$validator = Validator::make(array(
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
-			'email' => Input::get('email')),
+			'email' => Input::get('email'),
 		'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
