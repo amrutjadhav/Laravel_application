@@ -34,10 +34,8 @@
                             <th>Title</th>
                             <th>Description</th>
                             <th>Roles</th>
-                            <th>Username</th>
                             <th>Author</th>
                             <th>Action</th>
-
                         </tr>
                         </thead>
                         <tbody>
@@ -45,7 +43,7 @@
                             <tr>
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
-                                <td>{{{$post->des}}}</td>
+                                <td>{{$post->des}}</td>
                                 <?php $user = User::where('id',$post->user_id)->first(); ?>
                                 <td>
                                     <?php
@@ -63,18 +61,6 @@
                                             {
                                                 echo "Admin";
                                             }
-                                        }
-                                        else
-                                        {
-                                            echo "";
-                                        }
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php
-                                        if($user)
-                                        {
-                                            echo "$user->username";
                                         }
                                         else
                                         {

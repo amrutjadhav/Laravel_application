@@ -489,7 +489,7 @@ class AdminController extends \BaseController {
 
 	public function adminPost()
 	{
-		$post = Post::orderBy('created_at', 'desc')->paginate(10);
+		$post = Post::orderBy('created_at', 'desc')->distinct()->paginate(10);
 		return View::make('admin.post')
 			->with('title',"Posts Management")
 			->with('page', "posts")
