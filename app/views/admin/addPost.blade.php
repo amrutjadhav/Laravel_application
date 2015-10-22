@@ -21,14 +21,14 @@
                 <div class="text-right">
                     <a class="btn ink-reaction btn-raised btn-primary" href="{{route('adminPost')}}">BACK</a>
                 </div>
-                <form class="form" action="{{route('adminAddPostProcess')}}" method="post" enctype="multipart/form-data">
+                <form class="form" action="{{route('adminAddPostProcess')}}" method="post" enctype="multipart/form-data" id="autoform">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="title" >
-                        <label for="regular1">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" >
+                        <label for="title">Title</label>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="author" >
+                        <input type="text" class="form-control" id="regular1" name="author" value="{{{$details->author_name}}}">
                         <label for="regular1">Author</label>
                     </div>
 
@@ -36,11 +36,12 @@
                         <input type="text" class="form-control" id="regular1" name="publisher" >
                         <label for="regular1">Publisher</label>
                     </div>
+                    <input type="hidden" name="id" value="" id="post_id">
 
                     <div class="input-field col s12 check-box-inline">
                         <?php foreach($category as $cat) {?>
-                            <p> <input type="checkbox" name="category[{{$cat->id}}]" value="{{$cat->id}}" id="test{{$cat->id}}" />
-                                <label for="test{{$cat->id}}">{{$cat->name}}</label>
+                            <p> <input type="checkbox" name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')"/>
+                                <label for="cat_{{$cat->id}}">{{$cat->name}}</label>
                             </p>
                         <?php } ?>
                         <br><br>
@@ -74,23 +75,23 @@
 
                         <div class="form-group col-md-3 col-sm-4">
 
-                            <h5>{{URL::to('/')}}</h5>
+                            <h5>{{URL::to('/')}}/</h5>
 
                         </div>
 
                         <div class="form-group floating-label col-md-4 col-sm-4" style="padding-left: 0px;">
-                            <select id="select2" name="share_cat" class="form-control">
-                                <option value="">&nbsp;</option>
-                                <?php foreach($category as $cat) {?>
-                                <option value="{{$cat->name}}">{{$cat->name}}</option>
-                                <?php } ?>
+                            <select id="cat_select" name="share_cat" class="form-control">
+                                <option value="">-Select Category-</option>
+                                
                             </select>
-                            <label for="select2">Select</label>
+                            <label for="cat_select">Select</label>
+
                         </div>
+
 
                         <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
 
-                            <input type="text" class="form-control" name="share_link" >
+                            <input type="text" class="form-control" name="share_link" id="meta_title">
                             <label for="regular1">Permalink</label>
 
                         </div>
@@ -122,34 +123,91 @@
                       <span>Send Push Notification</span>
                   </div> -->
 
-                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit Post</button>
+
+                    <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning">Save Draft</button>
+
                 </form>
             </div><!--end .card-body -->
         </div><!--end .card -->
 
     </div>
 
-
-
 </div>
 </div>
 
 <script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
-<script type="text/javascript">
-$('#characterLeft').text('70 characters left');
-$('#title_tag').keyup(function () {
-    var max = 70;
-    var len = $(this).val().length;
-    if (len >= max) {
-        $('#characterLeft').text(' you have reached the limit');
-    } else {
-        var ch = max - len;
-        $('#characterLeft').text(ch + ' characters left');
+
+    <script type="text/javascript">
+    function category_add(id){
+        if($(id).attr("checked")){
+             var name = $(id).attr("next");
+            var cat_value = $(id).val();
+            var append_val = "<option value='"+ cat_value +"'>"+ name +"</option>";
+            $('#cat_select').append(append_val);
+            console.log(name);
+        }else{
+            console.log('un checked');
+            var new_cal = $(id).val();
+            $("#cat_select option[value='"+new_cal+"']").remove();
+        }
     }
-});
 
+    $(document).ready(function(){
+        $('#title').keyup(function(){
+            $('#meta_title').val($('#title').val().replace(/\s+/g, '-').toLowerCase());
+        });
+    });
 
-</script>
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var typingTimer;                //timer identifier
+            var doneTypingInterval = 2000;  //time in ms, 5 second for example
+            var $input = $('.form-control');
+
+            //on keyup, start the countdown
+            $input.on('keyup', function () {
+              clearTimeout(typingTimer);
+              typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            });
+
+            //on keydown, clear the countdown 
+            $input.on('keydown', function () {
+              clearTimeout(typingTimer);
+            });
+
+            function doneTyping () {
+              //do something
+            var route_url = "{{route('auto_save_form')}}";
+            $('#draft_button').prop('disabled', false);
+            $('#draft_button').text('Save Draft');
+
+            // setInterval(function() {
+                var form_data = $("#autoform").serialize();
+                $('#draft_button').prop('disabled', true);
+                $('#draft_button').text('Saving Draft.....');
+                $.ajax({
+                    type: 'POST',
+                    data:  form_data,
+                     cache: false,
+                    url: route_url,
+                    success: function(datas){
+                        console.log(datas);
+                        $('#post_id').val(datas.new_id);
+                        setTimeout( function() {
+                            $('#draft_button').prop('disabled', false);
+                            $('#draft_button').text('Save Draft');
+                        }, 2000);
+                    }
+                });
+            // }, 10000);
+
+            }
+
+        });
+    </script>
+
 @stop
 
 

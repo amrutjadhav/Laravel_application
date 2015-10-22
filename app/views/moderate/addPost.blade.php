@@ -28,7 +28,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="author" >
+                        <input type="text" class="form-control" id="regular1" name="author" value="{{{$details->author_name}}}">
                         <label for="regular1">Author</label>
                     </div>
 

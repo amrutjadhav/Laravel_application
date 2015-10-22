@@ -34,9 +34,11 @@ class ContributorController extends \BaseController {
 	public function addPost()
 	{
 		$category = Category::all();
+        $details = get_user_details(Auth::user()->id);
 		return View::make('contributor.addPost')
 			->with('title',"Posts Management")
 			->with('page', "posts")
+			->with('details',$details)
 			->with('category',$category);
 	}
 
@@ -242,8 +244,10 @@ class ContributorController extends \BaseController {
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
 			'email' => Input::get('email')),
+		'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
+				'author_name' => 'required',
 				'email' => 'required|email'));
 		if($validator->fails())
 		{
@@ -254,10 +258,13 @@ class ContributorController extends \BaseController {
 			$first_name = Input::get('first_name');
 			$last_name = Input::get('last_name');
 			$email = Input::get('email');
+			$author_name = Input::get('author_name');
+
 			$admin = User::find(Auth::user()->id);
 			$admin->first_name = $first_name;
 			$admin->last_name = $last_name;
 			$admin->email = $email;
+			$admin->author_name = $author_name;
 			$admin->save();
 
 			if ($admin) {

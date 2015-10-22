@@ -30,6 +30,11 @@
                         <label for="regular1">Last Name</label>
                     </div>
 
+                     <div class="form-group">
+                        <input type="text" class="form-control" id="regular1" name="author_name" value="{{$admin->author_name}}">
+                        <label for="regular1">Author Name</label>
+                    </div>
+
                     <div class="form-group">
                         <input type="text" class="form-control" id="regular1" name="email" value="{{$admin->email}}">
                         <label for="regular1">Email</label>￼

@@ -216,6 +216,78 @@ class ApiController extends \BaseController
 		return Response::json($response_array);
 	}
 
+	
+
+	public function auto_save_form()
+	{
+		$category = Input::get('category');
+		$title = Input::get('title');
+		$post_img = Input::file('post_img');
+		$url = Input::get('url');
+		$title_tag = Input::get('title_tag');
+		$meta_des = Input::get('meta_des');
+		$share_link = Input::get('share_link');
+		$share_cat = Input::get('share_cat');
+		$author = Input::get('author');
+		$publisher = Input::get('publisher');
+
+			if(Input::get('id') != ""){
+				$post = Post::find(Input::get('id'));
+			}else{
+				$post = new Post;
+			}
+
+			if($title != ""){
+				$post->title = $title;
+			}
+
+			$post->is_approved = 0;
+			if($url != ""){
+				$post->url = $url;
+			}	
+
+			if($publisher != ""){
+				$post->publisher = $publisher;
+			}
+
+			if($author != ""){
+				$post->author = $author;
+			}
+
+			$post->user_id = Auth::user()->id;
+			
+			if(Input::get('des') != ""){
+				$post->des = Input::get('des');
+			}
+
+			if($meta_des != ""){
+				$post->meta_des = $meta_des;
+			}
+
+			if(!empty($category)){
+				$post->category = implode(',', $category);
+			}
+
+			if($share_cat != ""){
+				$post->share_cat = $share_cat;
+			}
+
+			if(Input::get('share_link') != ""){
+				$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
+				$post->link = $link;
+			}
+
+			if($title_tag != ""){
+				$post->title_tag = $title_tag;
+			}
+			$post->save();
+
+			$response_array = array('success' => true , 'new_id' => $post->id);
+		
+		return Response::json($response_array);
+	}
+
+
 	public function addApiPostProcess()
 	{
 		$category = Input::get('category');
@@ -286,6 +358,8 @@ class ApiController extends \BaseController
 		}
 		return Response::json($response_array);
 	}
+
+
 
 	public function api_ajax_loading(){
          $offset = is_numeric(Input::get('offset')) ? Input::get('offset') : die();

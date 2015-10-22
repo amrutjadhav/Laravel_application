@@ -47,8 +47,8 @@
                     
                     <form class="form floating-label" action="{{route('loginProcess')}}" accept-charset="utf-8" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="username" name="email">
-                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="email" name="email">
+                            <label for="email">Email</label>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="password" name="password">

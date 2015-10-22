@@ -249,6 +249,11 @@ Route::get('/postDetails', array('as' => 'postDetails', 'uses' => 'ApiController
 
 Route::get('/getPostCat', array('as' => 'getPostCat', 'uses' => 'ApiController@getPostCat'));
 
+// auto save for draft
+
+Route::post('/auto-save-now', array('as' => 'auto_save_form', 'uses' => 'ApiController@auto_save_form'));
+
+
 // Admin panel App's API
 
 Route::get('/postlist', array('as' => 'postList', 'uses' => 'ApiController@postList'));

@@ -56,7 +56,7 @@
                         <div class="file-field input-field col s12">
                             <div class="tile-content">
                                 <div class="tile-icon">
-                                    <img src="{{$post->image}}" alt="">
+                                    <img src="{{$post->image}}" style="height:300px;margin:10px;">
                                 </div>
                             </div>
                             <div class="btn light-blue accent-2" style="padding: 0px 10px;">

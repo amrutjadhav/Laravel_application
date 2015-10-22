@@ -525,9 +525,11 @@ class AdminController extends \BaseController {
 	public function addPost()
 	{
 		$category = Category::all();
+		$details = get_user_details(Auth::user()->id);
 		return View::make('admin.addPost')
 			->with('title',"Posts Management")
 			->with('page', "posts")
+			->with('details',$details)
 			->with('category',$category);
 	}
 
@@ -556,9 +558,7 @@ class AdminController extends \BaseController {
                 'meta_des' => $meta_des,
                 'category' => $category,
 				'author' => $author,
-				'publisher' => $publisher,
-				'pub_date' => $pub_date,
-				'pub_time' => $pub_time
+				'publisher' => $publisher
 
             ), array(
                 'title' => 'required',
@@ -566,10 +566,7 @@ class AdminController extends \BaseController {
                 'meta_des' => 'required',
                 'category' => 'required',
 				'author' => 'required',
-				'publisher' => 'required',
-				'pub_date' => 'required',
-				'pub_time' => 'required'
-
+				'publisher' => 'required'
             )
         );
 
@@ -823,9 +820,11 @@ class AdminController extends \BaseController {
 		$validator = Validator::make(array(
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
-			'email' => Input::get('email')),
+			'email' => Input::get('email'),
+			'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
+				'author_name' => 'required',
 				'email' => 'required|email'));
 		if($validator->fails())
 		{
@@ -836,10 +835,12 @@ class AdminController extends \BaseController {
 			$first_name = Input::get('first_name');
 			$last_name = Input::get('last_name');
 			$email = Input::get('email');
+			$author_name = Input::get('author_name');
 			$admin = User::find(Auth::user()->id);
 			$admin->first_name = $first_name;
 			$admin->last_name = $last_name;
 			$admin->email = $email;
+			$admin->author_name = $author_name;
 			$admin->save();
 
 			if ($admin) {

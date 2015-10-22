@@ -226,7 +226,7 @@
     <!-- BEGIN JAVASCRIPT -->
 
 <script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('admins/js/materialize.min.js')}}"></script>
+<script src="{{asset('admins/js/materialize.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/bootstrap/bootstrap.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/spin.js/spin.min.js')}}"></script>
@@ -265,6 +265,7 @@
         });
 
     </script>
+
 
 
 </body>

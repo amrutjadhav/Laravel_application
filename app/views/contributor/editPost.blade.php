@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="regular1" name="author" value="{{{$post->author}}}">
+                            <input type="text" class="form-control" readonly id="regular1" name="author" value="{{{$post->author}}}">
                             <label for="regular1">Author</label>
                         </div>
 
@@ -60,7 +60,7 @@
                             </div>
                             <div class="btn light-blue accent-2" style="padding: 0px 10px;">
                                 <span>Choose Picture</span>
-                                <input type="file" name="post_img" />
+                                <input type="file" name="post_img" style="height:300px;margin:10px;">
                             </div>
                             <input class="file-path validate" type="text" value="{{$post->image}}"/>
 
@@ -91,8 +91,6 @@
             </div><!--end .card -->
 
         </div>
-
-
 
     </div>
     </div>
