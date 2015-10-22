@@ -22,7 +22,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Action</th>
-                        <th>Order</th>
+                        <th>Position</th>
 
                     </tr>
                     </thead>
@@ -36,8 +36,8 @@
                         <td>{{$category->name}}</td>
                         <td>
                             {{--<a class="btn ink-reaction btn-floating-action btn-info" href="{{route('addCategory')}}"><i class="fa fa-plus"></i></a>--}}
-                            <a class="btn ink-reaction btn-floating-action btn-danger" href="{{route('deleteCategory',array('id' => $category->id))}}"><i class="fa fa-trash"></i></a>
                             <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('editCategory', array('id' => $category->id))}}"><i class="fa fa-edit"></i></a>
+                            <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('deleteCategory',array('id' => $category->id))}}"><i class="fa fa-trash"></i></a>
                         </td>
                         <td>
                             <div class="form-group" style="width:50px;">

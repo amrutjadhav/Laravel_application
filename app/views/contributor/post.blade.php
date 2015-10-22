@@ -20,6 +20,7 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Description</th>
+                            <th>Status</th>
                             <th>Action</th>
 
                         </tr>
@@ -30,11 +31,17 @@
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
                                 <td>{{{$post->des}}}</td>
+                                <th>@if($post->is_approved == 1)
+                                    Published
+                                    @else
+                                    Waiting For Admin Approval
+                                    @endif
+                                </th>
                                 <td>
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('contributorAddPost')}}"><i class="fa fa-plus"></i></a> -->
-                                    <a class="btn ink-reaction btn-floating-action btn-danger" href="{{route('contributorDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('contributorEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('contributorViewPost', array('id' => $post->id))}}"><i class="fa fa-eye"></i></a>
+                                    <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('contributorDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach

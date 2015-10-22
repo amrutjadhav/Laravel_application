@@ -205,7 +205,7 @@
                 <li id="help">
                     <a href="{{route('help')}}" >
                         <div class="gui-icon"><i class="md md-star"></i></div>
-                        <span class="title">Need something?</span>
+                        <span class="title">Need Something?</span>
                     </a>
                 </li><!--end /menu-li -->
 
@@ -225,8 +225,7 @@
 
     <!-- BEGIN JAVASCRIPT -->
 
-    <script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
-
+<script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('admins/js/materialize.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/bootstrap/bootstrap.min.js')}}"></script>

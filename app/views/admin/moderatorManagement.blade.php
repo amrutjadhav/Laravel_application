@@ -50,7 +50,7 @@
 
                             <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('addModerate')}}"><i class="fa fa-plus"></i></a>
 
-                            <a class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminModeratorDelete',array('id' => $user->id))}}"><i class="fa fa-trash"></i></a>
+                            <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminModeratorDelete',array('id' => $user->id))}}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

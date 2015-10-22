@@ -94,7 +94,6 @@ class ContributorController extends \BaseController {
 			{
 				$post = Post::find(Input::get('id'));
 				$post->title = $title;
-				$post->is_approved = 0;
 				$post->des = Input::get('des');
 				$post->url = $url;
 				$post->meta_des = $meta_des;
@@ -140,7 +139,7 @@ class ContributorController extends \BaseController {
 			{
 				$post = new Post;
 				$post->title = $title;
-				$post->is_approved = 1;
+				$post->is_approved = 0;
 				$post->url = $url;
 				$post->des = Input::get('des');
 				$post->meta_des = $meta_des;

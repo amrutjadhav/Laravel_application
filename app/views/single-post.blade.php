@@ -107,8 +107,8 @@
 
             <div class="row">
 
-                <a href="http://www.facebook.com/sharer.php?u={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-                    <a href="http://twitter.com/share?text={{$post->title}}&url={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+                <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
+                    <a href="http://twitter.com/share?text={{$post->title}}&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
                     <a href="{{{$post->url}}}" class="waves-effect waves-light btn no-right-mar dark-blue darken">Read More</a>
                     <a href="{{route('home')}}" class="waves-effect waves-light btn no-right-mar mat-clr">More News</a> 
 

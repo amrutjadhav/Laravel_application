@@ -101,13 +101,14 @@
                                         <header>Mobile Applications Count</header>
                                         
                                     </div><!--end .card-head -->
-                                    <div class="card-body no-padding height-12">
-                                            <div style="width:270px;height:270px;margin:0 auto;"> <canvas id="chart-area" width="250" height="250"/>  </canvas></div>
-                                         <p style="padding-left:30px;padding-top:10px;"><strong>No. of Android Application Installed : </strong> {{{$device['android']}}}</p> 
-                                         <p style="padding-left:30px"><strong>No. of IOS Application Installed : </strong> {{{$device['ios']}}}</p>
 
-                                        
-                                                                        
+                                    <div class="card-body no-padding height-12">
+                                    @if($device['ios'] == 0 && $device['android'] == 0)
+                                        <h5 style="padding-left:20px;">No Devices Found!!</h5>
+                                    @endif
+                                        <div style="width:270px;height:270px;margin:0 auto;"> <canvas id="chart-area" width="250" height="250"/>  </canvas></div>
+                                         <p style="padding-left:30px;padding-top:10px;"><strong>No. of Android Application Installed : </strong> {{{$device['android']}}}</p> 
+                                         <p style="padding-left:30px"><strong>No. of IOS Application Installed : </strong> {{{$device['ios']}}}</p>                     
 
                                     </div><!--end .card-body -->
                                 </div><!--end .card -->
@@ -204,7 +205,8 @@
 @stop
 
   <!-- BEGIN JAVASCRIPT -->
-
+<script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 
 <script>
 

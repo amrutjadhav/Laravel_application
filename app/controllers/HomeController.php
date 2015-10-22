@@ -205,6 +205,9 @@ class HomeController extends BaseController {
 
         foreach ($data as $post) {
 				$cat_name = $post->share_cat;
+				if($cat_name == ""){
+					$cat_name = "news";
+				}
                 $fb = route("shareLink",array("id" => $cat_name,"data" => $post->link));
                 $twitter = route("shareLink",array("id" => $cat_name,"data" => $post->link));
         	echo '<div class="col m6 s12 l4">
