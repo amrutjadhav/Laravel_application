@@ -15,7 +15,11 @@
 <div class="page">
     <div class="col-md-12">
         <div class="card">
+            <div class="card-head style-primary">
+               <header>Categories</header>
+            </div>
             <div class="card-body">
+                
                 <table class="table no-margin">
                     <thead>
                     <tr>

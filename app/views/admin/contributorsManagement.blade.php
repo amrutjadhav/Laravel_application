@@ -12,7 +12,11 @@
     <div class="page">
         <div class="col-md-12">
             <div class="card">
+                <div class="card-head style-primary">
+                        <header>Contributors</header>
+                    </div>
                 <div class="card-body">
+                    
                     <table class="table no-margin">
                         <thead>
                         <tr>
@@ -46,9 +50,7 @@
 
 
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminContributorsEdit', array('id' => $user->id))}}"><i class="fa fa-edit"></i></a>
-
-                                    <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('addContributors')}}"><i class="fa fa-plus"></i></a>
-
+                                    
                                     <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminContributorsDelete',array('id' => $user->id))}}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>

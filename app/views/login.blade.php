@@ -63,7 +63,7 @@
                                 </div>
                             </div><!--end .col -->
                             <div class="col-xs-6 text-right">
-                                <button class="btn btn-primary btn-raised" type="submit">Login</button>
+                                <button class="btn btn-info btn-raised" type="submit">Login</button>
                             </div><!--end .col -->
                         </div><!--end .row -->
                     </form>

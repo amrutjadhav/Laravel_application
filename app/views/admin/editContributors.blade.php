@@ -15,6 +15,9 @@
 
         <div class="col-md-12">
             <div class="card">
+                <div class="card-head style-primary">
+                    <header>Edit COntributors</header>
+                </div>
                 <div class="card-body">
                     <form class="form" action="{{route('contributorsEditProcess')}}" method="post">
                         <input type="hidden" name="id" value="{{$contributors->id}}" />
@@ -37,7 +40,7 @@
                             <label for="password1">Email</label>
                         </div>
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->

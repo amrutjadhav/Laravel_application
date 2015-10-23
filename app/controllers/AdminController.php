@@ -587,6 +587,7 @@ class AdminController extends \BaseController {
 				$post->user_id = Auth::user()->id;
 				$post->publisher = $publisher;
 				$post->author = $author;
+				if($pub_date != "")
 				$post->created_at = date('Y-m-d H:i:s', strtotime("$pub_date $pub_time"));
 
                 $validator1 = Validator::make(

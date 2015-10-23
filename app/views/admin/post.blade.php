@@ -15,6 +15,9 @@
     <div class="page">
         <div class="col-md-12">
             <div class="card">
+                <div class="card-head style-primary">
+                        <header>Posts</header>
+                    </div>
                 <div class="card-body">
                     <ul class="pull-right">
                         <li>

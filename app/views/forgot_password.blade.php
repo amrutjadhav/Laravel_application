@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>INSHORTS</title>
+    <title>Point Blank News - Forgot Password</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">
@@ -55,7 +55,7 @@
                                 </div>
                             </div><!--end .col -->
                             <div class="col-xs-6 text-right">
-                                <button class="btn btn-primary btn-raised" type="submit">submit</button>
+                                <button class="btn btn-info btn-raised" type="submit">submit</button>
                             </div><!--end .col -->
                         </div><!--end .row -->
                     </form>

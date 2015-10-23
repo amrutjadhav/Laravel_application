@@ -16,6 +16,9 @@
 
     <div class="col-md-12">
         <div class="card">
+            <div class="card-head style-primary">
+               <header>Edit Moderators</header>
+            </div>
             <div class="card-body">
                 <form class="form" action="{{route('moderatorEditProcess')}}" method="post">
                     <input type="hidden" name="id" value="{{$moderate->id}}"/>
@@ -35,7 +38,7 @@
                         <input type="email" class="form-control" id="password1" name="email" value="{{$moderate->email}}">
                         <label for="password1">Email</label>
                     </div>
-                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
                 </form>
             </div><!--end .card-body -->
         </div><!--end .card -->

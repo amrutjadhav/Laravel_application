@@ -14,41 +14,43 @@
 @include('notification.notify')
 
 <div class="page">
-
 <form class="form" action="{{route('adminAddPostProcess')}}" method="post" enctype="multipart/form-data" id="autoform">
     <div class="col-md-8">
         <div class="card">
+            <div class="card-head style-primary">
+               <header>Add Post</header>
+            </div>
             <div class="card-body">
                 <div class="text-right">
                     <a class="btn ink-reaction btn-raised btn-primary" href="{{route('adminPost')}}">BACK</a>
                 </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="title" name="title" >
+                        <input type="text" class="form-control" required id="title" name="title" >
                         <label for="title">Title</label>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="publisher" >
+                        <input type="text" class="form-control" required id="regular1" name="publisher" >
                         <label for="regular1">Publisher</label>
                     </div>
                     <input type="hidden" name="id" value="" id="post_id">
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="url" >
+                        <input type="text" class="form-control" required id="regular1" name="url" >
                         <label for="regular1">URL</label>
                     </div>
                     <div class="file-field input-field col s12">
 
                         <div class="btn light-blue accent-2" style="padding: 0px 10px;">
                             <span>Choose Picture</span>
-                            <input type="file" name="post_img" />
+                            <input type="file" class="btn btn-primary" required name="post_img" />
                         </div>
                         <input class="file-path validate" type="text"/>
 
                     </div>
 
                     <div class="form-group">
-                        <textarea name="des" id="textarea1" class="form-control" maxlength="450" rows="3"></textarea>
+                        <textarea name="des" id="textarea1" required class="form-control" maxlength="450" rows="3"></textarea>
                         <label for="textarea1">Description</label>
                     </div>
 
@@ -64,7 +66,7 @@
                         </div>
 
                         <div class="form-group floating-label col-md-4 col-sm-4" style="padding-left: 0px;">
-                            <select id="cat_select" name="share_cat" class="form-control">
+                            <select id="cat_select" name="share_cat" class="form-control" required>
                                 <option value="">-Select Category-</option>
                                 
                             </select>
@@ -75,7 +77,7 @@
 
                         <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
 
-                            <input type="text" class="form-control" name="share_link" id="meta_title">
+                            <input type="text" class="form-control" required name="share_link" id="meta_title">
                             <label for="regular1">Permalink</label>
 
                         </div>
@@ -84,14 +86,14 @@
 
                     <div class="form-group">
 
-                        <input type="text" class="form-control" id="title_tag" name="title_tag" maxlength="70">
+                        <input type="text" class="form-control" required id="title_tag" name="title_tag" maxlength="70">
                         <label for="regular1">Title Tag</label>
                         <div id="characterLeft"></div>
 
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="meta_des" name="meta_des" >
+                        <input type="text" class="form-control" id="meta_des" required name="meta_des" >
                         <label for="regular1">Meta Description</label>
                     </div>
 
@@ -120,24 +122,41 @@
                     <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning">Save Draft</button>
                     <br><br>
 
-                    <div class="form-group">
-                            <input type="date" class="form-control" id="regular1" name="pub_date" value="{{date('Y-m-d',strtotime(time()))}}">
-                            <label for="regular1">Publish Date</label>
+                        <div class="input-group date" id="demo-date">
+                                <div class="input-group-content">
+                                     <input type="text" required class="form-control" name="pub_date" value="{{date('m/d/Y')}}">
+                                    <label>Publish Date</label>
+                                </div>
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control time-mask" id="pub" name="pub_time" value="{{{date('H:m',strtotime(time()))}}}">
+                            <input type="text" class="form-control time-mask" required id="pub" name="pub_time" value="{{{date('H:m')}}}">
                             <label for="regular1">Publish Time</label>
                         </div>
+                        <?php // $authors = get_all_authors(); ?>
 
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="author" value="{{{$details->author_name}}}">
-                        <label for="regular1">Author Name</label>
-                    </div>
+                    <!-- <div class="form-group col-md-4 col-sm-4" style="padding-left: 0px;">
+                            <select id="author" name="share_cat" required class="form-control">
+                                <option>dasdsads</option>
+                                @foreach($authors as $author)
+                                    <option value="{{$author->id}}" >{{$author->author_name}}</option>
+                                @endforeach
+                            </select>
+                            <label for="author">Select</label>
+
+                        </div> -->
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" required id="regular1" name="author">
+                            <label for="regular1">Author</label>
+                        </div>
+
+                        
 
                     <div class="input-field col s12 check-box-inline">
                         <?php foreach($category as $cat) {?>
-                            <p> <input type="checkbox" name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')"/>
+                            <p> <input type="checkbox" required name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')"/>
                                 <label for="cat_{{$cat->id}}">{{$cat->name}}</label>
                             </p>
                         <?php } ?>

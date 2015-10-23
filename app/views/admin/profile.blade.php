@@ -15,8 +15,11 @@
 
 <div class="page">
 
-    <div class="col-md-12">
+    <div class="col-md-4">
         <div class="card">
+            <div class="card-head style-primary">
+                        <header>Profile Settings</header>
+                    </div>
             <div class="card-body">
                 <form class="form" action="{{route('adminProfileProcess')}}" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="{{$admin->id}}">
@@ -40,15 +43,18 @@
                         <label for="regular1">Email</label>￼
                     </div>
 
-                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
                 </form>
             </div><!--end .card-body -->
         </div><!--end .card -->
 
     </div>    
 
-    <div class="col-md-12">
+    <div class="col-md-4">
         <div class="card">
+            <div class="card-head style-primary">
+                        <header>Profile Picture</header>
+                    </div>
             <div class="card-body">
                 <form class="form" action="{{route('adminProfilePics')}}" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="{{$admin->id}}">
@@ -66,7 +72,7 @@
                         <input class="file-path validate" type="text" />
 
                     </div>
-                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
                 </form>
             </div><!--end .card-body -->
         </div><!--end .card -->
@@ -74,8 +80,11 @@
     </div>    
 
 
-    <div class="col-md-12">
+    <div class="col-md-4">
         <div class="card">
+            <div class="card-head style-primary">
+                        <header>Change Password</header>
+                    </div>
             <div class="card-body">
                 <form class="form" action="{{route('adminPassword')}}" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="{{$admin->id}}">
@@ -92,7 +101,7 @@
 
 
 
-                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
                 </form>
             </div><!--end .card-body -->
         </div><!--end .card -->

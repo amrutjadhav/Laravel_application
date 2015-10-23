@@ -26,6 +26,7 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/font-awesome.min.css?1422529194')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/date.css')}}" />
     <!-- END STYLESHEETS -->
 
 
@@ -240,6 +241,7 @@
 <script src="{{asset('admins/js/core/source/AppForm.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppNavSearch.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppVendor.js')}}"></script>
+<script src="{{asset('admins/js/date.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/Demo.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/DemoFormComponents.js')}}"></script>
@@ -252,6 +254,7 @@
 
 
     <script type="text/javascript">
+    $('#demo-date').datepicker({autoclose: true, todayHighlight: true});
         $('#characterLeft').text('70 characters left');
         $('#title_tag').keyup(function () {
             var max = 70;

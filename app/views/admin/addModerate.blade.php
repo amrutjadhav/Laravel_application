@@ -16,7 +16,11 @@
 
     <div class="col-md-12">
         <div class="card">
+             <div class="card-head style-primary">
+                    <header>Add Moderator</header>
+                 </div>
             <div class="card-body">
+               
                 <form class="form" action="{{route('addModerateProcess')}}" method="post">
                     <div class="form-group">
                         <input type="text" class="form-control" id="regular1" name="first_name">
@@ -35,7 +39,7 @@
                         <input type="email" class="form-control" id="password1" name="email">
                         <label for="password1">Email</label>
                     </div>
-                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
                 </form>
             </div><!--end .card-body -->
         </div><!--end .card -->

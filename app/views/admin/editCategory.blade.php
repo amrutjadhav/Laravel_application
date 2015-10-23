@@ -16,6 +16,9 @@
 
     <div class="col-md-12">
         <div class="card">
+            <div class="card-head style-primary">
+               <header>Edit Category</header>
+            </div>
             <div class="card-body">
                 <form class="form" action="{{route('editCategoryProcess', array('id' => $categoryDetails->id)) }}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
@@ -37,7 +40,7 @@
 
                     </div>
 
-                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
                 </form>
             </div><!--end .card-body -->
         </div><!--end .card -->
