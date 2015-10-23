@@ -134,18 +134,6 @@
                             <input type="text" class="form-control time-mask" required id="pub" name="pub_time" value="{{{date('H:m')}}}">
                             <label for="regular1">Publish Time</label>
                         </div>
-                        <?php // $authors = get_all_authors(); ?>
-
-                    <!-- <div class="form-group col-md-4 col-sm-4" style="padding-left: 0px;">
-                            <select id="author" name="share_cat" required class="form-control">
-                                <option>dasdsads</option>
-                                @foreach($authors as $author)
-                                    <option value="{{$author->id}}" >{{$author->author_name}}</option>
-                                @endforeach
-                            </select>
-                            <label for="author">Select</label>
-
-                        </div> -->
 
                         <div class="form-group">
                             <input type="text" class="form-control" required id="regular1" name="author">
