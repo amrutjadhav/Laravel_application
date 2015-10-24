@@ -101,7 +101,6 @@ class ContributorController extends \BaseController {
 				$post->des = Input::get('des');
 				$post->url = $url;
 				$post->meta_des = $meta_des;
-				$post->user_id = Auth::user()->id;
 				$post->publisher = $publisher;
 				$post->author = $author;
 				if($pub_date != "")
@@ -136,7 +135,7 @@ class ContributorController extends \BaseController {
 				$post->category = implode(',', $category);
 				$post->save();
 				if ($post) {
-					return Redirect::back()->with('flash_success', "Post Updated");
+					return Redirect::route('contributorPost')->with('flash_success', "Post Updated");
 				} else {
 					return Redirect::back()->with('flash_error', "Something went wrong");
 				}
@@ -211,7 +210,7 @@ class ContributorController extends \BaseController {
 
 				}
 				if ($post) {
-					return Redirect::back()->with('flash_success', "Post created");
+					return Redirect::route('contributorPost')->with('flash_success', "Post created");
 				} else {
 					return Redirect::back()->with('flash_error', "Something went wrong");
 				}

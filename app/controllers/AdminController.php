@@ -584,7 +584,6 @@ class AdminController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->url = $url;
                 $post->meta_des = $meta_des;
-				$post->user_id = Auth::user()->id;
 				$post->publisher = $publisher;
 				$post->author = $author;
 				if($pub_date != "")
@@ -619,7 +618,7 @@ class AdminController extends \BaseController {
                 $post->category = implode(',', $category);
                 $post->save();
 				if ($post) {
-					return Redirect::back()->with('flash_success', "Post Updated");
+					return Redirect::route('adminPost')->with('flash_success', "Post Updated");
 				} else {
 					return Redirect::back()->with('flash_error', "Something went wrong");
 				}
@@ -692,7 +691,7 @@ class AdminController extends \BaseController {
                     }
                 }
 				if ($post) {
-					return Redirect::back()->with('flash_success', "Post created");
+					return Redirect::route('adminPost')->with('flash_success', "Post created");
 				} else {
 					return Redirect::back()->with('flash_error', "Something went wrong");
 				}
