@@ -446,7 +446,7 @@ class HomeController extends BaseController {
 		$segment = $data;
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
-		$related = Post::orderByRaw("RAND()")->take(4)->get();
+		$related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(4)->get();
 		if($post_details)
 		{
 			counter($segment);

@@ -11,7 +11,7 @@ class ModerateController extends \BaseController {
 
     public function moderatePost()
     {
-        $post = Post::paginate(10);
+        $post = Post::orderBy('created_at', 'desc')->distinct()->paginate(10);
         return View::make('moderate.post')
             ->with('title',"Posts Management")
             ->with('page', "posts")
