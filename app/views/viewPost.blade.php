@@ -79,23 +79,34 @@
 <div class="contasiner-fluid page">
     <div class="row" style="min-height: 600px;">
         <div class="col m12 s12 l12 single-card">
-            <?php
+           
+
+            <div class="col l4 m4 s12">
+                @if($post->image != "")
+                <img style="width: 100%;" src="{{$post->image}}">
+                @endif
+
+                 @if(!empty($post->category))
+                
+                <?php
                 $cat_id = explode(',', $post->category);
                 $cat_data = Category::find($cat_id[0]);
                 $cat_name = $cat_data->name;
                 ?>
-
-            <div class="col l4 m4 s12">
-                <img style="width: 100%;" src="{{$post->image}}">
                 <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="full-btn waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
                 <a href="http://twitter.com/share?text={{$post->title}}&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="full-btn waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
                 <a href="{{{$post->url}}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More</a>
                 <a href="{{route('home')}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">More News</a>           
+                 @endif
             </div>
 
             <div class="col l8 m8 s12">
+                 @if($post->title != "")
                 <h3 style="font-size: 3.5vh;margin-top: 0px;">{{$post->title}}</h3>
+                @endif
+                @if($post->des != "")
                 <p class="text-justify">{{$post->des}}</p>
+                @endif
 
             </div>
         </div>

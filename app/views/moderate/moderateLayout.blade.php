@@ -28,6 +28,8 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/font-awesome.min.css?1422529194')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/date.css')}}" />
+
     <!-- END STYLESHEETS -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -69,11 +71,11 @@
                             <img src="{{asset('admins/img/user.png')}}" alt="" />
                         @endif
 								<span class="profile-info">{{{Auth::user()->first_name}}}
-									<smallpngministrator</small>
+									<small>Moderator</small>
 								</span>
                     </a>
                     <ul class="dropdown-menu animation-dock">
-                        <li class="dropdown-header">Config</li>
+                        <li class="dropdown-header">Settings</li>
                         <li><a href="{{route('moderateProfile')}}">My profile</a></li>
                         <li class="divider"></li>
 
@@ -179,8 +181,10 @@
     <script src="{{asset('admins/js/core/source/AppForm.js')}}"></script>
     <script src="{{asset('admins/js/core/source/AppNavSearch.js')}}"></script>
     <script src="{{asset('admins/js/core/source/AppVendor.js')}}"></script>
-    <script src="{{asset('admins/js/core/demo/Demo.js')}}"></script>
-    <script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
+<script src="{{asset('admins/js/date.js')}}"></script>
+<script src="{{asset('admins/js/core/demo/Demo.js')}}"></script>
+<script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
+<script src="{{asset('admins/js/core/demo/DemoFormComponents.js')}}"></script>
     <script src="{{asset('admins/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>
     <script src="{{asset('admins/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
     <!-- END JAVASCRIPT -->

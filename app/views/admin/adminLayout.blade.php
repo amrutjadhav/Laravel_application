@@ -74,7 +74,7 @@
                             <img src="{{asset('admins/img/user.png')}}" alt="" />
                         @endif
 								<span class="profile-info">{{{Auth::user()->first_name}}}
-									<smallpngministrator</small>
+									<small>Administrator</small>
 								</span>
                     </a>
                     <ul class="dropdown-menu animation-dock">

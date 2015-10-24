@@ -79,7 +79,7 @@
                         <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
 
                             <input type="text" class="form-control" required name="share_link" id="meta_title">
-                            <label for="regular1">Permalink</label>
+                            <label for="meta_title">Permalink</label>
 
                         </div>
 

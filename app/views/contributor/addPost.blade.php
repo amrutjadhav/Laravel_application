@@ -153,7 +153,20 @@
 </div>
 <script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
 
+<script type="text/javascript">
+$('#characterLeft').text('70 characters left');
+$('#title_tag').keyup(function () {
+    var max = 70;
+    var len = $(this).val().length;
+    if (len >= max) {
+        $('#characterLeft').text(' you have reached the limit');
+    } else {
+        var ch = max - len;
+        $('#characterLeft').text(ch + ' characters left');
+    }
+});
 
+</script>
     <script type="text/javascript">
     function category_add(id){
         if($(id).attr("checked")){
