@@ -134,7 +134,7 @@
             </div>
 
             <div class="row" style="text-align:center;">
-                 <a href="{{route('home')}}" class="waves-effect waves-light btn no-right-mar mat-clr">More News</a> 
+                 <a href="{{route('home')}}" class="waves-effect waves-light btn-raised btn-lg no-right-mar mat-clr">More News</a> 
             </div>
 
 
