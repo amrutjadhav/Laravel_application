@@ -107,7 +107,7 @@
 
                         <div class="input-field col s12 check-box-inline">
                             <?php foreach($category as $cat) {?>
-                            <p> <input type="checkbox" required name="category[{{$cat->id}}]" value="{{$cat->id}}" id="test{{$cat->id}}" <?php if(in_array($cat->id, $cate)) echo "checked"; ?> />
+                            <p> <input type="checkbox"  name="category[{{$cat->id}}]" value="{{$cat->id}}" id="test{{$cat->id}}" <?php if(in_array($cat->id, $cate)) echo "checked"; ?> />
                                 <label for="test{{$cat->id}}">{{$cat->name}}</label>
                             </p>
                             <?php } ?>
