@@ -217,7 +217,7 @@
             // setInterval(function() {
                 var form_data = $("#autoform").serialize();
                 $('#draft_button').prop('disabled', true);
-                $('#draft_button').text('Saving Draft.....');
+                $('#draft_button').html("<i class='fa fa-spinner fa-spin'></i> Saving Draft...");
                 $.ajax({
                     type: 'POST',
                     data:  form_data,
