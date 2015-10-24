@@ -39,6 +39,9 @@
                         <input type="text" class="form-control" required id="regular1" name="url" >
                         <label for="regular1">URL</label>
                     </div>
+
+                    <input type="hidden" name="id" value="" id="post_id">
+                    
                     <div class="file-field input-field col s12">
                             
                         <div class="btn light-blue accent-2" style="padding: 0px 10px;">
