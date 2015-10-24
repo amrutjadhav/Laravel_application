@@ -137,11 +137,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::post('/editPost/{id}', array('as' => 'adminEditProcess', 'uses' => 'AdminController@addPostProcess'));
 
-	Route::post('/croppingImage', array(
-		'as' => 'cropping-image',
-		'uses' => 'ImageCropper@croppingImage'
-	));
-
 	Route::get('/deletePost/{id}', array('as' => 'adminDeletePost', 'uses' => 'AdminController@deletePost'));
 
 	Route::get('/sendPush/{id}', array('as' => 'sendPush', 'uses' => 'AdminController@sendPush'));

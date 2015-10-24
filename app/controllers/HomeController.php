@@ -55,10 +55,11 @@ class HomeController extends BaseController {
 		$segment = $data;
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
+		$related = Post::rand()->take(3)->get();
 		if($post_details)
 		{	
 			counter($segment);
-			return View::make('single-post')->withPost($post_details)->with('cats',$cats);
+			return View::make('single-post')->withRelated($related)->withPost($post_details)->with('cats',$cats);
 		}
 		else
 		{
@@ -445,10 +446,11 @@ class HomeController extends BaseController {
 		$segment = $data;
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
+		$related = Post::orderByRaw("RAND()")->take(4)->get();
 		if($post_details)
 		{
 			counter($segment);
-			return View::make('single-post')->withPost($post_details)->with('cats',$cats);
+			return View::make('single-post')->withRelated($related)->withPost($post_details)->with('cats',$cats);
 		}
 		else
 		{
