@@ -132,8 +132,8 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control time-mask" required id="pub" name="pub_time" value="{{{date('H:m')}}}">
-                            <label for="regular1">Publish Time</label>
+                            <input type="text" class="form-control time-mask" required id="pub" name="pub_time" value="{{date('H:i')}}">
+                            <label for="pub">Publish Time</label>
                         </div>
 
                         <div class="form-group">
