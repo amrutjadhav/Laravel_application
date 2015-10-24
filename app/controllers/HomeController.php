@@ -162,7 +162,7 @@ class HomeController extends BaseController {
 			$user->password = Hash::make($new_password);
 
 			$subject = "Your New Password";
-			$email_data['name'] = $user->username;
+			$email_data['name'] = $user->author_name;
 			$email_data['password'] = $new_password;
 			$email_data['email'] = $user->email;
 			$user->save();

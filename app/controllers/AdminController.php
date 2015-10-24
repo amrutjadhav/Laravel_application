@@ -44,7 +44,7 @@ class AdminController extends \BaseController {
 			array('first_name' => 'required',
 				'last_name' => 'required',
 				'email' => 'required|email',
-				'author_name' => 'required|unique:users,author_name'));
+				'author_name' => 'required'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -500,7 +500,7 @@ class AdminController extends \BaseController {
 	public function adminPostSearch()
 	{
 		$keyword = Input::get('keyword');
-		$user = User::where('username','like', '%'.$keyword.'%')->first();
+		$user = User::where('author_name','like', '%'.$keyword.'%')->first();
 		if($user)
 		{
 			$post = Post::where('user_id',$user->id)->orderBy('created_at', 'desc')->paginate(10);
