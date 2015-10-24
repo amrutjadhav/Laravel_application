@@ -120,7 +120,7 @@
 
                     <button type="submit" class="btn ink-reaction btn-raised btn-info">Publish</button>
 
-                    <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning">Save Draft</button>
+                    <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Saving Draft...">Save Draft</button>
                     <br><br>
 
                         <div class="input-group date" id="demo-date">

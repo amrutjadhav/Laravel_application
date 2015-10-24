@@ -107,7 +107,7 @@
         <div class="card">
             <div class="card-body">
                     <button type="submit" class="btn ink-reaction btn-raised btn-info">Publish</button>
-                    <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-primary">Save Draft</button>
+                    <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-primary btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Saving Draft...">Save Draft</button>
                     <br><br>
 
                         <div class="input-group date" id="demo-date">
@@ -199,7 +199,7 @@
             // setInterval(function() {
                 var form_data = $("#autoform").serialize();
                 $('#draft_button').prop('disabled', true);
-                $('#draft_button').text('Saving Draft.....');
+                $('#draft_button').text("<i class='fa fa-spinner fa-spin'></i> Saving Draft...");
                 $.ajax({
                     type: 'POST',
                     data:  form_data,
