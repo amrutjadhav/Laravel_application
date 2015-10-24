@@ -29,6 +29,7 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/date.css')}}" />
+    <link rel="shortcut icon" type="image/png" href="{{Setting::get('logo')}}"/>
 
     <!-- END STYLESHEETS -->
 
