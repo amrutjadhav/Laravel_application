@@ -4,7 +4,7 @@ class ContributorController extends \BaseController {
 
 	public function contributorDashboard()
 	{
-		$post_count = Post::all()->count();
+		$post_count = Post::where('user_id',Auth::user()->id)->count();
 		return View::make('contributor.contributorDashboard')->withPage('dashboard')
 			->with('post_count',$post_count);
 	}
@@ -67,6 +67,8 @@ class ContributorController extends \BaseController {
 		$share_cat = Input::get('share_cat');
 		$author = Input::get('author');
 		$publisher = Input::get('publisher');
+		$pub_date = Input::get('pub_date');
+		$pub_time = Input::get('pub_time');
 
 		$validator = Validator::make(
 			array(
@@ -102,6 +104,8 @@ class ContributorController extends \BaseController {
 				$post->user_id = Auth::user()->id;
 				$post->publisher = $publisher;
 				$post->author = $author;
+				if($pub_date != "")
+				$post->created_at = date('Y-m-d H:i:s', strtotime("$pub_date $pub_time"));
 
 				$validator1 = Validator::make(
 					array(

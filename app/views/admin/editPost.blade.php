@@ -50,7 +50,7 @@
                             </div>
                             <div class="btn btn-primary light-blue accent-2"  style="padding: 0px 10px;">
                                 <span>Choose Picture</span>
-                                <input type="file" name="post_img" required />
+                                <input type="file" name="post_img" />
                             </div>
                             <input class="file-path validate" type="text" value="{{$post->image}}"/>
 
@@ -84,7 +84,7 @@
             <div class="card">
                 <div class="card-body">
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Update</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Update & Publish</button>
                         <br><br>
 
                         <div class="input-group date" id="demo-date">
