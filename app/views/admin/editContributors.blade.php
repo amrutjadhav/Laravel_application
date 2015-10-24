@@ -31,8 +31,8 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="password1" name="username" value="{{$contributors->username}}">
-                            <label for="password1">Username</label>
+                            <input type="text" class="form-control" id="password1" name="author_name" value="{{$contributors->author_name}}">
+                            <label for="password1">Author Name</label>
                         </div>
 
                         <div class="form-group">

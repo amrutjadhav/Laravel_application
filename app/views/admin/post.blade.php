@@ -24,7 +24,7 @@
                             <!-- Search form -->
                             <form class="navbar-search" role="search" action="{{route('adminPostSearch')}}">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="keyword" placeholder="Enter username">
+                                    <input type="text" class="form-control" name="keyword" placeholder="Enter The Author Name">
                                 </div>
                                 <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
                             </form>

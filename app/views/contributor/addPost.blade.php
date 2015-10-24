@@ -12,7 +12,6 @@
 @section('content')
 
 @include('notification.notify')
-
 <div class="page">
 <form class="form" action="{{route('contributorAddPostProcess')}}" id="autoform" method="post" enctype="multipart/form-data">
     <div class="col-md-8">

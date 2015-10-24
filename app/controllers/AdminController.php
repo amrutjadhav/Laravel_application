@@ -40,11 +40,11 @@ class AdminController extends \BaseController {
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
 			'email' => Input::get('email'),
-			'username' => Input::get('username')),
+			'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
 				'email' => 'required|email',
-				'username' => 'required|unique:users,username'));
+				'author_name' => 'required|unique:users,author_name'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -62,7 +62,7 @@ class AdminController extends \BaseController {
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
 			$user->role_id = 1;
-			$user->username = Input::get('username');
+			$user->author_name = Input::get('author_name');
 
 			$new_password = time();
 			$new_password .= rand();
@@ -72,7 +72,7 @@ class AdminController extends \BaseController {
 
 
 			$subject = "Welcome On Board";
-			$email_data['name'] = $user->username;
+			$email_data['name'] = $user->author_name;
 			$email_data['password'] = $new_password;
 			$email_data['email'] = $user->email;
 
@@ -141,11 +141,11 @@ class AdminController extends \BaseController {
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
 			'email' => Input::get('email'),
-			'username' => Input::get('username')),
+			'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
 				'email' => 'required|email',
-				'username' => 'required|unique:users,username'));
+				'author_name' => 'required|unique:users,author_name'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -158,6 +158,7 @@ class AdminController extends \BaseController {
 			$user->first_name = Input::get('first_name');
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
+			$user->author_name = Input::get('author_name');
 
 			$user->save();
 			if ($user) {
@@ -207,11 +208,11 @@ class AdminController extends \BaseController {
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
 			'email' => Input::get('email'),
-			'username' => Input::get('username')),
+			'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
 				'email' => 'required|email',
-				'username' => 'required|unique:users,username'));
+				'author_name' => 'required|unique:users,author_name'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -228,7 +229,7 @@ class AdminController extends \BaseController {
 			$user->first_name = Input::get('first_name');
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
-			$user->username = Input::get('username');
+			$user->author_name = Input::get('author_name');
 			$user->role_id = 3;
 
 			$new_password = time();
@@ -239,7 +240,7 @@ class AdminController extends \BaseController {
 
 
 			$subject = "Welcome On Board";
-			$email_data['name'] = $user->username;
+			$email_data['name'] = $user->author_name;
 			$email_data['password'] = $new_password;
 			$email_data['email'] = $user->email;
 
@@ -308,11 +309,11 @@ class AdminController extends \BaseController {
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
 			'email' => Input::get('email'),
-			'username' => Input::get('username')),
+			'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
 				'email' => 'required|email',
-				'username' => 'required|unique:users,username'));
+				'author_name' => 'required|unique:users,author_name'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -325,7 +326,7 @@ class AdminController extends \BaseController {
 			$user->first_name = Input::get('first_name');
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
-			$user->username = Input::get('username');
+			$user->author_name = Input::get('author_name');
 
 			$user->save();
 			if ($user) {
