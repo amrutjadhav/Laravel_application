@@ -25,35 +25,33 @@
                     <a class="btn ink-reaction btn-raised btn-primary" href="{{route('contributorPost')}}">BACK</a>
                 </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="title" >
+                        <input type="text" class="form-control" required id="regular1" name="title" >
                         <label for="regular1">Title</label>
                     </div>
 
                     
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="publisher" >
+                        <input type="text" class="form-control" required id="regular1" name="publisher" >
                         <label for="regular1">Publisher</label>
                     </div>
 
-                  
-
                     <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="url" >
+                        <input type="text" class="form-control" required id="regular1" name="url" >
                         <label for="regular1">URL</label>
                     </div>
                     <div class="file-field input-field col s12">
                             
                         <div class="btn light-blue accent-2" style="padding: 0px 10px;">
                             <span>Choose Picture</span>
-                            <input type="file" name="post_img" />
+                            <input type="file" name="post_img" required />
                         </div>
                         <input class="file-path validate" type="text"/>
 
                     </div>
 
                     <div class="form-group">
-                        <textarea name="des" id="textarea1" class="form-control" maxlength="450" rows="3"></textarea>
+                        <textarea name="des" id="textarea1" required class="form-control" maxlength="450" rows="3"></textarea>
                         <label for="textarea1">Description</label>
                     </div>
 
@@ -79,7 +77,7 @@
 
                     <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
 
-                        <input type="text" class="form-control" name="share_link" >
+                        <input type="text" class="form-control" required name="share_link" >
                         <label for="regular1">Permalink</label>
 
                     </div>
@@ -90,14 +88,14 @@
 
                     <div class="form-group">
 
-                        <input type="text" class="form-control" id="title_tag" name="title_tag" maxlength="70">
+                        <input type="text" class="form-control" required id="title_tag" name="title_tag" maxlength="70">
                         <label for="regular1">Title Tag</label>
                         <div id="characterLeft"></div>
 
                     </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" id="meta_des" name="meta_des" >
+                        <input type="text" class="form-control" id="meta_des" name="meta_des" required>
                         <label for="regular1">Meta Description</label>
                     </div>
 
@@ -136,7 +134,7 @@
 
                       <div class="input-field col s12 check-box-inline">
                         <?php foreach($category as $cat) {?>
-                            <p> <input type="checkbox" required name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')"/>
+                            <p> <input type="checkbox" name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')"/>
                                 <label for="cat_{{$cat->id}}">{{$cat->name}}</label>
                             </p>
                         <?php } ?>

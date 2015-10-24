@@ -74,7 +74,6 @@
                             <div id="characterLeft1"></div>
                         </div>
 
-                    </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->
 
@@ -117,8 +116,7 @@
             </div><!--end .card -->
 
         </div>
-
-
+         </form>
     </div>
     </div>
 

@@ -98,7 +98,7 @@
 
                         <div class="form-group">
                             <input type="password" class="form-control" id="regular1" name="con_password">
-                            <label for="regular1">Con Password</label>￼
+                            <label for="regular1">Confirm Password</label>￼
                         </div>
 
                         <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>

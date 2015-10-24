@@ -29,7 +29,7 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/date.css')}}" />
-    
+
     <!-- END STYLESHEETS -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -75,7 +75,7 @@
 								</span>
                     </a>
                     <ul class="dropdown-menu animation-dock">
-                        <li class="dropdown-header">Config</li>
+                        <li class="dropdown-header">Settings</li>
                         <li><a href="{{route('contributorProfile')}}">My profile</a></li>
                         <li class="divider"></li>
 

@@ -138,13 +138,16 @@
                         <div class="form-group">
                             <input type="text" class="form-control" required id="regular1" name="author">
                             <label for="regular1">Author</label>
+                             @if($details->author_name=="")
+                        <p class="help-block">Please Enter Your Author Name Under Menu->Account->Profile Action</p>
+                        @endif
                         </div>
 
                         
 
                     <div class="input-field col s12 check-box-inline">
                         <?php foreach($category as $cat) {?>
-                            <p> <input type="checkbox" required name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')"/>
+                            <p> <input type="checkbox"  name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')"/>
                                 <label for="cat_{{$cat->id}}">{{$cat->name}}</label>
                             </p>
                         <?php } ?>

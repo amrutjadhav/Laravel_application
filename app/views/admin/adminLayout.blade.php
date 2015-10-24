@@ -78,7 +78,7 @@
 								</span>
                     </a>
                     <ul class="dropdown-menu animation-dock">
-                        <li class="dropdown-header">Config</li>
+                        <li class="dropdown-header">Settings</li>
                         <li><a href="{{route('adminProfile')}}">My profile</a></li>
 
                         <li class="divider"></li>
