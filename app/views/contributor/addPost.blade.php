@@ -24,8 +24,8 @@
                     <a class="btn ink-reaction btn-raised btn-primary" href="{{route('contributorPost')}}">BACK</a>
                 </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" required id="regular1" name="title" >
-                        <label for="regular1">Title</label>
+                        <input type="text" class="form-control" required id="title" name="title" >
+                        <label for="title">Title</label>
                     </div>
 
                     
@@ -76,8 +76,8 @@
 
                     <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
 
-                        <input type="text" class="form-control" required name="share_link" >
-                        <label for="regular1">Permalink</label>
+                        <input type="text" class="form-control" id="meta_title" required name="share_link" >
+                        <label for="meta_title">Permalink</label>
 
                     </div>
 
