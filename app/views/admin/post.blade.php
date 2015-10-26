@@ -71,7 +71,7 @@
                                         }
                                     ?>
                                 </td>
-                                <td>{{$post->author_name}}</td>
+                                <td><?php $user = get_user_details($post->user_id); echo $user->author_name; ?></td>
                                 <td style="width: 297px;">
                                     @if($post->is_approved != 0)
                                         <a class="btn ink-reaction btn-floating-action btn-warning" href="{{route('adminPostDecline', array('id' => $post->id))}}"><i class="fa fa-times"></i></a>
