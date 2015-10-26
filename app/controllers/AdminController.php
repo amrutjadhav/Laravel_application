@@ -513,12 +513,12 @@ class AdminController extends \BaseController {
 			}
 			else
 			{
-				return Redirect::back()->with('flash_error',"Not found");
+				return Redirect::route('adminPost')->with('flash_error',"Not found");
 			}
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Not found");
+			return Redirect::route('adminPost')->with('flash_error',"Not found");
 		}
 
 	}
