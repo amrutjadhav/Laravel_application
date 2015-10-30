@@ -153,6 +153,10 @@ class HomeController extends BaseController {
 		else
 		{
 			$user = User::where('email',$email)->first();
+			if(!$user)
+			{
+				return Redirect::back()->with('flash_errors',"Email Id not found");
+			}
 
 			$new_password = time();
 			$new_password .= rand();
