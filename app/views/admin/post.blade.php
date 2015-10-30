@@ -46,7 +46,7 @@
                             <tr>
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
-                                <td>{{$post->des}}</td>
+                                <td>{{substr($post->des, 0, 50)}}</td>
                                 <?php $user = User::where('id',$post->user_id)->first(); ?>
                                 <td>
                                     <?php
@@ -58,7 +58,8 @@
                                             }
                                             elseif($user->role_id == 3)
                                             {
-                                                echo "Contributor";
+                                                if($post->is_approved == 0){
+                                                echo "Contributor<br> <em>(Waiting for Approval)</em>";}else{ echo "Contributor"; }
                                             }
                                             else
                                             {
@@ -74,15 +75,15 @@
                                 <td><?php $user = get_user_details($post->user_id); echo $user->author_name; ?></td>
                                 <td style="width: 297px;">
                                     @if($post->is_approved != 0)
-                                        <a class="btn ink-reaction btn-floating-action btn-warning" href="{{route('adminPostDecline', array('id' => $post->id))}}"><i class="fa fa-times"></i></a>
+                                        <a title="Un Publish" class="btn ink-reaction btn-floating-action btn-warning" href="{{route('adminPostDecline', array('id' => $post->id))}}"><i class="fa fa-times"></i></a>
                                     @else
-                                        <a class="btn ink-reaction btn-floating-action btn-primary" href="{{route('adminPostActivate', array('id' => $post->id))}}"><i class="fa fa-check"></i></a>
+                                        <a title="Publish" class="btn ink-reaction btn-floating-action btn-primary" href="{{route('adminPostActivate', array('id' => $post->id))}}"><i class="fa fa-check"></i></a>
                                     @endif
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('sendPush')}}"><i class="fa fa-paper-plane"></i></a> -->
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminAddPost')}}"><i class="fa fa-plus"></i></a> -->
-                                    <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
-                                    <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminViewPost', array('id' => $post->id))}}"><i class="fa fa-eye"></i></a>
-                                    <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
+                                    <a title="Edit Post" class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
+                                    <a target="_blank" title="View Post" class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminViewPost', array('id' => $post->id))}}"><i class="fa fa-eye"></i></a>
+                                    <a title="Delete" onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach

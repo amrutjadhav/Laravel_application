@@ -32,7 +32,7 @@
                             <tr>
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
-                                <td>{{{$post->des}}}</td>
+                                <td>{{substr($post->des, 0, 50)}}</td>
                                 <td>
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('moderateAddPost')}}"><i class="fa fa-plus"></i></a> -->
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('moderateEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>

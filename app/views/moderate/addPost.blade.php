@@ -129,9 +129,8 @@
                         
 
                         <div class="form-group">
-                            <input type="text" class="form-control" required id="regular1" name="author" value="{{$details->author_name}}">
+                            <input type="text" class="form-control" readonly required id="regular1" name="author" value="{{$details->author_name}}">
                             <label for="regular1">Author</label>
-
                              @if($details->author_name=="")
                         <p class="help-block">Please Enter Your Author Name Under Menu->Account->Profile Action</p>
                         @endif

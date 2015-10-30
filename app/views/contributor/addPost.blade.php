@@ -57,37 +57,6 @@
                         <label for="textarea1">Description</label>
                     </div>
 
-                    <div class="row">
-
-
-                        <h4>Permalink</h4>
-
-                        <div class="form-group col-md-3 col-sm-4">
-
-                            <h5>{{URL::to('/')}}/</h5>
-
-                        </div>
-
-                    <div class="form-group floating-label col-md-4 col-sm-4" style="padding-left: 0px;">
-                            <select id="cat_select" name="share_cat" class="form-control" required>
-                                <option value="">-Select Category-</option>
-                                
-                            </select>
-                            <label for="cat_select">Select</label>
-
-                        </div>
-
-                    <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
-
-                        <input type="text" class="form-control" id="meta_title" required name="share_link" >
-                        <label for="meta_title">Permalink</label>
-
-                    </div>
-
-                    </div>
-
-
-
                     <div class="form-group">
 
                         <input type="text" class="form-control" required id="title_tag" name="title_tag" maxlength="70">
@@ -127,7 +96,7 @@
                         </div>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" readonly id="regular1" name="author" value="{{{$details->author_name}}}">
+                        <input type="text" class="form-control" required readonly id="regular1" name="author" value="{{{$details->author_name}}}">
                         <label for="regular1">Author</label>
                         @if($details->author_name=="")
                         <p class="help-block">Please Enter Your Author Name Under Menu->Account->Profile Action</p>
@@ -136,7 +105,7 @@
 
                       <div class="input-field col s12 check-box-inline">
                         <?php foreach($category as $cat) {?>
-                            <p> <input type="checkbox" name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')"/>
+                            <p> <input type="checkbox" name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}"/>
                                 <label for="cat_{{$cat->id}}">{{$cat->name}}</label>
                             </p>
                         <?php } ?>
@@ -168,19 +137,19 @@ $('#title_tag').keyup(function () {
 
 </script>
     <script type="text/javascript">
-    function category_add(id){
-        if($(id).attr("checked")){
-             var name = $(id).attr("next");
-            var cat_value = $(id).val();
-            var append_val = "<option value='"+ cat_value +"'>"+ name +"</option>";
-            $('#cat_select').append(append_val);
-            console.log(name);
-        }else{
-            console.log('un checked');
-            var new_cal = $(id).val();
-            $("#cat_select option[value='"+new_cal+"']").remove();
-        }
-    }
+    // function category_add(id){
+    //     if($(id).attr("checked")){
+    //          var name = $(id).attr("next");
+    //         var cat_value = $(id).val();
+    //         var append_val = "<option value='"+ cat_value +"'>"+ name +"</option>";
+    //         $('#cat_select').append(append_val);
+    //         console.log(name);
+    //     }else{
+    //         console.log('un checked');
+    //         var new_cal = $(id).val();
+    //         $("#cat_select option[value='"+new_cal+"']").remove();
+    //     }
+    // }
 
     $(document).ready(function(){
         $('#title').keyup(function(){

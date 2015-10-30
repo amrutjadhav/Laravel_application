@@ -61,6 +61,42 @@
                             <label for="textarea1">Description</label>
                         </div>
 
+                        @if($contributor == 1)
+
+                            <div class="row">
+
+
+                        <h4>Permalink</h4>
+
+                        <div class="form-group col-md-3 col-sm-4">
+
+                            <h5>{{URL::to('/')}}</h5>
+
+                        </div>
+
+                        <div class="form-group floating-label col-md-4 col-sm-4" style="padding-left: 0px;">
+                            <select id="cat_select" name="share_cat" class="form-control" required>
+                                <option value="">-Select Category-</option>
+                                @foreach($category as $cat)
+                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                @endforeach
+
+                            </select>
+                            <label for="cat_select">Select</label>
+
+                        </div>
+
+                        <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
+
+                            <input type="text" class="form-control" name="share_link" id="meta_title" value="{{{seo_url($post->title)}}}">
+                            <label for="meta_title">Permalink</label>
+
+                        </div>
+
+                    </div>
+
+                        @endif
+
 <!--                         <div class="form-group">
 
                         <input type="text" class="form-control" id="title_tag" name="title_tag" maxlength="70" value="{{$post->title_tag}}">
@@ -101,8 +137,15 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" required id="regular1" name="author" value="{{{$post->author}}}">
-                            <label for="regular1">Author</label>
+                                    <select id="select1" required name="author" class="form-control">
+                                        <option value="">&nbsp;</option>
+                                        @foreach($authors as $author)
+                                        @if($author->author_name != "")
+                                        <option value="{{$author->id}}" <?php if($post->user_id == $author->id) echo "selected"; ?>>{{$author->author_name}}</option>
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                    <label for="select1">Author Name</label>
                         </div>
 
                         <div class="input-field col s12 check-box-inline">

@@ -120,8 +120,7 @@ class ContributorController extends \BaseController {
 				}
 				else
 				{
-					$file_name = time();
-					$file_name .= rand();
+					$file_name = seo_url($title).'-'.time();
 					$post->des = Input::get('des');
 					$ext = Input::file('post_img')->getClientOriginalExtension();
 					Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
@@ -159,9 +158,9 @@ class ContributorController extends \BaseController {
 						'share_link' => $share_link,
 						'share_cat' => $share_cat,
 					), array(
-						'title_tag' => 'required',
-						'share_link' => 'required',
-						'share_cat' => 'required',
+						'title_tag' => '',
+						'share_link' => '',
+						'share_cat' => '',
 						'post_img' => 'required|mimes:jpeg,bmp,gif,png',
 					)
 				);
@@ -172,8 +171,7 @@ class ContributorController extends \BaseController {
 				}
 				else
 				{
-					$file_name = time();
-					$file_name .= rand();
+					$file_name = seo_url($title).'-'.time();
 					$ext = Input::file('post_img')->getClientOriginalExtension();
 					Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
 					$local_url = $file_name . "." . $ext;
@@ -185,27 +183,27 @@ class ContributorController extends \BaseController {
 
 					$post->category = implode(',', $category);
 
-					$post->share_cat = $share_cat;
+					// $post->share_cat = $share_cat;
 
-					$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
+					// $link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
 
-					$post->link = $link;
-					$post->title_tag = $title_tag;
+					// $post->link = $link;
+					// $post->title_tag = $title_tag;
 					$post->save();
 
 
-					if (Input::get('push_button') === 'yes') {
-						// checked
+					// if (Input::get('push_button') === 'yes') {
+					// 	// checked
 
-						$response_array = array(
-							'success' => true,
-							'description' => $meta_des,
-							'image' => $s3_url,
-						);
+					// 	$response_array = array(
+					// 		'success' => true,
+					// 		'description' => $meta_des,
+					// 		'image' => $s3_url,
+					// 	);
 
 
-						send_notification($title,$response_array);
-					}
+					// 	send_notification($title,$response_array);
+					// }
 
 
 				}
@@ -319,8 +317,7 @@ class ContributorController extends \BaseController {
 		else
 		{
 			$admin = User::find(Auth::user()->id);
-			$file_name = time();
-			$file_name .= rand();
+			$file_name = seo_url(Setting::get('sitename')).'-'.Auth::user()->author_name.'-'.time();
 			$ext = Input::file('profile_pic')->getClientOriginalExtension();
 			Input::file('profile_pic')->move(public_path() . "/uploads", $file_name . "." . $ext);
 			$local_url = $file_name . "." . $ext;

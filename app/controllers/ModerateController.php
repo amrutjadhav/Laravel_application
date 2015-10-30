@@ -118,8 +118,7 @@ class ModerateController extends \BaseController {
                 }
                 else
                 {
-                    $file_name = time();
-                    $file_name .= rand();
+                    $file_name = seo_url($title).'-'.time();
                     $post->des = Input::get('des');
                     $ext = Input::file('post_img')->getClientOriginalExtension();
                     Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
@@ -170,8 +169,7 @@ class ModerateController extends \BaseController {
                 }
                 else
                 {
-                    $file_name = time();
-                    $file_name .= rand();
+                    $file_name = seo_url($title).'-'.seo_url($share_cat).'-'.time();
                     $ext = Input::file('post_img')->getClientOriginalExtension();
                     Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
                     $local_url = $file_name . "." . $ext;
@@ -318,8 +316,7 @@ class ModerateController extends \BaseController {
         else
         {
             $admin = User::find(Auth::user()->id);
-            $file_name = time();
-            $file_name .= rand();
+            $file_name = seo_url(Setting::get('sitename')).'-'.Auth::user()->author_name.'-'.time();
             $ext = Input::file('profile_pic')->getClientOriginalExtension();
             Input::file('profile_pic')->move(public_path() . "/uploads", $file_name . "." . $ext);
             $local_url = $file_name . "." . $ext;

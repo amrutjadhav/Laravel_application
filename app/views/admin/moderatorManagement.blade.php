@@ -43,15 +43,15 @@
                         </td>
                         <td>
                             @if($user->is_activated != 0)
-                                <a class="btn ink-reaction btn-floating-action btn-warning" href="{{route('adminModeratorDecline', array('id' => $user->id))}}"><i class="fa fa-times"></i></a>
+                                <a title="Un Approve" class="btn ink-reaction btn-floating-action btn-warning" href="{{route('adminModeratorDecline', array('id' => $user->id))}}"><i class="fa fa-times"></i></a>
                             @else
-                                <a class="btn ink-reaction btn-floating-action btn-primary" href="{{route('adminModeratorActivate', array('id' => $user->id))}}"><i class="fa fa-check"></i></a>
+                                <a title="Approve" class="btn ink-reaction btn-floating-action btn-primary" href="{{route('adminModeratorActivate', array('id' => $user->id))}}"><i class="fa fa-check"></i></a>
                             @endif
 
 
-                            <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminModeratorEdit', array('id' => $user->id))}}"><i class="fa fa-edit"></i></a>
+                            <a  title="Edit Moderator" class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminModeratorEdit', array('id' => $user->id))}}"><i class="fa fa-edit"></i></a>
 
-                            <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminModeratorDelete',array('id' => $user->id))}}"><i class="fa fa-trash"></i></a>
+                            <a title="Delete" onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminModeratorDelete',array('id' => $user->id))}}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach

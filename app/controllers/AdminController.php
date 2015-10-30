@@ -412,8 +412,7 @@ class AdminController extends \BaseController {
 		{
 			$category = new Category;
 			$category->name = Input::get('name');
-			$file_name = time();
-			$file_name .= rand();
+			$file_name = seo_url(Input::get('name')).'-'.time();
 			$ext = Input::file('cat_img')->getClientOriginalExtension();
 			Input::file('cat_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
 			$local_url = $file_name . "." . $ext;
@@ -467,8 +466,7 @@ class AdminController extends \BaseController {
 			} 
 			else 
 			{
-				$file_name = time();
-				$file_name .= rand();
+				$file_name = seo_url(Input::get('name')).'-'.time();
 				$ext = Input::file('picture')->getClientOriginalExtension();
 				Input::file('picture')->move(public_path() . "/uploads", $file_name . "." . $ext);
 				$local_url = $file_name . "." . $ext;
@@ -585,8 +583,14 @@ class AdminController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->url = $url;
                 $post->meta_des = $meta_des;
+                $post->user_id = $author;
+                if($share_cat != "" && $share_link != ""){
+                	$post->share_cat = $share_cat;
+                	$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
+                    $post->link = $link;
+                }
 				$post->publisher = $publisher;
-				$post->author = $author;
+				// $post->author = $author;
 				if($pub_date != "")
 				$post->created_at = date('Y-m-d H:i:s', strtotime("$pub_date $pub_time"));
 
@@ -604,8 +608,7 @@ class AdminController extends \BaseController {
                 } 
                 else 
                 {
-                    $file_name = time();
-                    $file_name .= rand();
+                    $file_name = seo_url($title).'-'.time();
                     $post->des = Input::get('des');
                     $ext = Input::file('post_img')->getClientOriginalExtension();
                     Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
@@ -656,8 +659,7 @@ class AdminController extends \BaseController {
                 } 
                 else
                 {
-                    $file_name = time();
-                    $file_name .= rand();
+                    $file_name = seo_url($title).'-'.seo_url($share_cat).'-'.time();
                     $ext = Input::file('post_img')->getClientOriginalExtension();
                     Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
                     $local_url = $file_name . "." . $ext;
@@ -702,12 +704,18 @@ class AdminController extends \BaseController {
 
 	public function editPost($id)
     {
+    	$check_con = 0;
         $category = Category::all();
         $post = Post::find($id);
+        $check_role = get_user_details($post->user_id);
+        if($check_role->role_id == 3 && $post->is_approved == 0){$check_con = 1;}
+        $authors = User::where('is_activated',1)->get();
         $cate = explode(',', $post->category);
         return View::make('admin.editPost')
             ->with('title',"Posts Management")
             ->with('page', "posts")
+            ->with('authors', $authors)
+            ->with('contributor',$check_con)
             ->with('category',$category)
             ->with('post',$post)
             ->with('cate',$cate);
@@ -788,8 +796,7 @@ class AdminController extends \BaseController {
 			}
 			else
 			{
-				$file_name = time();
-				$file_name .= rand();
+				$file_name = seo_url(Input::get('sitename')).'-'.time();
 				$ext = Input::file('picture')->getClientOriginalExtension();
 				Input::file('picture')->move(public_path() . "/uploads", $file_name . "." . $ext);
 				$local_url = $file_name . "." . $ext;
@@ -893,8 +900,7 @@ class AdminController extends \BaseController {
 		else
 		{
 			$admin = User::find(Auth::user()->id);
-			$file_name = time();
-			$file_name .= rand();
+			$file_name = seo_url(Setting::get('sitename')).'-'.Auth::user()->author_name.'-'.time();
 			$ext = Input::file('profile_pic')->getClientOriginalExtension();
 			Input::file('profile_pic')->move(public_path() . "/uploads", $file_name . "." . $ext);
 			$local_url = $file_name . "." . $ext;
