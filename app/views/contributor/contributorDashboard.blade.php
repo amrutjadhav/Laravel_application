@@ -28,7 +28,8 @@
                     <div class="card">
                         <div class="card-body no-padding">
                             <div class="alert alert-callout alert-info no-margin">
-                                <h1 class="pull-right text-success">{{{$post_count}}}<i class="md md-photo"></i></h1>
+                                <h1 class="pull-right text-info"><i class="md md-photo"></i></h1>
+                                <strong class="text-xl">{{{$post_count}}}</strong><br>
                                 <span class="opacity-50">Total Posts</span>
                             </div>
                         </div><!--end .card-body -->

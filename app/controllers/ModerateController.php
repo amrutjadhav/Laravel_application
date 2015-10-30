@@ -11,7 +11,7 @@ class ModerateController extends \BaseController {
 
     public function moderatePost()
     {
-        $post = Post::paginate(10);
+        $post = Post::orderBy('created_at', 'desc')->distinct()->paginate(10);
         return View::make('moderate.post')
             ->with('title',"Posts Management")
             ->with('page', "posts")
@@ -34,9 +34,11 @@ class ModerateController extends \BaseController {
     public function addPost()
     {
         $category = Category::all();
+        $details = get_user_details(Auth::user()->id);
         return View::make('moderate.addPost')
             ->with('title',"Posts Management")
             ->with('page', "posts")
+            ->with('details',$details)
             ->with('category',$category);
     }
 
@@ -99,7 +101,6 @@ class ModerateController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->url = $url;
                 $post->meta_des = $meta_des;
-                $post->user_id = Auth::user()->id;
                 $post->publisher = $publisher;
                 $post->author = $author;
 
@@ -132,7 +133,7 @@ class ModerateController extends \BaseController {
                 $post->category = implode(',', $category);
                 $post->save();
                 if ($post) {
-                    return Redirect::back()->with('flash_success', "Post Updated");
+                    return Redirect::route('moderatePost')->with('flash_success', "Post Updated");
                 } else {
                     return Redirect::back()->with('flash_error', "Something went wrong");
                 }
@@ -207,7 +208,7 @@ class ModerateController extends \BaseController {
 
                 }
                 if ($post) {
-                    return Redirect::back()->with('flash_success', "Post created");
+                    return Redirect::route('moderatePost')->with('flash_success', "Post created");
                 } else {
                     return Redirect::back()->with('flash_error', "Something went wrong");
                 }
@@ -244,9 +245,11 @@ class ModerateController extends \BaseController {
         $validator = Validator::make(array(
             'first_name' => Input::get('first_name'),
             'last_name' => Input::get('last_name'),
-            'email' => Input::get('email')),
+            'email' => Input::get('email'),
+        'author_name' => Input::get('author_name')),
             array('first_name' => 'required',
                 'last_name' => 'required',
+                'author_name' => 'required',
                 'email' => 'required|email'));
         if($validator->fails())
         {
@@ -257,10 +260,13 @@ class ModerateController extends \BaseController {
             $first_name = Input::get('first_name');
             $last_name = Input::get('last_name');
             $email = Input::get('email');
+            $author_name = Input::get('author_name');
+
             $admin = User::find(Auth::user()->id);
             $admin->first_name = $first_name;
             $admin->last_name = $last_name;
             $admin->email = $email;
+            $admin->author_name = $author_name;
             $admin->save();
 
             if ($admin) {

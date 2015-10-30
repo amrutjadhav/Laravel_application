@@ -26,6 +26,8 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/font-awesome.min.css?1422529194')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/date.css')}}" />
+    <link rel="shortcut icon" type="image/png" href="{{Setting::get('logo')}}"/>
     <!-- END STYLESHEETS -->
 
 
@@ -73,11 +75,11 @@
                             <img src="{{asset('admins/img/user.png')}}" alt="" />
                         @endif
 								<span class="profile-info">{{{Auth::user()->first_name}}}
-									<smallpngministrator</small>
+									<small>Administrator</small>
 								</span>
                     </a>
                     <ul class="dropdown-menu animation-dock">
-                        <li class="dropdown-header">Config</li>
+                        <li class="dropdown-header">Settings</li>
                         <li><a href="{{route('adminProfile')}}">My profile</a></li>
 
                         <li class="divider"></li>
@@ -205,7 +207,7 @@
                 <li id="help">
                     <a href="{{route('help')}}" >
                         <div class="gui-icon"><i class="md md-star"></i></div>
-                        <span class="title">Need something?</span>
+                        <span class="title">Need Something?</span>
                     </a>
                 </li><!--end /menu-li -->
 
@@ -225,9 +227,8 @@
 
     <!-- BEGIN JAVASCRIPT -->
 
-    <script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
-
-<script type="text/javascript" src="{{asset('admins/js/materialize.min.js')}}"></script>
+<script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+<script src="{{asset('admins/js/materialize.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/bootstrap/bootstrap.min.js')}}"></script>
 <script src="{{asset('admins/js/libs/spin.js/spin.min.js')}}"></script>
@@ -241,6 +242,7 @@
 <script src="{{asset('admins/js/core/source/AppForm.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppNavSearch.js')}}"></script>
 <script src="{{asset('admins/js/core/source/AppVendor.js')}}"></script>
+<script src="{{asset('admins/js/date.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/Demo.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/DemoFormComponents.js')}}"></script>
@@ -253,6 +255,7 @@
 
 
     <script type="text/javascript">
+    $('#demo-date').datepicker({autoclose: true, todayHighlight: true});
         $('#characterLeft').text('70 characters left');
         $('#title_tag').keyup(function () {
             var max = 70;
@@ -266,6 +269,7 @@
         });
 
     </script>
+
 
 
 </body>

@@ -15,13 +15,16 @@
     <div class="page">
         <div class="col-md-12">
             <div class="card">
+                <div class="card-head style-primary">
+                        <header>Posts</header>
+                    </div>
                 <div class="card-body">
                     <ul class="pull-right">
                         <li>
                             <!-- Search form -->
                             <form class="navbar-search" role="search" action="{{route('adminPostSearch')}}">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="keyword" placeholder="Enter username">
+                                    <input type="text" class="form-control" name="keyword" placeholder="Enter The Author Name">
                                 </div>
                                 <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
                             </form>
@@ -34,10 +37,8 @@
                             <th>Title</th>
                             <th>Description</th>
                             <th>Roles</th>
-                            <th>Username</th>
                             <th>Author</th>
                             <th>Action</th>
-
                         </tr>
                         </thead>
                         <tbody>
@@ -45,7 +46,7 @@
                             <tr>
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
-                                <td>{{{$post->des}}}</td>
+                                <td>{{$post->des}}</td>
                                 <?php $user = User::where('id',$post->user_id)->first(); ?>
                                 <td>
                                     <?php
@@ -70,19 +71,7 @@
                                         }
                                     ?>
                                 </td>
-                                <td>
-                                    <?php
-                                        if($user)
-                                        {
-                                            echo "$user->username";
-                                        }
-                                        else
-                                        {
-                                            echo "";
-                                        }
-                                    ?>
-                                </td>
-                                <td>{{$post->author}}</td>
+                                <td><?php $user = get_user_details($post->user_id); echo $user->author_name; ?></td>
                                 <td style="width: 297px;">
                                     @if($post->is_approved != 0)
                                         <a class="btn ink-reaction btn-floating-action btn-warning" href="{{route('adminPostDecline', array('id' => $post->id))}}"><i class="fa fa-times"></i></a>
@@ -91,9 +80,9 @@
                                     @endif
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('sendPush')}}"><i class="fa fa-paper-plane"></i></a> -->
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminAddPost')}}"><i class="fa fa-plus"></i></a> -->
-                                    <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminViewPost', array('id' => $post->id))}}"><i class="fa fa-eye"></i></a>
+                                    <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach

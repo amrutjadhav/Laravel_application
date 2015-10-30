@@ -15,6 +15,9 @@
 
         <div class="col-md-12">
             <div class="card">
+                <div class="card-head style-primary">
+                    <header>Edit COntributors</header>
+                </div>
                 <div class="card-body">
                     <form class="form" action="{{route('contributorsEditProcess')}}" method="post">
                         <input type="hidden" name="id" value="{{$contributors->id}}" />
@@ -28,8 +31,8 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="password1" name="username" value="{{$contributors->username}}">
-                            <label for="password1">Username</label>
+                            <input type="text" class="form-control" id="password1" name="author_name" value="{{$contributors->author_name}}">
+                            <label for="password1">Author Name</label>
                         </div>
 
                         <div class="form-group">
@@ -37,7 +40,7 @@
                             <label for="password1">Email</label>
                         </div>
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->

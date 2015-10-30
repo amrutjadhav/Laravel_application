@@ -15,8 +15,11 @@
 
     <div class="page">
 
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
+                <div class="card-head style-warning">
+                   <header>Edit Post</header>
+                </div>
                 <div class="card-body">
                     <div class="text-right">
                         <a class="btn ink-reaction btn-raised btn-primary" href="{{route('contributorPost')}}">BACK</a>
@@ -28,25 +31,11 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="regular1" name="author" value="{{{$post->author}}}">
-                            <label for="regular1">Author</label>
-                        </div>
-
-                        <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="publisher" value="{{{$post->publisher}}}">
                             <label for="regular1">Publisher</label>
                         </div>
 
                         <input type="hidden" name="id" value="{{{$post->id}}}">
-
-                        <div class="input-field col s12 check-box-inline">
-                            <?php foreach($category as $cat) {?>
-                            <p> <input type="checkbox" name="category[{{$cat->id}}]" value="{{$cat->id}}" id="test{{$cat->id}}" <?php if(in_array($cat->id, $cate)) echo "checked"; ?> />
-                                <label for="test{{$cat->id}}">{{$cat->name}}</label>
-                            </p>
-                            <?php } ?>
-                            <br><br>
-                        </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="url" value="{{{$post->url}}}">
@@ -60,7 +49,7 @@
                             </div>
                             <div class="btn light-blue accent-2" style="padding: 0px 10px;">
                                 <span>Choose Picture</span>
-                                <input type="file" name="post_img" />
+                                <input type="file" name="post_img" style="height:300px;margin:10px;">
                             </div>
                             <input class="file-path validate" type="text" value="{{$post->image}}"/>
 
@@ -71,13 +60,13 @@
                             <label for="textarea1">Description</label>
                         </div>
 
-<!--                         <div class="form-group">
+                        <div class="form-group">
 
-                        <input type="text" class="form-control" id="title_tag" name="title_tag" maxlength="70" value="{{$post->title_tag}}">
-                        <label for="regular1">Title Tag</label>
-                        <div id="characterLeft"></div>
+                            <input type="text" class="form-control" id="title_tag" name="title_tag" maxlength="70" value="{{$post->title_tag}}">
+                            <label for="regular1">Title Tag</label>
+                            <div id="characterLeft"></div>
 
-                        </div> -->
+                        </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="meta_des" name="meta_des" value="{{$post->meta_des}}">
@@ -85,32 +74,50 @@
                             <div id="characterLeft1"></div>
                         </div>
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
-                    </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->
 
         </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Update & Publish</button>
+                        <br><br>
+
+                        <div class="input-group date" id="demo-date">
+                                <div class="input-group-content">
+                                     <input type="text" class="form-control" required name="pub_date" value="{{date('m/d/Y',strtotime($post->created_at))}}">
+                                    <label>Publish Date</label>
+                                </div>
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control time-mask" required id="pub" name="pub_time" value="{{{date('H:m',strtotime($post->created_at))}}}">
+                            <label for="regular1">Change Publish Time</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" readonly id="regular1" name="author" value="{{{$post->author}}}">
+                            <label for="regular1">Author</label>
+                        </div>
 
 
+                       <div class="input-field col s12 check-box-inline">
+                        <?php foreach($category as $cat) {?>
+                            <p> <input type="checkbox"  name="category[{{$cat->id}}]" value="{{$cat->id}}" id="test{{$cat->id}}" <?php if(in_array($cat->id, $cate)) echo "checked"; ?> />
+                                <label for="test{{$cat->id}}">{{$cat->name}}</label>
+                            </p>
+                            <?php } ?>
+                        <br><br>
+                    </div>
 
+                </div><!--end .card-body -->
+            </div><!--end .card -->
+
+        </div>
+         </form>
     </div>
     </div>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type="text/javascript">
-$('#characterLeft').text('70 characters left');
-$('#title_tag').keyup(function () {
-    var max = 70;
-    var len = $(this).val().length;
-    if (len >= max) {
-        $('#characterLeft').text(' you have reached the limit');
-    } else {
-        var ch = max - len;
-        $('#characterLeft').text(ch + ' characters left');
-    }
-});
-
-</script>
 @stop

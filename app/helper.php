@@ -20,6 +20,16 @@ function counter($page){
 		}
 }
 
+function get_all_authors(){
+  $author = User::where('author_name','!=','')->get();
+  return $author;
+}
+
+function get_user_details($id){
+  $data = User::find($id);
+  return $data;
+}
+
 function send_notifications($title, $message) {
     Log::info('push notification');
 

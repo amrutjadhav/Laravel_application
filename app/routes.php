@@ -137,11 +137,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::post('/editPost/{id}', array('as' => 'adminEditProcess', 'uses' => 'AdminController@addPostProcess'));
 
-	Route::post('/croppingImage', array(
-		'as' => 'cropping-image',
-		'uses' => 'ImageCropper@croppingImage'
-	));
-
 	Route::get('/deletePost/{id}', array('as' => 'adminDeletePost', 'uses' => 'AdminController@deletePost'));
 
 	Route::get('/sendPush/{id}', array('as' => 'sendPush', 'uses' => 'AdminController@sendPush'));
@@ -248,6 +243,11 @@ Route::get('/getCategory', array('as' => 'getCategory', 'uses' => 'ApiController
 Route::get('/postDetails', array('as' => 'postDetails', 'uses' => 'ApiController@postDetails'));
 
 Route::get('/getPostCat', array('as' => 'getPostCat', 'uses' => 'ApiController@getPostCat'));
+
+// auto save for draft
+
+Route::post('/auto-save-now', array('as' => 'auto_save_form', 'uses' => 'ApiController@auto_save_form'));
+
 
 // Admin panel App's API
 

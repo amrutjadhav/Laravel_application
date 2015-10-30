@@ -15,8 +15,11 @@
 
     <div class="page">
 
-        <div class="col-md-12">
+        <div class="col-md-4">
             <div class="card">
+                <div class="card-head style-info">
+               <header>Profile Settings</header>
+                </div>
                 <div class="card-body">
                     <form class="form" action="{{route('moderateProfileProcess')}}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="{{$admin->id}}">
@@ -31,19 +34,27 @@
                         </div>
 
                         <div class="form-group">
+                        <input type="text" class="form-control" id="regular1" name="author_name" value="{{$admin->author_name}}">
+                        <label for="regular1">Author Name</label>
+                        </div>
+
+                        <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="email" value="{{$admin->email}}">
                             <label for="regular1">Email</label>￼
                         </div>
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-warning">Submit</button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->
 
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-4">
             <div class="card">
+                <div class="card-head style-info">
+               <header>Change Picture</header>
+            </div>
                 <div class="card-body">
                     <form class="form" action="{{route('moderateProfilePics')}}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="{{$admin->id}}">
@@ -61,7 +72,7 @@
                             <input class="file-path validate" type="text" />
 
                         </div>
-                        <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-warning">Submit</button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->
@@ -69,8 +80,11 @@
         </div>
 
 
-        <div class="col-md-12">
+        <div class="col-md-4">
             <div class="card">
+                <div class="card-head style-info">
+               <header>Change Password</header>
+            </div>
                 <div class="card-body">
                     <form class="form" action="{{route('moderatePassword')}}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="{{$admin->id}}">
@@ -82,12 +96,12 @@
 
                         <div class="form-group">
                             <input type="password" class="form-control" id="regular1" name="con_password">
-                            <label for="regular1">Con Password</label>￼
+                            <label for="regular1">Confirm Password</label>￼
                         </div>
 
 
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-warning">Submit</button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->

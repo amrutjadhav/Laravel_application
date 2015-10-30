@@ -4,7 +4,7 @@ class ContributorController extends \BaseController {
 
 	public function contributorDashboard()
 	{
-		$post_count = Post::all()->count();
+		$post_count = Post::where('user_id',Auth::user()->id)->count();
 		return View::make('contributor.contributorDashboard')->withPage('dashboard')
 			->with('post_count',$post_count);
 	}
@@ -34,9 +34,11 @@ class ContributorController extends \BaseController {
 	public function addPost()
 	{
 		$category = Category::all();
+        $details = get_user_details(Auth::user()->id);
 		return View::make('contributor.addPost')
 			->with('title',"Posts Management")
 			->with('page', "posts")
+			->with('details',$details)
 			->with('category',$category);
 	}
 
@@ -65,6 +67,8 @@ class ContributorController extends \BaseController {
 		$share_cat = Input::get('share_cat');
 		$author = Input::get('author');
 		$publisher = Input::get('publisher');
+		$pub_date = Input::get('pub_date');
+		$pub_time = Input::get('pub_time');
 
 		$validator = Validator::make(
 			array(
@@ -94,13 +98,13 @@ class ContributorController extends \BaseController {
 			{
 				$post = Post::find(Input::get('id'));
 				$post->title = $title;
-				$post->is_approved = 0;
 				$post->des = Input::get('des');
 				$post->url = $url;
 				$post->meta_des = $meta_des;
-				$post->user_id = Auth::user()->id;
 				$post->publisher = $publisher;
 				$post->author = $author;
+				if($pub_date != "")
+				$post->created_at = date('Y-m-d H:i:s', strtotime("$pub_date $pub_time"));
 
 				$validator1 = Validator::make(
 					array(
@@ -131,7 +135,7 @@ class ContributorController extends \BaseController {
 				$post->category = implode(',', $category);
 				$post->save();
 				if ($post) {
-					return Redirect::back()->with('flash_success', "Post Updated");
+					return Redirect::route('contributorPost')->with('flash_success', "Post Updated");
 				} else {
 					return Redirect::back()->with('flash_error', "Something went wrong");
 				}
@@ -140,7 +144,7 @@ class ContributorController extends \BaseController {
 			{
 				$post = new Post;
 				$post->title = $title;
-				$post->is_approved = 1;
+				$post->is_approved = 0;
 				$post->url = $url;
 				$post->des = Input::get('des');
 				$post->meta_des = $meta_des;
@@ -206,7 +210,7 @@ class ContributorController extends \BaseController {
 
 				}
 				if ($post) {
-					return Redirect::back()->with('flash_success', "Post created");
+					return Redirect::route('contributorPost')->with('flash_success', "Post created");
 				} else {
 					return Redirect::back()->with('flash_error', "Something went wrong");
 				}
@@ -242,9 +246,11 @@ class ContributorController extends \BaseController {
 		$validator = Validator::make(array(
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
-			'email' => Input::get('email')),
+			'email' => Input::get('email'),
+		'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
+				'author_name' => 'required',
 				'email' => 'required|email'));
 		if($validator->fails())
 		{
@@ -255,10 +261,13 @@ class ContributorController extends \BaseController {
 			$first_name = Input::get('first_name');
 			$last_name = Input::get('last_name');
 			$email = Input::get('email');
+			$author_name = Input::get('author_name');
+
 			$admin = User::find(Auth::user()->id);
 			$admin->first_name = $first_name;
 			$admin->last_name = $last_name;
 			$admin->email = $email;
+			$admin->author_name = $author_name;
 			$admin->save();
 
 			if ($admin) {

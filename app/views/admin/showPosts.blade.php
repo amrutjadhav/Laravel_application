@@ -13,6 +13,9 @@
 <div class="page">
     <div class="col-md-12">
         <div class="card">
+            <div class="card-head style-primary">
+                        <header>Posts</header>
+                    </div>
             <div class="card-body">
                 <table class="table no-margin">
                     <thead>
@@ -38,7 +41,7 @@
 
                             <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
 
-                            <a class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
+                            <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                         </td>
                         <td>
                             @if($post->report_flag != 0)

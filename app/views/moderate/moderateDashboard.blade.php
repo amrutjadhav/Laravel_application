@@ -28,12 +28,27 @@
                     <div class="card">
                         <div class="card-body no-padding">
                             <div class="alert alert-callout alert-info no-margin">
-                                <h1 class="pull-right text-success">{{{$post_count}}}<i class="md md-photo"></i></h1>
+                                <h1 class="pull-right text-info"><i class="md md-photo"></i></h1>
+                                <strong class="text-xl">{{{$post_count}}}</strong><br>
                                 <span class="opacity-50">Total Posts</span>
                             </div>
                         </div><!--end .card-body -->
                     </div><!--end .card -->
                 </div>
+
+                <!-- BEGIN ALERT - TIME ON SITE -->
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card">
+                                    <div class="card-body no-padding">
+                                        <div class="alert alert-callout alert-success no-margin">
+                                            <h1 class="pull-right text-success"><i class="md md-pageview"></i></h1>
+                                            <strong class="text-xl">{{{total_view_count()}}}</strong><br/>
+                                            <span class="opacity-50">Total No. of Views</span>
+                                        </div>
+                                    </div><!--end .card-body -->
+                                </div><!--end .card -->
+                            </div><!--end .col -->
+                            <!-- END ALERT - TIME ON SITE -->
 
             </div>
 

@@ -16,6 +16,9 @@
 
     <div class="col-md-12">
         <div class="card">
+            <div class="card-head style-primary">
+               <header>Edit Moderators</header>
+            </div>
             <div class="card-body">
                 <form class="form" action="{{route('moderatorEditProcess')}}" method="post">
                     <input type="hidden" name="id" value="{{$moderate->id}}"/>
@@ -28,14 +31,14 @@
                         <label for="regular1">Last Name</label>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="username" value="{{$moderate->username}}">
-                        <label for="regular1">User Name</label>
+                        <input type="text" class="form-control" id="regular1" name="author_name" value="{{$moderate->author_name}}">
+                        <label for="regular1">Author Name</label>
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control" id="password1" name="email" value="{{$moderate->email}}">
                         <label for="password1">Email</label>
                     </div>
-                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
                 </form>
             </div><!--end .card-body -->
         </div><!--end .card -->

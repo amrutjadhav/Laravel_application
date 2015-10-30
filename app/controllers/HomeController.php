@@ -55,10 +55,11 @@ class HomeController extends BaseController {
 		$segment = $data;
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
+		$related = Post::rand()->take(3)->get();
 		if($post_details)
 		{	
 			counter($segment);
-			return View::make('single-post')->withPost($post_details)->with('cats',$cats);
+			return View::make('single-post')->withRelated($related)->withPost($post_details)->with('cats',$cats);
 		}
 		else
 		{
@@ -165,7 +166,7 @@ class HomeController extends BaseController {
 			$user->password = Hash::make($new_password);
 
 			$subject = "Your New Password";
-			$email_data['name'] = $user->username;
+			$email_data['name'] = $user->author_name;
 			$email_data['password'] = $new_password;
 			$email_data['email'] = $user->email;
 			$user->save();
@@ -209,6 +210,9 @@ class HomeController extends BaseController {
 
         foreach ($data as $post) {
 				$cat_name = $post->share_cat;
+				if($cat_name == ""){
+					$cat_name = "news";
+				}
                 $fb = route("shareLink",array("id" => $cat_name,"data" => $post->link));
                 $twitter = route("shareLink",array("id" => $cat_name,"data" => $post->link));
         	echo '<div class="col m6 s12 l4">
@@ -446,10 +450,11 @@ class HomeController extends BaseController {
 		$segment = $data;
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
+		$related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(4)->get();
 		if($post_details)
 		{
 			counter($segment);
-			return View::make('single-post')->withPost($post_details)->with('cats',$cats);
+			return View::make('single-post')->withRelated($related)->withPost($post_details)->with('cats',$cats);
 		}
 		else
 		{

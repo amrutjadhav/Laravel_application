@@ -40,11 +40,11 @@ class AdminController extends \BaseController {
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
 			'email' => Input::get('email'),
-			'username' => Input::get('username')),
+			'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
 				'email' => 'required|email',
-				'username' => 'required|unique:users,username'));
+				'author_name' => 'required'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -62,7 +62,7 @@ class AdminController extends \BaseController {
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
 			$user->role_id = 1;
-			$user->username = Input::get('username');
+			$user->author_name = Input::get('author_name');
 
 			$new_password = time();
 			$new_password .= rand();
@@ -72,7 +72,7 @@ class AdminController extends \BaseController {
 
 
 			$subject = "Welcome On Board";
-			$email_data['name'] = $user->username;
+			$email_data['name'] = $user->author_name;
 			$email_data['password'] = $new_password;
 			$email_data['email'] = $user->email;
 
@@ -141,11 +141,11 @@ class AdminController extends \BaseController {
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
 			'email' => Input::get('email'),
-			'username' => Input::get('username')),
+			'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
 				'email' => 'required|email',
-				'username' => 'required|unique:users,username'));
+				'author_name' => 'required|unique:users,author_name'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -158,6 +158,7 @@ class AdminController extends \BaseController {
 			$user->first_name = Input::get('first_name');
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
+			$user->author_name = Input::get('author_name');
 
 			$user->save();
 			if ($user) {
@@ -207,11 +208,11 @@ class AdminController extends \BaseController {
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
 			'email' => Input::get('email'),
-			'username' => Input::get('username')),
+			'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
 				'email' => 'required|email',
-				'username' => 'required|unique:users,username'));
+				'author_name' => 'required|unique:users,author_name'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -228,7 +229,7 @@ class AdminController extends \BaseController {
 			$user->first_name = Input::get('first_name');
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
-			$user->username = Input::get('username');
+			$user->author_name = Input::get('author_name');
 			$user->role_id = 3;
 
 			$new_password = time();
@@ -239,7 +240,7 @@ class AdminController extends \BaseController {
 
 
 			$subject = "Welcome On Board";
-			$email_data['name'] = $user->username;
+			$email_data['name'] = $user->author_name;
 			$email_data['password'] = $new_password;
 			$email_data['email'] = $user->email;
 
@@ -308,11 +309,11 @@ class AdminController extends \BaseController {
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
 			'email' => Input::get('email'),
-			'username' => Input::get('username')),
+			'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
 				'email' => 'required|email',
-				'username' => 'required|unique:users,username'));
+				'author_name' => 'required|unique:users,author_name'));
 		$email = Input::get('email');
 		if($validator->fails())
 		{
@@ -325,7 +326,7 @@ class AdminController extends \BaseController {
 			$user->first_name = Input::get('first_name');
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
-			$user->username = Input::get('username');
+			$user->author_name = Input::get('author_name');
 
 			$user->save();
 			if ($user) {
@@ -489,7 +490,7 @@ class AdminController extends \BaseController {
 
 	public function adminPost()
 	{
-		$post = Post::orderBy('created_at', 'desc')->paginate(10);
+		$post = Post::orderBy('created_at', 'desc')->distinct()->paginate(10);
 		return View::make('admin.post')
 			->with('title',"Posts Management")
 			->with('page', "posts")
@@ -499,7 +500,7 @@ class AdminController extends \BaseController {
 	public function adminPostSearch()
 	{
 		$keyword = Input::get('keyword');
-		$user = User::where('username','like', '%'.$keyword.'%')->first();
+		$user = User::where('author_name','like', '%'.$keyword.'%')->first();
 		if($user)
 		{
 			$post = Post::where('user_id',$user->id)->orderBy('created_at', 'desc')->paginate(10);
@@ -512,12 +513,12 @@ class AdminController extends \BaseController {
 			}
 			else
 			{
-				return Redirect::back()->with('flash_error',"Not found");
+				return Redirect::route('adminPost')->with('flash_error',"Not found");
 			}
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Not found");
+			return Redirect::route('adminPost')->with('flash_error',"Not found");
 		}
 
 	}
@@ -525,9 +526,11 @@ class AdminController extends \BaseController {
 	public function addPost()
 	{
 		$category = Category::all();
+		$details = get_user_details(Auth::user()->id);
 		return View::make('admin.addPost')
 			->with('title',"Posts Management")
 			->with('page', "posts")
+			->with('details',$details)
 			->with('category',$category);
 	}
 
@@ -556,9 +559,7 @@ class AdminController extends \BaseController {
                 'meta_des' => $meta_des,
                 'category' => $category,
 				'author' => $author,
-				'publisher' => $publisher,
-				'pub_date' => $pub_date,
-				'pub_time' => $pub_time
+				'publisher' => $publisher
 
             ), array(
                 'title' => 'required',
@@ -566,10 +567,7 @@ class AdminController extends \BaseController {
                 'meta_des' => 'required',
                 'category' => 'required',
 				'author' => 'required',
-				'publisher' => 'required',
-				'pub_date' => 'required',
-				'pub_time' => 'required'
-
+				'publisher' => 'required'
             )
         );
 
@@ -587,9 +585,9 @@ class AdminController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->url = $url;
                 $post->meta_des = $meta_des;
-				$post->user_id = Auth::user()->id;
 				$post->publisher = $publisher;
 				$post->author = $author;
+				if($pub_date != "")
 				$post->created_at = date('Y-m-d H:i:s', strtotime("$pub_date $pub_time"));
 
                 $validator1 = Validator::make(
@@ -621,7 +619,7 @@ class AdminController extends \BaseController {
                 $post->category = implode(',', $category);
                 $post->save();
 				if ($post) {
-					return Redirect::back()->with('flash_success', "Post Updated");
+					return Redirect::route('adminPost')->with('flash_success', "Post Updated");
 				} else {
 					return Redirect::back()->with('flash_error', "Something went wrong");
 				}
@@ -694,7 +692,7 @@ class AdminController extends \BaseController {
                     }
                 }
 				if ($post) {
-					return Redirect::back()->with('flash_success', "Post created");
+					return Redirect::route('adminPost')->with('flash_success', "Post created");
 				} else {
 					return Redirect::back()->with('flash_error', "Something went wrong");
 				}
@@ -823,9 +821,11 @@ class AdminController extends \BaseController {
 		$validator = Validator::make(array(
 			'first_name' => Input::get('first_name'),
 			'last_name' => Input::get('last_name'),
-			'email' => Input::get('email')),
+			'email' => Input::get('email'),
+			'author_name' => Input::get('author_name')),
 			array('first_name' => 'required',
 				'last_name' => 'required',
+				'author_name' => 'required',
 				'email' => 'required|email'));
 		if($validator->fails())
 		{
@@ -836,10 +836,12 @@ class AdminController extends \BaseController {
 			$first_name = Input::get('first_name');
 			$last_name = Input::get('last_name');
 			$email = Input::get('email');
+			$author_name = Input::get('author_name');
 			$admin = User::find(Auth::user()->id);
 			$admin->first_name = $first_name;
 			$admin->last_name = $last_name;
 			$admin->email = $email;
+			$admin->author_name = $author_name;
 			$admin->save();
 
 			if ($admin) {

@@ -105,16 +105,36 @@
             </div>
             <hr>
 
-            <div class="row">
+            <div class="row" style="text-align:center;">
 
-                <a href="http://www.facebook.com/sharer.php?u={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-                    <a href="http://twitter.com/share?text={{$post->title}}&url={{route('single',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+                <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
+                    <a href="http://twitter.com/share?text={{$post->title}}&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
                     <a href="{{{$post->url}}}" class="waves-effect waves-light btn no-right-mar dark-blue darken">Read More</a>
-                    <a href="{{route('home')}}" class="waves-effect waves-light btn no-right-mar mat-clr">More News</a> 
+            </div>
+            
+
+        </div>
+
+        <div class="row">
+                @foreach($related as $post)
+                <div class="col m6 s12 l3">
+                  <div class="single-post card animated zoomIn">
+                      <div class="card-image">
+                        <a href="javascript:void(0);"><img src="{{$post->image}}"></a>
+                        <span class="card-title">{{$post->title}}</span>
+                      </div>
+                      <div class="card-content">
+                       <p class="text-justify">{{$post->des}}</p>
+                      </div>
+                  </div>    
+              </div>
+              @endforeach
 
             </div>
 
-        </div>
+            <div class="row" style="text-align:center;">
+                 <a href="{{route('home')}}" class="waves-effect waves-light btn no-right-mar mat-clr">More News</a> 
+            </div>
 
 
     </div>

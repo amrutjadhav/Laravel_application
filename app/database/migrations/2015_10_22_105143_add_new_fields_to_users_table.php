@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddUsernameToUsersTable extends Migration {
+class AddNewFieldsToUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,7 +14,7 @@ class AddUsernameToUsersTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-			$table->string('username')->unique();
+			$table->string('author_name');
 		});
 	}
 
@@ -28,7 +28,7 @@ class AddUsernameToUsersTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table)
 		{
-			$table->dropColumn('username');
+			$table->dropColumn('author_name');
 		});
 	}
 

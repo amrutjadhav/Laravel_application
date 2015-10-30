@@ -13,6 +13,9 @@
     <div class="page">
         <div class="col-md-12">
             <div class="card">
+                <div class="card-head style-info">
+               <header>Posts</header>
+                </div>
                 <div class="card-body">
                     <table class="table no-margin">
                         <thead>
@@ -32,9 +35,9 @@
                                 <td>{{{$post->des}}}</td>
                                 <td>
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('moderateAddPost')}}"><i class="fa fa-plus"></i></a> -->
-                                    <a class="btn ink-reaction btn-floating-action btn-danger" href="{{route('moderateDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('moderateEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('moderateViewPost', array('id' => $post->id))}}"><i class="fa fa-eye"></i></a>
+                                    <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('moderateDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach
