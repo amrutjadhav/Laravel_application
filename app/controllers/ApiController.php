@@ -254,7 +254,9 @@ class ApiController extends \BaseController
 				$post->author = $author;
 			}
 
-			$post->user_id = Auth::user()->id;
+			if(Auth::user()){
+				$post->user_id = Auth::user()->id;
+			}
 			
 			if(Input::get('des') != ""){
 				$post->des = Input::get('des');

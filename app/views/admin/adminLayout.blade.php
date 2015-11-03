@@ -181,7 +181,7 @@
                     </a>
                     <!--start submenu -->
                     <ul style="display: none;">
-                        <li><a href="{{route('adminPost')}}"><span class="title">View Post</span></a></li>
+                        <li><a href="{{route('adminPost')}}"><span class="title">View Posts</span></a></li>
 
                         <li><a href="{{route('adminAddPost')}}"><span class="title">Add Post</span></a></li>
 
