@@ -77,7 +77,7 @@
         </form>
     </div>
 </nav>
-<div class="contasiner-fluid page">
+<div class="contasiner-fluid">
     <div class="row" style="min-height: 700px;">
 
 
@@ -88,14 +88,14 @@
 
                 $cat_name = $post->share_cat;
                 ?>
-            <br>
+            
             <div class="row">
-                <div class="col l3 m4 s4">
+                <div class="col l3 m4 s12">
                     <img style="width: 100%;" src="{{$post->image}}">
                                
                 </div>
 
-                <div class="col l9 m8 s8">
+                <div class="col l9 m8 s12">
                     <h3 style="font-size: 3.5vh;margin-top: 0px;">{{$post->title}}</h3>
                     <p class="text-justify">{{$post->des}}</p>
 
@@ -105,10 +105,10 @@
             </div>
             <hr>
 
-            <div class="row" style="text-align:center;">
+            <div class="row sing-btm-btn" style="text-align:center;">
 
-                <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-                    <a href="http://twitter.com/share?text={{$post->title}}&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+                <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share <span class="hidden-s">on Facebook</span></a>
+                    <a href="http://twitter.com/share?text={{$post->title}}&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share <span class="hidden-s">on Twitter</span></a>
                     <a href="{{{$post->url}}}" class="waves-effect waves-light btn no-right-mar dark-blue darken">Read More</a>
             </div>
             

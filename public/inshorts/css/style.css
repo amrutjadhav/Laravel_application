@@ -197,11 +197,50 @@ i.right
 
 .card .card-image{height: 225px;overflow: hidden;}
 
+.sing-btm-btn .btn{
+  display: block;
+  float: left;
+  width: 32%;
+  margin-right: 2%!important;
+}
+
+.sing-btm-btn .btn:last-child{
+  margin-right: 0px!important;
+}
+
+@media all and (min-width: 767px) {
+  .sing-btm-btn .btn{
+    display: inline-block;
+    float: none;
+    max-width: 300px;
+
+}
+}
+@media all and (max-width: 767px) {
+
+  .sing-btm-btn .btn{
+  padding: 10px;
+  line-height: 18px;
+}
+
+.hidden-s{
+  display: none!important;
+}
+
+}
+
 @media all and (max-width: 600px) {
 
 .card .card-image{height: 165px;overflow: hidden;}
+
+
+
 
 }
 .card .card-image img{
   min-height:225px;
 }
+
+
+
+
