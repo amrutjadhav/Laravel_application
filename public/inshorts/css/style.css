@@ -221,11 +221,16 @@ i.right
   .sing-btm-btn .btn{
   padding: 10px;
   line-height: 18px;
+  display: block;
+  width: 100%;
+  max-width: auto;
+  margin-bottom: 10px;
+
 }
 
-.hidden-s{
+/*.hidden-s{
   display: none!important;
-}
+}*/
 
 }
 
@@ -234,6 +239,9 @@ i.right
 .card .card-image{height: 165px;overflow: hidden;}
 
 
+.sin-img{
+  margin-bottom: 15px;
+}
 
 
 }

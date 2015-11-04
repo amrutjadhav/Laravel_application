@@ -91,7 +91,7 @@
             
             <div class="row">
                 <div class="col l3 m4 s12">
-                    <img style="width: 100%;" src="{{$post->image}}">
+                    <img class="sin-img" style="width: 100%;" src="{{$post->image}}">
                                
                 </div>
 
