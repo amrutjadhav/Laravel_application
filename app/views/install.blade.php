@@ -238,31 +238,31 @@ $timezone = array (
 													<div class="tab-pane" id="tab2">
 														<br/><br/>
 														<div class="form-group">
-															<input type="email" id="admin_username" name="admin_username" id="Address" class="form-control">
+															<input type="email" name="admin_username" id="Address" class="form-control">
 															<label for="Address" class="control-label">Admin Email</label>
 														</div>
 														<div class="form-group">
-															<input type="password" id="admin_password" name="admin_password" id="Address" class="form-control">
+															<input type="password" name="admin_password" id="Address" class="form-control">
 															<label for="Address" class="control-label">Admin Password</label>
 														</div>
 														<div class="form-group">
-															<input type="text" id="mandrill_secret" name="mandrill_secret" id="Address" class="form-control">
+															<input type="text" name="mandrill_secret" id="Address" class="form-control">
 															<label for="Address" class="control-label">Mandrill Secret</label>
 														</div>
 														<div class="form-group">
-															<input type="text" id="mandrill_username" name="mandrill_username" id="Address" class="form-control">
+															<input type="text" name="mandrill_username" id="Address" class="form-control">
 															<label for="Address" class="control-label">Mandrill Password</label>
 														</div>
 														
 														<div class="form-group floating-label">
-								                            <select id="cat_select" name="timezone" class="form-control" required>
+								                            <select id="time" name="timezone" class="form-control" required>
 								                                <option value="">-Select Timezone-</option>
 								                                @foreach($timezone as $key => $value)
 								                                    <option value="{{$value}}" <?php if($value == Setting::get('timezone')) echo "selected"; ?> >{{$key}}</option>
 								                                @endforeach
 
 								                            </select>
-								                            <label for="cat_select">Select Timezone</label>
+								                            <label for="time">Select Timezone</label>
 
 								                        </div>
 													</div><!--end #tab2 -->

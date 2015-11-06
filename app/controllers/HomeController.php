@@ -283,14 +283,22 @@ class HomeController extends BaseController {
         }
 	}
 
-	public function install()
+		public function install()
 	{
-		$count = User::where('role_id',2)->count();
-		if($count == 0){
-    		return View::make('install');
-    	}else{
-    		return Redirect::to('/');
+		try{
+	      DB::connection()->getDatabaseName();
+	      
+			$count = User::where('role_id',2)->count();
+			if($count == 0){
+	    		return View::make('install');
+	    	}else{
+	    		return Redirect::to('/');
+	    	}
     	}
+
+    	catch(Exception $e){
+       		return View::make('install');
+        }
     }
 
     public function install_submit()
@@ -302,9 +310,9 @@ class HomeController extends BaseController {
         $sitename = Input::get('sitename');
         $database_name = Input::get('database_name');
         $picture = Input::file('picture');
-        $mandrill_username = Input::file('mandrill_username');
-        $mandrill_secret = Input::file('mandrill_secret');
-        $timezone = Input::file('timezone');
+        $mandrill_username = Input::get('mandrill_username');
+        $mandrill_secret = Input::get('mandrill_secret');
+        $timezone = Input::get('timezone');
 
 
         $validator = Validator::make(
@@ -362,6 +370,7 @@ class HomeController extends BaseController {
 
             $admin = new User;
             $admin->email = $admin_username;
+            $admin->is_approved = 1;
             $admin->password = Hash::make($admin_password);
             $admin->role_id = 2;
             $admin->save();
