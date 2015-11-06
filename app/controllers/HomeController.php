@@ -304,6 +304,7 @@ class HomeController extends BaseController {
         $picture = Input::file('picture');
         $mandrill_username = Input::file('mandrill_username');
         $mandrill_secret = Input::file('mandrill_secret');
+        $timezone = Input::file('timezone');
 
 
         $validator = Validator::make(
@@ -316,6 +317,7 @@ class HomeController extends BaseController {
                 'sitename' => $sitename,
                 'picture' => $picture,
                 'mandrill_username' => $mandrill_username,
+                'timezone' => $timezone,
                 'mandrill_secret' => $mandrill_secret,
                 
             ), array(
@@ -327,6 +329,7 @@ class HomeController extends BaseController {
                 'admin_username' => 'required',
                 'mandrill_username' => 'required',
                 'mandrill_secret' => 'required',
+                'timezone' => 'required',
                 'picture' => 'mimes:png,jpg'
             )
         );
@@ -352,6 +355,7 @@ class HomeController extends BaseController {
             Setting::set('database_name',$database_name);
             Setting::set('mandrill_secret',$mandrill_secret);
             Setting::set('mandrill_username',$mandrill_username);
+            Setting::set('timezone',$timezone);
             Setting::set('logo',$s3_url);
 
             import_db($username,$password,'localhost',$database_name);
