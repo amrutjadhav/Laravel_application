@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set(Setting::get('timezone'));
+
 return array(
 
 	/*
@@ -55,9 +57,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'inshort',
+			'database'  => 'news',
 			'username'  => 'root',
-			'password'  => 'root',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

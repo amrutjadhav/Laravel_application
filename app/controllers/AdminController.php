@@ -813,6 +813,7 @@ class AdminController extends \BaseController {
 			Setting::set('google_play', Input::get('google_play'));
 			Setting::set('ios_app', Input::get('ios_app'));
 			Setting::set('website_link', Input::get('website_link'));
+			Setting::set('timezone', Input::get('timezone'));
 			
 			return Redirect::back()->with('flash_success', "successfully");
 		}

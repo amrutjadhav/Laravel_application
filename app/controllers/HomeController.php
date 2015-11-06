@@ -201,9 +201,9 @@ class HomeController extends BaseController {
         $query = "";
 
         if($q == ""){
-        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->limit($postnumbers)->offset($offset)->get();
+        $query = Post::orderBy('created_at','desc')->distinct()->where('is_approved',1)->limit($postnumbers)->offset($offset)->get();
         }elseif($q != ""){
-        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->where('title','like', '%'.$q.'%')->orWhere('des','like', '%'.$q.'%')->limit($postnumbers)->offset($offset)->get();
+        $query = Post::orderBy('created_at','desc')->distinct()->where('is_approved',1)->where('title','like', '%'.$q.'%')->orWhere('des','like', '%'.$q.'%')->limit($postnumbers)->offset($offset)->get();
         }
         $data = $query;
 
@@ -249,7 +249,7 @@ class HomeController extends BaseController {
         Log::info('num'. $postnumbers);
         Log::info('offset'. $offset);
 
-        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->where('category', 'LIKE', '%'.$id.'%')->limit($postnumbers)->offset($offset)->get();
+        $query = Post::orderBy('created_at','desc')->distinct()->where('is_approved',1)->where('category', 'LIKE', '%'.$id.'%')->limit($postnumbers)->offset($offset)->get();
         
         $data = $query;
 
