@@ -117,7 +117,7 @@
             <div class="row sing-btm-btn" style="text-align:center;">
 
                 <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share <span class="hidden-s">on Facebook</span></a>
-                    <a href="http://twitter.com/share?text={{$post->title}}&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share <span class="hidden-s">on Twitter</span></a>
+                    <a href="http://twitter.com/share?text={{substr($post->title, 0, 30)}}...&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share <span class="hidden-s">on Twitter</span></a>
                     <a href="{{{$post->url}}}" class="waves-effect waves-light btn no-right-mar dark-blue darken">Read More</a>
             </div>
             
@@ -154,7 +154,7 @@
 
         <div class="footer-copyright mat-clr">
             <div class="container">
-                <p class="text-center">&copy;2015 <a class="white-text text-lighten-3" href="http://appoets.com" target="_blank">{{Setting::get('footer')}}</a></p>
+                <p class="text-center"> <a class="white-text text-lighten-3" href="http://appoets.com" target="_blank">{{Setting::get('footer')}}</a></p>
             </div>
         </div>
     </footer>

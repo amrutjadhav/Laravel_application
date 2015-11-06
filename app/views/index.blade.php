@@ -81,7 +81,7 @@
 
         <li><a data-target="modal1" class="waves-effect waves-light modal-trigger"><i class="fa fa-bars"></i></a></li>      
              
-        <li><a class="waves-effect waves-light search-btn" href="#!" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">search</i></a></li>      
+        <li><a class="waves-effect waves-light search-btn" href="javascript:void(0);" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">search</i></a></li>      
                
       </ul>
       
@@ -118,7 +118,7 @@
  
     <div class="footer-copyright mat-clr">
       <div class="container">
-      <p class="text-center">&copy;2015 <a class="white-text text-lighten-3" href="http://appoets.com">{{Setting::get('footer')}}</a></p>
+      <p class="text-center"> <a class="white-text text-lighten-3" href="http://appoets.com">{{Setting::get('footer')}}</a></p>
       </div>
     </div>
   </footer>

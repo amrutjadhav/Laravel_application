@@ -264,6 +264,14 @@ i.right
   max-width: 825px;
 }
 
+.help-image{
+  max-height: 35px;
+}
+
+.help p{
+  font-size: 15px;
+}
+
 /*@media all and (min-width: 767px) {
   .sing-btm-btn .btn{
     display: inline-block;

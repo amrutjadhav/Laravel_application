@@ -47,8 +47,8 @@
             <ul class="header-nav header-nav-options">
                 <li class="header-nav-brand" >
                     <div class="brand-holder">
-                        <a href="#">
-                            <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} DASHBOARD</span>
+                        <a href="javascript:void(0);">
+                            <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} Dashboard</span>
                         </a>
                     </div>
                 </li>
@@ -216,7 +216,7 @@
 
             <div class="menubar-foot-panel">
                 <small class="no-linebreak hidden-folded">
-                    <span class="opacity-75">Copyright &copy; 2015</span> <strong>{{Setting::get('footer')}}</strong>
+                    <strong>{{Setting::get('footer')}}</strong>
                 </small>
             </div>
         </div><!--end .menubar-scroll-panel-->
