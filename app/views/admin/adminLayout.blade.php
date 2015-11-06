@@ -159,7 +159,7 @@
                     </a>
                     <!--start submenu -->
                     <ul style="display: none;">
-                        <li><a href="{{route('adminModeratorManagement')}}"><span class="title">View Moderator</span></a></li>
+                        <li><a href="{{route('adminModeratorManagement')}}"><span class="title">View Moderators</span></a></li>
 
                         <li><a href="{{route('addModerate')}}"><span class="title">Add Moderator</span></a></li>
 
