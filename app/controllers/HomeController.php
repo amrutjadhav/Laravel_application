@@ -297,6 +297,8 @@ class HomeController extends BaseController {
         $sitename = Input::get('sitename');
         $database_name = Input::get('database_name');
         $picture = Input::file('picture');
+        $mandrill_username = Input::file('mandrill_username');
+        $mandrill_secret = Input::file('mandrill_secret');
 
 
         $validator = Validator::make(
@@ -308,6 +310,8 @@ class HomeController extends BaseController {
                 'admin_password' => $admin_password,
                 'sitename' => $sitename,
                 'picture' => $picture,
+                'mandrill_username' => $mandrill_username,
+                'mandrill_secret' => $mandrill_secret,
                 
             ), array(
                 'password' => '',
@@ -316,6 +320,8 @@ class HomeController extends BaseController {
                 'database_name' => 'required',
                 'admin_password' => 'required',
                 'admin_username' => 'required',
+                'mandrill_username' => 'required',
+                'mandrill_secret' => 'required',
                 'picture' => 'mimes:png,jpg'
             )
         );
@@ -339,6 +345,8 @@ class HomeController extends BaseController {
             Setting::set('username',$username);
             Setting::set('password',$password);
             Setting::set('database_name',$database_name);
+            Setting::set('mandrill_secret',$mandrill_secret);
+            Setting::set('mandrill_username',$mandrill_username);
             Setting::set('logo',$s3_url);
 
             import_db($username,$password,'localhost',$database_name);
@@ -450,7 +458,7 @@ class HomeController extends BaseController {
 		$segment = $data;
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
-		$related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(4)->get();
+		$related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(2)->get();
 		if($post_details)
 		{
 			counter($segment);

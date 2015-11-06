@@ -58,7 +58,7 @@
         <ul class="right">
             <li><a data-target="modal2" class="waves-effect waves-light modal-trigger"><i class="fa fa-mobile"></i></a></li> 
             <li><a data-target="modal1" class="waves-effect waves-light modal-trigger"><i class="fa fa-bars"></i></a></li>
-            <li><a class="waves-effect waves-light search-btn" href="#!" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">search</i></a></li>
+            <li><a class="waves-effect waves-light search-btn" href="#!" id="search-icon" data-activates="search-content"><i class="fa fa-search"></i></a></li>
 
         </ul>
 
@@ -71,7 +71,7 @@
         <form>
             <div class="input-field">
                 <input id="search" type="search" required>
-                <label for="search"><i class="material-icons">search</i></label>
+                <label for="search"><i class="fa fa-search"></i></label>
 
             </div>
         </form>
@@ -83,28 +83,37 @@
 
 
 
-        <div class="col m12 s12 l12 single-card card">
+        <div class="col m12 s12 l12 single-card card min-single">
             <?php
 
                 $cat_name = $post->share_cat;
                 ?>
             
             <div class="row">
-                <div class="col l3 m4 s12">
+                <div class="col l4 m4 s12" style="margin-top:15px;padding-left:15px;">
                     <img class="sin-img" style="width: 100%;" src="{{$post->image}}">
                                
                 </div>
 
-                <div class="col l9 m8 s12">
+                <div class="col l8 m8 s12" style="margin-top:15px;padding-right:15px;">
                     <h3 style="font-size: 3.5vh;margin-top: 0px;">{{$post->title}}</h3>
                     <p class="text-justify">{{$post->des}}</p>
 
                 
 
                 </div>
-            </div>
-            <hr>
 
+                <!-- <div class="col l3 m4 s12 single-right-btn">
+
+                    <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share <span class="hidden-s">on Facebook</span></a>
+                    <a href="http://twitter.com/share?text={{$post->title}}&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share <span class="hidden-s">on Twitter</span></a>
+                    <a href="{{{$post->url}}}" class="waves-effect waves-light btn no-right-mar dark-blue darken">Read More</a>
+
+                </div> -->
+
+            </div>
+            
+            
             <div class="row sing-btm-btn" style="text-align:center;">
 
                 <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share <span class="hidden-s">on Facebook</span></a>
@@ -115,9 +124,11 @@
 
         </div>
 
-        <div class="row">
+        <div class="clear-both"></div>
+
+        <div class="row single-btm-blk hidden-s">
                 @foreach($related as $post)
-                <div class="col m6 s12 l3">
+                <div class="col m6 s12 l3 single-btm-blk-box">
                   <div class="single-post card animated zoomIn">
                       <div class="card-image">
                         <a href="javascript:void(0);"><img src="{{$post->image}}"></a>
@@ -132,8 +143,8 @@
 
             </div>
 
-            <div class="row" style="text-align:center;">
-                 <a href="{{route('home')}}" class="waves-effect waves-light btn no-right-mar mat-clr">More News</a> 
+            <div class="row single-btm-blk" style="text-align:center;">
+                 <a href="{{route('home')}}" class="full-btn waves-effect waves-light btn mat-clr">More News</a> 
             </div>
 
 
@@ -153,7 +164,7 @@
         <div class="modal-content">
             <h4>Select Category</h4>
             <div class="popup-top"></div>
-             <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
+             <a href="javascript:void(0);" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
             @foreach($cats as $cat)
                 <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
                     <img src="{{{$cat->pics}}}">

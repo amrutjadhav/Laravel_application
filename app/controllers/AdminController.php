@@ -806,6 +806,8 @@ class AdminController extends \BaseController {
 				Setting::set('logo', $s3_url);
 			}
 			Setting::set('sitename', Input::get('sitename'));
+			Setting::set('mandrill_username', Input::get('mandrill_username'));
+			Setting::set('mandrill_secret', Input::get('mandrill_secret'));
 			Setting::set('browser_key', Input::get('browser_key'));
 			Setting::set('analytics_code', Input::get('analytics_code'));
 			Setting::set('google_play', Input::get('google_play'));

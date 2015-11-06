@@ -94,7 +94,7 @@
       <form action="{{route('search')}}" method="get">
         <div class="input-field">
           <input id="search" type="search" name="q" required>
-          <label for="search"><i class="material-icons">search</i></label>
+          <label for="search"><i class="fa fa-search"></i></label>
 
         </div>
       </form>
@@ -143,7 +143,7 @@
   <div id="modal2" class="modal bottom-sheet cat">
     <div class="modal-content">
       <h4>Get it on
-        <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
+        <a href="javascript:void(0);" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
       </h4>
       <div class="popup-top"></div>
       

@@ -208,7 +208,63 @@ i.right
   margin-right: 0px!important;
 }
 
-@media all and (min-width: 767px) {
+.single-right-btn .btn{
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.min-single{
+  padding: 0px!important;
+  max-width: 800px;
+  margin: 0 auto!important;
+  display: block;
+  float: none!important;
+  margin-top: 25px!important;
+  margin-bottom: 25px!important;
+  
+}
+.clear-both{
+  clear: both;
+}
+
+.sing-btm-btn{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.sing-btm-btn .btn{
+  width: 31.3333%;
+  margin-right: 1%!important;
+  margin-left: 1%;
+  display: block;
+  float: left;
+  
+
+}
+
+.single-btm-blk{
+
+  max-width: 825px;
+  margin: 0 auto!important;
+  display: block;
+  float: none!important;
+
+}
+
+.single-btm-blk-box{
+  width: 50%!important;
+  float: left;
+  display: block;
+}
+
+.single-btm-more{
+  max-width: 825px;
+}
+
+/*@media all and (min-width: 767px) {
   .sing-btm-btn .btn{
     display: inline-block;
     float: none;
@@ -228,11 +284,8 @@ i.right
 
 }
 
-/*.hidden-s{
-  display: none!important;
-}*/
 
-}
+}*/
 
 @media all and (max-width: 600px) {
 
@@ -241,6 +294,24 @@ i.right
 
 .sin-img{
   margin-bottom: 15px;
+}
+
+.sing-btm-btn .btn{
+  margin-bottom: 15px!important;
+}
+
+.hidden-s{
+  display: none!important;
+}
+
+.sing-btm-btn .btn{
+  width: 100%;
+  margin-right: 0px!important;
+  margin-left: 0px;
+  display: block;
+  float: none;
+  
+
 }
 
 

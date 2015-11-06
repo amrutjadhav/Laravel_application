@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'aravinth1991@gmail.com',
+	'username' => Setting::get('mandrill_username'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'zoimcDUU9GfYvMH5xdMy5g',
+	'password' => Setting::get('mandrill_secret'),
 
 	/*
 	|--------------------------------------------------------------------------

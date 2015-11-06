@@ -72,6 +72,16 @@
                         <label for="regular1">Website link</label>
                     </div>
 
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="mandrill_secret" value="{{Setting::get('mandrill_secret')}}">
+                        <label for="regular1">Mandrill Secret</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="mandrill_username" value="{{Setting::get('mandrill_username')}}">
+                        <label for="regular1">Mandrill Username</label>
+                    </div>
+
 
                     <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
                 </form>

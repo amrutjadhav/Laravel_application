@@ -95,15 +95,15 @@
 														<br/><br/>
 														<div class="form-group">
 															<input type="text" id="database_name" name="database_name" id="Address" class="form-control">
-															<label for="Address" class="control-label">DATABASE NAME</label>
+															<label for="Address" class="control-label">Database Name</label>
 														</div>
 														<div class="form-group">
 															<input type="text" id="username" name="username" id="Address" class="form-control">
-															<label for="Address" class="control-label">DATABASE USERNAME</label>
+															<label for="Address" class="control-label">Database Username</label>
 														</div>
 														<div class="form-group">
 															<input type="password" id="password" name="password" id="Address" class="form-control">
-															<label for="Address" class="control-label">DATABASE PASSWORD</label>
+															<label for="Address" class="control-label">Database Password</label>
 														</div>
 														
 													</div><!--end #tab1 -->
@@ -111,18 +111,26 @@
 														<br/><br/>
 														<div class="form-group">
 															<input type="email" id="admin_username" name="admin_username" id="Address" class="form-control">
-															<label for="Address" class="control-label">ADMIN EMAIL</label>
+															<label for="Address" class="control-label">Admin Email</label>
 														</div>
 														<div class="form-group">
 															<input type="password" id="admin_password" name="admin_password" id="Address" class="form-control">
-															<label for="Address" class="control-label">ADMIN PASSWORD</label>
+															<label for="Address" class="control-label">Admin Password</label>
+														</div>
+														<div class="form-group">
+															<input type="text" id="mandrill_secret" name="mandrill_secret" id="Address" class="form-control">
+															<label for="Address" class="control-label">Mandrill Secret</label>
+														</div>
+														<div class="form-group">
+															<input type="text" id="mandrill_username" name="mandrill_username" id="Address" class="form-control">
+															<label for="Address" class="control-label">Mandrill Password</label>
 														</div>
 													</div><!--end #tab2 -->
 													<div class="tab-pane" id="tab3">
 														<br/><br/>
 														<div class="form-group">
 									                        <input type="text" class="form-control" id="regular1" name="sitename" value="{{Setting::get('sitename')}}">
-									                        <label for="regular1">SITE TITLE</label>
+									                        <label for="regular1">Site Title</label>
 									                    </div>
 
 									                    <!-- <div class="form-group">
