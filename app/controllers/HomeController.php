@@ -370,7 +370,7 @@ class HomeController extends BaseController {
 
             $admin = new User;
             $admin->email = $admin_username;
-            $admin->is_approved = 1;
+            $admin->is_activated = 1;
             $admin->password = Hash::make($admin_password);
             $admin->role_id = 2;
             $admin->save();

@@ -69,7 +69,23 @@ Route::filter('moderate', function()
 	if(Auth::check())
 	{
 		$user = Auth::user()->role_id;
-		if(!$user == 2)
+		if(!$user == 1)
+		{
+			return Redirect::route('login');
+		}
+	}
+	else
+	{
+		return Redirect::route('login');
+	}
+});
+
+Route::filter('contributor', function()
+{
+	if(Auth::check())
+	{
+		$user = Auth::user()->role_id;
+		if(!$user == 1)
 		{
 			return Redirect::route('login');
 		}
