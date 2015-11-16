@@ -402,6 +402,43 @@ class ApiController extends \BaseController
         }
     }
 
+    
+       public function api_hybrid_feed(){
+         $offset = is_numeric(Input::get('offset')) ? Input::get('offset') : die();
+        $postnumbers = is_numeric(Input::get('number')) ? Input::get('number') : die();
+
+        $query = "";
+
+        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->limit($postnumbers)->offset($offset)->get();
+        
+        $data = $query;
+
+
+        foreach ($data as $post) {
+        	echo '<div class="swiper-slide">
+                    <div class="news-box">
+                        <div class="img-container">
+                            <img src="'.$post->image.'">
+                            <div class="bottom-nav">
+                                <h6>'.$post->created_at->diffForHumans().'</h6>
+                                <a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\'Message and link\', null, null, \'http://www.x-services.nl\')" class="icon right"><i class="fa fa-share"></i></a>
+                            </div>
+                        </div>
+                        <div class="conent-container">
+                            <h4>'.$post->title.'</h4>
+
+                            <p>'.$post->des.'</p>
+
+                            <div class="read">
+                                <a href="javascript:void(0);" onclick="open_this_url(url);"><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
+
+        }
+    }
+
 
 }
 

@@ -248,6 +248,9 @@ Route::get('/getPostCat', array('as' => 'getPostCat', 'uses' => 'ApiController@g
 
 Route::post('/auto-save-now', array('as' => 'auto_save_form', 'uses' => 'ApiController@auto_save_form'));
 
+// phonegap api feed
+
+Route::post('/api_hybrid_feed', array('as' => 'api_hybrid_feed', 'uses' => 'ApiController@api_hybrid_feed'));
 
 // Admin panel App's API
 
