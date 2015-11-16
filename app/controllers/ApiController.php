@@ -415,31 +415,50 @@ class ApiController extends \BaseController
 
 
         foreach ($data as $post) {
+        	// //echo '<div class="swiper-slide">
+         //            <div class="news-box">
+         //                <div class="img-container">
+         //                    <img src="'.$post->image.'">
+         //                    <div class="bottom-nav">
+         //                        <h6>'.$post->created_at->diffForHumans().'</h6>
+         //                        <a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\'Message and link\', null, null, \'http://www.x-services.nl\')" class="icon right"><i class="fa fa-share"></i></a>
+         //                    </div>
+         //                </div>
+         //                <div class="conent-container">
+         //                    <h4>'.$post->title.'</h4>
+
+         //                    <p>'.$post->des.'</p>
+
+         //                    <div class="read">
+         //                        <a href="javascript:void(0);" onclick="open_this_url(url);"><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i></a>
+         //                    </div>
+         //                </div>
+         //            </div>
+         //        </div>';
+
         	echo '<div class="swiper-slide">
-                    <div class="news-box">
-                        <div class="img-container">
-                            <img src="'.$post->image.'">
-                            <div class="bottom-nav">
-                                <h6>'.$post->created_at->diffForHumans().'</h6>
-                                <a href="javascript:void(0);" onclick="window.plugins.socialsharing.share(\'Message and link\', null, null, \'http://www.x-services.nl\')" class="icon right"><i class="fa fa-share"></i></a>
-                            </div>
-                        </div>
-                        <div class="conent-container">
-                            <h4>'.$post->title.'</h4>
+		        	<div class="news-box">
+						<div class="img-container">
+							<img src="img/news-bg.jpg">	
+							<div class="bottom-nav">
+								<h6>6 Minutes ago</h6>
+								<a href="#" class="icon right"><i class="fa fa-share"></i></a>					
+							</div>
+						</div>
+						<div class="conent-container">
+							<h4>Amrita Sher-Gil\'s self-portrait fetches £1.7 mn</h4>
 
-                            <p>'.$post->des.'</p>
+							<p>A rare self-portrait of Amrita Sher-Gil, one of India\'s most prolific painters, fetched £1.7 million in an auction by Sotheby in London. Over £4.9 million was raised during the Modern and Contemporary South Asia Art auction, as part of the Indian Art Week. Works of other Indian artists like Gagendranath Tagore, Gieve Patel and Nasreen Mohamedi were also auctioned.</p>
 
-                            <div class="read">
-                                <a href="javascript:void(0);" onclick="open_this_url(url);"><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>';
+							<div class="read">
+								<a href="#"><i class="fa fa-circle"></i> <i class="fa fa-circle"></i> <i class="fa fa-circle"></i></a>
+							</div>
+						</div>
+					</div>
+		        </div>';
 
         }
     }
-
-
 }
 
 
