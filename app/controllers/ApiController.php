@@ -415,7 +415,8 @@ class ApiController extends \BaseController
 
 
         foreach ($data as $post) {
-        	echo '<div class="swiper-slide">
+        	echo '<div class="section fp-section fp-table"><div class="fp-tableCell">
+        	<div class="swiper-slide">
                     <div class="news-box">
                         <div class="img-container">
                             <img src="'.$post->image.'">
@@ -434,7 +435,7 @@ class ApiController extends \BaseController
                             </div>
                         </div>
                     </div>
-                </div>';
+                </div></div></div>';
 
         }
     }
