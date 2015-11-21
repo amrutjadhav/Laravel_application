@@ -11,3 +11,32 @@
 input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="time"], input[type="date"], input[type="datetime-local"], input[type="tel"], input[type="number"], input[type="search"], textarea.materialize-textarea{
     font-size:1.3em;
 }
+
+.pub-btn .btn{
+	display: block;
+	float: left;
+	width: 49%;
+}
+
+
+.pub-btn .btn.fst{
+
+	margin-right: 2%;
+}
+
+@media all and (max-width: 600px) {
+
+.pub-btn .btn{
+	display: block;
+	float: none;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+
+.pub-btn .btn.fst{
+
+	margin-right: 0%;
+}
+
+}

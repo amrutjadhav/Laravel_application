@@ -117,10 +117,11 @@
          <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-
-                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Publish</button>
+                    <div class="pub-btn">
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info fst">Publish</button>
 
                     <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Saving Draft...">Save Draft</button>
+                    </div>
                     <br><br>
 
                         <div class="input-group date" id="demo-date">

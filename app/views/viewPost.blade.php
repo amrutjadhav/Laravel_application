@@ -66,7 +66,7 @@
         <form>
             <div class="input-field">
                 <input id="search" type="search" required>
-                <label for="search"><i class="material-icons">search</i></label>
+                <label for="search"><i class="fa fa-search"></i></label>
 
             </div>
         </form>

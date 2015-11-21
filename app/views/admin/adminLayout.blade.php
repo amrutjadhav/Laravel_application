@@ -47,8 +47,8 @@
             <ul class="header-nav header-nav-options">
                 <li class="header-nav-brand" >
                     <div class="brand-holder">
-                        <a href="#">
-                            <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} DASHBOARD</span>
+                        <a href="javascript:void(0);">
+                            <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} Dashboard</span>
                         </a>
                     </div>
                 </li>
@@ -159,7 +159,7 @@
                     </a>
                     <!--start submenu -->
                     <ul style="display: none;">
-                        <li><a href="{{route('adminModeratorManagement')}}"><span class="title">View Moderator</span></a></li>
+                        <li><a href="{{route('adminModeratorManagement')}}"><span class="title">View Moderators</span></a></li>
 
                         <li><a href="{{route('addModerate')}}"><span class="title">Add Moderator</span></a></li>
 
@@ -181,7 +181,7 @@
                     </a>
                     <!--start submenu -->
                     <ul style="display: none;">
-                        <li><a href="{{route('adminPost')}}"><span class="title">View Post</span></a></li>
+                        <li><a href="{{route('adminPost')}}"><span class="title">View Posts</span></a></li>
 
                         <li><a href="{{route('adminAddPost')}}"><span class="title">Add Post</span></a></li>
 
@@ -216,7 +216,7 @@
 
             <div class="menubar-foot-panel">
                 <small class="no-linebreak hidden-folded">
-                    <span class="opacity-75">Copyright &copy; 2015</span> <strong>{{Setting::get('footer')}}</strong>
+                    <strong>{{Setting::get('footer')}}</strong>
                 </small>
             </div>
         </div><!--end .menubar-scroll-panel-->

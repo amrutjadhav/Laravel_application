@@ -583,7 +583,9 @@ class AdminController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->url = $url;
                 $post->meta_des = $meta_des;
-                $post->user_id = $author;
+                if(is_numeric($author)){
+                	$post->user_id = $author;
+            	}
                 if($share_cat != "" && $share_link != ""){
                 	$post->share_cat = $share_cat;
                 	$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
@@ -629,16 +631,7 @@ class AdminController extends \BaseController {
             } 
             else 
             {
-                $post = new Post;
-                $post->title = $title;
-                $post->is_approved = 1;
-                $post->url = $url;
-                $post->des = Input::get('des');
-                $post->meta_des = $meta_des;
-				$post->user_id = Auth::user()->id;
-				$post->publisher = $publisher;
-				$post->author = $author;
-
+                
                 $validator1 = Validator::make(
                     array(
                         'title_tag' => $title_tag,
@@ -659,6 +652,17 @@ class AdminController extends \BaseController {
                 } 
                 else
                 {
+                $post = new Post;
+                $post->title = $title;
+                $post->is_approved = 1;
+                $post->url = $url;
+                $post->des = Input::get('des');
+                $post->meta_des = $meta_des;
+				// $post->user_id = Auth::user()->id;
+				$post->publisher = $publisher;
+				$post->author = $author;
+
+
                     $file_name = seo_url($title).'-'.seo_url($share_cat).'-'.time();
                     $ext = Input::file('post_img')->getClientOriginalExtension();
                     Input::file('post_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
@@ -679,7 +683,6 @@ class AdminController extends \BaseController {
                     $post->title_tag = $title_tag;
                     $post->save();
 
-
                     if (Input::get('push_button') === 'yes') {
                     // checked
 
@@ -688,7 +691,6 @@ class AdminController extends \BaseController {
                         'description' => $meta_des,
                         'image' => $s3_url,
                     );
-
 
                      send_notification($title,$response_array);
                     }
@@ -804,11 +806,14 @@ class AdminController extends \BaseController {
 				Setting::set('logo', $s3_url);
 			}
 			Setting::set('sitename', Input::get('sitename'));
+			Setting::set('mandrill_username', Input::get('mandrill_username'));
+			Setting::set('mandrill_secret', Input::get('mandrill_secret'));
 			Setting::set('browser_key', Input::get('browser_key'));
 			Setting::set('analytics_code', Input::get('analytics_code'));
 			Setting::set('google_play', Input::get('google_play'));
 			Setting::set('ios_app', Input::get('ios_app'));
 			Setting::set('website_link', Input::get('website_link'));
+			Setting::set('timezone', Input::get('timezone'));
 			
 			return Redirect::back()->with('flash_success', "successfully");
 		}

@@ -201,9 +201,9 @@ class HomeController extends BaseController {
         $query = "";
 
         if($q == ""){
-        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->limit($postnumbers)->offset($offset)->get();
+        $query = Post::orderBy('created_at','desc')->distinct()->where('is_approved',1)->limit($postnumbers)->offset($offset)->get();
         }elseif($q != ""){
-        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->where('title','like', '%'.$q.'%')->orWhere('des','like', '%'.$q.'%')->limit($postnumbers)->offset($offset)->get();
+        $query = Post::orderBy('created_at','desc')->distinct()->where('is_approved',1)->where('title','like', '%'.$q.'%')->orWhere('des','like', '%'.$q.'%')->limit($postnumbers)->offset($offset)->get();
         }
         $data = $query;
 
@@ -228,7 +228,7 @@ class HomeController extends BaseController {
 		              <div class="card-action text-center">
 
 		                <a target="_blank" href="http://www.facebook.com/sharer.php?u='.$fb.'" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-		                <a target="_blank" href="http://twitter.com/share?text='.$post->title.'&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+		                <a target="_blank" href="http://twitter.com/share?text='.substr($post->title, 0, 30).'...&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
 		                <a target="_blank" href="'.$post->url.'" target="_blank" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More </a>
 
 		              </div>
@@ -249,7 +249,7 @@ class HomeController extends BaseController {
         Log::info('num'. $postnumbers);
         Log::info('offset'. $offset);
 
-        $query = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->where('category', 'LIKE', '%'.$id.'%')->limit($postnumbers)->offset($offset)->get();
+        $query = Post::orderBy('created_at','desc')->distinct()->where('is_approved',1)->where('category', 'LIKE', '%'.$id.'%')->limit($postnumbers)->offset($offset)->get();
         
         $data = $query;
 
@@ -271,7 +271,7 @@ class HomeController extends BaseController {
 		              <div class="card-action text-center">
 
 		                <a target="_blank" href="http://www.facebook.com/sharer.php?u='.$fb.'" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-		                <a target="_blank" href="http://twitter.com/share?text='.$post->title.'&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+		                <a target="_blank" href="http://twitter.com/share?text='.substr($post->title, 0, 30).'...&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
 		                <a target="_blank" href="'.$post->url.'" target="_blank" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More </a>
 
 		              </div>
@@ -283,9 +283,22 @@ class HomeController extends BaseController {
         }
 	}
 
-	public function install()
+		public function install()
 	{
-    	return View::make('install');
+		try{
+	      DB::connection()->getDatabaseName();
+	      
+			$count = User::where('role_id',2)->count();
+			if($count == 0){
+	    		return View::make('install');
+	    	}else{
+	    		return Redirect::to('/');
+	    	}
+    	}
+
+    	catch(Exception $e){
+       		return View::make('install');
+        }
     }
 
     public function install_submit()
@@ -297,6 +310,9 @@ class HomeController extends BaseController {
         $sitename = Input::get('sitename');
         $database_name = Input::get('database_name');
         $picture = Input::file('picture');
+        $mandrill_username = Input::get('mandrill_username');
+        $mandrill_secret = Input::get('mandrill_secret');
+        $timezone = Input::get('timezone');
 
 
         $validator = Validator::make(
@@ -308,6 +324,9 @@ class HomeController extends BaseController {
                 'admin_password' => $admin_password,
                 'sitename' => $sitename,
                 'picture' => $picture,
+                'mandrill_username' => $mandrill_username,
+                'timezone' => $timezone,
+                'mandrill_secret' => $mandrill_secret,
                 
             ), array(
                 'password' => '',
@@ -316,6 +335,9 @@ class HomeController extends BaseController {
                 'database_name' => 'required',
                 'admin_password' => 'required',
                 'admin_username' => 'required',
+                'mandrill_username' => 'required',
+                'mandrill_secret' => 'required',
+                'timezone' => 'required',
                 'picture' => 'mimes:png,jpg'
             )
         );
@@ -335,16 +357,20 @@ class HomeController extends BaseController {
             $s3_url = URL::to('/') . '/uploads/' . $local_url;
 
             Setting::set('sitename',$sitename);
-            Setting::set('footer',"Powered by APPOETS");
+            Setting::set('footer',"Powered by Appoets");
             Setting::set('username',$username);
             Setting::set('password',$password);
             Setting::set('database_name',$database_name);
+            Setting::set('mandrill_secret',$mandrill_secret);
+            Setting::set('mandrill_username',$mandrill_username);
+            Setting::set('timezone',$timezone);
             Setting::set('logo',$s3_url);
 
             import_db($username,$password,'localhost',$database_name);
 
             $admin = new User;
             $admin->email = $admin_username;
+            $admin->is_activated = 1;
             $admin->password = Hash::make($admin_password);
             $admin->role_id = 2;
             $admin->save();
@@ -450,7 +476,7 @@ class HomeController extends BaseController {
 		$segment = $data;
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
-		$related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(4)->get();
+		$related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(2)->get();
 		if($post_details)
 		{
 			counter($segment);

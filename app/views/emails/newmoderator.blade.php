@@ -88,7 +88,7 @@
 
                             <p style="font-size: 16px; line-height: 24px;">Your Username is: <a href="#">{{$email_data['email']}}</a> and your password is <b>{{$email_data['password']}}</b>. Please remember to change your password the first time you login by going to the Profile tab > Change Password.</p>
 
-
+                            <p><a href="{{route('login')}}">Login Here</a></p>
 
 
                             <p style="font-size: 16px;line-height: 26px;">Thank you!</p>

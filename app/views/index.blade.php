@@ -81,7 +81,7 @@
 
         <li><a data-target="modal1" class="waves-effect waves-light modal-trigger"><i class="fa fa-bars"></i></a></li>      
              
-        <li><a class="waves-effect waves-light search-btn" href="#!" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">search</i></a></li>      
+        <li><a class="waves-effect waves-light search-btn" href="javascript:void(0);" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">search</i></a></li>      
                
       </ul>
       
@@ -94,7 +94,7 @@
       <form action="{{route('search')}}" method="get">
         <div class="input-field">
           <input id="search" type="search" name="q" required>
-          <label for="search"><i class="material-icons">search</i></label>
+          <label for="search"><i class="fa fa-search"></i></label>
 
         </div>
       </form>
@@ -118,7 +118,7 @@
  
     <div class="footer-copyright mat-clr">
       <div class="container">
-      <p class="text-center">&copy;2015 <a class="white-text text-lighten-3" href="http://appoets.com">{{Setting::get('footer')}}</a></p>
+      <p class="text-center"> <a class="white-text text-lighten-3" href="http://appoets.com">{{Setting::get('footer')}}</a></p>
       </div>
     </div>
   </footer>
@@ -143,7 +143,7 @@
   <div id="modal2" class="modal bottom-sheet cat">
     <div class="modal-content">
       <h4>Get it on
-        <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
+        <a href="javascript:void(0);" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
       </h4>
       <div class="popup-top"></div>
       

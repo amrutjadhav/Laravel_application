@@ -15,14 +15,35 @@
 
 <div class="page">
     <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <h1>Reaching the top</h1>
-                <strong>Alicia Spinnet</strong>
-                <hr>
 
-                    <p class="lead">We are already halfway there. There are still some obstacles that we must take, but I do not expect any problems. Dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <p>Aliquam vehicula sem ut pede. Cras purus lectus, egestas eu, vehicula at, imperdiet sed, nibh. Morbi consectetuer luctus felis. Donec vitae nisi. Aliquam tincidunt feugiat elit. Duis sed elit ut turpis ullamcorper feugiat. Praesent pretium, mauris sed fermentum hendrerit, nulla lorem iaculis magna, pulvinar scelerisque urna tellus a justo. Suspendisse pulvinar massa in metus. Duis quis quam. Proin justo. Curabitur ac sapien. Nam erat. Praesent ut quam.</p>
+        <div class="card">
+       <div class="card-head style-primary">
+              <header>Hi there!</header>
+         </div>
+            <div class="card-body help">
+                <p>We'd like to thank you for deciding to use the PointBlank.News script. We enjoyed creating it and hope you enjoy using it to achieve your goals :)</p>
+
+<p>If you want something changed to suit your venture's needs better, drop us a line:</p>
+
+<a href="http://facebook.com/appoets" target="_blank"><img class="aligncenter size-full wp-image-159 help-image" src="http://appoets.com/wp-content/uploads/2015/11/Facebook-100.png" alt="Facebook-100" width="100" height="100" /></a>
+&nbsp;
+
+<a href="https://twitter.com/appoets" target="_blank"><img class="size-full wp-image-155 alignleft help-image" src="http://appoets.com/wp-content/uploads/2015/11/Twitter-100.png" alt="http://twitter.com/appoets" width="100" height="100" /></a>
+&nbsp;
+
+<a href="skype:appoets?add" target="_blank"> <img class="wp-image-158 alignleft help-image" src="http://appoets.com/wp-content/uploads/2015/11/skype-150x150.png" alt="skype" width="100" height="100" /></a>
+&nbsp;
+
+<a href="mailto:info@appoets.com" target="_blank"><img class="size-full wp-image-153 alignleft help-image" src="http://appoets.com/wp-content/uploads/2015/11/Message-100.png" alt="Message-100" width="100" height="100" /></a>
+
+&nbsp;
+
+
+<p>As you know, we at APPOETS believe in the honorware system. We share our products with anyone who asks for it without any commitments what-so-ever. But, if you think our product has added value to your venture, please consider <a href="https://appoets.dpdcart.com/cart/add?product_id=117549&amp;method_id=127418" target="_blank">paying</a> us the price of the product.  It will help us buy more Redbulls, create more features and launch the next version of PBN for you to upgrade :) </p>
+
+<a href="https://appoets.dpdcart.com/cart/add?product_id=117549&amp;method_id=127418" target="_blank"><img class="aligncenter help-image size-full wp-image-160" src="http://appoets.com/wp-content/uploads/2015/11/Money-Box-100.png" alt="Money Box-100" width="100" height="100" /></a>
+
+<p>Cheers!</p>
 
             </div><!--end .col -->
         </div><!--end .row -->
