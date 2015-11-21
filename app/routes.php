@@ -19,7 +19,7 @@ Route::post('/install', array('as' => 'installSubmit', 'uses' => 'HomeController
 
 // feed collector
 
-Route::get('/newsinshort/feed-collector', array('as' => 'feed', 'uses' => 'HomeController@feed_collector'));
+// Route::get('/newsinshort/feed-collector', array('as' => 'feed', 'uses' => 'HomeController@feed_collector'));
 
 
 
