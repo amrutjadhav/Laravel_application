@@ -351,10 +351,13 @@ class HomeController extends BaseController {
         {
             $file_name = time();
             $file_name .= rand();
-            $ext = Input::file('picture')->getClientOriginalExtension();
-            Input::file('picture')->move(public_path() . "/uploads", $file_name . "." . $ext);
-            $local_url = $file_name . "." . $ext;
-            $s3_url = URL::to('/') . '/uploads/' . $local_url;
+            if(Input::hasFile('picture'))
+            {
+            	$ext = Input::file('picture')->getClientOriginalExtension();
+	            Input::file('picture')->move(public_path() . "/uploads", $file_name . "." . $ext);
+	            $local_url = $file_name . "." . $ext;
+	            $s3_url = URL::to('/') . '/uploads/' . $local_url;
+            }
 
             Setting::set('sitename',$sitename);
             Setting::set('footer',"Powered by Appoets");
