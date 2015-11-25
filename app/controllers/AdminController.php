@@ -486,6 +486,19 @@ class AdminController extends \BaseController {
 		}
 	}
 
+	public function deleteCategory($id)
+	{
+		$category = Category::where('id',$id)->delete();
+		if($category)
+		{
+			return Redirect::back()->with('flash_success',"Updated successfully");
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',"Something went Wrong");
+		}
+	}
+
 	public function adminPost()
 	{
 		$post = Post::orderBy('created_at', 'desc')->distinct()->paginate(10);

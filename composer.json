@@ -6,6 +6,7 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 	  	"philf/setting": "dev-master",
+	  	"guzzlehttp/guzzle": "~4.0",
 	  	"nesbot/carbon": "1.14"
 	},
 	"require-dev": {
