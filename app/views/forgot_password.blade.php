@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Point Blank News - Forgot Password</title>
+    <title>{{Setting::get('sitename')}} - {{tr('forgot_password')}}</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">
@@ -40,22 +40,24 @@
             <div class="row">
                 <div class="col-sm-6">
                     <br/>
-                    <span class="text-lg text-bold text-primary">PBN FORGOT PASSWORD</span>
+                    <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} {{tr('forgot_password')}}</span>
                     <br/><br/>
                     <form class="form floating-label" action="{{route('processForgotpassword')}}" accept-charset="utf-8" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" id="username" name="email">
-                            <label for="username">Email</label>
+                            <label for="username">{{tr('admin_email')}}</label>
                         </div>
                         <br/>
                         <div class="row">
                             <div class="col-xs-6 text-left">
                                 <div class="checkbox checkbox-inline checkbox-styled">
-                                     <span class="text-lg text-bold text-primary"><a href="{{route('login')}}">LOGIN</a></span>
+                                     <span class="text-lg text-bold text-primary"><a href="{{route('login')}}">{{tr('login')}}</a></span>
                                 </div>
                             </div><!--end .col -->
                             <div class="col-xs-6 text-right">
-                                <button class="btn btn-info btn-raised" type="submit">submit</button>
+                                <button class="btn btn-info btn-raised" type="submit">
+                                    {{tr('admin_submit')}}
+                                </button>
                             </div><!--end .col -->
                         </div><!--end .row -->
                     </form>

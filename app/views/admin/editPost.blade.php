@@ -18,21 +18,21 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-head style-primary">
-                    <header>Update Post</header>
+                    <header>{{tr('update_post')}}</header>
                 </div>
                 <div class="card-body">
                     <div class="text-right">
-                        <a class="btn ink-reaction btn-raised btn-primary" href="{{route('adminPost')}}">BACK</a>
+                        <a class="btn ink-reaction btn-raised btn-primary" href="{{route('adminPost')}}">{{ tr('back') }}</a>
                     </div>
                         <div class="form-group">
                             <input type="text" class="form-control" required id="regular1" name="title" value="{{{$post->title}}}">
-                            <label for="regular1">Title</label>
+                            <label for="regular1">{{ tr('title') }}</label>
                         </div>
 
 
                         <div class="form-group">
                             <input type="text" class="form-control" required id="regular1" name="publisher" value="{{{$post->publisher}}}">
-                            <label for="regular1">Publisher</label>
+                            <label for="regular1">{{ tr('publisher') }}</label>
                         </div>
 
                         <input type="hidden" name="id" value="{{{$post->id}}}">
@@ -40,7 +40,7 @@
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" required name="url" value="{{{$post->url}}}">
-                            <label for="regular1">URL</label>
+                            <label for="regular1">{{ tr('url') }}</label>
                         </div>
                         <div class="file-field input-field col s12">
                             <div class="tile-content">
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="btn btn-primary light-blue accent-2"  style="padding: 0px 10px;">
-                                <span>Choose Picture</span>
+                                <span>{{ tr('choose_picture') }}</span>
                                 <input type="file" name="post_img" />
                             </div>
                             <input class="file-path validate" type="text" value="{{$post->image}}"/>
@@ -58,7 +58,7 @@
 
                         <div class="form-group">
                             <textarea name="des" id="textarea1" required class="form-control" maxlength="450" rows="3">{{{$post->des}}}</textarea>
-                            <label for="textarea1">Description</label>
+                            <label for="textarea1">{{ tr('description') }}</label>
                         </div>
 
                         @if($contributor == 1)
@@ -66,7 +66,7 @@
                             <div class="row">
 
 
-                        <h4>Permalink</h4>
+                        <h4>{{tr('permalink')}}</h4>
 
                         <div class="form-group col-md-3 col-sm-4">
 
@@ -76,20 +76,20 @@
 
                         <div class="form-group floating-label col-md-4 col-sm-4" style="padding-left: 0px;">
                             <select id="cat_select" name="share_cat" class="form-control" required>
-                                <option value="">-Select Category-</option>
+                                <option value="">{{ tr('select_category') }}</option>
                                 @foreach($category as $cat)
                                     <option value="{{$cat->id}}">{{$cat->name}}</option>
                                 @endforeach
 
                             </select>
-                            <label for="cat_select">Select</label>
+                            <label for="cat_select">{{ tr('select') }}</label>
 
                         </div>
 
                         <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
 
                             <input type="text" class="form-control" name="share_link" id="meta_title" value="{{{seo_url($post->title)}}}">
-                            <label for="meta_title">Permalink</label>
+                            <label for="meta_title">{{ tr('permalink') }}</label>
 
                         </div>
 
@@ -107,7 +107,7 @@
 
                         <div class="form-group">
                             <input type="text" required class="form-control" id="meta_des" name="meta_des" value="{{$post->meta_des}}">
-                            <label for="regular1">Meta Description</label>
+                            <label for="regular1">{{ tr('meta_description') }}</label>
                         </div>
 
 
@@ -126,14 +126,14 @@
                         <div class="input-group date" id="demo-date">
                                 <div class="input-group-content">
                                      <input type="text" class="form-control" required name="pub_date" value="{{date('m/d/Y',strtotime($post->created_at))}}">
-                                    <label>Publish Date</label>
+                                    <label>{{ tr('publish_date') }}</label>
                                 </div>
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control time-mask" required id="pub" name="pub_time" value="{{{date('H:m',strtotime($post->created_at))}}}">
-                            <label for="regular1">Change Publish Time</label>
+                            <label for="regular1">Change {{ tr('publish_time') }}</label>
                         </div>
 
                         <div class="form-group">
@@ -145,7 +145,7 @@
                                         @endif
                                         @endforeach
                                     </select>
-                                    <label for="select1">Author Name</label>
+                                    <label for="select1">>{{ tr('author_name') }}</label>
                         </div>
 
                         <div class="input-field col s12 check-box-inline">

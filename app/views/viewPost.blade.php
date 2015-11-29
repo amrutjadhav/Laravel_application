@@ -53,7 +53,7 @@
         <ul class="right">
             <li><a data-target="modal2" class="waves-effect waves-light modal-trigger"><i class="fa fa-mobile"></i></a></li> 
             <li><a data-target="modal1" class="waves-effect waves-light modal-trigger"><i class="fa fa-bars"></i></a></li>
-            <li><a class="waves-effect waves-light search-btn" href="#!" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">search</i></a></li>
+            <li><a class="waves-effect waves-light search-btn" href="#!" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">{{tr('user_search')}}</i></a></li>
 
         </ul>
 
@@ -93,10 +93,10 @@
                 $cat_data = Category::find($cat_id[0]);
                 $cat_name = $cat_data->name;
                 ?>
-                <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="full-btn waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-                <a href="http://twitter.com/share?text={{$post->title}}&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="full-btn waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
-                <a href="{{{$post->url}}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More</a>
-                <a href="{{route('home')}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">More News</a>           
+                <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="full-btn waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>{{tr('share')}} {{tr('on_fb')}}</a>
+                <a href="http://twitter.com/share?text={{$post->title}}&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="full-btn waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>{{tr('share')}} {{tr('on_twitter')}}</a>
+                <a href="{{{$post->url}}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">{{tr('read_more')}}</a>
+                <a href="{{route('home')}}" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">>{{tr('more_news')}}</a           
                  @endif
             </div>
 
@@ -126,7 +126,7 @@
 
     <div id="modal1" class="modal bottom-sheet cat">
         <div class="modal-content">
-            <h4>Select Categories
+            <h4>{{tr('select_category')}}
                 <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
             </h4>
             <div class="popup-top"></div>
@@ -142,7 +142,7 @@
 
       <div id="modal2" class="modal bottom-sheet cat">
     <div class="modal-content">
-      <h4>Get it on
+      <h4>{{tr('get_it_on')}}
         <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
       </h4>
       <div class="popup-top"></div>

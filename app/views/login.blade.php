@@ -42,17 +42,17 @@
             <div class="row">
                 <div class="col-sm-6">
                     <br/>
-                    <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} LOGIN</span>
+                    <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} {{tr('login')}}</span>
                     <br/><br/>
                     
                     <form class="form floating-label" action="{{route('loginProcess')}}" accept-charset="utf-8" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" id="email" name="email">
-                            <label for="email">Email</label>
+                            <label for="email">{{tr('admin_email')}}</label>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="password" name="password">
-                            <label for="password">Password</label>
+                            <label for="password">{{tr('password')}}</label>
                             <p class="help-block"><a href="{{route('forgotPassword')}}">Forgotten?</a></p>
                         </div>
                         <br/>
@@ -63,7 +63,7 @@
                                 </div>
                             </div><!--end .col -->
                             <div class="col-xs-6 text-right">
-                                <button class="btn btn-info btn-raised" type="submit">Login</button>
+                                <button class="btn btn-info btn-raised" type="submit">{{tr('login')}}</button>
                             </div><!--end .col -->
                         </div><!--end .row -->
                     </form>

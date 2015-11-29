@@ -18,32 +18,32 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-head style-info">
-               <header>Profile Settings</header>
+               <header>{{ tr('profile_settings')}}</header>
                 </div>
                 <div class="card-body">
                     <form class="form" action="{{route('moderateProfileProcess')}}" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="{{$admin->id}}">
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="first_name" value="{{$admin->first_name}}">
-                            <label for="regular1">First Name</label>
+                            <label for="regular1">{{ tr('first_name')}}</label>
                         </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="last_name" value="{{$admin->last_name}}">
-                            <label for="regular1">Last Name</label>
+                            <label for="regular1">{{ tr('last_name')}}</label>
                         </div>
 
                         <div class="form-group">
                         <input type="text" class="form-control" id="regular1" name="author_name" value="{{$admin->author_name}}">
-                        <label for="regular1">Author Name</label>
+                        <label for="regular1">{{ tr('author_name')}}</label>
                         </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="email" value="{{$admin->email}}">
-                            <label for="regular1">Email</label>￼
+                            <label for="regular1">{{ tr('admin_email')}}</label>￼
                         </div>
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-warning">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-warning">{{ tr('admin_submit')}}</button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->
@@ -53,7 +53,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-head style-info">
-               <header>Change Picture</header>
+               <header>{{ tr('change_picture')}}</header>
             </div>
                 <div class="card-body">
                     <form class="form" action="{{route('moderateProfilePics')}}" method="post" enctype="multipart/form-data">
@@ -66,13 +66,13 @@
                                 </div>
                             </div>
                             <div class="btn light-blue accent-2" style="padding: 0px 10px;">
-                                <span>Choose Picture</span>
+                                <span>{{ tr('choose_picture')}}</span>
                                 <input type="file" name="profile_pic" />
                             </div>
                             <input class="file-path validate" type="text" />
 
                         </div>
-                        <button type="submit" class="btn ink-reaction btn-raised btn-warning">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-warning">{{ tr('admin_submit')}}</button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->

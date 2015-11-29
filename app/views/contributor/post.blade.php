@@ -14,17 +14,17 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-head style-warning">
-               <header>Posts</header>
+               <header>{{tr('posts')}}</header>
             </div>
                 <div class="card-body">
                     <table class="table no-margin">
                         <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>{{tr('admin_id')}}</th>
+                            <th>{{tr('title')}}</th>
+                            <th>{{tr('description')}}</th>
+                            <th>{{tr('admin_status')}}</th>
+                            <th>{{tr('admin_action')}}</th>
 
                         </tr>
                         </thead>

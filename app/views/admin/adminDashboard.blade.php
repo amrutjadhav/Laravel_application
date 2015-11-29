@@ -24,7 +24,7 @@
     <section>
         <div class="section-header">
             <ol class="breadcrumb">
-                <li class="active">Dashboard</li>
+                <li class="active">{{{ tr('dashboard') }}}</li>
             </ol>
         </div><!--end .section-header -->
         <div class="section-body">
@@ -37,7 +37,7 @@
                             <div class="alert alert-callout alert-info no-margin">
                                 <h1 class="pull-right text-info"><i class="md md-photo"></i></h1>
                                 <strong class="text-xl">{{{$post_count}}}</strong><br>
-                                <span class="opacity-50">Total Posts</span>
+                                <span class="opacity-50">{{ tr('total_posts') }}</span>
                             </div>
                         </div><!--end .card-body -->
                     </div><!--end .card -->
@@ -49,7 +49,7 @@
                             <div class="alert alert-callout alert-warning no-margin">
                                 <h1 class="pull-right text-warning"><i class="md md-person"></i></h1>
                                 <strong class="text-xl">{{{$moderate_count}}}</strong><br>
-                                <span class="opacity-50">Total No. of Moderators</span>
+                                <span class="opacity-50">{{ tr('total_moderators') }}</span>
                             </div>
                         </div><!--end .card-body -->
                     </div><!--end .card -->
@@ -62,7 +62,7 @@
                                         <div class="alert alert-callout alert-success no-margin">
                                             <h1 class="pull-right text-success"><i class="md md-pageview"></i></h1>
                                             <strong class="text-xl">{{{total_view_count()}}}</strong><br/>
-                                            <span class="opacity-50">Total No. of Views</span>
+                                            <span class="opacity-50">{{ tr('total_views') }}</span>
                                         </div>
                                     </div><!--end .card-body -->
                                 </div><!--end .card -->
@@ -83,7 +83,7 @@
                                             @endif
                                             
                                             <strong class="text-xl">{{{average_view_count()}}}</strong><br/>
-                                            <span class="opacity-50">Avg. Visits Per Day</span>
+                                            <span class="opacity-50">{{ tr('Avg_visits_per_day') }}</span>
                                             <div class="stick-bottom-right">
                                                 <div class="height-1 sparkline-visits" data-bar-color="#e5e6e6"></div>
                                             </div>
@@ -98,7 +98,7 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-head">
-                                        <header>Mobile Applications Count</header>
+                                        <header>{{ tr('mobile_application_count') }}</header>
                                         
                                     </div><!--end .card-head -->
 
@@ -139,7 +139,7 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-head">
-                                        <header>Search View Count</header>
+                                        <header>{{ tr('search_view_count') }}</header>
                                        
                                     </div>
                                     
@@ -158,7 +158,7 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-head">
-                                        <header>Recent Posts</header>
+                                        <header>{{ tr('recent_posts') }}</header>
                                        
                                     </div>
                                     

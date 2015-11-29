@@ -5,6 +5,7 @@ class AdminController extends \BaseController {
 
 	public function adminDashboard()
 	{
+		Session::put('locale','es');
 		$moderate_count = User::where('role_id',1)->get()->count();
 		$post_count = Post::all()->count();
 		$posts = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->take(5)->get();
@@ -25,7 +26,7 @@ class AdminController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -85,9 +86,9 @@ class AdminController extends \BaseController {
 			$user->save();
 
 			if ($user) {
-				return Redirect::back()->with('flash_success', "Moderate Added Successfully <br> please activate");
+				return Redirect::back()->with('flash_success', tr('moderator_add'));
 			} else {
-				return Redirect::back()->with('flash_error', "Something went wrong");
+				return Redirect::back()->with('flash_error', tr('went_wrong'));
 			}
 		}
 	}
@@ -99,11 +100,11 @@ class AdminController extends \BaseController {
 		$moderator->save();
 		if($moderator)
 		{
-			return Redirect::back()->with('flash_success',"User Activated successfully");
+			return Redirect::back()->with('flash_success',tr('moderator_activate'));
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went Wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -114,11 +115,11 @@ class AdminController extends \BaseController {
 		$moderator->save();
 		if($moderator)
 		{
-			return Redirect::back()->with('flash_success',"User Declined successfully");
+			return Redirect::back()->with('flash_success',tr('moderator_decline'));
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went Wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -131,7 +132,7 @@ class AdminController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -162,9 +163,9 @@ class AdminController extends \BaseController {
 
 			$user->save();
 			if ($user) {
-				return Redirect::back()->with('flash_success', "Moderator updated successfully");
+				return Redirect::back()->with('flash_success', tr('moderator_update'));
 			} else {
-				return Redirect::back()->with('flash_error', "Something went wrong");
+				return Redirect::back()->with('flash_error', tr('went_wrong'));
 			}
 		}
 	}
@@ -174,11 +175,11 @@ class AdminController extends \BaseController {
 		$moderate = User::find($id)->delete();
 		if($moderate)
 		{
-			return Redirect::back()->with('flash_success',"User deleted successfully");
+			return Redirect::back()->with('flash_success',tr('moderator_delete'));
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went Wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -193,7 +194,7 @@ class AdminController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -253,9 +254,9 @@ class AdminController extends \BaseController {
 			$user->save();
 
 			if ($user) {
-				return Redirect::back()->with('flash_success', "Contributor Added Successfully <br> please activate");
+				return Redirect::back()->with('flash_success', tr('contributor_add'));
 			} else {
-				return Redirect::back()->with('flash_error', "Something went wrong");
+				return Redirect::back()->with('flash_error', tr('went_wrong'));
 			}
 		}
 	}
@@ -267,11 +268,11 @@ class AdminController extends \BaseController {
 		$contributors->save();
 		if($contributors)
 		{
-			return Redirect::back()->with('flash_success',"User Activated successfully");
+			return Redirect::back()->with('flash_success',tr('contributor_activate'));
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went Wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -282,11 +283,11 @@ class AdminController extends \BaseController {
 		$contributors->save();
 		if($contributors)
 		{
-			return Redirect::back()->with('flash_success',"User Declined successfully");
+			return Redirect::back()->with('flash_success',tr('contributor_decline'));
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went Wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -299,7 +300,7 @@ class AdminController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -330,9 +331,9 @@ class AdminController extends \BaseController {
 
 			$user->save();
 			if ($user) {
-				return Redirect::back()->with('flash_success', "Contributors updated successfully");
+				return Redirect::back()->with('flash_success', tr('contributor_update'));
 			} else {
-				return Redirect::back()->with('flash_error', "Something went wrong");
+				return Redirect::back()->with('flash_error', tr('went_wrong'));
 			}
 		}
 	}
@@ -342,11 +343,11 @@ class AdminController extends \BaseController {
 		$contributors = User::find($id)->delete();
 		if($contributors)
 		{
-			return Redirect::back()->with('flash_success',"User deleted successfully");
+			return Redirect::back()->with('flash_success',tr('contributor_delete'));
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went Wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -361,7 +362,7 @@ class AdminController extends \BaseController {
 		{
 			if($na == $name)
 			{
-				return Redirect::back()->with('flash_error',"order id is are same");
+				return Redirect::back()->with('flash_error',tr('order_id_are_same'));
 			}
 			$na = $name;
 		}
@@ -374,7 +375,7 @@ class AdminController extends \BaseController {
 				$cates->save();
 			}
 		}
-		return Redirect::back()->with('flash_success',"Updated successfully");
+		return Redirect::back()->with('flash_success',tr('category_update'));
 	}
 
 	public function category()
@@ -421,11 +422,11 @@ class AdminController extends \BaseController {
 			$category->save();
 			if($category)
 			{
-				return Redirect::back()->with('flash_success',"Added successfully");
+				return Redirect::back()->with('flash_success',tr('category_add'));
 			}
 			else
 			{
-				return Redirect::back()->with('flash_error',"Something went Wrong");
+				return Redirect::back()->with('flash_error',tr('went_wrong'));
 			}
 		}
 	}
@@ -439,7 +440,7 @@ class AdminController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went Wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -477,11 +478,11 @@ class AdminController extends \BaseController {
 			$category->save();
 			if($category)
 			{
-				return Redirect::back()->with('flash_success',"Updated successfully");
+				return Redirect::back()->with('flash_success',tr('category_update'));
 			}
 			else
 			{
-				return Redirect::back()->with('flash_error',"Something went Wrong");
+				return Redirect::back()->with('flash_error',tr('went_wrong'));
 			}
 		}
 	}
@@ -491,11 +492,11 @@ class AdminController extends \BaseController {
 		$category = Category::where('id',$id)->delete();
 		if($category)
 		{
-			return Redirect::back()->with('flash_success',"Updated successfully");
+			return Redirect::back()->with('flash_success',tr('category_delete'));
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went Wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -524,12 +525,12 @@ class AdminController extends \BaseController {
 			}
 			else
 			{
-				return Redirect::route('adminPost')->with('flash_error',"Not found");
+				return Redirect::route('adminPost')->with('flash_error',tr('not_found'));
 			}
 		}
 		else
 		{
-			return Redirect::route('adminPost')->with('flash_error',"Not found");
+			return Redirect::route('adminPost')->with('flash_error',tr('not_found'));
 		}
 
 	}
@@ -637,9 +638,9 @@ class AdminController extends \BaseController {
                 $post->category = implode(',', $category);
                 $post->save();
 				if ($post) {
-					return Redirect::route('adminPost')->with('flash_success', "Post Updated");
+					return Redirect::route('adminPost')->with('flash_success', tr('post_update'));
 				} else {
-					return Redirect::back()->with('flash_error', "Something went wrong");
+					return Redirect::back()->with('flash_error', tr('went_wrong'));
 				}
             } 
             else 
@@ -709,9 +710,9 @@ class AdminController extends \BaseController {
                     }
                 }
 				if ($post) {
-					return Redirect::route('adminPost')->with('flash_success', "Post created");
+					return Redirect::route('adminPost')->with('flash_success', tr('post_create'));
 				} else {
-					return Redirect::back()->with('flash_error', "Something went wrong");
+					return Redirect::back()->with('flash_error', tr('went_wrong'));
 				}
             }
         }
@@ -741,11 +742,11 @@ class AdminController extends \BaseController {
         $post = Post::where('id',$id)->delete();
         if($post)
         {
-            return Redirect::back()->with('flash_success',"Deleted successfully");
+            return Redirect::back()->with('flash_success',tr('post_delete'));
         }
         else
         {
-            return Redirect::back()->with('flash_error',"Something went wrong");
+            return Redirect::back()->with('flash_error',tr('went_wrong'));
         }
     }
 
@@ -759,7 +760,7 @@ class AdminController extends \BaseController {
     	}
     	else
     	{
-    		return Redirect::back()->with('flash_error', "Something went wrong");
+    		return Redirect::back()->with('flash_error', tr('went_wrong'));
     	}
     }
 
@@ -775,11 +776,11 @@ class AdminController extends \BaseController {
 					);
 
 			send_notification($post->title,$response_array);
-			return Redirect::back()->with('flash_success',"push notification delivered");
+			return Redirect::back()->with('flash_success',tr('push_notification_success'));
     	}
     	else
     	{
-    		return Redirect::back()->with('flash_error',"Push notification failed, Try again");
+    		return Redirect::back()->with('flash_error',tr('push_notification_error'));
     	}
     }
 
@@ -828,7 +829,7 @@ class AdminController extends \BaseController {
 			Setting::set('website_link', Input::get('website_link'));
 			Setting::set('timezone', Input::get('timezone'));
 			
-			return Redirect::back()->with('flash_success', "successfully");
+			return Redirect::back()->with('flash_success', tr('success_done'));
 		}
 	}
 
@@ -870,9 +871,9 @@ class AdminController extends \BaseController {
 			$admin->save();
 
 			if ($admin) {
-				return Redirect::back()->with('flash_success', "Admin updated successfully");
+				return Redirect::back()->with('flash_success', tr('success_update'));
 			} else {
-				return Redirect::back()->with('flash_error', "Something went wrong");
+				return Redirect::back()->with('flash_error', tr('went_wrong'));
 			}
 		}
 	}
@@ -898,9 +899,9 @@ class AdminController extends \BaseController {
             $admin->save();
 
             if ($admin) {
-                return Redirect::back()->with('flash_success', "Admin updated successfully");
+                return Redirect::back()->with('flash_success', tr('success_update'));
             } else {
-                return Redirect::back()->with('flash_error', "Something went wrong");
+                return Redirect::back()->with('flash_error', tr('went_wrong'));
             }
 		}
 	}
@@ -927,9 +928,9 @@ class AdminController extends \BaseController {
 			$admin->save();
 
 			if ($admin) {
-                return Redirect::back()->with('flash_success', "Admin updated successfully");
+                return Redirect::back()->with('flash_success', tr('post_update'));
             } else {
-                return Redirect::back()->with('flash_error', "Something went wrong");
+                return Redirect::back()->with('flash_error', tr('went_wrong'));
             }
 		}
 	}
@@ -941,11 +942,11 @@ class AdminController extends \BaseController {
         {
             $post->is_approved = 1;
             $post->save();
-            return Redirect::back()->with('flash_success',"approved successfully");
+            return Redirect::back()->with('flash_success',tr('post_approve'));
         }
         else
         {
-            return Redirect::back()->with('flash_error',"Something went Wrong");
+            return Redirect::back()->with('flash_error',tr('went_wrong'));
         }
     }
 
@@ -956,11 +957,11 @@ class AdminController extends \BaseController {
         {
             $post->is_approved = 0;
             $post->save();
-            return Redirect::back()->with('flash_success',"successfully Done");
+            return Redirect::back()->with('flash_success',tr('post_delete'));
         }
         else
         {
-            return Redirect::back()->with('flash_error',"Something went Wrong");
+            return Redirect::back()->with('flash_error',tr('went_wrong'));
         }
     }
 

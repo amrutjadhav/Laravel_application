@@ -23,11 +23,11 @@ class ModerateController extends \BaseController {
         $post = Post::where('id',$id)->delete();
         if($post)
         {
-            return Redirect::back()->with('flash_success',"Deleted successfully");
+            return Redirect::back()->with('flash_success',tr('post_delete'));
         }
         else
         {
-            return Redirect::back()->with('flash_error',"Something went wrong");
+            return Redirect::back()->with('flash_error',tr('went_wrong'));
         }
     }
 
@@ -132,9 +132,9 @@ class ModerateController extends \BaseController {
                 $post->category = implode(',', $category);
                 $post->save();
                 if ($post) {
-                    return Redirect::route('moderatePost')->with('flash_success', "Post Updated");
+                    return Redirect::route('moderatePost')->with('flash_success', tr('post_update'));
                 } else {
-                    return Redirect::back()->with('flash_error', "Something went wrong");
+                    return Redirect::back()->with('flash_error', tr('went_wrong'));
                 }
             }
             else
@@ -206,9 +206,9 @@ class ModerateController extends \BaseController {
 
                 }
                 if ($post) {
-                    return Redirect::route('moderatePost')->with('flash_success', "Post created");
+                    return Redirect::route('moderatePost')->with('flash_success', tr('post_create'));
                 } else {
-                    return Redirect::back()->with('flash_error', "Something went wrong");
+                    return Redirect::back()->with('flash_error', tr('went_wrong'));
                 }
             }
         }
@@ -224,7 +224,7 @@ class ModerateController extends \BaseController {
         }
         else
         {
-            return Redirect::back()->with('flash_error', "Something went wrong");
+            return Redirect::back()->with('flash_error', tr('went_wrong'));
         }
     }
 
@@ -268,9 +268,9 @@ class ModerateController extends \BaseController {
             $admin->save();
 
             if ($admin) {
-                return Redirect::back()->with('flash_success', "Updated successfully");
+                return Redirect::back()->with('flash_success', tr('moderator_update'));
             } else {
-                return Redirect::back()->with('flash_error', "Something went wrong");
+                return Redirect::back()->with('flash_error', tr('went_wrong'));
             }
         }
     }
@@ -296,9 +296,9 @@ class ModerateController extends \BaseController {
             $admin->save();
 
             if ($admin) {
-                return Redirect::back()->with('flash_success', "Updated successfully");
+                return Redirect::back()->with('flash_success', tr('password_update'));
             } else {
-                return Redirect::back()->with('flash_error', "Something went wrong");
+                return Redirect::back()->with('flash_error', tr('went_wrong'));
             }
         }
     }
@@ -325,9 +325,9 @@ class ModerateController extends \BaseController {
             $admin->save();
 
             if ($admin) {
-                return Redirect::back()->with('flash_success', "Updated successfully");
+                return Redirect::back()->with('flash_success', tr('success_update'));
             } else {
-                return Redirect::back()->with('flash_error', "Something went wrong");
+                return Redirect::back()->with('flash_error', tr('went_wrong'));
             }
         }
     }

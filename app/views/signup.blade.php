@@ -37,32 +37,32 @@
             <div class="row">
                 <div class="col-sm-6">
                     <br/>
-                    <span class="text-lg text-bold text-primary">INSHORTS SIGNUP</span>
+                    <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} {{tr('signup')}}</span>
                     <br/><br/>
                     <form class="form floating-label" action="{{route('signupProcess')}}" accept-charset="utf-8" method="post">
                         <div class="form-group">
                             <input type="email" class="form-control" id="email" name="email">
-                            <label for="email">Email</label>
+                            <label for="email">{{tr('admin_email')}}</label>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="username" name="username">
-                            <label for="username">Username</label>
+                            <label for="username">{{tr('username')}}</label>
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="password" name="password">
-                            <label for="password">Password</label>
+                            <label for="password">{{tr('password')}}</label>
 
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="cnfrmpassword" name="cnfrmpassword">
-                            <label for="cnfrmpassword">Confirm Password</label>
+                            <label for="cnfrmpassword">{{tr('confirm_password')}}</label>
 
                         </div>
                         <br/>
                         <div class="row">
 
                             <div class="col-xs-12 text-right">
-                                <button class="btn btn-primary btn-raised" type="submit">Signup</button>
+                                <button class="btn btn-primary btn-raised" type="submit">{{tr('signup')}}</button>
                             </div><!--end .col -->
                         </div><!--end .row -->
                     </form>
@@ -72,7 +72,7 @@
                     <h3 class="text-light">
                         Already You have have an account?
                     </h3>
-                    <a class="btn btn-block btn-raised btn-primary" href="{{route('login')}}">Login here</a>
+                    <a class="btn btn-block btn-raised btn-primary" href="{{route('login')}}">{{tr('login')}} here</a>
                     <br><br>
 
                 </div><!--end .col -->

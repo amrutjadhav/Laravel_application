@@ -20,6 +20,7 @@ class HomeController extends BaseController {
 		//echo "Coming Soon";
 		try{
       		 DB::connection()->getDatabaseName();
+      		 //Session::set('locale' , 'es');
       
        		$post = Post::get();
 			$cats = Category::orderBy('order_type')->get();
@@ -70,6 +71,7 @@ class HomeController extends BaseController {
 
 	public function logout()
 	{
+		
 		Auth::logout();
 		return Redirect::route('login');
 	}
@@ -109,7 +111,7 @@ class HomeController extends BaseController {
 					}
 					else
 					{
-						return Redirect::back()->with('flash_error',"Please activate your account, Check your mail or contact admin");
+						return Redirect::back()->with('flash_error',tr('login_error'));
 					}
 				}
 				elseif($user->role_id == 3)
@@ -120,17 +122,17 @@ class HomeController extends BaseController {
 					}
 					else
 					{
-						return Redirect::back()->with('flash_error',"Please activate your account, Check your mail or contact admin");
+						return Redirect::back()->with('flash_error',tr('login_error'));
 					}
 				}
 				else
 				{
-					return Redirect::back()->with('flash_error',"something went wrong");
+					return Redirect::back()->with('flash_error',tr('went_wrong'));
 				}
 			}
 			else
 			{
-				return Redirect::back()->with('flash_error',"Invalid Email and Password");
+				return Redirect::back()->with('flash_error',tr('login_email_password_error'));
 			}
 		}
 	}
@@ -156,7 +158,7 @@ class HomeController extends BaseController {
 			$user = User::where('email',$email)->first();
 			if(!$user)
 			{
-				return Redirect::back()->with('flash_errors',"Email Id not found");
+				return Redirect::back()->with('flash_errors', tr('forgot_password_error'));
 			}
 
 			$new_password = time();
@@ -176,9 +178,9 @@ class HomeController extends BaseController {
 				Mail::send('emails.newmoderator', array('email_data' => $email_data), function ($message) use ($email, $subject) {
 					$message->to($email)->subject($subject);
 				});
-				return Redirect::back()->with('flash_success',"your password changed and new password is sent to your email!");
+				return Redirect::back()->with('flash_success',tr('forgot_password_success'));
 			}else{
-				return Redirect::back()->with('flash_errors',"something went wrong!");
+				return Redirect::back()->with('flash_errors',tr('went_wrong'));
 			}
 		}
 	}

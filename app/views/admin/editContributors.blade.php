@@ -16,31 +16,33 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-head style-primary">
-                    <header>Edit COntributors</header>
+                    <header>{{tr('edit_contributors') }}</header>
                 </div>
                 <div class="card-body">
                     <form class="form" action="{{route('contributorsEditProcess')}}" method="post">
                         <input type="hidden" name="id" value="{{$contributors->id}}" />
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="first_name" value="{{$contributors->first_name}}">
-                            <label for="regular1">First Name</label>
+                            <label for="regular1">{{tr('first_name')}}</label>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="last_name" value="{{$contributors->last_name}}">
-                            <label for="regular1">Last Name</label>
+                            <label for="regular1">{{tr('last_name')}}</label>
                         </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="password1" name="author_name" value="{{$contributors->author_name}}">
-                            <label for="password1">Author Name</label>
+                            <label for="password1">{{tr('author_name')}}</label>
                         </div>
 
                         <div class="form-group">
                             <input type="email" class="form-control" id="password1" name="email" value="{{$contributors->email}}">
-                            <label for="password1">Email</label>
+                            <label for="password1">{{tr('admin_email')}}</label>
                         </div>
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-info">
+                            {{tr('admin_submit')}}
+                        </button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->

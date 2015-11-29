@@ -16,17 +16,17 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-head style-primary">
-               <header>Categories</header>
+               <header>{{tr('categories')}}</header>
             </div>
             <div class="card-body">
                 
                 <table class="table no-margin">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Action</th>
-                        <th>Position</th>
+                        <th>{{tr('admin_id')}}</th>
+                        <th>{{tr('category_name')}}</th>
+                        <th>{{tr('admin_action')}}</th>
+                        <th>{{tr('position')}}</th>
 
                     </tr>
                     </thead>
@@ -54,7 +54,7 @@
                     </tbody>
 
                 </table>
-                <button type="submit" class="btn ink-reaction btn-raised btn-primary pull-right">Submit</button>
+                <button type="submit" class="btn ink-reaction btn-raised btn-primary pull-right">{{tr('admin_submit')}}</button>
                 </form>
                 <div align="right" id="paglink"><?php echo $categories->links(); ?></div>
             </div><!--end .card-body -->

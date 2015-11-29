@@ -19,7 +19,7 @@
             <div class="card">
 
             <div class="card-head style-warning">
-               <header>Profile Settings</header>
+               <header>{{tr('profile_settings')}}</header>
             </div>
 
                 <div class="card-body">
@@ -27,25 +27,25 @@
                         <input type="hidden" name="id" value="{{$admin->id}}">
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="first_name" value="{{$admin->first_name}}">
-                            <label for="regular1">First Name</label>
+                            <label for="regular1">{{tr('first_name')}}</label>
                         </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="last_name" value="{{$admin->last_name}}">
-                            <label for="regular1">Last Name</label>
+                            <label for="regular1">{{tr('last_name')}}</label>
                         </div>
 
                         <div class="form-group">
                         <input type="text" class="form-control" id="regular1" name="author_name" value="{{$admin->author_name}}">
-                        <label for="regular1">Author Name</label>
+                        <label for="regular1">{{tr('author_name')}}</label>
                         </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="email" value="{{$admin->email}}">
-                            <label for="regular1">Email</label>￼
+                            <label for="regular1">{{tr('admin_email')}}</label>￼
                         </div>
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-info">{{tr('admin_submit')}}</button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->
@@ -55,7 +55,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-head style-warning">
-               <header>Profile Picture</header>
+               <header>{{tr('profile_picture')}}</header>
             </div>
                 <div class="card-body">
                     <form class="form" action="{{route('contributorProfilePics')}}" method="post" enctype="multipart/form-data">
@@ -68,13 +68,13 @@
                                 </div>
                             </div>
                             <div class="btn light-blue accent-2" style="padding: 0px 10px;">
-                                <span>Choose Picture</span>
+                                <span>{{tr('choose_picture')}}</span>
                                 <input type="file" name="profile_pic" />
                             </div>
                             <input class="file-path validate" type="text" />
 
                         </div>
-                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-info">{{tr('admin_submit')}}</button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->
@@ -85,7 +85,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-head style-warning">
-               <header>Change Password</header>
+               <header>{{tr('change_password')}}</header>
             </div>
                 <div class="card-body">
                     <form class="form" action="{{route('contributorPassword')}}" method="post" enctype="multipart/form-data">
@@ -93,15 +93,15 @@
 
                         <div class="form-group">
                             <input type="password" class="form-control" id="regular1" name="password" >
-                            <label for="regular1">Password</label>￼
+                            <label for="regular1">{{tr('password')}}</label>￼
                         </div>
 
                         <div class="form-group">
                             <input type="password" class="form-control" id="regular1" name="con_password">
-                            <label for="regular1">Confirm Password</label>￼
+                            <label for="regular1">{{tr('confirm_password')}}</label>￼
                         </div>
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-info">{{tr('admin_submit')}}</button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->

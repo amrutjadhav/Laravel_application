@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Welcome</title>
+    <title>{{ tr('mail_welcome')}} {{Session::get('sitename') }}</title>
     <style type="text/css" media="screen">
 
         .ExternalClass * {line-height: 100%}
@@ -32,7 +32,7 @@
                 <table width="660" class="resp-full-table" align="center" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td width="50%" style="text-align:left;">
-                            <a href="#" style="text-decoration:none;"><h3 style="font-size: 25px;font-family: 'Helvetica Neue', helvetica, arial, sans-serif;font-weight: bold;color: #6B6B6B;margin: 0;">Point Blank News</h3></a>
+                            <a href="#" style="text-decoration:none;"><h3 style="font-size: 25px;font-family: 'Helvetica Neue', helvetica, arial, sans-serif;font-weight: bold;color: #6B6B6B;margin: 0;">{{ Session::get('sitename') }}</h3></a>
                         </td>
                         <td width="50%" style="text-align:right;">
                             <table align="right" border="0" cellspacing="0" cellpadding="0">
@@ -62,7 +62,7 @@
                 <table width="660" class="resp-full-table" align="center" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td class="resp-full-td" valign="top" style="padding:20px; text-align:center;">
-                            <span style="font-size:25px; font-family:'Helvetica Neue', helvetica, arial, sans-serif; font-weight:100; color:#ffffff"><a href="#" style="color:#ffffff; outline:none; text-decoration:none;">Welcome to Point Blank News</a> </span>
+                            <span style="font-size:25px; font-family:'Helvetica Neue', helvetica, arial, sans-serif; font-weight:100; color:#ffffff"><a href="#" style="color:#ffffff; outline:none; text-decoration:none;">{{ tr('mail_welcome')}} {{ Session::get('sitename')}}</a> </span>
                         </td>
                     </tr>
 

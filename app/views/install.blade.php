@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <title>PNB - Installation</title>
+    <title>{{Setting::get('sitename')}} {{ tr('installtion') }}</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">
@@ -169,7 +169,7 @@ $timezone = array (
 						<li class="header-nav-brand" >
 							<div class="brand-holder">
 								
-									<span class="text-lg text-bold text-primary">CUSTOMIZE POINT BLANK NEWS</span>
+									<span class="text-lg text-bold text-primary">CUSTOMIZE {{Setting::get('sitename')}}</span>
 								
 							</div>
 						</li>
@@ -198,7 +198,7 @@ $timezone = array (
 						<!-- BEGIN INTRO -->
 						<div class="row">
 							<div class="col-lg-12">
-								<h1 class="text-primary">Website Configuration wizard</h1>
+								<h1 class="text-primary">{{tr('Website_Configuration_wizard')}}</h1>
 							</div><!--end .col -->
 						</div><!--end .row -->
 						<!-- END INTRO -->
@@ -213,9 +213,9 @@ $timezone = array (
 												<div class="form-wizard-nav">
 													<div class="progress" style="width:100% !important;"><div class="progress-bar progress-bar-primary"></div></div>
 													<ul class="nav nav-justified">
-														<li class="active"><a href="#tab1" data-toggle="tab"><span class="title">DATABASE CONFIGURATION</span></a></li>
-														<li><a href="#tab2" data-toggle="tab"><span class="title">ADMIN CONFIGURATION</span></a></li>
-														<li><a href="#tab3" data-toggle="tab"><span class="title">WEBSITE CONFIGURATION</span></a></li>
+														<li class="active"><a href="#tab1" data-toggle="tab"><span class="title">{{tr('DATABASE_CONFIGURATION')}}</span></a></li>
+														<li><a href="#tab2" data-toggle="tab"><span class="title">{{tr('ADMIN_CONFIGURATION')}}</span></a></li>
+														<li><a href="#tab3" data-toggle="tab"><span class="title">{{tr('WEBSITE_CONFIGURATION')}}</span></a></li>
 													</ul>
 												</div><!--end .form-wizard-nav -->
 												<div class="tab-content clearfix">
@@ -223,15 +223,15 @@ $timezone = array (
 														<br/><br/>
 														<div class="form-group">
 															<input type="text" id="database_name" name="database_name" id="Address" class="form-control">
-															<label for="Address" class="control-label">Database Name</label>
+															<label for="Address" class="control-label">{{tr('database_name')}}</label>
 														</div>
 														<div class="form-group">
 															<input type="text" id="username" name="username" id="Address" class="form-control">
-															<label for="Address" class="control-label">Database Username</label>
+															<label for="Address" class="control-label">{{tr('database_username')}}</label>
 														</div>
 														<div class="form-group">
 															<input type="password" id="password" name="password" id="Address" class="form-control">
-															<label for="Address" class="control-label">Database Password</label>
+															<label for="Address" class="control-label">{{tr('database_password')}}</label>
 														</div>
 														
 													</div><!--end #tab1 -->
@@ -239,30 +239,30 @@ $timezone = array (
 														<br/><br/>
 														<div class="form-group">
 															<input type="email" name="admin_username" id="Address" class="form-control">
-															<label for="Address" class="control-label">Admin Email</label>
+															<label for="Address" class="control-label">{{tr('admin_Email')}}</label>
 														</div>
 														<div class="form-group">
 															<input type="password" name="admin_password" id="Address" class="form-control">
-															<label for="Address" class="control-label">Admin Password</label>
+															<label for="Address" class="control-label">{{tr('admin_password')}}</label>
 														</div>
 														<div class="form-group">
 															<input type="text" name="mandrill_secret" id="Address" class="form-control">
-															<label for="Address" class="control-label">Mandrill Secret</label>
+															<label for="Address" class="control-label">{{tr('mandrill_secret')}}</label>
 														</div>
 														<div class="form-group">
 															<input type="text" name="mandrill_username" id="Address" class="form-control">
-															<label for="Address" class="control-label">Mandrill Password</label>
+															<label for="Address" class="control-label">{{ tr('mandrill_password')}}</label>
 														</div>
 														
 														<div class="form-group floating-label">
 								                            <select id="time" name="timezone" class="form-control" required>
-								                                <option value="">-Select Timezone-</option>
+								                                <option value="">- {{tr('select_timezone')}}-</option>
 								                                @foreach($timezone as $key => $value)
 								                                    <option value="{{$value}}" <?php if($value == Setting::get('timezone')) echo "selected"; ?> >{{$key}}</option>
 								                                @endforeach
 
 								                            </select>
-								                            <label for="time">Select Timezone</label>
+								                            <label for="time">{{tr('select_timezone')}}</label>
 
 								                        </div>
 													</div><!--end #tab2 -->
@@ -270,7 +270,7 @@ $timezone = array (
 														<br/><br/>
 														<div class="form-group">
 									                        <input type="text" class="form-control" id="regular1" name="sitename" value="{{Setting::get('sitename')}}">
-									                        <label for="regular1">Site Title</label>
+									                        <label for="regular1">{{tr('site_title')}}</label>
 									                    </div>
 
 									                    <!-- <div class="form-group">
@@ -280,21 +280,23 @@ $timezone = array (
 
 									                    <div class="file-field input-field col s12">
 									                        <div class="btn light-blue accent-2" style="padding: 0px 10px;">
-									                            <span>Choose Logo</span>
+									                            <span>{{tr('choose_logo')}}</span>
 									                            <input type="file" name="picture" />
 									                        </div>
 									                        <input class="file-path validate" type="text"/>
 									                        <p>Note: Upload Only .png images</p>
 
 									                    </div>
-									                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">Submit</button>
+									                    <button type="submit" class="btn ink-reaction btn-raised btn-primary">
+                                 {{tr('admin_submit')}}                           
+                                                        </button>
 													</div><!--end #tab3 -->
 												</div><!--end .tab-content -->
 												<ul class="pager wizard">
-													<li class="previous first"><a class="btn-raised" href="javascript:void(0);">First</a></li>
-													<li class="previous"><a class="btn-raised" href="javascript:void(0);">Previous</a></li>
-													<li class="next last"><a class="btn-raised" href="javascript:void(0);">Last</a></li>
-													<li class="next"><a class="btn-raised" href="javascript:void(0);">Next</a></li>
+													<li class="previous first"><a class="btn-raised" href="javascript:void(0);">{{tr('first')}}</a></li>
+													<li class="previous"><a class="btn-raised" href="javascript:void(0);">{{tr('previous')}}</a></li>
+													<li class="next last"><a class="btn-raised" href="javascript:void(0);">{{tr('last')}}</a></li>
+													<li class="next"><a class="btn-raised" href="javascript:void(0);">{{tr('next')}}</a></li>
 												</ul>
 											</form>
 										</div><!--end #rootwizard -->

@@ -14,16 +14,16 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-head style-primary">
-                        <header>Posts</header>
+                        <header>{{tr('posts')}}</header>
                     </div>
             <div class="card-body">
                 <table class="table no-margin">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Action</th>
-                        <th>Abuse Report</th>
+                        <th>{{ tr('admin_id')}}</th>
+                        <th>{{tr('title')}}</th>
+                        <th>>{{ tr('admin_action') }}</th>
+                        <th>{{tr('abuse_report')}}</th>
 
                     </tr>
                     </thead>

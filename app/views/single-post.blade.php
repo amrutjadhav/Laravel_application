@@ -116,9 +116,9 @@
             
             <div class="row sing-btm-btn" style="text-align:center;">
 
-                <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share <span class="hidden-s">on Facebook</span></a>
-                    <a href="http://twitter.com/share?text={{substr($post->title, 0, 30)}}...&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share <span class="hidden-s">on Twitter</span></a>
-                    <a href="{{{$post->url}}}" class="waves-effect waves-light btn no-right-mar dark-blue darken">Read More</a>
+                <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>{{tr('share')}} <span class="hidden-s">{{tr('on_fb')}}</span></a>
+                    <a href="http://twitter.com/share?text={{substr($post->title, 0, 30)}}...&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>{{tr('share')}} <span class="hidden-s">{{tr('on_twitter')}}</span></a>
+                    <a href="{{{$post->url}}}" class="waves-effect waves-light btn no-right-mar dark-blue darken">{{tr('read_more')}}</a>
             </div>
             
 
@@ -144,7 +144,7 @@
             </div>
 
             <div class="row single-btm-blk" style="text-align:center;">
-                 <a href="{{route('home')}}" class="full-btn waves-effect waves-light btn mat-clr">More News</a> 
+                 <a href="{{route('home')}}" class="full-btn waves-effect waves-light btn mat-clr">{{tr('more_news')}}</a> 
             </div>
 
 
@@ -162,7 +162,7 @@
 
     <div id="modal1" class="modal bottom-sheet cat">
         <div class="modal-content">
-            <h4>Select Category</h4>
+            <h4>{{tr('select_category')}}</h4>
             <div class="popup-top"></div>
              <a href="javascript:void(0);" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
             @foreach($cats as $cat)
@@ -177,7 +177,7 @@
 
      <div id="modal2" class="modal bottom-sheet cat">
     <div class="modal-content">
-      <h4>Get it on
+      <h4>{{tr('get_it_on')}}
         <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
       </h4>
       <div class="popup-top"></div>

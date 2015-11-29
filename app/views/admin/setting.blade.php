@@ -147,13 +147,13 @@ $timezone = array (
     <div class="col-md-12">
         <div class="card">
             <div class="card-head style-primary">
-                        <header>Website Settings</header>
+                        <header>{{ tr('website_settings') }}</header>
                     </div>
             <div class="card-body">
                 <form class="form" action="{{route('adminSettingProcess')}}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" class="form-control" id="regular1" name="sitename" value="{{Setting::get('sitename')}}">
-                        <label for="regular1">Site Title</label>
+                        <label for="regular1">{{ tr('site_title') }}</label>
                     </div>
 
                    <!--  <div class="form-group">
@@ -168,7 +168,7 @@ $timezone = array (
                                 </div>
                             </div>
                         <div class="btn light-blue accent-2" style="padding: 0px 10px;">
-                            <span>Choose Logo</span>
+                            <span>{{ tr('choose_logo') }}</span>
                             <input type="file" name="picture" />
                         </div>
                         <input class="file-path validate" type="text"/>
@@ -177,52 +177,54 @@ $timezone = array (
 
                     <div class="form-group">
                         <input type="text" class="form-control" name="browser_key" value="{{Setting::get('browser_key')}}">
-                        <label for="regular1">Browser Key</label>
+                        <label for="regular1"> {{ tr('browser_key') }}</label>
                     </div>
 
                     <div class="form-group">
                       <textarea id="textarea1" class="materialize-textarea" name="analytics_code">{{Setting::get('analytics_code')}}</textarea>
-                      <label for="textarea1">Google Analytics Code</label>
+                      <label for="textarea1">{{ tr('google_analytics_code') }}</label>
                     </div>
 
                     <div class="form-group">
                         <input type="text" class="form-control" name="google_play" value="{{Setting::get('google_play')}}">
-                        <label for="regular1">Google play store link</label>
+                        <label for="regular1">{{ tr('google_playstore_link') }}</label>
                     </div>
 
                     <div class="form-group">
                         <input type="text" class="form-control" name="ios_app" value="{{Setting::get('ios_app')}}">
-                        <label for="regular1">Apple app store link</label>
+                        <label for="regular1">{{ tr('apple_app_store_link') }}</label>
                     </div>
 
                     <div class="form-group">
                         <input type="text" class="form-control" name="website_link" value="{{Setting::get('website_link')}}">
-                        <label for="regular1">Website link</label>
+                        <label for="regular1">{{ tr('website_link') }}</label>
                     </div>
 
                     <div class="form-group">
                         <input type="text" class="form-control" name="mandrill_secret" value="{{Setting::get('mandrill_secret')}}">
-                        <label for="regular1">Mandrill Secret</label>
+                        <label for="regular1">{{ tr('mandrill_secret') }}</label>
                     </div>
 
                     <div class="form-group">
                         <input type="text" class="form-control" name="mandrill_username" value="{{Setting::get('mandrill_username')}}">
-                        <label for="regular1">Mandrill Username</label>
+                        <label for="regular1">{{ tr('mandrill_username') }}</label>
                     </div>
 
                     <div class="form-group floating-label">
                             <select id="cat_select" name="timezone" class="form-control" required>
-                                <option value="">-Select Timezone-</option>
+                                <option value="">{{ tr('select_timezone') }}</option>
                                 @foreach($timezone as $key => $value)
                                     <option value="{{$value}}" <?php if($value == Setting::get('timezone')) echo "selected"; ?> >{{$key}}</option>
                                 @endforeach
 
                             </select>
-                            <label for="cat_select">Select Timezone</label>
+                            <label for="cat_select">{{ tr('select_timezone') }}</label>
 
                         </div>
                         <br>
-                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">
+                        {{tr('admin_submit')}}
+                    </button>
                 </form>
             </div><!--end .card-body -->
         </div><!--end .card -->

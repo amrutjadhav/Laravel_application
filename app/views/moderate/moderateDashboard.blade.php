@@ -17,7 +17,7 @@
     <section>
         <div class="section-header">
             <ol class="breadcrumb">
-                <li class="active">Dashboard</li>
+                <li class="active">{{tr('dashboard')}}</li>
             </ol>
         </div><!--end .section-header -->
         <div class="section-body">
@@ -30,7 +30,7 @@
                             <div class="alert alert-callout alert-info no-margin">
                                 <h1 class="pull-right text-info"><i class="md md-photo"></i></h1>
                                 <strong class="text-xl">{{{$post_count}}}</strong><br>
-                                <span class="opacity-50">Total Posts</span>
+                                <span class="opacity-50">{{tr('total_posts')}}</span>
                             </div>
                         </div><!--end .card-body -->
                     </div><!--end .card -->
@@ -43,10 +43,7 @@
                                         <div class="alert alert-callout alert-success no-margin">
                                             <h1 class="pull-right text-success"><i class="md md-pageview"></i></h1>
                                             <strong class="text-xl">{{{total_view_count()}}}</strong><br/>
-                                            <span class="opacity-50">Total No. of Views</span>
-                                        </div>
-                                    </div><!--end .card-body -->
-                                </div><!--end .card -->
+                                            <span class="opacity-50">{{tr('total_views')}}
                             </div><!--end .col -->
                             <!-- END ALERT - TIME ON SITE -->
 

@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>404 - Page Not Found</title>
+	<title>{{ tr('error_page_title') }}</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	<!-- Favicon and touch icons -->
@@ -24,9 +24,9 @@
 			<div class="logo">
 				<a href="javascript:void(0);"><img src="{{Setting::get('logo')}}" alt="logo"/></a>
 			</div>
-				<h1>404</h1>
-				<h2>Page not found! Don't worry, <br/>sometimes it happens even for the best of us.</h2>
-				<a class="btn-orange" href="{{route('home')}}">Back to Home</a>
+				<h1>{{ tr('error_page_head') }}</h1>
+				<h2>{{ tr('error_page_content') }}</h2>
+				<a class="btn-orange" href="{{route('home')}}">{{ tr('error_page_back') }}</a>
 		</div>
     </div>
     <div class="right">

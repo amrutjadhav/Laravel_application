@@ -16,7 +16,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-head style-primary">
-                        <header>Posts</header>
+                        <header>{{ tr('posts') }}</header>
                     </div>
                 <div class="card-body">
                     <ul class="pull-right">
@@ -33,12 +33,12 @@
                     <table class="table no-margin">
                         <thead>
                         <tr>
-                            <th># {{Auth::user()->id}}</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Roles</th>
-                            <th>Author</th>
-                            <th>Action</th>
+                            <th>{{ tr('admin_id')}} {{Auth::user()->id}}</th>
+                            <th>{{ tr('title') }}</th>
+                            <th>{{ tr('description')}}</th>
+                            <th>{{ tr('roles') }}</th>
+                            <th>{{ tr('author_name') }}</th>
+                            <th>{{ tr('admin_action')}}</th>
                         </tr>
                         </thead>
                         <tbody>

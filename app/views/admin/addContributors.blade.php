@@ -17,29 +17,31 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-head style-primary">
-                        <header>Add Contributors</header>
+                        <header>{{ tr('add_contributors')}}</header>
                     </div>
                 <div class="card-body">
                     
                     <form class="form" action="{{route('addContributorsProcess')}}" method="post">
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="first_name">
-                            <label for="regular1">First Name</label>
+                            <label for="regular1">{{ tr('first_name') }}</label>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="last_name">
-                            <label for="regular1">Last Name</label>
+                            <label for="regular1">{{ tr('last_name') }}</label>
                         </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="author_name">
-                            <label for="regular1">Author Name</label>
+                            <label for="regular1">{{ tr('author_name') }}</label>
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-control" id="password1" name="email">
-                            <label for="password1">Email</label>
+                            <label for="password1">{{ tr('admin_email') }}</label>
                         </div>
-                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
+                        <button type="submit" class="btn ink-reaction btn-raised btn-info">
+                            {{ tr('admin_submit') }}
+                        </button>
                     </form>
                 </div><!--end .card-body -->
             </div><!--end .card -->
@@ -57,9 +59,9 @@
         </a>
         <ul>
 
-            <li><a class="btn-floating yellow darken-1" href="{{route('adminModeratorManagement')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-visibility" style="line-height:40px;"></i></a></li>
+            <li><a class="btn-floating yellow darken-1" href="{{route('adminModeratorManagement')}}" style="trform: scaleY(0.4) scaleX(0.4) trlateY(40px); opacity: 0;"><i class="md md-visibility" style="line-height:40px;"></i></a></li>
 
-            <li><a class="btn-floating blue" href="{{route('addModerate')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-add" style="line-height:40px;"></i></a></li>
+            <li><a class="btn-floating blue" href="{{route('addModerate')}}" style="trform: scaleY(0.4) scaleX(0.4) trlateY(40px); opacity: 0;"><i class="md md-add" style="line-height:40px;"></i></a></li>
 
         </ul>
     </div>

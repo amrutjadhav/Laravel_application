@@ -81,7 +81,7 @@
 
         <li><a data-target="modal1" class="waves-effect waves-light modal-trigger"><i class="fa fa-bars"></i></a></li>      
              
-        <li><a class="waves-effect waves-light search-btn" href="javascript:void(0);" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">search</i></a></li>      
+        <li><a class="waves-effect waves-light search-btn" href="javascript:void(0);" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">{{tr('user_search')}}</i></a></li>      
                
       </ul>
       
@@ -126,7 +126,7 @@
 
   <div id="modal1" class="modal bottom-sheet cat">
     <div class="modal-content">
-      <h4>Select Category
+      <h4>{{tr('select_category')}}
         <a href="#!" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
       </h4>
       <div class="popup-top"></div>
@@ -142,7 +142,7 @@
 
   <div id="modal2" class="modal bottom-sheet cat">
     <div class="modal-content">
-      <h4>Get it on
+      <h4>{{tr('get_it_on')}}
         <a href="javascript:void(0);" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
       </h4>
       <div class="popup-top"></div>

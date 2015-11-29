@@ -13,7 +13,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-head style-primary">
-                        <header>Contributors</header>
+                        <header>{{ tr('contributors') }}</header>
                     </div>
                 <div class="card-body">
                     
@@ -21,10 +21,10 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>{{ tr('admin_username') }}</th>
+                            <th>{{ tr('admin_email') }}</th>
+                            <th>{{ tr('admin_status') }}</th>
+                            <th>{{ tr('admin_action') }}</th>
 
                         </tr>
                         </thead>
@@ -36,9 +36,9 @@
                                 <td>{{$user->email}}</td>
                                 <td>
                                     @if($user->is_activated != 0)
-                                        Activated
+                                        {{ tr('activated')}}
                                     @else
-                                        Not activated
+                                        {{ tr('not_activated')}}
                                     @endif
                                 </td>
                                 <td>

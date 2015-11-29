@@ -50,7 +50,7 @@
                 <li class="header-nav-brand" >
                     <div class="brand-holder">
                         <a href="javascript:void(0);">
-                            <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} Dashboard</span>
+                            <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} {{tr('dashboard')}}</span>
                         </a>
                     </div>
                 </li>
@@ -72,15 +72,15 @@
                             <img src="{{asset('admins/img/user.png')}}" alt="" />
                         @endif
 								<span class="profile-info">{{{Auth::user()->first_name}}}
-									<small>Moderator</small>
+									<small>{{tr('moderator')}}</small>
 								</span>
                     </a>
                     <ul class="dropdown-menu animation-dock">
-                        <li class="dropdown-header">Settings</li>
-                        <li><a href="{{route('moderateProfile')}}">My profile</a></li>
+                        <li class="dropdown-header">{{ tr('settings') }}</li>
+                        <li><a href="{{route('moderateProfile')}}">{{tr('admin_my_profile')}}</a></li>
                         <li class="divider"></li>
 
-                        <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+                        <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off text-danger"></i> {{ tr('admin_logout')}}</a></li>
                     </ul><!--end .dropdown-menu -->
                 </li><!--end .dropdown -->
             </ul><!--end .header-nav-profile -->
@@ -124,21 +124,21 @@
                 <li id="dashboard">
                     <a href="{{route('moderateDashboard')}}" >
                         <div class="gui-icon"><i class="md md-home"></i></div>
-                        <span class="title">Dashboard</span>
+                        <span class="title">{{tr('dashboard')}}</span>
                     </a>
                 </li><!--end /menu-li -->
 
                 <li class="gui-folder" id="posts">
                     <a>
                         <div class="gui-icon"><i class="fa fa-newspaper-o"></i></div>
-                        <span class="title">Posts</span>
+                        <span class="title">{{tr('posts')}}</span>
 
                     </a>
                     <!--start submenu -->
                     <ul style="display: none;">
-                        <li><a href="{{route('moderatePost')}}"><span class="title">View Post</span></a></li>
+                        <li><a href="{{route('moderatePost')}}"><span class="title">{{tr('view_posts')}}</span></a></li>
 
-                        <li><a href="{{route('moderateAddPost')}}"><span class="title">Add Post</span></a></li>
+                        <li><a href="{{route('moderateAddPost')}}"><span class="title">{{tr('add_post')}}</span></a></li>
 
                     </ul><!--end /submenu -->
                 </li>
@@ -146,7 +146,7 @@
                 <li id="account">
                     <a href="{{route('moderateProfile')}}" >
                         <div class="gui-icon"><i class="md md-account-box"></i></div>
-                        <span class="title">Account</span>
+                        <span class="title">{{ tr('account') }}</span>
                     </a>
                 </li><!--end /menu-li -->
 

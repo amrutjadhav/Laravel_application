@@ -48,7 +48,7 @@
                 <li class="header-nav-brand" >
                     <div class="brand-holder">
                         <a href="javascript:void(0);">
-                            <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} Dashboard</span>
+                            <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} {{ tr('dashboard') }}</span>
                         </a>
                     </div>
                 </li>
@@ -63,7 +63,9 @@
         <div class="headerbar-right">
             <ul class="header-nav header-nav-options">
                 <li>
-                        <a class="btn btn-warning" href="{{route('home')}}" target="_blank"> View Website</a>
+                        <a class="btn btn-warning" href="{{route('home')}}" target="_blank"> 
+                            {{ tr('view_website')}}
+                        </a>
                 </li>
             </ul><!--end .header-nav-options -->
             <ul class="header-nav header-nav-profile">
@@ -75,16 +77,21 @@
                             <img src="{{asset('admins/img/user.png')}}" alt="" />
                         @endif
 								<span class="profile-info">{{{Auth::user()->first_name}}}
-									<small>Administrator</small>
+									<small>{{ tr('admin') }}</small>
 								</span>
                     </a>
                     <ul class="dropdown-menu animation-dock">
-                        <li class="dropdown-header">Settings</li>
-                        <li><a href="{{route('adminProfile')}}">My profile</a></li>
+                        <li class="dropdown-header">
+                            {{ tr('settings')}}
+                        </li>
+                        <li><a href="{{route('adminProfile')}}">
+                               {{ tr('admin_my_profile')}}
+                            </a>
+                        </li>
 
                         <li class="divider"></li>
 
-                        <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+                        <li><a href="{{route('logout')}}"><i class="fa fa-fw fa-power-off text-danger"></i>{{ tr('admin_logout') }}</a></li>
                     </ul><!--end .dropdown-menu -->
                 </li><!--end .dropdown -->
             </ul><!--end .header-nav-profile -->
@@ -131,7 +138,7 @@
                 <li id="dashboard">
                     <a href="{{route('adminDashboard')}}" >
                         <div class="gui-icon"><i class="md md-home"></i></div>
-                        <span class="title">Dashboard</span>
+                        <span class="title">{{ tr('dashboard') }}</span>
                     </a>
                 </li><!--end /menu-li -->
 
@@ -139,14 +146,19 @@
                 <li class="gui-folder" id="contributors">
                     <a>
                         <div class="gui-icon"><i class="md md-person-outline"></i></div>
-                        <span class="title">Contributors</span>
+                        <span class="title">{{ tr('contributors') }}</span>
 
                     </a>
                     <!--start submenu -->
                     <ul style="display: none;">
-                        <li><a href="{{route('adminContributorsManagement')}}"><span class="title">View Contributors</span></a></li>
+                        <li><a href="{{route('adminContributorsManagement')}}"><span class="title">{{ tr('view_contributors')}}</span></a></li>
 
-                        <li><a href="{{route('addContributors')}}"><span class="title">Add Contributors</span></a></li>
+                        <li><a href="{{route('addContributors')}}">
+                                <span class="title">
+                                    {{ tr('add_contributors')}}
+                                </span>
+                            </a>
+                        </li>
 
                     </ul><!--end /submenu -->
                 </li>
@@ -154,14 +166,19 @@
                 <li class="gui-folder" id="moderators">
                     <a>
                         <div class="gui-icon"><i class="md md-person-outline"></i></div>
-                        <span class="title">Moderators</span>
+                        <span class="title">{{ tr('moderators')}}</span>
 
                     </a>
                     <!--start submenu -->
                     <ul style="display: none;">
-                        <li><a href="{{route('adminModeratorManagement')}}"><span class="title">View Moderators</span></a></li>
+                        <li><a href="{{route('adminModeratorManagement')}}">
+                                <span class="title">{{ tr('view_moderators') }}</span>
+                            </a>
+                        </li>
 
-                        <li><a href="{{route('addModerate')}}"><span class="title">Add Moderator</span></a></li>
+                        <li><a href="{{route('addModerate')}}"><span class="title">
+                            {{ tr('add_moderators') }}
+                            </span></a></li>
 
                     </ul><!--end /submenu -->
                 </li>
@@ -169,21 +186,29 @@
                 <li id="category">
                     <a href="{{route('adminCategory')}}" >
                         <div class="gui-icon"><i class="md md-loyalty"></i></div>
-                        <span class="title">Categories</span>
+                        <span class="title">{{ tr('categories')}}</span>
                     </a>
                 </li><!--end /menu-li -->
 
                 <li class="gui-folder" id="posts">
                     <a>
                         <div class="gui-icon"><i class="fa fa-newspaper-o"></i></div>
-                        <span class="title">Posts</span>
+                        <span class="title">{{ tr('posts')}}</span>
 
                     </a>
                     <!--start submenu -->
                     <ul style="display: none;">
-                        <li><a href="{{route('adminPost')}}"><span class="title">View Posts</span></a></li>
+                        <li><a href="{{route('adminPost')}}"><span class="title">
+                        {{ tr('view_posts') }}
+                        </span></a></li>
 
-                        <li><a href="{{route('adminAddPost')}}"><span class="title">Add Post</span></a></li>
+                        <li>
+                            <a href="{{route('adminAddPost')}}">
+                                <span class="title">
+                                    {{ tr('add_post') }}
+                                </span>
+                            </a>
+                        </li>
 
                     </ul><!--end /submenu -->
                 </li>
@@ -192,7 +217,7 @@
                 <li id="admin_setting">
                     <a href="{{route('adminSetting')}}" >
                         <div class="gui-icon"><i class="md md-settings"></i></div>
-                        <span class="title">Settings</span>
+                        <span class="title">{{ tr('settings')}}</span>
                     </a>
                 </li><!--end /menu-li -->
 
@@ -200,14 +225,14 @@
                 <li id="account">
                     <a href="{{route('adminProfile')}}" >
                         <div class="gui-icon"><i class="md md-account-box"></i></div>
-                        <span class="title">Account</span>
+                        <span class="title">{{ tr('account')}}</span>
                     </a>
                 </li><!--end /menu-li -->
 
                 <li id="help">
                     <a href="{{route('help')}}" >
                         <div class="gui-icon"><i class="md md-star"></i></div>
-                        <span class="title">Need Something?</span>
+                        <span class="title">{{ tr('need_something')}}</span>
                     </a>
                 </li><!--end /menu-li -->
 

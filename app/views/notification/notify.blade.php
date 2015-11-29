@@ -11,23 +11,23 @@
         <div class="alert alert-danger" style="margin-top: 40px;">
             <button type="button" class="close" data-dismiss="alert">×</button>
             <ul>
-@foreach(Session::get('flash_errors') as $errors)
-    @if(is_array($errors))
-    @foreach($errors as $error)
+                @foreach(Session::get('flash_errors') as $errors)
+                     @if(is_array($errors))
+                        @foreach($errors as $error)
                             <li> {{$error}} </li>
-@endforeach
+                        @endforeach
                     @else
                         <li> {{$errors}} </li>
-@endif
+                    @endif
                 @endforeach
             </ul>
         </div>
-@else
+    @else
         <div class="alert alert-danger" style="margin-top: 40px;">
             <button type="button" class="close" data-dismiss="alert">×</button>
             {{Session::get('flash_errors')}}
         </div>
-@endif
+    @endif
 @endif
 
 @if(Session::has('flash_error'))

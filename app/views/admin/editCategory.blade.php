@@ -17,13 +17,13 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-head style-primary">
-               <header>Edit Category</header>
+               <header>{{tr('edit_category') }}</header>
             </div>
             <div class="card-body">
                 <form class="form" action="{{route('editCategoryProcess', array('id' => $categoryDetails->id)) }}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" class="form-control" id="regular1" name="name" value="{{$categoryDetails->name}}">
-                        <label for="regular1">Name</label>
+                        <label for="regular1">{{tr('category_name')}}</label>
                     </div>
 
                     <div class="file-field input-field col s12">
@@ -33,14 +33,16 @@
                                 </div>
                             </div>
                         <div class="btn light-blue accent-2" style="padding: 0px 10px;">
-                            <span>Choose Picture</span>
+                            <span>{{tr('choose_picture')}}</span>
                             <input type="file" name="picture" />
                         </div>
                         <input class="file-path validate" type="text"/>
 
                     </div>
 
-                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Submit</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">
+                        {{tr('admin_submit')}}
+                    </button>
                 </form>
             </div><!--end .card-body -->
         </div><!--end .card -->

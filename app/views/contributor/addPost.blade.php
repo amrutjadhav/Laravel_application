@@ -17,27 +17,27 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-head style-warning">
-               <header>Add Post</header>
+               <header>{{tr('add_post')}}</header>
             </div>
             <div class="card-body">
                 <div class="text-right">
-                    <a class="btn ink-reaction btn-raised btn-primary" href="{{route('contributorPost')}}">BACK</a>
+                    <a class="btn ink-reaction btn-raised btn-primary" href="{{route('contributorPost')}}">{{tr('back')}}</a>
                 </div>
                     <div class="form-group">
                         <input type="text" class="form-control" required id="title" name="title" >
-                        <label for="title">Title</label>
+                        <label for="title">{{tr('title')}}</label>
                     </div>
 
                     
 
                     <div class="form-group">
                         <input type="text" class="form-control" required id="regular1" name="publisher" >
-                        <label for="regular1">Publisher</label>
+                        <label for="regular1">{{tr('publisher')}}</label>
                     </div>
 
                     <div class="form-group">
                         <input type="text" class="form-control" required id="regular1" name="url" >
-                        <label for="regular1">URL</label>
+                        <label for="regular1">{{tr('url')}}</label>
                     </div>
 
                     <input type="hidden" name="id" value="" id="post_id">
@@ -45,7 +45,7 @@
                     <div class="file-field input-field col s12">
                             
                         <div class="btn light-blue accent-2" style="padding: 0px 10px;">
-                            <span>Choose Picture</span>
+                            <span>{{tr('choose_picture')}}</span>
                             <input type="file" name="post_img" required />
                         </div>
                         <input class="file-path validate" type="text"/>
@@ -54,20 +54,20 @@
 
                     <div class="form-group">
                         <textarea name="des" id="textarea1" required class="form-control" maxlength="450" rows="3"></textarea>
-                        <label for="textarea1">Description</label>
+                        <label for="textarea1">{{tr('description')}}</label>
                     </div>
 
                     <div class="form-group">
 
                         <input type="text" class="form-control" required id="title_tag" name="title_tag" maxlength="70">
-                        <label for="regular1">Title Tag</label>
+                        <label for="regular1">{{tr('title_tag')}}</label>
                         <div id="characterLeft"></div>
 
                     </div>
 
                     <div class="form-group">
                         <input type="text" class="form-control" id="meta_des" name="meta_des" required>
-                        <label for="regular1">Meta Description</label>
+                        <label for="regular1">{{tr('meta_description')}}</label>
                     </div>
 
             </div><!--end .card-body -->
@@ -78,26 +78,26 @@
         <div class="col-md-4">
         <div class="card">
             <div class="card-body">
-                    <button type="submit" class="btn ink-reaction btn-raised btn-info">Publish</button>
-                    <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-primary btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Saving Draft...">Save Draft</button>
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">{{tr('publish')}}</button>
+                    <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-primary btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{tr('saving_draft')}}...">{{tr('save_draft')}}</button>
                     <br><br>
 
                         <div class="input-group date" id="demo-date">
                                 <div class="input-group-content">
                                      <input type="text" required class="form-control" name="pub_date" value="{{date('m/d/Y')}}">
-                                    <label>Publish Date</label>
+                                    <label>{{tr('publish_date')}}</label>
                                 </div>
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                         </div>
 
                         <div class="form-group">
                             <input type="text" class="form-control" required id="pub" name="pub_time" value="{{date('H:i')}}">
-                            <label for="pub">Publish Time</label>
+                            <label for="pub">{{tr('publish_time')}}</label>
                         </div>
 
                     <div class="form-group">
                         <input type="text" class="form-control" required readonly id="regular1" name="author" value="{{{$details->author_name}}}">
-                        <label for="regular1">Author</label>
+                        <label for="regular1">{{tr('author_name')}}</label>
                         @if($details->author_name=="")
                         <p class="help-block">Please Enter Your Author Name Under Menu->Account->Profile Action</p>
                         @endif
