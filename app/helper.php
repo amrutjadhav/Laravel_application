@@ -266,6 +266,15 @@ function import_db($mysql_username,$mysql_password,$mysql_host,$mysql_database)
 }
 
 
+// Translates based on Session variable: 'locale'
+function tr($key)
+{
+if (!Session::has('locale'))
+Session::put('locale', Config::get('app.locale'));
+return Lang::choice('messages.'.$key, 0, Array(), Session::get('locale'));
+}
+
+
 
 
  ?>
