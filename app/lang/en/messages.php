@@ -127,7 +127,7 @@ return array(
 	'login'				=> 'Login',
 	'signup'			=> 'Signup',
 	'change_picture'	=> 'Change Picture',
-	'getit_on'			=> 'Get it on',
+	'get_it_on'			=> 'Get it on',
 	'more_news'			=> 'More News',
 	'read_more'			=> 'Read More',
 	'share'				=> 'Share',
