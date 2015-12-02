@@ -24,7 +24,7 @@
                 <div class="text-right">
                     <a class="btn ink-reaction btn-raised btn-primary" href="{{route('moderatePost')}}">{{tr('back')}}</a>
                 </div>
-                <form class="form" action="{{route('moderateAddPostProcess')}}" method="post" enctype="multipart/form-data">
+                <form class="form" action="{{route('moderateAddPostProcess')}}" id="autoform" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <input type="text" class="form-control" id="title" name="title" >
                         <label for="title">{{tr('title')}}</label>

@@ -5,7 +5,6 @@ class AdminController extends \BaseController {
 
 	public function adminDashboard()
 	{
-		Session::put('locale','es');
 		$moderate_count = User::where('role_id',1)->get()->count();
 		$post_count = Post::all()->count();
 		$posts = Post::orderBy('id','desc')->distinct()->where('is_approved',1)->take(5)->get();

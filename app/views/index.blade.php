@@ -81,7 +81,7 @@
 
         <li><a data-target="modal1" class="waves-effect waves-light modal-trigger"><i class="fa fa-bars"></i></a></li>      
              
-        <li><a class="waves-effect waves-light search-btn" href="javascript:void(0);" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">{{tr('user_search')}}</i></a></li>      
+        <li><a class="waves-effect waves-light search-btn" href="javascript:void(0);" id="search-icon" data-activates="search-content"><i class="search-ico material-icons">search</i></a></li>
                
       </ul>
       

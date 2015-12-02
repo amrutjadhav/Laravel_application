@@ -1,5 +1,5 @@
 <?php
-
+if(Setting::has('timezone'))
 date_default_timezone_set(Setting::get('timezone'));
 
 return array(
@@ -57,7 +57,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'news',
+			'database'  => 'pointblank',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',
