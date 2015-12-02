@@ -18,7 +18,7 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-head style-info">
-               <header>{{tr('add_post')}}}</header>
+               <header>{{tr('add_post')}}</header>
             </div>
             <div class="card-body">
                 <div class="text-right">
