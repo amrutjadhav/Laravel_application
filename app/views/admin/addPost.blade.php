@@ -189,7 +189,7 @@
 
     $(document).ready(function(){
         $('#title').keyup(function(){
-            $('#meta_title').val($('#title').val().replace(/\s+/g, '-').toLowerCase());
+            $('#meta_title').val($('#title').val().replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').toLowerCase());
         });
     });
 
