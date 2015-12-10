@@ -59,7 +59,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::post('/addPost', array('as' => 'adminAddPostProcess', 'uses' => 'AdminController@addPostProcess'));
 
-	Route::get('/viewPost/{id}', array('as' => 'adminViewPost', 'uses' => 'AdminController@viewPost'));
+	Route::get('/viewPost/{id}/{data}', array('as' => 'adminViewPost', 'uses' => 'AdminController@viewPost'));
 
 	Route::get('/postActivate/{id}', array('as' => 'adminPostActivate', 'uses' => 'AdminController@approvePost'));
 
@@ -185,7 +185,7 @@ Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){
 
 	Route::get('/post', array('as' => 'moderatePost', 'uses' => 'ModerateController@moderatePost'));
 
-	Route::get('/viewPost/{id}', array('as' => 'moderateViewPost', 'uses' => 'ModerateController@viewPost'));
+	Route::get('/viewPost/{id}/{data}', array('as' => 'moderateViewPost', 'uses' => 'ModerateController@viewPost'));
 
 });
 
@@ -231,7 +231,7 @@ Route::group(array('prefix' => 'contributor', 'before' => 'contributor'), functi
 
 	Route::get('/post', array('as' => 'contributorPost', 'uses' => 'ContributorController@contributorPost'));
 
-	Route::get('/viewPost/{id}', array('as' => 'contributorViewPost', 'uses' => 'ContributorController@viewPost'));
+	Route::get('/viewPost/{id}/{data}', array('as' => 'contributorViewPost', 'uses' => 'ContributorController@viewPost'));
 
 });
 

@@ -217,18 +217,21 @@ class ContributorController extends \BaseController {
 	}
 
 	public function viewPost($id)
-	{
-		$view_post = Post::find($id);
-		if($view_post)
+    {
+    	$segment = $data;
+		$cats = Category::orderBy('order_type')->get();
+		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
+		$related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(2)->get();
+		if($post_details)
 		{
-			$cat = Category::all();
-			return View::make('viewPost')->withPost($view_post)->with('cats',$cat);
+			counter($segment);
+			return View::make('single-post')->withRelated($related)->withPost($post_details)->with('cats',$cats);
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error', tr('went_wrong'));
+			return Redirect::back()->with('flash_error',"Something went wrong please try again");
 		}
-	}
+    }
 
 	public function contributorProfile()
 	{
