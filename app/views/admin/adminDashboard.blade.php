@@ -108,7 +108,7 @@
                                     @endif
                                         <div style="width:270px;height:270px;margin:0 auto;"> <canvas id="chart-area" width="250" height="250"/>  </canvas></div>
                                          <p style="padding-left:30px;padding-top:10px;"><strong>No. of Android Application Installed : </strong> {{{$device['android']}}}</p> 
-                                         <p style="padding-left:30px"><strong>No. of IOS Application Installed : </strong> {{{$device['ios']}}}</p>                     
+                                         <p style="padding-left:30px"><strong>No. of iOS Application Installed : </strong> {{{$device['ios']}}}</p>                     
 
                                     </div><!--end .card-body -->
                                 </div><!--end .card -->
@@ -235,7 +235,7 @@
                     value: <?php echo $device['ios'] ?>,
                     color: "#46BFBD",
                     highlight: "#5AD3D1",
-                    label: "IOS Application"
+                    label: "iOS Application"
                 }
 
             ];
