@@ -123,7 +123,7 @@
 
                 <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>{{tr('share')}} <span class="hidden-s">{{tr('on_fb')}}</span></a>
                     <a href="http://twitter.com/share?text={{substr($post->title, 0, 30)}}...&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>{{tr('share')}} <span class="hidden-s">{{tr('on_twitter')}}</span></a>
-                    <a href="{{{$post->url}}}" class="waves-effect waves-light btn no-right-mar dark-blue darken">{{tr('read_more')}}</a>
+                    <a href="{{{$post->url}}}" target="_blank" class="waves-effect waves-light btn no-right-mar dark-blue darken">{{tr('read_more')}}</a>
             </div>
             
 
