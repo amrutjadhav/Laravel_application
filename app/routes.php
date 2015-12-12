@@ -29,7 +29,7 @@ Route::get('/search', array('as' => 'search', 'uses' => 'HomeController@showWelc
 
 Route::get('/read/{id}/{data}', array('as' => 'shareLink', 'uses' => 'HomeController@shareLink'));
 
-Route::get('/category-type/{id}', array('as' => 'selectCat', 'uses' => 'HomeController@selectCat'));
+Route::get('/category/{id}', array('as' => 'selectCat', 'uses' => 'HomeController@selectCat'));
 
 Route::get('/login', array('as' => 'login', 'uses' => 'HomeController@login'));
 
