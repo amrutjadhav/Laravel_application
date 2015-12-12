@@ -99,10 +99,7 @@
                     <h3 style="font-size: 3.5vh;margin-top: 0px;">{{$post->title}}</h3>
                     <p class="text-justify">{{$post->des}}</p>
 
-                    <div class="sin-au-btm">
-                                <div class="au-left"><img src="https://scontent.fmaa1-2.fna.fbcdn.net/hphotos-xpf1/v/t1.0-9/12043110_834950396603352_6113846222889579456_n.jpg?oh=a34ae0818f89f3408852824b831c8f59&amp;oe=571FC22E"></div>
-                                
-                            </div>
+
 
                     
 
@@ -141,10 +138,6 @@
                       </div>
                       <div class="card-content">
                        <p class="text-justify">{{$post->des}}</p>
-                       <div class="au-btm">
-                                <div class="au-left"><img src="https://scontent.fmaa1-2.fna.fbcdn.net/hphotos-xpf1/v/t1.0-9/12043110_834950396603352_6113846222889579456_n.jpg?oh=a34ae0818f89f3408852824b831c8f59&amp;oe=571FC22E"></div>
-                                
-                            </div>
                       </div>
                   </div>    
               </div>

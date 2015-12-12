@@ -225,10 +225,7 @@ class HomeController extends BaseController {
 		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
-		               		<div class="au-btm">
 
-			               		
-			               	</div>
 		              </div>
 
 		              <div class="card-action text-center">
@@ -272,10 +269,6 @@ class HomeController extends BaseController {
 		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
-		               <div class="au-btm">
-
-			               		
-			               	</div>
 		              </div>
 
 		              <div class="card-action text-center">
