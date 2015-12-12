@@ -204,5 +204,15 @@ return array(
 	'error_page_head'			=> '404',
 	'error_page_content'		=>"Page not found! Don't worry, <br/>sometimes it happens even for the best of us.",
 	'error_page_back'			=> 'Back to Home',
+
+	'pages' => 'Pages',
+	'heading' => 'Heading',
+	'page_type' => 'Page Type',
+	'publisher' => 'Publisher',
+	'add_publisher' => 'Add Publisher',
+	'publisher_add' => 'Publisher Added Successfully',
+	'edit_publisher' => 'Edit Publisher',
+	'publisher_update' => 'Publisher updated successfully',
+	'select_publisher' => 'Select Publisher',
 		
 );
