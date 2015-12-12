@@ -749,9 +749,9 @@ class AdminController extends \BaseController {
         }
     }
 
-    public function viewPost($id)
-    {
-    	$segment = $data;
+	public function viewPost($id,$data)
+	{
+		$segment = $data;
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
 		$related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(2)->get();
@@ -762,9 +762,9 @@ class AdminController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went wrong please try again");
+			return Redirect::back()->with('flash_error',"something went wrong");
 		}
-    }
+	}
 
     public function sendPush($id)
     {

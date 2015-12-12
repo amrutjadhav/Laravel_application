@@ -43,7 +43,7 @@
                                 <td>
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('contributorAddPost')}}"><i class="fa fa-plus"></i></a> -->
                                     <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('contributorEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
-                                    <a target="_blank" class="btn ink-reaction btn-floating-action btn-info" href="{{route('contributorViewPost', array('id' => $post->id))}}"><i class="fa fa-eye"></i></a>
+                                    <a target="_blank" class="btn ink-reaction btn-floating-action btn-info" href="{{route('contributorViewPost', array('id' => $post->share_cat,'data' => $post->link))}}"><i class="fa fa-eye"></i></a>
                                     <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('contributorDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>

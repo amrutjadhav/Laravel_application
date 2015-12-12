@@ -214,7 +214,7 @@ class ModerateController extends \BaseController {
         }
     }
 
-    public function viewPost($id)
+    public function viewPost($id,$data)
     {
         $segment = $data;
         $cats = Category::orderBy('order_type')->get();
@@ -227,7 +227,7 @@ class ModerateController extends \BaseController {
         }
         else
         {
-            return Redirect::back()->with('flash_error',"Something went wrong please try again");
+            return Redirect::back()->with('flash_error',"something went wrong");
         }
     }
 
