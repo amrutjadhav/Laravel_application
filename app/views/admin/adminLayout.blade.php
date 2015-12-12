@@ -190,6 +190,13 @@
                     </a>
                 </li><!--end /menu-li -->
 
+                <li id="publisher">
+                    <a href="{{route('publisher')}}" >
+                        <div class="gui-icon"><i class="md md-loyalty"></i></div>
+                        <span class="title">{{ tr('publisher')}}</span>
+                    </a>
+                </li><!--end /menu-li -->
+
                 <li class="gui-folder" id="posts">
                     <a>
                         <div class="gui-icon"><i class="fa fa-newspaper-o"></i></div>

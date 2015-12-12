@@ -30,12 +30,19 @@
                         </div>
 
 
-                        <div class="form-group">
-                            <input type="text" class="form-control" required id="regular1" name="publisher" value="{{{$post->publisher}}}">
-                            <label for="regular1">{{ tr('publisher') }}</label>
-                        </div>
+                    <div class="form-group">
+                        <select name="publishers" class="form-control" required>
+                            <option value="">{{ tr('select_publisher') }}</option>
+                            @foreach($publishers as $publisher)
+                                <option value="{{$publisher->id}}" <?php if($post->publisher_id == $publisher->id) echo "selected" ?> >{{$publisher->name}}</option>
+                            @endforeach
 
-                        <input type="hidden" name="id" value="{{{$post->id}}}">
+                        </select>
+                        <label for="pub_select">{{ tr('select') }}</label>
+                    </div>
+
+
+                    <input type="hidden" name="id" value="{{{$post->id}}}">
 
 
                         <div class="form-group">

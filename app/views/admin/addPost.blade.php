@@ -30,10 +30,23 @@
                         <label for="title">{{ tr('title') }}</label>
                     </div>
 
+                @if($publisher_test != "")
                     <div class="form-group">
-                        <input type="text" class="form-control" required id="regular1" name="publisher" >
-                        <label for="regular1">{{ tr('publisher') }}</label>
+                        <select name="publishers" class="form-control" required>
+                            <option value="">{{ tr('select_publisher') }}</option>
+                            @foreach($publishers as $publisher)
+                                <option value="{{$publisher->id}}" >{{$publisher->name}}</option>
+                            @endforeach
+
+                        </select>
+                        <label for="pub_select">{{ tr('select') }}</label>
                     </div>
+                @else
+                    <div class="form-group">
+                        Please add Publisher
+                    </div>
+                @endif
+
                     <input type="hidden" name="id" value="" id="post_id">
 
                     <div class="form-group">

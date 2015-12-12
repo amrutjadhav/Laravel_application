@@ -538,17 +538,20 @@ class AdminController extends \BaseController {
 	{
 		$category = Category::all();
 		$details = get_user_details(Auth::user()->id);
+		$publishers = Publisher::all();
+		$publisher_test = Publisher::count();
 		return View::make('admin.addPost')
 			->with('title',"Posts Management")
 			->with('page', "posts")
 			->with('details',$details)
-			->with('category',$category);
+			->with('category',$category)
+			->with('publishers',$publishers)
+			->with('publisher_test',$publisher_test);
 	}
 
 	
 	public function addPostProcess()
     {
-
         $category = Input::get('category');
         $title = Input::get('title');
         $post_img = Input::file('post_img');
@@ -558,7 +561,7 @@ class AdminController extends \BaseController {
 		$share_link = Input::get('share_link');
 		$share_cat = Input::get('share_cat');
 		$author = Input::get('author');
-		$publisher = Input::get('publisher');
+		$publisher = Input::get('publishers');
 		$pub_date = Input::get('pub_date');
 		$pub_time = Input::get('pub_time');
 
@@ -604,7 +607,7 @@ class AdminController extends \BaseController {
                 	$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
                     $post->link = $link;
                 }
-				$post->publisher = $publisher;
+				$post->publisher_id = $publisher;
 				// $post->author = $author;
 				if($pub_date != "")
 				$post->created_at = date('Y-m-d H:i:s', strtotime("$pub_date $pub_time"));
@@ -672,7 +675,7 @@ class AdminController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->meta_des = $meta_des;
 				// $post->user_id = Auth::user()->id;
-				$post->publisher = $publisher;
+				$post->publisher_id = $publisher;
 				$post->author = $author;
 
 
@@ -725,6 +728,7 @@ class AdminController extends \BaseController {
         $check_role = get_user_details($post->user_id);
         if($check_role->role_id == 3 && $post->is_approved == 0){$check_con = 1;}
         $authors = User::where('is_activated',1)->get();
+		$publishers = Publisher::all();
         $cate = explode(',', $post->category);
         return View::make('admin.editPost')
             ->with('title',"Posts Management")
@@ -733,7 +737,8 @@ class AdminController extends \BaseController {
             ->with('contributor',$check_con)
             ->with('category',$category)
             ->with('post',$post)
-            ->with('cate',$cate);
+            ->with('cate',$cate)
+			->with('publishers',$publishers);
     }
 
     public function deletePost($id)
@@ -986,6 +991,219 @@ class AdminController extends \BaseController {
 	public function help()
 	{
 		return View::make('admin.help')->withPage('help');
+	}
+
+	public function viewPages()
+	{
+		$pages = Page::all();
+		return View::make('admin.viewpages')->withPage('pagess')->with('pages',$pages);
+	}
+
+	public function pages()
+	{
+		$pages = Page::all();
+		return View::make('admin.pages')->withPage('pagess')->withPages($pages);
+	}
+
+	public function editPage($id)
+	{
+		$page = Page::find($id);
+		if($page)
+		{
+			return View::make('admin.editPage')->withPage('pagess')->with('pages',$page);
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',"Something went wrong");
+		}
+	}
+
+	public function pagesProcess()
+	{
+		$type = Input::get('type');
+		$id = Input::get('id');
+		$heading = Input::get('heading');
+		$description = Input::get('description');
+
+		$validator = Validator::make(array(
+			'heading' => Input::get('heading'),
+			'description' => Input::get('description')),
+			array('heading' => 'required',
+				'description' => 'required'));
+		if($validator->fails())
+		{
+			$error = $validator->messages()->all();
+			return Redirect::back()->with('flash_errors',$error);
+		}
+		else
+		{
+			if(Input::has('id'))
+			{
+				$pages = Page::find($id);
+				$pages->heading = $heading;
+				$pages->description = $description;
+				$pages->save();
+			}
+			else
+			{
+				$check_page = Page::where('type',$type)->first();
+				if(!$check_page)
+				{
+					$pages = new Page;
+					$pages->type = $type;
+					$pages->heading = $heading;
+					$pages->description = $description;
+					$pages->save();
+				}
+				else
+				{
+					return Redirect::back()->with('flash_error',"Page already added");
+				}
+			}
+			if($pages)
+			{
+				return Redirect::back()->with('flash_success',"Added successfully");
+			}
+			else
+			{
+				return Redirect::back()->with('flash_error',"Something went wrong");
+			}
+		}
+	}
+
+	public function deletePage($id)
+	{
+		$page = Page::where('id',$id)->delete();
+		if($page)
+		{
+			return Redirect::back()->with('flash_success',"Deleted successfully");
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',"Something went wrong");
+		}
+	}
+
+	public function publisher()
+	{
+		$publisher = Publisher::paginate(10);
+		return View::make('admin.publisher')->withPage('publisher')
+			->with('publishers',$publisher);
+	}
+
+	public function addPublisher()
+	{
+		return View::make('admin.addpublisher')->withPage('publisher');
+	}
+
+	public function addPublisherProcess()
+	{
+		$name = Input::get('name');
+		$cat_img = Input::file('cat_img');
+		$validator = Validator::make(
+			array(
+				'name' => $name,
+				'cat_img' => $cat_img,
+			), array(
+				'name' => 'required',
+				'cat_img' => 'required|mimes:jpeg,bmp,gif,png',
+			)
+		);
+
+		if ($validator->fails())
+		{
+			$error_messages = $validator->messages()->all();
+			return Redirect::back()->with('flash_errors', $error_messages);
+		}
+		else
+		{
+			$publisher = new Publisher;
+			$publisher->name = Input::get('name');
+			$file_name = seo_url(Input::get('name')).'-'.time();
+			$ext = Input::file('cat_img')->getClientOriginalExtension();
+			Input::file('cat_img')->move(public_path() . "/uploads", $file_name . "." . $ext);
+			$local_url = $file_name . "." . $ext;
+			$s3_url = URL::to('/') . '/uploads/' . $local_url;
+			$publisher->image = $s3_url;
+			$publisher->save();
+			if($publisher)
+			{
+				return Redirect::back()->with('flash_success',tr('publisher_add'));
+			}
+			else
+			{
+				return Redirect::back()->with('flash_error',tr('went_wrong'));
+			}
+		}
+	}
+
+	public function editPublisher($id)
+	{
+		$publisherDetails = Publisher::find($id);
+		if($publisherDetails)
+		{
+			return View::make('admin.editpublisher')->withPage('publisher')->with('publisherDetails',$publisherDetails);
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
+		}
+	}
+
+	public function editPublisherProcess($id)
+	{
+		$name = Input::get('name');
+		$cat_img = Input::file('picture');
+		$publisher = Publisher::find($id);
+		if($publisher)
+		{
+			$publisher->name = $name;
+
+			$validator = Validator::make(
+				array(
+					'picture' => $cat_img,
+				), array(
+					'picture' => 'required|mimes:jpeg,bmp,gif,png',
+				)
+			);
+
+			if ($validator->fails())
+			{
+				//do nothing
+			}
+			else
+			{
+				$file_name = seo_url(Input::get('name')).'-'.time();
+				$ext = Input::file('picture')->getClientOriginalExtension();
+				Input::file('picture')->move(public_path() . "/uploads", $file_name . "." . $ext);
+				$local_url = $file_name . "." . $ext;
+				$s3_url = URL::to('/') . '/uploads/' . $local_url;
+				$publisher->image = $s3_url;
+			}
+
+			$publisher->save();
+			if($publisher)
+			{
+				return Redirect::back()->with('flash_success',tr('publisher_update'));
+			}
+			else
+			{
+				return Redirect::back()->with('flash_error',tr('went_wrong'));
+			}
+		}
+	}
+
+	public function deletePublisher($id)
+	{
+		$publisher = Publisher::where('id',$id)->delete();
+		if($publisher)
+		{
+			return Redirect::back()->with('flash_success',tr('publisher_delete'));
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
+		}
 	}
 
 }

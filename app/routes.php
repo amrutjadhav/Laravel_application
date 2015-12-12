@@ -143,6 +143,31 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::get('/help', array('as' => 'help', 'uses' => 'AdminController@help'));
 
+	Route::get('/viewPage', array('as' => 'viewPages', 'uses' => 'AdminController@viewPages'));
+
+	Route::get('/editPage/{id}', array('as' => 'editPage', 'uses' => 'AdminController@editPage'));
+
+	Route::post('/editPage', array('as' => 'editPageProcess', 'uses' => 'AdminController@pagesProcess'));
+
+	Route::get('/pages', array('as' => 'adminPages', 'uses' => 'AdminController@pages'));
+
+	Route::post('/pages', array('as' => 'adminPagesProcess', 'uses' => 'AdminController@pagesProcess'));
+
+	Route::get('/deletePage/{id}', array('as' => 'deletePage', 'uses' => 'AdminController@deletePage'));
+
+	Route::get('/publisher', array('as' => 'publisher', 'uses' => 'AdminController@publisher'));
+
+	Route::get('/addPublisher', array('as' => 'addPublisher', 'uses' => 'AdminController@addPublisher'));
+
+	Route::post('/addPublisher', array('as' => 'addPublisherProcess', 'uses' => 'AdminController@addPublisherProcess'));
+
+	Route::get('/editPublisher/{id}', array('as' => 'editPublisher', 'uses' => 'AdminController@editPublisher'));
+
+	Route::post('/editPublisher/{id}', array('as' => 'editPublisherProcess', 'uses' => 'AdminController@editPublisherProcess'));
+
+	Route::get('/deletePublisher/{id}', array('as' => 'deletePublisher', 'uses' => 'AdminController@deletePublisher'));
+
+
 });
 
 Route::group(array('prefix' => 'moderate', 'before' => 'moderate'), function(){

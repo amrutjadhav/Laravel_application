@@ -11,7 +11,7 @@ class ContributorController extends \BaseController {
 
 	public function contributorPost()
 	{
-		$post = Post::where('user_id',Auth::user()->id)->paginate(10);
+		$post = Post::orderBy('created_at', 'desc')->distinct()->where('user_id',Auth::user()->id)->paginate(10);
 		return View::make('contributor.post')
 			->with('title',"Posts Management")
 			->with('page', "posts")
