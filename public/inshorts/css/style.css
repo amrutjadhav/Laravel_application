@@ -75,8 +75,10 @@ footer.page-footer{padding-top: 0px;}
 .sidebar .card-image{height: 130px;  overflow: hidden;}
 
 .single-post.card .card-content {
-  padding: 10px 20px;
-  min-height: 210px;
+      padding: 10px 20px;
+    min-height: 225px;
+    position: relative;
+    padding-bottom: 45px;
   }
 
  .comment .title{font-weight: bold;}
@@ -327,6 +329,44 @@ i.right
 .card .card-image img{
   min-height:225px;
 }
+
+
+.au-btm {
+    position: absolute;
+    width: 90%;
+    bottom: 10px;
+}
+
+.au-btm .au-left {
+    float: left;
+}
+
+.au-btm .au-right {
+    float: right;
+    margin-top: 2px;
+}
+
+.au-btm .au-left img {
+    width: 25px;
+    border-radius: 100%;
+}
+
+
+
+.sin-au-btm .au-left {
+    float: left;
+    margin-bottom: 10px;
+}
+
+.sin-au-btm .au-right {
+    float: right;
+    margin-top: 2px;
+}
+
+.sin-au-btm .au-left img {
+    width: 25px;
+    border-radius: 100%;
+  }
 
 
 
