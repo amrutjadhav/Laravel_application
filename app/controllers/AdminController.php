@@ -707,8 +707,10 @@ class AdminController extends \BaseController {
                         'description' => $meta_des,
                         'image' => $s3_url,
                     );
+						$title = "PBN";
+						$message = $post->title;
 
-                     send_notification($title,$response_array);
+                     send_notification($title,$message);
                     }
                 }
 				if ($post) {
