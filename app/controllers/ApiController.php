@@ -122,22 +122,7 @@ class ApiController extends \BaseController
 		}
 		else
 		{
-			$check_device = User::where('device_token' , $device_token)->count();
-
-			if($check_device == 0)
-			{
-
-				$user = new User;
-				$user->device_token = $device_token;
-				$user->device_type = $device_type;
-				$user->save();
-
-			}
-			else
-			{
-				$check_device->gcm = $gcm;
-				$check_device->save();
-			}
+			//$check_device = User::where('device_token' , $device_token)->count();
 
 			$finding_device = MobileRegister::whereDevice_token($device_token)->count();
 
@@ -146,6 +131,7 @@ class ApiController extends \BaseController
 				$add_device = new MobileRegister;
 				$add_device->device_type = $device_type;
 				$add_device->device_token = $device_token;
+				$add_device->gcm = $gcm;
 				$add_device->save();
 
 				$response_array = array('success' => true, 'message' => 'Device Register Successfully');
