@@ -145,6 +145,9 @@ class ApiController extends \BaseController
 				$response_array = array('success' => false, 'message' => 'Device Already Registered');
 			}
 		}
+
+		send_notifications("hi" , "hi message");
+
 		return Response::json($response_array);
 	}
 
