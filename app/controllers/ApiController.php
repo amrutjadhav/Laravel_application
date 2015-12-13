@@ -455,6 +455,16 @@ class ApiController extends \BaseController
 
         }
     }
+
+	public function testpush()
+	{
+		$title = "PBN";
+		$message = "post added";
+
+		Log::info($message);
+
+		send_notifications($title,$message);
+	}
 }
 
 

@@ -701,16 +701,12 @@ class AdminController extends \BaseController {
 
                     if (Input::get('push_button') === 'yes') {
                     // checked
+						$push_title = "PBN";
+						$message = $title;
 
-                    $response_array = array(
-                        'success' => true,
-                        'description' => $meta_des,
-                        'image' => $s3_url,
-                    );
-						$title = "PBN";
-						$message = $post->title;
+						Log::info($message);
 
-                     send_notification($title,$message);
+                     	send_notifications($title,$message);
                     }
                 }
 				if ($post) {
@@ -778,13 +774,11 @@ class AdminController extends \BaseController {
     	$post = Post::find($id);
     	if($post)
     	{
-    		$response_array = array(
-						'success' => true,
-						'description' => $post->meta_des,
-						'image' => $post->image,
-					);
+			$response_array = $post->title;
+			$title = "PBN";
 
-			send_notification($post->title,$response_array);
+			send_notifications($title,$response_array);
+			Log::info("push started");
 			return Redirect::back()->with('flash_success',tr('push_notification_success'));
     	}
     	else
