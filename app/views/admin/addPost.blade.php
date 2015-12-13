@@ -111,7 +111,7 @@
                         <label for="regular1">{{ tr('meta_description') }}</label>
                     </div>
 
-                    <!-- <div class="form-group">
+                <div class="form-group">
                     <div class="switch">
                         <label>
                           Off
@@ -121,7 +121,7 @@
                         </label>
                       </div>
                       <span>Send Push Notification</span>
-                  </div> -->
+                  </div>
 
             </div><!--end .card-body -->
         </div><!--end .card -->

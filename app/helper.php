@@ -49,8 +49,7 @@ function send_notifications($title, $message) {
     $devices = MobileRegister::all();
 
 	    foreach ($devices as $device) {
-	    	
-	    if ($push_notification == 1) {
+
 	        if ($device->device_type == 'ios') {
 	            /* WARNING:- you can't pass devicetoken as string in GCM or IOS push
 	             * you have to pass array of devicetoken even thow it's only one device's token. */
@@ -62,7 +61,6 @@ function send_notifications($title, $message) {
 
 	            send_android_push($device->device_token, $title, $message);
 	        }
-	    }
 	}
 }
 

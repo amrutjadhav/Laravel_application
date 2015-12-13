@@ -97,10 +97,12 @@ class ApiController extends \BaseController
 		return Response::json($response_array);
 	}
 
+
 	public function register()
 	{
 		$device_token = Input::get('device_token');
 		$device_type = Input::get('device_type');
+		$gcm	= Input::get('gcm');
 
 		$validator = Validator::make(
 			array(
@@ -112,27 +114,53 @@ class ApiController extends \BaseController
 			)
 		);
 
-		if ($validator->fails()) {
+		if ($validator->fails())
+		{
 			$error_messages = $validator->messages()->all();
 			$response_array = array('success' => false, 'error' => 'Invalid Input', 'error_code' => 401, 'error_messages' => $error_messages);
 			$response_code = 200;
-		} else {
+		}
+		else
+		{
+			$check_device = User::where('device_token' , $device_token)->count();
+
+			if($check_device == 0)
+			{
+
+				$user = new User;
+				$user->device_token = $device_token;
+				$user->device_type = $device_type;
+				$user->save();
+
+			}
+			else
+			{
+				$check_device->gcm = $gcm;
+				$check_device->save();
+			}
+
 			$finding_device = MobileRegister::whereDevice_token($device_token)->count();
-			if ($finding_device == 0) {
+
+			if ($finding_device == 0)
+			{
 				$add_device = new MobileRegister;
 				$add_device->device_type = $device_type;
 				$add_device->device_token = $device_token;
 				$add_device->save();
 
-				$response_array = array('success' => true, 'message' => "Device Register Successfully");
-			} else {
-				$response_array = array('success' => false, 'message' => "Device Already Registered");
+				$response_array = array('success' => true, 'message' => 'Device Register Successfully');
+
 			}
+			else
+			{
 
+				$finding_device->gcm = $gcm;
+				$finding_device->save();
+
+				$response_array = array('success' => false, 'message' => 'Device Already Registered');
+			}
 		}
-
 		return Response::json($response_array);
-
 	}
 
 	public function postList()
