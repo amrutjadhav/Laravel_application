@@ -135,7 +135,6 @@ class ApiController extends \BaseController
 				$add_device->save();
 
 				$response_array = array('success' => true, 'message' => 'Device Register Successfully');
-
 			}
 			else
 			{
