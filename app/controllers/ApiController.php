@@ -146,7 +146,7 @@ class ApiController extends \BaseController
 			}
 		}
 
-		send_notifications("hi" , "hi message");
+		//send_notifications("hi" , "hi message");
 
 		return Response::json($response_array);
 	}

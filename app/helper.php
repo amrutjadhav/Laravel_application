@@ -159,7 +159,7 @@ function send_android_push($user_id, $message, $title) {
     $gcm = new GCM();
     $registatoin_ids = array($registatoin_ids);
     $gcm->send_notification($registatoin_ids, $message);
-    Log::info($gcm);
+    //Log::info($gcm);
 }
 
 
