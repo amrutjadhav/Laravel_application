@@ -139,9 +139,9 @@ class ApiController extends \BaseController
 			}
 			else
 			{
-
-				$finding_device->gcm = $gcm;
-				$finding_device->save();
+				$find_device = MobileRegister::whereDevice_token($device_token)->first();
+				$find_device->gcm = $gcm;
+				$find_device->save();
 
 				$response_array = array('success' => false, 'message' => 'Device Already Registered');
 			}
