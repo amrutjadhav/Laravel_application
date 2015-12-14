@@ -60,6 +60,15 @@ class ApiController extends \BaseController
 				$counts = Post::where('is_approved', 1)->count();
 				$datas = array();
 				foreach ($posts as $post) {
+
+					if($publisher = Publisher::find($post->publisher_id)) {
+						$publisher_name = $publisher->name;
+						$publisher_image = $publisher->image;
+					} else {
+						$publisher_name = "";
+						$publisher_image = "";
+					}
+
 					$cat_name = $post->share_cat;
 					$link = URL::to('/'). '/read/' . $cat_name . '/' . $post->link;
 					$data = array();
@@ -70,6 +79,9 @@ class ApiController extends \BaseController
 					$data['image'] = $post->image;
 					$data['time'] = $post->created_at->diffForHumans();
 					$data['share_link'] = $link;
+					$data['publisher_image'] = $publisher_image;
+					$data['publisher_name'] = $publisher_name;
+
 					array_push($datas, $data);
 				}
 				$response_array = array('success' => true, 'posts' => $datas, 'counts' => $counts);
@@ -78,6 +90,15 @@ class ApiController extends \BaseController
 				$counts = Post::where('is_approved', 1)->where('category', 'like', '%' . $cat . '%')->count();
 				$datas = array();
 				foreach ($postss as $post) {
+
+					if($publisher = Publisher::find($post->id)) {
+						$publisher_name = $publisher->name;
+						$publisher_image = $publisher->image;
+					} else {
+						$publisher_name = "";
+						$publisher_image = "";
+					}
+
 					$cat_name = $post->share_cat;
 					$link = URL::to('/') . '/read/' . $cat_name . '/' . $post->link;
 					$data = array();
@@ -88,6 +109,10 @@ class ApiController extends \BaseController
 					$data['image'] = $post->image;
 					$data['time'] = $post->created_at->diffForHumans();
 					$data['share_link'] = $link;
+
+					$data['publisher_image'] = $publisher_image;
+					$data['publisher_name'] = $publisher_name;
+					
 
 					array_push($datas, $data);
 				}
@@ -175,7 +200,19 @@ class ApiController extends \BaseController
 			$counts = Post::count();
 			$datas = array();
 			foreach ($posts as $post) {
+
+				$publisher_name = "";
+				$publisher_image = "";
+
+				if($post) {
+					$publisher  = Publisher::find($post->publisher_id)->first();
+					if(count($publisher) != 0) {
+						$publisher_name = $publisher->name;
+						$publisher_image = $publisher->image;
+					}
+				}
 				$data = array();
+
 				$data['id'] = $post->id;
 				$data['title'] = $post->title;
 				$data['description'] = $post->des;
@@ -187,6 +224,9 @@ class ApiController extends \BaseController
 				$data['is_approved'] = $post->is_approved;
 				$data['title_tag'] = $post->title_tag;
 				$data['meta_desc'] = $post->meta_des;
+				$data['publisher_image'] = $publisher_image;
+				$data['publisher_name'] = $publisher_name;
+
 				array_push($datas, $data);
 			}
 			$response_array = array('success' => true, 'posts' => $datas, 'counts' => $counts);
@@ -213,6 +253,15 @@ class ApiController extends \BaseController
 		} else {
 			$post = Post::find($id);
 			if ($post) {
+				$publisher = Publisher::find($post->publisher_id)->first();
+
+				$publisher_name = "";
+				$publisher_image = "";
+
+				if(count($publisher) != 0) {
+					$publisher_name  = $publisher->name;
+					$publisher_image = $publisher->image; 
+				}
 				$data = array();
 				$data['id'] = $post->id;
 				$data['title'] = $post->title;
@@ -225,6 +274,8 @@ class ApiController extends \BaseController
 				$data['is_approved'] = $post->is_approved;
 				$data['title_tag'] = $post->title_tag;
 				$data['meta_desc'] = $post->meta_des;
+				$data['publisher_name'] = $publisher_name;
+				$data['publisher_image'] = $publisher_image;
 
 			}
 			$response_array = array('success' => true, 'posts' => $data);
@@ -420,6 +471,7 @@ class ApiController extends \BaseController
 
     
        public function api_hybrid_feed(){
+
          $offset = is_numeric(Input::get('offset')) ? Input::get('offset') : die();
         $postnumbers = is_numeric(Input::get('number')) ? Input::get('number') : die();
 
