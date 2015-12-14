@@ -86,12 +86,13 @@ class ApiController extends \BaseController
 				}
 				$response_array = array('success' => true, 'posts' => $datas, 'counts' => $counts);
 			} else {
+
 				$postss = Post::where('is_approved', 1)->where('category', 'like', '%' . $cat . '%')->take($take)->skip($skip)->orderBy('created_at', 'desc')->get();
 				$counts = Post::where('is_approved', 1)->where('category', 'like', '%' . $cat . '%')->count();
 				$datas = array();
 				foreach ($postss as $post) {
 
-					if($publisher = Publisher::find($post->id)) {
+					if($publisher = Publisher::find($post->publisher_id)) {
 						$publisher_name = $publisher->name;
 						$publisher_image = $publisher->image;
 					} else {
