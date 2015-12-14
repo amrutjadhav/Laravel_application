@@ -232,7 +232,6 @@ $timezone = array (
     </div>
 
 
-
 </div>
 </div>
 
