@@ -44,6 +44,7 @@ function get_user_details($id){
 }
 
 function send_notifications($title, $message) {
+
     Log::info('push notification');
 
     $devices = MobileRegister::all();
@@ -57,7 +58,7 @@ function send_notifications($title, $message) {
 	            send_ios_push($device->gcm, $title, $message);
 	        } else {
 
-	            $message = json_encode($message);
+	            //$message = json_encode($message);
 
 	            send_android_push($device->gcm, $title, $message);
 	        }
@@ -134,7 +135,7 @@ function send_ios_push($user_id, $title, $message) {
     $apns->send_notification($deviceTokens, $msg);
 }
 
-function send_android_push($user_id, $message, $title) {
+function send_android_push($user_id, $title, $message) {
     require_once 'gcm/GCM_1.php';
     require_once 'gcm/const.php';
 
@@ -154,11 +155,12 @@ function send_android_push($user_id, $message, $title) {
         $title1 = trim($title);
     }
 
-    $message = array(TEAM => $title1, MESSAGE => $msg);
+    $message = array( 'title' => $title1 , 'message' => $msg);
 
     $gcm = new GCM();
     $registatoin_ids = array($registatoin_ids);
     $gcm->send_notification($registatoin_ids, $message);
+
     //Log::info($gcm);
 }
 

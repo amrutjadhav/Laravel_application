@@ -552,6 +552,7 @@ class AdminController extends \BaseController {
 	
 	public function addPostProcess()
     {
+
         $category = Input::get('category');
         $title = Input::get('title');
         $post_img = Input::file('post_img');
@@ -564,6 +565,9 @@ class AdminController extends \BaseController {
 		$publisher = Input::get('publishers');
 		$pub_date = Input::get('pub_date');
 		$pub_time = Input::get('pub_time');
+
+
+		//dd(Input::get('push_button') == 'on');
 
  
         $validator = Validator::make(
@@ -639,6 +643,20 @@ class AdminController extends \BaseController {
                 }
                 $post->category = implode(',', $category);
                 $post->save();
+
+                if (Input::get('push_button') == 'on') {
+
+                    	Log::info('Push button Yes');
+                    // checked
+						$push_title = "PBN";
+						$message = $title;
+
+						Log::info($message);
+
+                     	send_notifications($title,$message);
+                    }
+                    
+
 				if ($post) {
 					return Redirect::route('adminPost')->with('flash_success', tr('post_update'));
 				} else {
@@ -699,7 +717,11 @@ class AdminController extends \BaseController {
                     $post->title_tag = $title_tag;
                     $post->save();
 
-                    if (Input::get('push_button') === 'yes') {
+                    dd($post);
+
+                    if (Input::get('push_button') == 'on') {
+
+                    	Log::info('Push button Yes');
                     // checked
 						$push_title = "PBN";
 						$message = $title;
@@ -776,8 +798,9 @@ class AdminController extends \BaseController {
     	{
 			$response_array = $post->title;
 			$title = "PBN";
+			$message = $post->title;
 
-			send_notifications($title,$response_array);
+			send_notifications($title,$message);
 			Log::info("push started");
 			return Redirect::back()->with('flash_success',tr('push_notification_success'));
     	}
