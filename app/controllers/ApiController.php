@@ -513,10 +513,12 @@ class ApiController extends \BaseController
 	{
 		$title = "PBN";
 		$message = "post added";
+		$post_id = 1;
+		$url = "single.html";
 
 		Log::info($message);
 
-		send_notifications($title,$message);
+     	send_notifications($title,$message,$post_id,$url);
 	}
 }
 

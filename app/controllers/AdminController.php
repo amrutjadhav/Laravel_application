@@ -650,10 +650,12 @@ class AdminController extends \BaseController {
                     // checked
 						$push_title = "PBN";
 						$message = $title;
+						$post_id = $post->id;
+						$url = "single.html";
 
 						Log::info($message);
 
-                     	send_notifications($title,$message);
+                     	send_notifications($title,$message,$post_id,$url);
                     }
                     
 
@@ -725,10 +727,12 @@ class AdminController extends \BaseController {
                     // checked
 						$push_title = "PBN";
 						$message = $title;
+						$post_id = $post->id;
+						$url = "single.html";
 
 						Log::info($message);
 
-                     	send_notifications($title,$message);
+                     	send_notifications($title,$message,$post_id,$url);
                     }
                 }
 				if ($post) {
@@ -799,8 +803,13 @@ class AdminController extends \BaseController {
 			$response_array = $post->title;
 			$title = "PBN";
 			$message = $post->title;
+			$post_id = $post->id;
+			$url = "single.html";
 
-			send_notifications($title,$message);
+			Log::info($message);
+
+            send_notifications($title,$message,$post_id,$url);
+            
 			Log::info("push started");
 			return Redirect::back()->with('flash_success',tr('push_notification_success'));
     	}
