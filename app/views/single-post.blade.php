@@ -6,7 +6,7 @@
  * Time: 12:07 PM
  */
 ?> 
-
+*
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -99,8 +99,15 @@
                     <h3 style="font-size: 3.5vh;margin-top: 0px;">{{$post->title}}</h3>
                     <p class="text-justify">{{$post->des}}</p>
 
-
-
+                    <div class="sin-au-btm">
+                           
+                               <div class="au-left">
+                               <a href="http://www.bbc.com/sport/tennis/35076623 ">
+                                <img src="http://www.sportsnut.in/uploads/bbc-news-1450028319.png">
+                                 </a>
+                               </div>
+                          
+                        </div>
                     
 
                 </div>
