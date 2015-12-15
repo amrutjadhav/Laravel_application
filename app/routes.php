@@ -271,6 +271,8 @@ Route::get('/postDetails', array('as' => 'postDetails', 'uses' => 'ApiController
 
 Route::get('/getPostCat', array('as' => 'getPostCat', 'uses' => 'ApiController@getPostCat'));
 
+Route::get('/singlePost' , array('as' => 'singlePost' , 'uses' => 'ApiController@singlePost')); 
+
 // auto save for draft
 
 Route::post('/auto-save-now', array('as' => 'auto_save_form', 'uses' => 'ApiController@auto_save_form'));

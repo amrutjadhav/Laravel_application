@@ -520,6 +520,57 @@ class ApiController extends \BaseController
 
      	send_notifications($title,$message,$post_id,$url);
 	}
+
+	public function singlePost() {
+
+		$post_id = Input::get('id');
+
+		$validator = Validator::make(
+			array(
+				'post_id' => $post_id,
+			), array(
+				'post_id' => 'required',
+			)
+		);
+
+		if ($validator->fails()) {
+			$error_messages = $validator->messages()->all();
+			$response_array = array('success' => false, 'error' => 'Invalid Input', 'error_code' => 401, 'error_messages' => $error_messages);
+			$response_code = 200;
+		} else {
+			if($post = Post::find($post_id)) {
+				if($publisher = Publisher::find($post->publisher_id)) {
+					$publisher_name = $publisher->name;
+					$publisher_image = $publisher->image;
+				} else {
+					$publisher_name = "";
+					$publisher_image = "";
+				}
+				$datas = array();
+
+				$cat_name = $post->share_cat;
+				$link = URL::to('/'). '/read/' . $cat_name . '/' . $post->link;
+				$data = array();
+				$data['id'] = $post->id;
+				$data['title'] = $post->title;
+				$data['description'] = $post->des;
+				$data['url'] = $post->url;
+				$data['image'] = $post->image;
+				$data['time'] = $post->created_at->diffForHumans();
+				$data['share_link'] = $link;
+				$data['publisher_image'] = $publisher_image;
+				$data['publisher_name'] = $publisher_name;
+
+				array_push($datas, $data);
+
+				$response_array = array('success' => true, 'posts' => $datas);
+			} else {
+				$response_array = array('success' => false , 'error' => 'Post Not Found');
+			}
+		}
+
+		return Response::json($response_array);
+	}
 }
 
 
