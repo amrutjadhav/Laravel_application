@@ -225,6 +225,15 @@ class HomeController extends BaseController {
 		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
+		               <div class="au-btm">
+			               
+				               <div class="au-left">
+				               <a href="http://www.bbc.com/sport/tennis/35076623 ">
+				               	<img src="http://www.sportsnut.in/uploads/bbc-news-1450028319.png">
+				               	 </a>
+				               </div>
+			              
+						</div>
 
 		              </div>
 
