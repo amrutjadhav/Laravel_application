@@ -49,7 +49,7 @@
 
         </div>
     </div>
-
+<!-- 
     <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
         <a class="btn-floating btn-large red">
             <i class="md md-star" style="font-size: 25px;line-height: 65px;"></i>
@@ -61,5 +61,5 @@
 
         </ul>
     </div>
-
+ -->
 @stop

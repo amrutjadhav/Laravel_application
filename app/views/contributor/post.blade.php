@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+   <!--  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
         <a class="btn-floating btn-large red">
             <i class="md md-star" style="font-size: 25px;line-height: 65px;"></i>
         </a>
@@ -67,6 +67,6 @@
             <li><a class="btn-floating blue" href="{{route('contributorAddPost')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-add" style="line-height:40px;"></i></a></li>
 
         </ul>
-    </div>
+    </div> -->
 
 @stop
