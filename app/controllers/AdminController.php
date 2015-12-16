@@ -1170,7 +1170,7 @@ class AdminController extends \BaseController {
 		$publisherDetails = Publisher::find($id);
 		if($publisherDetails)
 		{
-			return View::make('admin.editpublisher')->withPage('publisher')->with('publisherDetails',$publisherDetails);
+			return View::make('admin.editPublisher')->withPage('publisher')->with('publisherDetails',$publisherDetails);
 		}
 		else
 		{
