@@ -540,13 +540,15 @@ class AdminController extends \BaseController {
 		$details = get_user_details(Auth::user()->id);
 		$publishers = Publisher::all();
 		$publisher_test = Publisher::count();
+		$author = User::where('is_activated',1)->get();
 		return View::make('admin.addPost')
 			->with('title',"Posts Management")
 			->with('page', "posts")
 			->with('details',$details)
 			->with('category',$category)
 			->with('publishers',$publishers)
-			->with('publisher_test',$publisher_test);
+			->with('publisher_test',$publisher_test)
+			->with('authors',$authors);
 	}
 
 	
@@ -602,6 +604,7 @@ class AdminController extends \BaseController {
                 $post->is_approved = 1;
                 $post->des = Input::get('des');
                 $post->url = $url;
+                $post->author = $author;
                 $post->meta_des = $meta_des;
                 if(is_numeric($author)){
                 	$post->user_id = $author;
@@ -718,8 +721,6 @@ class AdminController extends \BaseController {
                     $post->link = $link;
                     $post->title_tag = $title_tag;
                     $post->save();
-
-                    dd($post);
 
                     if (Input::get('push_button') == 'on') {
 

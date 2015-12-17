@@ -62,7 +62,7 @@ function send_notifications($title, $message ,$id,$url) {
 
 	            send_android_push($device->gcm, $title, $message,$id,$url);
 	        }
-	}
+	     }
 }
 
 function send_ios_push($user_id, $title, $message) {

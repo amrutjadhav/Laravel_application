@@ -129,8 +129,16 @@
                         
 
                         <div class="form-group">
-                            <input type="text" class="form-control" readonly required id="regular1" name="author" value="{{$details->author_name}}">
-                            <label for="regular1">{{tr('author_name')}}</label>
+                            <select id="select1" required name="author" class="form-control">
+                                <option value="">Select author</option>
+                                @foreach($authors as $author)
+                                @if($author->author_name != "")
+                                <option value="{{$author->author_name}}" <?php if($details->author_name == $author->author_name) echo "selected"; ?>>{{$author->author_name}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                            <label for="select1">>{{ tr('author_name') }}</label>
+
                              @if($details->author_name=="")
                         <p class="help-block">Please Enter Your Author Name Under Menu->Account->Profile Action</p>
                         @endif

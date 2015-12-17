@@ -35,11 +35,13 @@ class ModerateController extends \BaseController {
     {
         $category = Category::all();
         $details = get_user_details(Auth::user()->id);
+        $authors = User::where('is_activated',1)->get();
         return View::make('moderate.addPost')
             ->with('title',"Posts Management")
             ->with('page', "posts")
             ->with('details',$details)
-            ->with('category',$category);
+            ->with('category',$category)
+            ->with('authors',$authors);
     }
 
     public function editPost($id)
@@ -47,12 +49,14 @@ class ModerateController extends \BaseController {
         $category = Category::all();
         $post = Post::find($id);
         $cate = explode(',', $post->category);
+        $authors = User::where('is_activated',1)->get();
         return View::make('moderate.editPost')
             ->with('title',"Posts Management")
             ->with('page', "posts")
             ->with('category',$category)
             ->with('post',$post)
-            ->with('cate',$cate);
+            ->with('cate',$cate)
+            ->with('authors',$authors);
     }
 
     public function addPostProcess()

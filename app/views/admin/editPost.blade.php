@@ -144,15 +144,15 @@
                         </div>
 
                         <div class="form-group">
-                                    <select id="select1" required name="author" class="form-control">
-                                        <option value="">&nbsp;</option>
-                                        @foreach($authors as $author)
-                                        @if($author->author_name != "")
-                                        <option value="{{$author->id}}" <?php if($post->user_id == $author->id) echo "selected"; ?>>{{$author->author_name}}</option>
-                                        @endif
-                                        @endforeach
-                                    </select>
-                                    <label for="select1">>{{ tr('author_name') }}</label>
+                            <select id="select1" required name="author" class="form-control">
+                                <option value="">&nbsp;</option>
+                                @foreach($authors as $author)
+                                @if($author->author_name != "")
+                                <option value="{{$author->author_name}}" <?php if($post->author == $author->author_name) echo "selected"; ?>>{{$author->author_name}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                            <label for="select1">>{{ tr('author_name') }}</label>
                         </div>
 
                         <div class="input-field col s12 check-box-inline">
