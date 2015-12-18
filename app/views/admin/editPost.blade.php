@@ -152,7 +152,7 @@
                                 @endif
                                 @endforeach
                             </select>
-                            <label for="select1">>{{ tr('author_name') }}</label>
+                            <label for="select1">{{ tr('author_name') }}</label>
                         </div>
 
                         <div class="input-field col s12 check-box-inline">

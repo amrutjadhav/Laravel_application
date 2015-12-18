@@ -36,11 +36,16 @@ class ModerateController extends \BaseController {
         $category = Category::all();
         $details = get_user_details(Auth::user()->id);
         $authors = User::where('is_activated',1)->get();
+        $publisher_test = Publisher::count();
+        $publishers = Publisher::all();
+
         return View::make('moderate.addPost')
             ->with('title',"Posts Management")
             ->with('page', "posts")
             ->with('details',$details)
             ->with('category',$category)
+            ->with('publishers',$publishers)
+            ->with('publisher_test',$publisher_test)
             ->with('authors',$authors);
     }
 
@@ -50,13 +55,17 @@ class ModerateController extends \BaseController {
         $post = Post::find($id);
         $cate = explode(',', $post->category);
         $authors = User::where('is_activated',1)->get();
+        $publishers = Publisher::all();
+
         return View::make('moderate.editPost')
             ->with('title',"Posts Management")
             ->with('page', "posts")
             ->with('category',$category)
             ->with('post',$post)
             ->with('cate',$cate)
-            ->with('authors',$authors);
+            ->with('authors',$authors)
+            ->with('publishers',$publishers);
+
     }
 
     public function addPostProcess()

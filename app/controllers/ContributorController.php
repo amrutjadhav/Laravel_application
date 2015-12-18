@@ -35,10 +35,15 @@ class ContributorController extends \BaseController {
 	{
 		$category = Category::all();
         $details = get_user_details(Auth::user()->id);
+		$publisher_test = Publisher::count();
+		$publishers = Publisher::all();
+
 		return View::make('contributor.addPost')
 			->with('title',"Posts Management")
 			->with('page', "posts")
 			->with('details',$details)
+			->with('publishers',$publishers)
+			->with('publisher_test',$publisher_test)
 			->with('category',$category);
 	}
 
@@ -47,12 +52,16 @@ class ContributorController extends \BaseController {
 		$category = Category::all();
 		$post = Post::find($id);
 		$cate = explode(',', $post->category);
+		$publishers = Publisher::all();
+
 		return View::make('contributor.editPost')
 			->with('title',"Posts Management")
 			->with('page', "posts")
 			->with('category',$category)
 			->with('post',$post)
-			->with('cate',$cate);
+			->with('cate',$cate)
+			->with('publishers',$publishers);
+
 	}
 
 	public function addPostProcess()
@@ -66,7 +75,7 @@ class ContributorController extends \BaseController {
 		$share_link = Input::get('share_link');
 		$share_cat = Input::get('share_cat');
 		$author = Input::get('author');
-		$publisher = Input::get('publisher');
+		$publisher = Input::get('publisher');		
 		$pub_date = Input::get('pub_date');
 		$pub_time = Input::get('pub_time');
 

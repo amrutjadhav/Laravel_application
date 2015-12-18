@@ -31,8 +31,16 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control" id="regular1" name="publisher" value="{{{$post->publisher}}}">
-                            <label for="regular1">{{ tr('publisher')}}</label>
+                            <select name="publisher" class="form-control" required>
+                                <option value="">{{ tr('select_publisher') }}</option>
+                                @foreach($publishers as $publisher)
+                                    <option value="{{$publisher->id}}" <?php if($post->publisher_id == $publisher->id) echo "selected" ?> >{{$publisher->name}}
+                                    </option>
+                             @endforeach
+
+                            </select>
+
+                            <label for="pub_select">{{ tr('select') }}</label>
                         </div>
 
                         <input type="hidden" name="id" value="{{{$post->id}}}">
@@ -99,7 +107,7 @@
 
                         <div class="form-group">
                             <input type="text" class="form-control" readonly id="regular1" name="author" value="{{{$post->author}}}">
-                            <label for="regular1">{{ tr('author')}}</label>
+                            <label for="regular1">{{ tr('author_name')}}</label>
                         </div>
 
 

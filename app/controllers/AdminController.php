@@ -785,10 +785,20 @@ class AdminController extends \BaseController {
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
 		$related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(2)->get();
+
+		if($publisher = Publisher::find($post_details->publisher_id)) 
+		{
+			$publisher_name = $publisher->name;
+			$publisher_image = $publisher->image;
+		} else {
+			$publisher_name = "";
+			$publisher_image = "";
+		}
+
 		if($post_details)
 		{
 			counter($segment);
-			return View::make('single-post')->withRelated($related)->withPost($post_details)->with('cats',$cats);
+			return View::make('single-post')->with('publisher_image' , $publisher_image)->withRelated($related)->withPost($post_details)->with('cats',$cats);
 		}
 		else
 		{
