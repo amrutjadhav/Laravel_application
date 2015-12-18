@@ -540,7 +540,7 @@ class AdminController extends \BaseController {
 		$details = get_user_details(Auth::user()->id);
 		$publishers = Publisher::all();
 		$publisher_test = Publisher::count();
-		$author = User::where('is_activated',1)->get();
+		$authors = User::where('is_activated',1)->get();
 		return View::make('admin.addPost')
 			->with('title',"Posts Management")
 			->with('page', "posts")
