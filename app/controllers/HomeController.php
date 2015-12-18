@@ -547,7 +547,11 @@ class HomeController extends BaseController {
             }
 
 			counter($segment);
-			return View::make('single-post')->withRelated($related)->('publisher_image' , $publisher_image)->withPost($post_details)->with('cats',$cats);
+			return View::make('single-post')
+				->withRelated($related)
+				->with('publisher_image' , $publisher_image)
+				->withPost($post_details)
+				->with('cats',$cats);
 		}
 		else
 		{
