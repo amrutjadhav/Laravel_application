@@ -234,8 +234,6 @@ class ModerateController extends \BaseController {
         $post_details = Post::where('link',$segment)->where('is_approved',1)->first();
         $related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(2)->get();
 
-        
-
         if($post_details)
         {
             if($publisher = Publisher::find($post_details->publisher_id)) 
