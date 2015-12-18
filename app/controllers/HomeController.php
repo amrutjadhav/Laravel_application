@@ -54,13 +54,28 @@ class HomeController extends BaseController {
 	public function single($id,$data)
 	{
 		$segment = $data;
+
+		$publisher_image = "";
+
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
+
+		if($post_details) {
+			if($publisher = Publisher::find($post_details->publisher_id))
+			{ 
+				$publisher_image = $publisher->image;
+			}
+		}
 		$related = Post::rand()->take(3)->get();
 		if($post_details)
 		{	
 			counter($segment);
-			return View::make('single-post')->withRelated($related)->withPost($post_details)->with('cats',$cats);
+
+			return View::make('single-post')
+						->withRelated($related)
+						->with('publisher_image',$publisher_image)
+						->withPost($post_details)
+						->with('cats',$cats);
 		}
 		else
 		{
@@ -212,11 +227,21 @@ class HomeController extends BaseController {
 
         foreach ($data as $post) {
 				$cat_name = $post->share_cat;
+
+				if($publisher = Publisher::find($post->publisher_id)) {
+					$publisher_name = $publisher->name;
+					$publisher_image = $publisher->image;
+				} else {
+					$publisher_name = "";
+					$publisher_image = "";
+				}
+
 				if($cat_name == ""){
 					$cat_name = "news";
 				}
                 $fb = route("shareLink",array("id" => $cat_name,"data" => $post->link));
                 $twitter = route("shareLink",array("id" => $cat_name,"data" => $post->link));
+
         	echo '<div class="col m6 s12 l4">
 		          <div class="single-post card animated zoomIn">
 		              <div class="card-image">
@@ -228,8 +253,8 @@ class HomeController extends BaseController {
 		               <div class="au-btm">
 			               
 				               <div class="au-left">
-				               <a href="http://www.bbc.com/sport/tennis/35076623 ">
-				               	<img src="http://www.sportsnut.in/uploads/bbc-news-1450028319.png">
+				               <a href="'.$post->url.'" target="_blank">
+				               	<img src="'.$publisher_image.'">
 				               	 </a>
 				               </div>
 			              
@@ -267,6 +292,14 @@ class HomeController extends BaseController {
 
         foreach ($data as $post) {
 				$cat_name = $post->share_cat;
+				if($publisher = Publisher::find($post->publisher_id)) {
+					$publisher_name = $publisher->name;
+					$publisher_image = $publisher->image;
+				} else {
+					$publisher_name = "";
+					$publisher_image = "";
+				}
+
                 $fb = route("shareLink",array("id" => $cat_name,"data" => $post->link));
                 $twitter = route("shareLink",array("id" => $cat_name,"data" => $post->link));
         	echo '<div class="col m6 s12 l4">
@@ -278,6 +311,15 @@ class HomeController extends BaseController {
 		              </div>
 		              <div class="card-content">
 		               <p class="text-justify">'.$post->des.'</p>
+		               <div class="au-btm">
+			               
+				               <div class="au-left">
+				               <a href="'.$post->url.'" target="_blank">
+				               	<img src="'.$publisher_image.'">
+				               	 </a>
+				               </div>
+			              
+						</div>
 		              </div>
 
 		              <div class="card-action text-center">

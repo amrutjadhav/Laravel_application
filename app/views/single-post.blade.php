@@ -101,8 +101,8 @@
                     <div class="sin-au-btm">
                            
                                <div class="au-left">
-                               <a href="http://www.bbc.com/sport/tennis/35076623 ">
-                                <img src="http://www.sportsnut.in/uploads/bbc-news-1450028319.png">
+                               <a href="{{$post->url}}" target="_blank">
+                                <img src="{{ $publisher_image }}">
                                  </a>
                                </div>
                           
