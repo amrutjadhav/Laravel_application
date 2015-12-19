@@ -24,9 +24,10 @@ class HomeController extends BaseController {
       
        		$post = Post::get();
 			$cats = Category::orderBy('order_type')->get();
+			$noti_post = Post::orderBy(DB::raw('RAND()'))->where('is_approved',1)->first();
 			// i++ page count
 			counter('home');
-			return View::make('index')->with('posts',$post)->with('cats',$cats);
+			return View::make('index')->with('posts',$post)->with('noti_post',$noti_post)->with('cats',$cats);
         }
 
         catch(Exception $e){

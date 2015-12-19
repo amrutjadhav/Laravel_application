@@ -11,7 +11,7 @@ class ContributorController extends \BaseController {
 
 	public function contributorPost()
 	{
-		$post = Post::orderBy('created_at', 'desc')->distinct()->where('user_id',Auth::user()->id)->paginate(10);
+		$post = Post::orderBy('created_at', 'desc')->distinct()->where('user_id',Auth::user()->id)->paginate(20);
 		return View::make('contributor.post')
 			->with('title',"Posts Management")
 			->with('page', "posts")
@@ -36,7 +36,7 @@ class ContributorController extends \BaseController {
 		$category = Category::all();
         $details = get_user_details(Auth::user()->id);
 		$publisher_test = Publisher::count();
-		$publishers = Publisher::all();
+		$publishers = Publisher::orderBy('name', 'ASC')->get();
 
 		return View::make('contributor.addPost')
 			->with('title',"Posts Management")
@@ -52,7 +52,7 @@ class ContributorController extends \BaseController {
 		$category = Category::all();
 		$post = Post::find($id);
 		$cate = explode(',', $post->category);
-		$publishers = Publisher::all();
+		$publishers = Publisher::orderBy('name', 'ASC')->get();
 
 		return View::make('contributor.editPost')
 			->with('title',"Posts Management")

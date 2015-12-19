@@ -16,20 +16,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-head style-primary">
-                        <header>{{ tr('posts') }}</header>
+                        <header>{{ tr('pending_post') }}</header>
                     </div>
                 <div class="card-body">
-                    <ul class="pull-right">
-                        <li>
-                            <!-- Search form -->
-                            <form class="navbar-search" role="search" action="{{route('adminPostSearch')}}">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="keyword" placeholder="Enter The Author Name">
-                                </div>
-                                <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
-                            </form>
-                        </li>
-                    </ul>
                     <table class="table no-margin">
                         <thead>
                         <tr>
@@ -99,17 +88,5 @@
         </div>
     </div>
 
-
-   <!--  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a class="btn-floating btn-large red">
-            <i class="md md-star" style="font-size: 25px;line-height: 65px;"></i>
-        </a>
-        <ul>
-            <li><a class="btn-floating yellow darken-1" href="{{route('adminPost')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-visibility" style="line-height:40px;"></i></a></li>
-
-            <li><a class="btn-floating blue" href="{{route('adminAddPost')}}" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px); opacity: 0;"><i class="md md-add" style="line-height:40px;"></i></a></li>
-
-        </ul>
-    </div> -->
 
 @stop

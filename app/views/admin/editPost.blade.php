@@ -14,7 +14,7 @@
     @include('notification.notify')
 
     <div class="page">
-    <form class="form" action="{{route('adminEditProcess')}}" method="post" enctype="multipart/form-data">
+    <form class="form" action="{{route('adminEditProcess')}}" method="post" enctype="multipart/form-data" id="autoform">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-head style-primary">
@@ -42,7 +42,7 @@
                     </div>
 
 
-                    <input type="hidden" name="id" value="{{{$post->id}}}">
+                    <input type="hidden" name="id" value="{{{$post->id}}}" id="post_id">
 
 
                         <div class="form-group">
@@ -127,7 +127,14 @@
             <div class="card">
                 <div class="card-body">
 
-                        <button type="submit" class="btn ink-reaction btn-raised btn-info">Update & Publish</button>
+                        <div class="pub-btn">
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info fst">
+                        {{ tr('publish') }}
+                    </button>
+
+                    <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{ tr('saving_draft') }}...">{{ tr('save_draft') }}</button>
+                    </div>
+
                         <br><br>
 
                         <div class="input-group date" id="demo-date">
@@ -173,6 +180,56 @@
 
     </div>
     </div>
+
+<script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+            var typingTimer;                //timer identifier
+            var doneTypingInterval = 2000;  //time in ms, 5 second for example
+            var $input = $('.form-control');
+
+            //on keyup, start the countdown
+            $input.on('keyup', function () {
+              clearTimeout(typingTimer);
+              typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            });
+
+            //on keydown, clear the countdown 
+            $input.on('keydown', function () {
+              clearTimeout(typingTimer);
+            });
+
+            function doneTyping () {
+              //do something
+            var route_url = "{{route('auto_save_form')}}";
+            $('#draft_button').prop('disabled', false);
+            $('#draft_button').text('Save Draft');
+
+            // setInterval(function() {
+                var form_data = $("#autoform").serialize();
+                $('#draft_button').prop('disabled', true);
+                $('#draft_button').html("<i class='fa fa-spinner fa-spin'></i> Saving Draft...");
+                $.ajax({
+                    type: 'POST',
+                    data:  form_data,
+                     cache: false,
+                    url: route_url,
+                    success: function(datas){
+                        console.log(datas);
+                        $('#post_id').val(datas.new_id);
+                        setTimeout( function() {
+                            $('#draft_button').prop('disabled', false);
+                            $('#draft_button').text('Save Draft');
+                        }, 2000);
+                    }
+                });
+            // }, 10000);
+
+            }
+
+        });
+    </script>
 
 
 @stop

@@ -11,7 +11,7 @@ class ModerateController extends \BaseController {
 
     public function moderatePost()
     {
-        $post = Post::orderBy('created_at', 'desc')->distinct()->paginate(10);
+        $post = Post::orderBy('created_at', 'desc')->distinct()->paginate(20);
         return View::make('moderate.post')
             ->with('title',"Posts Management")
             ->with('page', "posts")
@@ -37,7 +37,7 @@ class ModerateController extends \BaseController {
         $details = get_user_details(Auth::user()->id);
         $authors = User::where('is_activated',1)->get();
         $publisher_test = Publisher::count();
-        $publishers = Publisher::all();
+        $publishers = Publisher::orderBy('name', 'ASC')->get();
 
         return View::make('moderate.addPost')
             ->with('title',"Posts Management")
@@ -55,7 +55,7 @@ class ModerateController extends \BaseController {
         $post = Post::find($id);
         $cate = explode(',', $post->category);
         $authors = User::where('is_activated',1)->get();
-        $publishers = Publisher::all();
+        $publishers = Publisher::orderBy('name', 'ASC')->get();
 
         return View::make('moderate.editPost')
             ->with('title',"Posts Management")

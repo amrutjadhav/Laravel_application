@@ -501,11 +501,20 @@ class AdminController extends \BaseController {
 
 	public function adminPost()
 	{
-		$post = Post::orderBy('created_at', 'desc')->distinct()->paginate(10);
+		$post = Post::orderBy('created_at', 'desc')->distinct()->paginate(20);
 		return View::make('admin.post')
 			->with('title',"Posts Management")
 			->with('page', "posts")
 			->with('posts',$post);
+	}
+
+		public function adminPendingPost()
+	{
+		$posts = Post::orderBy('created_at', 'desc')->where('is_approved',0)->distinct()->paginate(10);
+		return View::make('admin.pending_post')
+			->with('title',"Posts Management")
+			->with('page', "post")
+			->with('posts',$posts);
 	}
 
 	public function adminPostSearch()
@@ -538,7 +547,7 @@ class AdminController extends \BaseController {
 	{
 		$category = Category::all();
 		$details = get_user_details(Auth::user()->id);
-		$publishers = Publisher::all();
+		$publishers = Publisher::orderBy('name', 'ASC')->get();
 		$publisher_test = Publisher::count();
 		$authors = User::where('is_activated',1)->get();
 		return View::make('admin.addPost')
@@ -753,7 +762,7 @@ class AdminController extends \BaseController {
         $check_role = get_user_details($post->user_id);
         if($check_role->role_id == 3 && $post->is_approved == 0){$check_con = 1;}
         $authors = User::where('is_activated',1)->get();
-		$publishers = Publisher::all();
+		$publishers = Publisher::orderBy('name', 'ASC')->get();
         $cate = explode(',', $post->category);
         return View::make('admin.editPost')
             ->with('title',"Posts Management")

@@ -351,6 +351,57 @@ $(document).ready(function() {
     });
 </script>
 
+    <script type="text/javascript">
+
+        function notifyBrowser(title,desc,url) 
+        {
+
+        if (Notification.permission !== "granted")
+        {
+        Notification.requestPermission();
+        }
+        else
+        {
+        var notification = new Notification(title, {
+        icon: "{{Setting::get('logo')}}",
+        body: desc,
+        });
+
+        /* Remove the notification from Notification Center when clicked.*/
+        notification.onclick = function () {
+        window.open(url); 
+        };
+
+        /* Callback function when the notification is closed. */
+        notification.onclose = function () {
+        console.log('Notification closed');
+        };
+
+        }
+        }
+
+    </script>
+
+<script type="text/javascript">
+  
+document.addEventListener('DOMContentLoaded', function () 
+{
+    
+if (Notification.permission !== "granted")
+{
+Notification.requestPermission();
+}
+
+});
+
+setTimeout(function(){ 
+  <?php $single_note = route("shareLink",array("id" => 'news',"data" => $noti_post->link)); ?>
+notifyBrowser("{{$noti_post->title}}","{{substr($noti_post->des, 0, 20)}}","{{$single_note}}");
+console.log('note');
+}, 20000);
+
+</script>
+
 
   </body>
 </html>

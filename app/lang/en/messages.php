@@ -39,10 +39,12 @@ return array(
 	'position'				=>	'Position',
 
 	'posts'					=> 'Posts',
-	'view_posts'			=> 'View Posts',
-	'add_post'				=> 'Add Posts',
+	'view_posts'			=> 'View All Posts',
+	'add_post'				=> 'Add Post',
 	'update_post'			=> 'Update Post',
 	'abuse_report'			=> 'Abuse Report',
+	'view_pending_post'		=> 'View Pending Posts',
+	'pending_post'			=> 'Pending Posts',
 
 	'settings' 				=> 'Settings',
 	'account'				=> 'Account',
@@ -82,6 +84,7 @@ return array(
 	'publisher'			=> 'Publisher',
 	'url'				=> 'URL',
 	'description'		=> 'Description',
+	'time'				=> 'Time',
 	'permalink'			=> 'Permalink',
 	'select_category'	=> 'Select Category',
 	'select'			=> 'Select',

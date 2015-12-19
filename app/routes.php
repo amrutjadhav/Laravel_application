@@ -55,6 +55,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::get('/adminPost', array('as' => 'adminPost', 'uses' => 'AdminController@adminPost'));
 
+	Route::get('/admin-pending-post', array('as' => 'adminPendingPost', 'uses' => 'AdminController@adminPendingPost'));
+
 	Route::get('/postSearch', array('as' => 'adminPostSearch', 'uses' => 'AdminController@adminPostSearch'));
 
 	Route::get('/addPost', array('as' => 'adminAddPost', 'uses' => 'AdminController@addPost'));

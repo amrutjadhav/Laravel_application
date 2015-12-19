@@ -161,7 +161,7 @@
                                 @endif
                                 @endforeach
                             </select>
-                            <label for="select1">>{{ tr('author_name') }}</label>
+                            <label for="select1">{{ tr('author_name') }}</label>
 
                              @if($details->author_name=="")
                         <p class="help-block">Please Enter Your Author Name Under Menu->Account->Profile Action</p>

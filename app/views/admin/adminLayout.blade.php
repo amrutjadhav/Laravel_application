@@ -210,6 +210,14 @@
                         </span></a></li>
 
                         <li>
+                            <a href="{{route('adminPendingPost')}}">
+                                <span class="title">
+                                    {{ tr('pending_post') }}
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="{{route('adminAddPost')}}">
                                 <span class="title">
                                     {{ tr('add_post') }}
