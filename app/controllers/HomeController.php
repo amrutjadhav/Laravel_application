@@ -227,6 +227,7 @@ class HomeController extends BaseController {
 
 
         foreach ($data as $post) {
+        	$append = "";
 				$cat_name = $post->share_cat;
 
 				if($publisher = Publisher::find($post->publisher_id)) {
@@ -243,15 +244,17 @@ class HomeController extends BaseController {
                 $fb = route("shareLink",array("id" => $cat_name,"data" => $post->link));
                 $twitter = route("shareLink",array("id" => $cat_name,"data" => $post->link));
 
-        	echo '<div class="col m6 s12 l4">
+        	$append ='<div class="col m6 s12 l4">
 		          <div class="single-post card animated zoomIn">
 		              <div class="card-image">
 		                <a href="javascript:void(0);"><img src="'.$post->image.'"></a>
 		                <span class="card-title">'.$post->title.'<em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
 		              </div>
 		              <div class="card-content">
-		               <p class="text-justify">'.$post->des.'</p>
-		               <div class="au-btm">
+		               <p class="text-justify">'.$post->des.'</p>';
+
+		               if($publisher_image) { 
+		               $append .='<div class="au-btm">
 			               
 				               <div class="au-left">
 				               <a href="'.$post->url.'" target="_blank">
@@ -259,9 +262,10 @@ class HomeController extends BaseController {
 				               	 </a>
 				               </div>
 			              
-						</div>
+						</div>';
+						}
 
-		              </div>
+		              $append .='</div>
 
 		              <div class="card-action text-center">
 
@@ -274,6 +278,8 @@ class HomeController extends BaseController {
 		              
 		          </div>  	
 		      </div>';
+
+		      echo $append;
 
         }
 	}
@@ -292,6 +298,7 @@ class HomeController extends BaseController {
         $data = $query;
 
         foreach ($data as $post) {
+        	$append = "";
 				$cat_name = $post->share_cat;
 				if($publisher = Publisher::find($post->publisher_id)) {
 					$publisher_name = $publisher->name;
@@ -303,7 +310,7 @@ class HomeController extends BaseController {
 
                 $fb = route("shareLink",array("id" => $cat_name,"data" => $post->link));
                 $twitter = route("shareLink",array("id" => $cat_name,"data" => $post->link));
-        	echo '<div class="col m6 s12 l4">
+        	$append = '<div class="col m6 s12 l4">
 		          <div class="single-post card animated zoomIn">
 
 		              <div class="card-image">
@@ -311,19 +318,24 @@ class HomeController extends BaseController {
 		                <span class="card-title">'.$post->title.'<em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
 		              </div>
 		              <div class="card-content">
-		               <p class="text-justify">'.$post->des.'</p>
-		               <div class="au-btm">
-			               
-				               <div class="au-left">
-				               <a href="'.$post->url.'" target="_blank">
-				               	<img src="'.$publisher_image.'">
-				               	 </a>
-				               </div>
-			              
-						</div>
-		              </div>
+		               <p class="text-justify">'.$post->des.'</p>';
 
-		              <div class="card-action text-center">
+		               if($publisher_image) 
+		               {
+			               $append .= '<div class="au-btm">
+				               
+					               <div class="au-left">
+					               <a href="'.$post->url.'" target="_blank">
+					               	<img src="'.$publisher_image.'">
+					               	 </a>
+					               </div>
+				              
+							</div>';
+						}
+			              $append .='</div>
+			            
+
+		             	<div class="card-action text-center">
 
 		                <a target="_blank" href="http://www.facebook.com/sharer.php?u='.$fb.'" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
 		                <a target="_blank" href="http://twitter.com/share?text='.substr($post->title, 0, 30).'...&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
@@ -334,6 +346,8 @@ class HomeController extends BaseController {
 		              
 		          </div>  	
 		      </div>';
+
+		      echo $append;
 
         }
 	}

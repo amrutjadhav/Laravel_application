@@ -145,7 +145,7 @@ return array(
 	'database_name'			=> 'Database Name',
 	'DATABASE_CONFIGURATION'	=> 'DATABASE CONFIGURATION',
 	'ADMIN_CONFIGURATION'		=> 'ADMIN CONFIGURATION',
-	'WEBSITE CONFIGURATION'		=> 'WEBSITE CONFIGURATION',
+	'WEBSITE_CONFIGURATION'		=> 'WEBSITE CONFIGURATION',
 	'Website_Configuration_wizard'	=> 'Website Configuration wizard',
 
 	// Login Error Messages 

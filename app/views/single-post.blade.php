@@ -136,6 +136,19 @@
 
         <div class="row single-btm-blk hidden-s">
                 @foreach($related as $post)
+
+            <?php
+
+                $cat_name = $post->share_cat;
+
+                if ($publisher = Publisher::find($post->publisher_id)) {
+                    $publisher_image = $publisher->image;
+                } else {
+                    $publisher_image = "";
+                }
+
+            ?>
+
                 <div class="col m6 s12 l3 single-btm-blk-box">
                   <div class="single-post card animated zoomIn">
                       <div class="card-image">
@@ -144,7 +157,52 @@
                       </div>
                       <div class="card-content">
                        <p class="text-justify">{{$post->des}}</p>
+
+
+                           <div class="au-btm">
+
+                            @if($publisher_image)
+
+                                <div class="au-left">
+                                <a href="{{$post->url}}" target="_blank">
+                                    <img src="{{ $publisher_image }}">
+                                </a>
+                            </div>
+
+                            @endif
+
+                        </div>
+
+
+
                       </div>
+
+                                          <!-- Footer Start-->
+                    <?php
+
+
+                        $sharelink = route("shareLink", array("id" => $cat_name, "data" => $post->link));
+
+                    ?>
+                    <div class="card-action text-center">
+
+                        <a target="_blank" href="http://www.facebook.com/sharer.php?u={{ $sharelink }}" class="full waves-effect waves-light btn light-blue darken-4">
+                            <i class="fa fa-facebook left"></i>
+                            Share on Facebook
+                        </a>
+
+                        <a target="_blank" href="http://twitter.com/share?text={{ substr($post->title, 0, 30)}}...&url={{$sharelink}}" class="full waves-effect waves-light btn no-right-mar light-blue accent-3">
+                            <i class="fa fa-twitter left"></i>
+                            Share on Twitter
+                        </a>
+
+                        
+                            <a target="_blank" href="{{ $post->url }}" target="_blank" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">
+                                Read More
+                            </a>
+                    </div>
+
+                    <!--Footer End -->
                   </div>    
               </div>
               @endforeach
