@@ -60,16 +60,15 @@ class HomeController extends BaseController {
 
 		$cats = Category::orderBy('order_type')->get();
 		$post_details = Post::where('link',$segment)->where('is_approved',1)->first();
+		$related = Post::rand()->take(3)->get();
 
-		if($post_details) {
+		if($post_details)
+		{	
 			if($publisher = Publisher::find($post_details->publisher_id))
 			{ 
 				$publisher_image = $publisher->image;
 			}
-		}
-		$related = Post::rand()->take(3)->get();
-		if($post_details)
-		{	
+
 			counter($segment);
 
 			return View::make('single-post')
@@ -562,6 +561,7 @@ class HomeController extends BaseController {
             }
 
 			counter($segment);
+
 			return View::make('single-post')
 				->withRelated($related)
 				->with('publisher_image' , $publisher_image)
