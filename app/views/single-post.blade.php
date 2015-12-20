@@ -97,18 +97,17 @@
                 <div class="col l8 m8 s12" style="margin-top:15px;padding-right:15px;">
                     <h3 style="font-size: 3.5vh;margin-top: 0px;">{{$post->title}}</h3>
                     <p class="text-justify">{{$post->des}}</p>
-
-                    <div class="sin-au-btm">
-                           
-                               <div class="au-left">
+                    
+                    @if($publisher_image)
+                        <div class="sin-au-btm">
+                           <div class="au-left">
                                <a href="{{$post->url}}" target="_blank">
-                                <img src="{{ $publisher_image }}">
-                                 </a>
-                               </div>
+                                    <img src="{{ $publisher_image }}">
+                                </a>
+                           </div>
                           
                         </div>
-                    
-
+                    @endif 
                 </div>
 
                 <!-- <div class="col l3 m4 s12 single-right-btn">
