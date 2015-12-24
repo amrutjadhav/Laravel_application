@@ -293,8 +293,59 @@ Route::post('/ajax_now', array('as' => 'post_api_ajax', 'uses' => 'ApiController
 
 Route::post('/addPostProcess', array('as' => 'addApiPostProcess', 'uses' => 'ApiController@addApiPostProcess'));
 
+// point blank feed
 
+Route::get('/feed', function(){
 
+    // create new feed
+    $feed = Feed::make();
+
+    // cache the feed for 60 minutes (second parameter is optional)
+    $feed->setCache(60, 'laravelFeedKey');
+
+    // check if there is cached feed and build new only if is not
+    if (!$feed->isCached())
+    {
+       // creating rss feed with our most recent 20 posts
+       $posts = DB::table('posts')->orderBy('created_at', 'desc')->where('is_approved',1)->take(20)->get();
+
+       // set your feed's title, description, link, pubdate and language
+       $feed->title = 'Point Blank News';
+       $feed->description = 'Point Blank News is Simple short news CMS.';
+       $feed->logo = Setting::get('logo');
+       $feed->link = URL::to('/');
+       $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
+       $feed->pubdate = $posts[0]->created_at;
+       $feed->lang = 'en';
+       $feed->setShortening(true); // true or false
+       $feed->setTextLimit(100); // maximum length of description text
+
+       foreach ($posts as $post)
+       {
+           // set item's title, author, url, pubdate, description and content
+       	$feed->addArray([
+			'title' => $post->title,
+			'author' => '',
+			'url' => route('shareLink',array('news', $post->link)),
+			'link' => route('shareLink',array('news', $post->link)),
+			'pubdate' => $post->created_at,
+			'description' => $post->des,
+			'image' => $post->image,
+			]);
+
+       }
+
+    }
+
+    // first param is the feed format
+    // optional: second param is cache duration (value of 0 turns off caching)
+    // optional: you can set custom cache key with 3rd param as string
+    return $feed->render('rss',0);
+
+    // to return your feed as a string set second param to -1
+    // $xml = $feed->render('atom', -1);
+
+});
 
 
 
