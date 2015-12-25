@@ -295,7 +295,7 @@ Route::post('/addPostProcess', array('as' => 'addApiPostProcess', 'uses' => 'Api
 
 // point blank feed
 
-Route::get('/feed', function(){
+Route::get('/rss', function(){
 
     // create new feed
     $feed = Feed::make();
