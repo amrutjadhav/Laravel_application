@@ -311,7 +311,7 @@ Route::get('/rss', function(){
 
        // set your feed's title, description, link, pubdate and language
        $feed->title = 'Point Blank News';
-       $feed->description = 'Point Blank News is Simple short news CMS.';
+       $feed->description = 'Point Blank News is short news CMS.';
        $feed->logo = Setting::get('logo');
        $feed->link = URL::to('/');
        $feed->setDateFormat('datetime'); // 'datetime', 'timestamp' or 'carbon'
@@ -329,7 +329,7 @@ Route::get('/rss', function(){
 			'link' => route('shareLink',array('news', $post->link)),
 			'pubdate' => $post->created_at,
 			'description' => $post->des,
-			'image' => $post->image
+			'post_image' => $post->image
 			]);
 
        }
