@@ -337,7 +337,7 @@ Route::get('/feed', function(){
     }
 
 
-    return $feed->render('rss');
+    return $feed->render('rss',0);
 
 
 });
