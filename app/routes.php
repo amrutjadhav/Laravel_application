@@ -322,7 +322,6 @@ Route::get('/feed', function(){
 
        foreach ($posts as $post)
        {
-           // set item's title, author, url, pubdate, description and content
        	$feed->addArray([
 			'title' => $post->title,
 			'author' => '',
@@ -330,20 +329,16 @@ Route::get('/feed', function(){
 			'link' => route('shareLink',array('news', $post->link)),
 			'pubdate' => $post->created_at,
 			'description' => $post->des,
-			'image' => $post->image,
+			'image' => $post->image
 			]);
 
        }
 
     }
 
-    // first param is the feed format
-    // optional: second param is cache duration (value of 0 turns off caching)
-    // optional: you can set custom cache key with 3rd param as string
-    return $feed->render('rss',0);
 
-    // to return your feed as a string set second param to -1
-    // $xml = $feed->render('atom', -1);
+    return $feed->render('rss');
+
 
 });
 
