@@ -50,14 +50,8 @@
     </div>
 
     <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a class="btn-floating btn-large red">
-            <i class="md md-person" style="font-size: 25px;line-height: 65px;"></i>
+        <a class="btn-floating btn-large red" href="{{route('publisher')}}">
+            <i class="md md-visibility" style="font-size: 25px;line-height: 65px;"></i>
         </a>
-        <ul>
-            <li><a class="btn-floating yellow darken-1" href="{{route('publisher')}}" style="trform: scaleY(0.4) scaleX(0.4) trlateY(40px); opacity: 0;"><i class="md md-visibility" style="line-height:40px;"></i></a></li>
-
-            <li><a class="btn-floating blue" href="{{route('addPublisher')}}" style="trform: scaleY(0.4) scaleX(0.4) trlateY(40px); opacity: 0;"><i class="md md-add" style="line-height:40px;"></i></a></li>
-
-        </ul>
     </div>
 @stop

@@ -262,6 +262,12 @@
         });
     </script>
 
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red" href="{{route('adminPost')}}">
+        <i class="md md-visibility" style="font-size: 25px;line-height: 65px;"></i>
+    </a>
+</div>
+
 @stop
 
 
