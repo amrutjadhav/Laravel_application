@@ -61,7 +61,7 @@ function send_notifications($title, $message ,$id,$url) {
 	            /* WARNING:- you can't pass devicetoken as string in GCM or IOS push
 	             * you have to pass array of devicetoken even thow it's only one device's token. */
 	            /* send_ios_push("E146C7DCCA5EBD49803278B3EE0C1825EF0FA6D6F0B1632A19F783CB02B2617B",$title,$message,$type); */
-	            send_ios_push($device->gcm, $title, $message);
+	            //send_ios_push($device->gcm, $title, $message);
 	        } else {
 
 	            //$message = json_encode($message);
