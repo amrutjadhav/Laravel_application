@@ -615,14 +615,18 @@ class AdminController extends \BaseController {
                 $post->url = $url;
                 $post->author = $author;
                 $post->meta_des = $meta_des;
+
                 if(is_numeric($author)){
                 	$post->user_id = $author;
             	}
+
                 if($share_cat != "" && $share_link != ""){
                 	$post->share_cat = $share_cat;
+                	$post->share_title = $share_link;
                 	$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
                     $post->link = $link;
                 }
+
 				$post->publisher_id = $publisher;
 				// $post->author = $author;
 				if($pub_date != "")
@@ -700,15 +704,15 @@ class AdminController extends \BaseController {
                 } 
                 else
                 {
-                $post = new Post;
-                $post->title = $title;
-                $post->is_approved = 1;
-                $post->url = $url;
-                $post->des = Input::get('des');
-                $post->meta_des = $meta_des;
-				// $post->user_id = Auth::user()->id;
-				$post->publisher_id = $publisher;
-				$post->author = $author;
+	                $post = new Post;
+	                $post->title = $title;
+	                $post->is_approved = 1;
+	                $post->url = $url;
+	                $post->des = Input::get('des');
+	                $post->meta_des = $meta_des;
+					// $post->user_id = Auth::user()->id;
+					$post->publisher_id = $publisher;
+					$post->author = $author;
 
 
                     $file_name = seo_url($title).'-'.seo_url($share_cat).'-'.time();
@@ -724,6 +728,9 @@ class AdminController extends \BaseController {
                     $post->category = implode(',', $category);
 
 					$post->share_cat = $share_cat;
+
+                	$post->share_title = Input::get('share_link');
+
 
                     $link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
                     
@@ -756,14 +763,22 @@ class AdminController extends \BaseController {
 
 	public function editPost($id)
     {
-    	$check_con = 0;
+    	$check_con = 1;
+
         $category = Category::all();
+
         $post = Post::find($id);
+
         $check_role = get_user_details($post->user_id);
+
         if($check_role->role_id == 3 && $post->is_approved == 0){$check_con = 1;}
+
         $authors = User::where('is_activated',1)->get();
+
 		$publishers = Publisher::orderBy('name', 'ASC')->get();
+
         $cate = explode(',', $post->category);
+
         return View::make('admin.editPost')
             ->with('title',"Posts Management")
             ->with('page', "posts")

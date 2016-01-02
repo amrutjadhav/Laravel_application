@@ -49,22 +49,27 @@
                             <input type="text" class="form-control" id="regular1" required name="url" value="{{{$post->url}}}">
                             <label for="regular1">{{ tr('url') }}</label>
                         </div>
+
                         <div class="file-field input-field col s12">
                             <div class="tile-content">
                                 <div class="tile-icon">
                                     <img src="{{$post->image}}" required alt="" style="height:300px;margin:10px;">
                                 </div>
                             </div>
+
                             <div class="btn btn-primary light-blue accent-2"  style="padding: 0px 10px;">
                                 <span>{{ tr('choose_picture') }}</span>
                                 <input type="file" name="post_img" />
                             </div>
+
                             <input class="file-path validate" type="text" value="{{$post->image}}"/>
 
                         </div>
 
                         <div class="form-group">
-                            <textarea name="des" id="textarea1" required class="form-control" maxlength="450" rows="3">{{{$post->des}}}</textarea>
+                            <textarea name="des" id="textarea1" required class="form-control" maxlength="450" rows="3">
+                                {{{$post->des}}}
+                            </textarea>
                             <label for="textarea1">{{ tr('description') }}</label>
                         </div>
 
@@ -73,42 +78,42 @@
                             <div class="row">
 
 
-                        <h4>{{tr('permalink')}}</h4>
+                                <h4>{{tr('permalink')}}</h4>
 
-                        <div class="form-group col-md-3 col-sm-4">
+                                <div class="form-group col-md-3 col-sm-4">
 
-                            <h5>{{URL::to('/')}}</h5>
+                                    <h5>{{URL::to('/')}}</h5>
 
-                        </div>
+                                </div>
 
-                        <div class="form-group floating-label col-md-4 col-sm-4" style="padding-left: 0px;">
-                            <select id="cat_select" name="share_cat" class="form-control" required>
-                                <option value="">{{ tr('select_category') }}</option>
-                                @foreach($category as $cat)
-                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                @endforeach
+                                <div class="form-group floating-label col-md-4 col-sm-4" style="padding-left: 0px;">
+                                    <select id="cat_select" name="share_cat" class="form-control" required>
+                                        <option value="">{{ tr('select_category') }}</option>
+                                        @foreach($category as $cat)
+                                            <option value="{{$cat->id}}" <?php if($post->share_cat == $cat->id) echo "selected"; ?>>{{$cat->name}}</option>
+                                        @endforeach
 
-                            </select>
-                            <label for="cat_select">{{ tr('select') }}</label>
+                                    </select>
+                                    <label for="cat_select">{{ tr('select') }}</label>
 
-                        </div>
+                                </div>
 
-                        <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
+                                <div class="form-group col-md-5 col-sm-4" style="padding-left: 0px;">
 
-                            <input type="text" class="form-control" name="share_link" id="meta_title" value="{{{seo_url($post->title)}}}">
-                            <label for="meta_title">{{ tr('permalink') }}</label>
+                                    <input type="text" class="form-control" name="share_link" id="meta_title" value="{{{seo_url($post->share_title)}}}">
+                                    <label for="meta_title">{{ tr('permalink') }}</label>
 
-                        </div>
+                                </div>
 
-                    </div>
+                            </div>
 
                         @endif
 
                         <div class="form-group">
 
-                        <input type="text" class="form-control" id="title_tag" name="title_tag" maxlength="70" value="{{$post->title_tag}}">
-                        <label for="regular1">Title Tag</label>
-                        <div id="characterLeft"></div>
+                            <input type="text" class="form-control" id="title_tag" name="title_tag" maxlength="70" value="{{$post->title_tag}}">
+                            <label for="regular1">Title Tag</label>
+                            <div id="characterLeft"></div>
 
                         </div>
 
