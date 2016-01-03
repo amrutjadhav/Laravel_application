@@ -217,5 +217,9 @@ return array(
 	'edit_publisher' => 'Edit Publisher',
 	'publisher_update' => 'Publisher updated successfully',
 	'select_publisher' => 'Select Publisher',
+
+	'page_add' => 'Page Added Successfully',
+	'page_delete' => 'Page deleted Successfully',
+	'page_already' => 'Page Already Added',
 		
 );

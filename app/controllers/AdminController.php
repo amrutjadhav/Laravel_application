@@ -827,7 +827,7 @@ class AdminController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"something went wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -1078,7 +1078,7 @@ class AdminController extends \BaseController {
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
@@ -1121,16 +1121,16 @@ class AdminController extends \BaseController {
 				}
 				else
 				{
-					return Redirect::back()->with('flash_error',"Page already added");
+					return Redirect::back()->with('flash_error',tr('page_already'));
 				}
 			}
 			if($pages)
 			{
-				return Redirect::back()->with('flash_success',"Added successfully");
+				return Redirect::back()->with('flash_success',tr('page_add'));
 			}
 			else
 			{
-				return Redirect::back()->with('flash_error',"Something went wrong");
+				return Redirect::back()->with('flash_error',tr('went_wrong'));
 			}
 		}
 	}
@@ -1140,11 +1140,11 @@ class AdminController extends \BaseController {
 		$page = Page::where('id',$id)->delete();
 		if($page)
 		{
-			return Redirect::back()->with('flash_success',"Deleted successfully");
+			return Redirect::back()->with('flash_success',tr('page_delete'));
 		}
 		else
 		{
-			return Redirect::back()->with('flash_error',"Something went wrong");
+			return Redirect::back()->with('flash_error',tr('went_wrong'));
 		}
 	}
 
