@@ -1028,7 +1028,7 @@ class AdminController extends \BaseController {
         {
             $post->is_approved = 0;
             $post->save();
-            return Redirect::back()->with('flash_success',tr('post_delete'));
+            return Redirect::back()->with('flash_success',tr('post_decline'));
         }
         else
         {
