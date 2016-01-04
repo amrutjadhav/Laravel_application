@@ -31,10 +31,10 @@
 
 
                     <div class="form-group">
-                        <select name="publishers" class="form-control" required>
+                        <select name="publisher" class="form-control" required>
                             <option value="">{{ tr('select_publisher') }}</option>
                             @foreach($publishers as $publisher)
-                                <option value="{{$publisher->id}}" <?php if($post->publisher_id == $publisher->id) echo "selected" ?> >{{$publisher->name}}</option>
+                                <option value="{{$publisher->id}}" <?php if($post->publisher == $publisher->id) echo "selected" ?> >{{$publisher->name}}</option>
                             @endforeach
 
                         </select>
@@ -51,11 +51,13 @@
                         </div>
 
                         <div class="file-field input-field col s12">
-                            <div class="tile-content">
-                                <div class="tile-icon">
-                                    <img src="{{$post->image}}" required alt="" style="height:300px;margin:10px;">
+                            @if($post->image)
+                                <div class="tile-content">
+                                    <div class="tile-icon">
+                                        <img src="{{$post->image}}" required alt="" style="height:300px;margin:10px;">
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <div class="btn btn-primary light-blue accent-2"  style="padding: 0px 10px;">
                                 <span>{{ tr('choose_picture') }}</span>
@@ -198,6 +200,11 @@
             $input.on('keyup', function () {
               clearTimeout(typingTimer);
               typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            });
+
+            $('select').click(function(){
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(doneTyping, doneTypingInterval);
             });
 
             //on keydown, clear the countdown 

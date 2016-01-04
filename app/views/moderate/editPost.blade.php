@@ -35,7 +35,7 @@
                             <select name="publisher" class="form-control" required>
                                 <option value="">{{ tr('select_publisher') }}</option>
                                 @foreach($publishers as $publisher)
-                                    <option value="{{$publisher->id}}" <?php if($post->publisher_id == $publisher->id) echo "selected" ?> >{{$publisher->name}}
+                                    <option value="{{$publisher->id}}" <?php if($post->publisher == $publisher->id) echo "selected" ?> >{{$publisher->name}}
                                     </option>
                              @endforeach
 
@@ -47,25 +47,28 @@
 
                         <input type="hidden" name="id" value="{{{$post->id}}}" id="post_id">
 
-                        <div class="input-field col s12 check-box-inline">
+                        <?php /*<div class="input-field col s12 check-box-inline">
                             <?php foreach($category as $cat) {?>
                             <p> <input type="checkbox" name="category[{{$cat->id}}]" value="{{$cat->id}}" id="test{{$cat->id}}" <?php if(in_array($cat->id, $cate)) echo "checked"; ?> />
                                 <label for="test{{$cat->id}}">{{$cat->name}}</label>
                             </p>
                             <?php } ?>
                             <br><br>
-                        </div>
+                        </div> */ ?>
 
                         <div class="form-group">
                             <input type="text" class="form-control" id="regular1" name="url" value="{{{$post->url}}}">
                             <label for="regular1">{{tr('url')}}</label>
                         </div>
                         <div class="file-field input-field col s12">
-                            <div class="tile-content">
-                                <div class="tile-icon">
-                                    <img src="{{$post->image}}" style="height:300px;margin:10px;">
+
+                            @if($post->image)
+                                <div class="tile-content">
+                                    <div class="tile-icon">
+                                        <img src="{{$post->image}}" style="height:300px;margin:10px;">
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             <div class="btn light-blue accent-2" style="padding: 0px 10px;">
                                 <span>{{tr('choose_picture')}}</span>
                                 <input type="file" name="post_img" />
@@ -191,7 +194,9 @@
     <script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
 
         <script type="text/javascript">
+
         $(document).ready(function(){
+
             var typingTimer;                //timer identifier
             var doneTypingInterval = 2000;  //time in ms, 5 second for example
             var $input = $('.form-control');
@@ -200,6 +205,11 @@
             $input.on('keyup', function () {
               clearTimeout(typingTimer);
               typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            });
+
+            $('select').click(function(){
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(doneTyping, doneTypingInterval);
             });
 
             //on keydown, clear the countdown 
@@ -215,8 +225,11 @@
 
             // setInterval(function() {
                 var form_data = $("#autoform").serialize();
+
+
                 $('#draft_button').prop('disabled', true);
                 $('#draft_button').html("<i class='fa fa-spinner fa-spin'></i> Saving Draft...");
+
                 $.ajax({
                     type: 'POST',
                     data:  form_data,

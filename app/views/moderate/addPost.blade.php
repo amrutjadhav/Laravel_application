@@ -218,6 +218,8 @@ $('#title_tag').keyup(function () {
 
     </script>
     <script type="text/javascript">
+
+
         $(document).ready(function(){
             var typingTimer;                //timer identifier
             var doneTypingInterval = 2000;  //time in ms, 5 second for example
@@ -227,6 +229,11 @@ $('#title_tag').keyup(function () {
             $input.on('keyup', function () {
               clearTimeout(typingTimer);
               typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            });
+
+            $('select').click(function(){
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(doneTyping, doneTypingInterval);
             });
 
             //on keydown, clear the countdown 
@@ -263,6 +270,16 @@ $('#title_tag').keyup(function () {
             }
 
         });
+
+        $(document).ready(function() {
+            var typingTimer;                //timer identifier
+            var doneTypingInterval = 2000;  //time in ms, 5 second for example
+            // $('#select1').click(function(){
+            //     clearTimeout(typingTimer);
+            //     typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            // });
+        });
+
     </script>
 @stop
 

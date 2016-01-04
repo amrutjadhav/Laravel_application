@@ -172,7 +172,7 @@
     <script type="text/javascript" src="{{asset('admins/js/materialize.min.js')}}"></script>
     <script src="{{asset('admins/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
     <script src="{{asset('admins/js/libs/bootstrap/bootstrap.min.js')}}"></script>
-    <script src="{{asset('admins/s/libs/spin.js/spin.min.js')}}"></script>
+    <script src="{{asset('admins/js/libs/spin.js/spin.min.js')}}"></script>
     <script src="{{asset('admins/js/libs/autosize/jquery.autosize.min.js')}}"></script>
     <script src="{{asset('admins/js/libs/nanoscroller/jquery.nanoscroller.min.js')}}"></script>
     <script src="{{asset('admins/js/core/source/App.js')}}"></script>
@@ -186,7 +186,7 @@
 <script src="{{asset('admins/js/core/demo/Demo.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/DemoFormWizard.js')}}"></script>
 <script src="{{asset('admins/js/core/demo/DemoFormComponents.js')}}"></script>
-    <script src="{{asset('admins/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>
+   <!-- <script src="{{asset('admins/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>-->
     <script src="{{asset('admins/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
     <!-- END JAVASCRIPT -->
     <script type="text/javascript">

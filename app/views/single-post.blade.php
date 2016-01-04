@@ -89,10 +89,12 @@
                 ?>
             
             <div class="row">
-                <div class="col l4 m4 s12" style="margin-top:15px;padding-left:15px;">
-                    <img class="sin-img" style="width: 100%;" src="{{$post->image}}">
-                               
-                </div>
+
+                @if($post->image)
+                    <div class="col l4 m4 s12" style="margin-top:15px;padding-left:15px;">
+                        <img class="sin-img" style="width: 100%;" src="{{$post->image}}">       
+                    </div>
+                @endif
 
                 <div class="col l8 m8 s12" style="margin-top:15px;padding-right:15px;">
                     <h3 style="font-size: 3.5vh;margin-top: 0px;">{{$post->title}}</h3>
@@ -109,14 +111,6 @@
                         </div>
                     @endif 
                 </div>
-
-                <!-- <div class="col l3 m4 s12 single-right-btn">
-
-                    <a href="http://www.facebook.com/sharer.php?u={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share <span class="hidden-s">on Facebook</span></a>
-                    <a href="http://twitter.com/share?text={{$post->title}}&url={{route('shareLink',array('id' => $cat_name,'data' => $post->link))}}" class="waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share <span class="hidden-s">on Twitter</span></a>
-                    <a href="{{{$post->url}}}" class="waves-effect waves-light btn no-right-mar dark-blue darken">Read More</a>
-
-                </div> -->
 
             </div>
             
@@ -150,10 +144,12 @@
 
                 <div class="col m6 s12 l3 single-btm-blk-box">
                   <div class="single-post card animated zoomIn">
-                      <div class="card-image">
-                        <a href="javascript:void(0);"><img src="{{$post->image}}"></a>
-                        <span class="card-title">{{$post->title}}</span>
-                      </div>
+                        @if($post->image)
+                          <div class="card-image">
+                            <a href="javascript:void(0);"><img src="{{$post->image}}"></a>
+                            <span class="card-title">{{$post->title}}</span>
+                          </div>
+                        @endif
                       <div class="card-content">
                        <p class="text-justify">{{$post->des}}</p>
 

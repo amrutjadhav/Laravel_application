@@ -116,14 +116,14 @@ class ModerateController extends \BaseController {
                 $post->meta_des = $meta_des;
                 $post->publisher = $publisher;
                 $post->author = $author;
-
+                
                 $post->share_cat = $share_cat;
 
                 $link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
 
                 $post->link = $link;
 
-                $post->share_title = Input::get('share_link');
+                $post->share_title = $share_link;
 
                 $validator1 = Validator::make(
                     array(
@@ -169,6 +169,9 @@ class ModerateController extends \BaseController {
                 $post->user_id = Auth::user()->id;
                 $post->publisher = $publisher;
                 $post->author = $author;
+
+
+                dd($share_link);
 
                 $validator1 = Validator::make(
                     array(

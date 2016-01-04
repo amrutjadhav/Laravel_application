@@ -573,7 +573,7 @@ class AdminController extends \BaseController {
 		$share_link = Input::get('share_link');
 		$share_cat = Input::get('share_cat');
 		$author = Input::get('author');
-		$publisher = Input::get('publishers');
+		$publisher = Input::get('publisher');
 		$pub_date = Input::get('pub_date');
 		$pub_time = Input::get('pub_time');
 

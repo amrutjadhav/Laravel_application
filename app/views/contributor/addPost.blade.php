@@ -180,6 +180,11 @@ $('#title_tag').keyup(function () {
               typingTimer = setTimeout(doneTyping, doneTypingInterval);
             });
 
+            $('select').click(function(){
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(doneTyping, doneTypingInterval);
+            });
+
             //on keydown, clear the countdown 
             $input.on('keydown', function () {
               clearTimeout(typingTimer);
