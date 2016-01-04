@@ -114,7 +114,7 @@ class ModerateController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->url = $url;
                 $post->meta_des = $meta_des;
-                $post->publisher = $publisher;
+                $post->publisher_id = $publisher;
                 $post->author = $author;
                 
                 $post->share_cat = $share_cat;
@@ -167,7 +167,7 @@ class ModerateController extends \BaseController {
                 $post->des = Input::get('des');
                 $post->meta_des = $meta_des;
                 $post->user_id = Auth::user()->id;
-                $post->publisher = $publisher;
+                $post->publisher_id = $publisher;
                 $post->author = $author;
 
 

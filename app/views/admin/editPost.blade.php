@@ -190,7 +190,18 @@
 
 <script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
 
+
+
+
         <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('#meta_title').keyup(function(){
+                $('#meta_title').val($('#meta_title').val().replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'"<>,.\/? ])+/g, '-').toLowerCase());
+            });
+        });
+
+
         $(document).ready(function(){
             var typingTimer;                //timer identifier
             var doneTypingInterval = 2000;  //time in ms, 5 second for example

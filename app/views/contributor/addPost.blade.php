@@ -165,6 +165,10 @@ $('#title_tag').keyup(function () {
         $('#title').keyup(function(){
             $('#meta_title').val($('#title').val().replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'"<>,.\/? ])+/g, '-').toLowerCase());
         });
+
+        $('#meta_title').keyup(function(){
+            $('#meta_title').val($('#title').val().replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'"<>,.\/? ])+/g, '-').toLowerCase());
+        });
     });
 
     </script>

@@ -195,6 +195,12 @@
 
         <script type="text/javascript">
 
+        $(document).ready(function() {
+            $('#meta_title').keyup(function(){
+                $('#meta_title').val($('#meta_title').val().replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'"<>,.\/? ])+/g, '-').toLowerCase());
+            });
+        });
+
         $(document).ready(function(){
 
             var typingTimer;                //timer identifier

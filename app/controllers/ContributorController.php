@@ -110,7 +110,7 @@ class ContributorController extends \BaseController {
 				$post->des = Input::get('des');
 				$post->url = $url;
 				$post->meta_des = $meta_des;
-				$post->publisher = $publisher;
+				$post->publisher_id = $publisher;
 				$post->author = $author;
 				if($pub_date != "")
 				$post->created_at = date('Y-m-d H:i:s', strtotime("$pub_date $pub_time"));
@@ -157,7 +157,7 @@ class ContributorController extends \BaseController {
 				$post->des = Input::get('des');
 				$post->meta_des = $meta_des;
 				$post->user_id = Auth::user()->id;
-				$post->publisher = $publisher;
+				$post->publisher_id = $publisher;
 				$post->author = $author;
 
 				$validator1 = Validator::make(
