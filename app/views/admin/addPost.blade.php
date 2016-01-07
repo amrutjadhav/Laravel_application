@@ -32,7 +32,7 @@
 
                 @if($publisher_test != "")
                     <div class="form-group">
-                        <select name="publishers" class="form-control" required>
+                        <select name="publisher" class="form-control" required>
                             <option value="">{{ tr('select_publisher') }}</option>
                             @foreach($publishers as $publisher)
                                 <option value="{{$publisher->id}}" >{{$publisher->name}}</option>
