@@ -233,7 +233,7 @@ class ContributorController extends \BaseController {
 		$related = Post::orderByRaw("RAND()")->where('is_approved',1)->take(2)->get();
 		if($post_details)
 		{
-			if($publisher = Publisher::find($post_details->publisher_id)) 
+			if($publisher = Publisher::find($post_details->publisher_id))
 	        {
 	            $publisher_name = $publisher->name;
 	            $publisher_image = $publisher->image;
@@ -241,8 +241,7 @@ class ContributorController extends \BaseController {
 	            $publisher_name = "";
 	            $publisher_image = "";
 	        }
-	        
-			counter($segment);
+
 			return View::make('single-post')->withRelated($related)->with('publisher_image' , $publisher_image)->withPost($post_details)->with('cats',$cats);
 		}
 		else
