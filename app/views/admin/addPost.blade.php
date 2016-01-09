@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea name="des" id="textarea1" required class="form-control" maxlength="450" rows="3"></textarea>
+                        <textarea name="des" required class="form-control" maxlength="450" rows="3"></textarea>
                         <label for="textarea1">{{ tr('description') }}</label>
                     </div>
 

@@ -85,7 +85,11 @@
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminAddPost')}}"><i class="fa fa-plus"></i></a> -->
                                     <a title="Edit Post" class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
                                     <a target="_blank" title="View Post" class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminViewPost', array('id' => $post->share_cat,'data' => $post->link))}}"><i class="fa fa-eye"></i></a>
-                                    <a title="Send Push Notification" class="btn ink-reaction btn-floating-action btn-info" href="{{route('sendPush', array('id' => $post->id))}}"><i class="fa fa-paper-plane"></i></a>
+                                    @if($post->is_approved ==1)
+                                        <a title="Send Push Notification" class="btn ink-reaction btn-floating-action btn-info" href="{{route('sendPush', array('id' => $post->id))}}"><i class="fa fa-paper-plane"></i></a>
+                                    @else
+                                        <a title="Send Push Notification" class="btn ink-reaction btn-floating-action btn-info" href="{{route('sendPush', array('id' => $post->id))}}" disabled><i class="fa fa-paper-plane"></i></a>
+                                    @endif
                                     <a title="Delete" onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePost',array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>

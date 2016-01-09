@@ -171,7 +171,7 @@ class ModerateController extends \BaseController {
                 $post->author = $author;
 
 
-                dd($share_link);
+                // dd($share_link);
 
                 $validator1 = Validator::make(
                     array(
