@@ -65,8 +65,11 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea name="des" id="textarea1" class="form-control" maxlength="450" rows="3"></textarea>
-                        <label for="textarea1">{{tr('description')}}</label>
+                        <textarea name="des" id="description" required class="form-control" maxlength="450" rows="3"></textarea>
+                        <label for="textarea1">{{ tr('description') }}</label>
+
+                        <div id="characterLeftDesc"></div>
+
                     </div>
 
                     <div class="row">
@@ -192,6 +195,19 @@ $('#title_tag').keyup(function () {
         $('#characterLeft').text(ch + ' characters left');
     }
 });
+
+    $('#characterLeftDesc').text('450 characters left');
+    $('#description').keyup(function () {
+        var max = 450;
+        var len = $(this).val().length;
+        if (len >= max) {
+            $('#characterLeftDesc').text(' you have reached the limit');
+        } else {
+            var ch = max - len;
+            $('#characterLeftDesc').text(ch + ' characters left');
+        }
+    });
+
 
 </script>
 

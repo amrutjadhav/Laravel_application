@@ -577,9 +577,6 @@ class AdminController extends \BaseController {
 		$pub_date = Input::get('pub_date');
 		$pub_time = Input::get('pub_time');
 
-
-		//dd(Input::get('push_button') == 'on');
-
  
         $validator = Validator::make(
             array(
@@ -615,6 +612,12 @@ class AdminController extends \BaseController {
                 $post->url = $url;
                 $post->author = $author;
                 $post->meta_des = $meta_des;
+
+                if(Input::get('submitStatus') == 1) {
+                    $post->is_approved = 1;
+                } else {
+                    $post->is_approved = 0;
+                }
 
                 if(is_numeric($author)){
                 	$post->user_id = $author;

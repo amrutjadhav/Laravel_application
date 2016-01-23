@@ -269,7 +269,7 @@ class HomeController extends BaseController {
 		              <div class="card-action text-center">
 
 		                <a target="_blank" href="http://www.facebook.com/sharer.php?u='.$fb.'" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-		                <a target="_blank" href="http://twitter.com/share?text='.substr($post->title, 0, 30).'...&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+		                <a target="_blank" href="http://twitter.com/share?text='.$post->title.'...&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
 		                <a target="_blank" href="'.$post->url.'" target="_blank" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More </a>
 
 		              </div>
@@ -337,7 +337,7 @@ class HomeController extends BaseController {
 		             	<div class="card-action text-center">
 
 		                <a target="_blank" href="http://www.facebook.com/sharer.php?u='.$fb.'" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-		                <a target="_blank" href="http://twitter.com/share?text='.substr($post->title, 0, 30).'...&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
+		                <a target="_blank" href="http://twitter.com/share?text='.$post->title.'...&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
 		                <a target="_blank" href="'.$post->url.'" target="_blank" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More </a>
 
 		              </div>

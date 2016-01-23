@@ -116,6 +116,12 @@ class ModerateController extends \BaseController {
                 $post->meta_des = $meta_des;
                 $post->publisher_id = $publisher;
                 $post->author = $author;
+
+                if(Input::get('submitStatus') == 1) {
+                    $post->is_approved = 1;
+                } else {
+                    $post->is_approved = 0;
+                }
                 
                 $post->share_cat = $share_cat;
 

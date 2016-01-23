@@ -221,5 +221,6 @@ return array(
 	'page_add' => 'Page Added Successfully',
 	'page_delete' => 'Page deleted Successfully',
 	'page_already' => 'Page Already Added',
-		
+
+	'update' => 'Update',		
 );

@@ -67,8 +67,11 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea name="des" id="textarea1" maxlength="450" class="form-control" rows="3">{{{$post->des}}}</textarea>
-                            <label for="textarea1">{{ tr('description')}}</label>
+                            <textarea name="des" id="description" required class="form-control" maxlength="450" rows="3">{{{$post->des}}}</textarea>
+                            <label for="textarea1">{{ tr('description') }}</label>
+
+                            <div id="characterLeftDesc">{{{ 450 - strlen($post->des)}}} Characters Left</div>
+
                         </div>
 
                         <div class="form-group">
@@ -141,6 +144,22 @@
     <script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
 
         <script type="text/javascript">
+
+        //$('#characterLeftDesc').text('450 characters left');
+        $('#description').keyup(function () {
+            var max = 450;
+            var len = $(this).val().length;
+            if (len >= max) {
+                $('#characterLeftDesc').text(' you have reached the limit');
+            } else {
+                var ch = max - len;
+                $('#characterLeftDesc').text(ch + ' characters left');
+            }
+        });
+
+
+
+
         $(document).ready(function(){
             var typingTimer;                //timer identifier
             var doneTypingInterval = 2000;  //time in ms, 5 second for example

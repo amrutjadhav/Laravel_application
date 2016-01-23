@@ -63,9 +63,13 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea name="des" id="textarea1" required class="form-control" maxlength="450" rows="3"></textarea>
-                        <label for="textarea1">{{tr('description')}}</label>
+                        <textarea name="des" id="description" required class="form-control" maxlength="450" rows="3"></textarea>
+                        <label for="textarea1">{{ tr('description') }}</label>
+
+                        <div id="characterLeftDesc"></div>
+
                     </div>
+
 
                     <div class="form-group">
 
@@ -170,6 +174,20 @@ $('#title_tag').keyup(function () {
             $('#meta_title').val($('#title').val().replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'"<>,.\/? ])+/g, '-').toLowerCase());
         });
     });
+
+    $('#characterLeftDesc').text('450 characters left');
+    $('#description').keyup(function () {
+        var max = 450;
+        var len = $(this).val().length;
+        if (len >= max) {
+            $('#characterLeftDesc').text(' you have reached the limit');
+        } else {
+            var ch = max - len;
+            $('#characterLeftDesc').text(ch + ' characters left');
+        }
+    });
+
+
 
     </script>
     <script type="text/javascript">

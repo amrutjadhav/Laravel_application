@@ -69,8 +69,11 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea name="des" id="textarea1" required class="form-control" maxlength="450" rows="3">{{{$post->des}}}</textarea>
+                            <textarea name="des" id="description" required class="form-control" maxlength="450" rows="3">{{{$post->des}}}</textarea>
                             <label for="textarea1">{{ tr('description') }}</label>
+
+                            <div id="characterLeftDesc">{{{ 450 - strlen($post->des)}}} Characters Left</div>
+
                         </div>
 
                         @if($contributor == 1)
@@ -132,15 +135,22 @@
             <div class="card">
                 <div class="card-body">
 
-                        <div class="pub-btn">
-                    <button type="submit" class="btn ink-reaction btn-raised btn-info fst">
-                        {{ tr('publish') }}
-                    </button>
+                    <div class="pub-btn">
 
-                    <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{ tr('saving_draft') }}...">{{ tr('save_draft') }}</button>
+                        <button type="submit" name="submitStatus" value="1" class="btn ink-reaction btn-raised btn-info fst">
+                            {{ tr('publish') }}
+                        </button>
+
+                        <button type="submit" name="submitStatus" value="2"  class="btn ink-reaction btn-raised btn-warning">{{tr('update')}}
+
+                        </button><br><br>
+
+                        <button style="width:100%" type="button" id="draft_button" class="btn ink-reaction btn-raised btn-primary btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{ tr('saving_draft') }}...">{{ tr('save_draft') }}
+                        </button>
+                        
                     </div>
 
-                        <br><br>
+                        <br><br><br>
 
                         <div class="input-group date" id="demo-date">
                                 <div class="input-group-content">
@@ -198,6 +208,19 @@
                 $('#meta_title').val($('#meta_title').val().replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'"<>,.\/? ])+/g, '-').toLowerCase());
             });
         });
+
+
+        //$('#characterLeftDesc').text('450 characters left');
+    $('#description').keyup(function () {
+        var max = 450;
+        var len = $(this).val().length;
+        if (len >= max) {
+            $('#characterLeftDesc').text(' you have reached the limit');
+        } else {
+            var ch = max - len;
+            $('#characterLeftDesc').text(ch + ' characters left');
+        }
+    });
 
 
         $(document).ready(function(){
