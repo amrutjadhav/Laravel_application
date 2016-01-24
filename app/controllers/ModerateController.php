@@ -110,7 +110,7 @@ class ModerateController extends \BaseController {
             {
                 $post = Post::find(Input::get('id'));
                 $post->title = $title;
-                $post->is_approved = 1;
+                //$post->is_approved = 1;
                 $post->des = Input::get('des');
                 $post->url = $url;
                 $post->meta_des = $meta_des;
@@ -120,7 +120,7 @@ class ModerateController extends \BaseController {
                 if(Input::get('submitStatus') == 1) {
                     $post->is_approved = 1;
                 } else {
-                    $post->is_approved = 0;
+                    //$post->is_approved = 0;
                 }
                 
                 $post->share_cat = $share_cat;

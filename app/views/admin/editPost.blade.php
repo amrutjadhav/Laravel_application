@@ -137,20 +137,33 @@
 
                     <div class="pub-btn">
 
-                        <button type="submit" name="submitStatus" value="1" class="btn ink-reaction btn-raised btn-info fst">
-                            {{ tr('publish') }}
-                        </button>
+                            @if($post->is_approved == 1)
 
-                        <button type="submit" name="submitStatus" value="2"  class="btn ink-reaction btn-raised btn-warning">{{tr('update')}}
+                                <button type="submit" name="submitStatus" value="2" class="btn ink-reaction btn-raised btn-info fst">
+                                {{ tr('update') }}
+                                </button>
 
-                        </button><br><br>
+                                <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{ tr('saving_draft') }}...">{{ tr('save_draft') }}</button>
+                                </div>
 
-                        <button style="width:100%" type="button" id="draft_button" class="btn ink-reaction btn-raised btn-primary btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{ tr('saving_draft') }}...">{{ tr('save_draft') }}
-                        </button>
-                        
-                    </div>
+                            @else
 
-                        <br><br><br>
+                                <button type="submit" name="submitStatus" value="1" class="btn ink-reaction btn-raised btn-info fst">
+                                        {{ tr('publish') }}
+                                </button>
+
+                                <button type="submit" name="submitStatus" value="2"  class="btn ink-reaction btn-raised btn-warning">{{tr('update')}}
+
+                                </button><br><br>
+
+                                <button style="width:100%" type="button" id="draft_button" class="btn ink-reaction btn-raised btn-primary btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{ tr('saving_draft') }}...">{{ tr('save_draft') }}
+                                </button>
+
+
+                            @endif
+                    
+
+                            <br><br><br>
 
                         <div class="input-group date" id="demo-date">
                                 <div class="input-group-content">
