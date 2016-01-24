@@ -144,25 +144,27 @@
 
                          @if($post->is_approved == 1)
 
-                                <button type="submit" name="submitStatus" value="2" class="btn ink-reaction btn-raised btn-info fst">
+                                <button type="submit" style="width:100%" name="submitStatus" value="2" class="btn ink-reaction btn-raised btn-primary fst">
                                 {{ tr('update') }}
                                 </button>
 
-                                <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{ tr('saving_draft') }}...">{{ tr('save_draft') }}</button>
+                                {{-- <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{ tr('saving_draft') }}...">{{ tr('save_draft') }}</button>
                                 </div>
-
+ --}}
                             @else
 
-                                <button type="submit" name="submitStatus" value="1" class="btn ink-reaction btn-raised btn-info fst">
+                                <button type="button" id="draft_button" class="btn ink-reaction btn-raised btn-warning btn-loading-state fst " data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{ tr('saving_draft') }}...">{{ tr('save_draft') }}
+                                </button>
+
+                                <button type="submit" name="submitStatus" value="1" class="btn ink-reaction btn-raised btn-primary">
                                         {{ tr('publish') }}
                                 </button>
 
-                                <button type="submit" name="submitStatus" value="2"  class="btn ink-reaction btn-raised btn-warning">{{tr('update')}}
+                                {{-- <button type="submit" name="submitStatus" value="2"  class="btn ink-reaction btn-raised btn-warning">{{tr('update')}}
 
-                                </button><br><br>
+                                </button> --}}
 
-                                <button style="width:100%" type="button" id="draft_button" class="btn ink-reaction btn-raised btn-primary btn-loading-state" data-loading-text="<i class='fa fa-spinner fa-spin'></i> {{ tr('saving_draft') }}...">{{ tr('save_draft') }}
-                                </button>
+
 
 
                             @endif
