@@ -144,7 +144,7 @@ $timezone = array (
 
 <div class="page">
 
-    <div class="col-md-12">
+    <div class="col-md-8">
         <div class="card">
             <div class="card-head style-primary">
                         <header>{{ tr('website_settings') }}</header>
@@ -200,16 +200,6 @@ $timezone = array (
                         <label for="regular1">{{ tr('website_link') }}</label>
                     </div>
 
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="mandrill_secret" value="{{Setting::get('mandrill_secret')}}">
-                        <label for="regular1">{{ tr('mandrill_secret') }}</label>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="mandrill_username" value="{{Setting::get('mandrill_username')}}">
-                        <label for="regular1">{{ tr('mandrill_username') }}</label>
-                    </div>
-
                     <div class="form-group floating-label">
                             <select id="cat_select" name="timezone" class="form-control" required>
                                 <option value="">{{ tr('select_timezone') }}</option>
@@ -232,8 +222,96 @@ $timezone = array (
     </div>
 
 
+      <div class="col-md-4">
+        <div class="card">
+            <div class="card-head style-primary">
+                        <header>{{tr('email_config') }}</header>
+                    </div>
+            <div class="card-body">
+                <form>
+                    <div class="col-sm-9">
+                        <label class="radio-inline radio-styled radio-primary">
+                            <input type="radio" id="normal_smtp" name="mail_conf"><span>Normal SMTP</span>
+                        </label>
+                        <label class="radio-inline radio-styled radio-primary">
+                            <input type="radio" id="mandrill" name="mail_conf"><span>Mandrill</span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card-body" id="mail_config">
+                
+                <form class="form" action="{{route('mailConfig')}}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="mail_type" value="normal_smtp"> 
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="regular1" name="username" value="{{Setting::get('username')}}">
+                        <label for="regular1">{{ tr('admin_username') }}</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="form-control" id="regular1" name="password" type="password">
+                        <label for="regular1">{{ tr('password') }}</label>
+                    </div>
+
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">
+                        {{ tr('admin_submit') }}
+                    </button>
+                </form>
+            </div><!--end .card-body -->
+
+             <div class="card-body" id="mail_config1">
+                
+                <form class="form" action="{{route('mailConfig')}}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="mail_type" value="mandrill"> 
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="regular1" name="username" >
+                        <label for="regular1">{{ tr('mandrill_username') }}</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="regular1" name="password">
+                        <label for="regular1">{{ tr('mandrill_secret') }}</label>
+                    </div>
+
+                    <button type="submit" class="btn ink-reaction btn-raised btn-info">
+                        {{ tr('admin_submit') }}
+                    </button>
+                </form>
+            </div><!--end .card-body -->
+        </div><!--end .card -->
+
+    </div>    
+
+
 </div>
 </div>
+
 
 
 @stop
+
+
+<script src="{{asset('admins/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#mail_config').hide();
+        $('#mail_config1').hide();
+
+        $("#normal_smtp").click(function(){
+        $("#mail_config").show();
+        $("#mail_config1").hide();
+        });
+
+        $("#mandrill").click(function(){
+        $("#mail_config1").show();
+        $("#mail_config").hide();
+        });
+    });
+
+
+</script>
+
+
+

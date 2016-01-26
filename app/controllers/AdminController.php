@@ -1273,4 +1273,39 @@ class AdminController extends \BaseController {
 		}
 	}
 
+	public function mailConfig()
+	{
+		if(Input::get('mail_type') == "mandrill")
+		{
+			Setting::set('mail_type',"mandrill");
+			Setting::set('smtp_host',"smtp.mandrillapp.com");
+			Setting::set('username',Input::get('username'));
+			Setting::set('secret',Input::get('password'));
+		}
+		elseif(Input::get('mail_type') == "normal_smtp")
+		{
+			Setting::set('mail_type',"smtp");
+			Setting::set('smtp_host',"smtp.gmail.com");
+			Setting::set('username',Input::get('username'));
+			Setting::set('secret',Input::get('password'));
+		}
+
+		return Redirect::back()->with('flash_success',"Successfull");
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

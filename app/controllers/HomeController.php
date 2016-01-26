@@ -86,7 +86,6 @@ class HomeController extends BaseController {
 
 	public function logout()
 	{
-		
 		Auth::logout();
 		return Redirect::route('login');
 	}
@@ -378,8 +377,6 @@ class HomeController extends BaseController {
         $sitename = Input::get('sitename');
         $database_name = Input::get('database_name');
         $picture = Input::file('picture');
-        $mandrill_username = Input::get('mandrill_username');
-        $mandrill_secret = Input::get('mandrill_secret');
         $timezone = Input::get('timezone');
 
 
@@ -392,9 +389,7 @@ class HomeController extends BaseController {
                 'admin_password' => $admin_password,
                 'sitename' => $sitename,
                 'picture' => $picture,
-                'mandrill_username' => $mandrill_username,
                 'timezone' => $timezone,
-                'mandrill_secret' => $mandrill_secret,
                 
             ), array(
                 'password' => '',
@@ -403,8 +398,6 @@ class HomeController extends BaseController {
                 'database_name' => 'required',
                 'admin_password' => 'required',
                 'admin_username' => 'required',
-                'mandrill_username' => 'required',
-                'mandrill_secret' => 'required',
                 'timezone' => 'required',
                 'picture' => 'mimes:png,jpg'
             )
@@ -432,8 +425,6 @@ class HomeController extends BaseController {
             Setting::set('username',$username);
             Setting::set('password',$password);
             Setting::set('database_name',$database_name);
-            Setting::set('mandrill_secret',$mandrill_secret);
-            Setting::set('mandrill_username',$mandrill_username);
             Setting::set('timezone',$timezone);
             Setting::set('logo',$s3_url);
 

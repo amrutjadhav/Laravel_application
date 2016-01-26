@@ -171,6 +171,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::get('/deletePublisher/{id}', array('as' => 'deletePublisher', 'uses' => 'AdminController@deletePublisher'));
 
+	Route::post('/mailConfig', array('as' => 'mailConfig', 'uses' => 'AdminController@mailConfig'));
+
 
 });
 

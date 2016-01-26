@@ -245,14 +245,14 @@ $timezone = array (
 															<input type="password" name="admin_password" id="Address" class="form-control">
 															<label for="Address" class="control-label">{{tr('admin_password')}}</label>
 														</div>
-														<div class="form-group">
+														<!-- <div class="form-group">
 															<input type="text" name="mandrill_secret" id="Address" class="form-control">
 															<label for="Address" class="control-label">{{tr('mandrill_secret')}}</label>
 														</div>
 														<div class="form-group">
 															<input type="text" name="mandrill_username" id="Address" class="form-control">
 															<label for="Address" class="control-label">{{ tr('mandrill_password')}}</label>
-														</div>
+														</div> -->
 														
 														<div class="form-group floating-label">
 								                            <select id="time" name="timezone" class="form-control" required>

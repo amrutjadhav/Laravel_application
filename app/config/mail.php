@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mandrillapp.com',
+	'host' => Setting::get('smtp_host'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => Setting::get('mandrill_username'),
+	'username' => Setting::get('username'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => Setting::get('mandrill_secret'),
+	'password' => Setting::get('secret'),
 
 	/*
 	|--------------------------------------------------------------------------

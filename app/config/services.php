@@ -19,9 +19,12 @@ return array(
 		'secret' => '',
 	),
 
-	'mandrill' => array(
-		'secret' => 'sqROdtz_tJdaCsGs6xv8Ow',
-	),
+	if(Setting::get('mail_type') == "mandrill")
+	{
+		'mandrill' => array(
+		'secret' => Setting::get('secret'),
+		),
+	}
 
 	'stripe' => array(
 		'model'  => 'User',
