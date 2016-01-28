@@ -184,7 +184,7 @@ return array(
 	'category_activate'		=> 'Category Activated successfully',
 	'category_decline'		=> 'Category Declined successfully',
 	'category_delete'		=> 'Category Deleted Successfully',
-	'category_add'			=> 'Category Added Successfully <br> please activate',
+	'category_add'			=> 'Category Added Successfully',
 	'category_update'		=> 'Category upadted Successfully',
 
 	'post_approve'			=> 'Post Approved successfully',
@@ -223,4 +223,8 @@ return array(
 	'page_already' => 'Page Already Added',
 
 	'update' => 'Update',		
+	'email_config' => 'Email Config',
+
+
+	
 );
