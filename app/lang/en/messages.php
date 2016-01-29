@@ -198,7 +198,7 @@ return array(
 	'push_notification_error'	=> 'Push notification failed, Try again',
 
 	'password_update'			=> 'Password Updated Successfully',
-	'forgot_password_success'	=> 'your password changed and new password is sent to your email!',
+	'forgot_password_success'	=> 'Your password has been reset and sent to your email.',
 	'forgot_password_error'		=> 'Email ID not found',
 	'login_email_password_error'	=> 'Invalid Email and Password',
 

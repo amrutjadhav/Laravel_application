@@ -84,7 +84,11 @@
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('sendPush')}}"><i class="fa fa-paper-plane"></i></a> -->
                                     <!-- <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminAddPost')}}"><i class="fa fa-plus"></i></a> -->
                                     <a title="Edit Post" class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminEditPost', array('id' => $post->id))}}"><i class="fa fa-edit"></i></a>
-                                    <a target="_blank" title="View Post" class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminViewPost', array('id' => $post->share_cat,'data' => $post->link))}}"><i class="fa fa-eye"></i></a>
+                                    @if($post->is_approved ==1)
+                                        <a target="_blank" title="View Post" class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminViewPost', array('id' => $post->share_cat,'data' => $post->link))}}"><i class="fa fa-eye"></i></a>
+                                    @else
+                                        <a target="_blank" title="View Post" class="btn ink-reaction btn-floating-action btn-info" href="{{route('adminViewPost', array('id' => $post->share_cat,'data' => $post->link))}}" disabled><i class="fa fa-eye"></i></a>
+                                    @endif
                                     @if($post->is_approved ==1)
                                         <a title="Send Push Notification" class="btn ink-reaction btn-floating-action btn-info" href="{{route('sendPush', array('id' => $post->id))}}"><i class="fa fa-paper-plane"></i></a>
                                     @else
