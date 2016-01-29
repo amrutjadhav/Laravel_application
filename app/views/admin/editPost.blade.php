@@ -139,7 +139,7 @@
 
                             @if($post->is_approved == 1)
 
-                                <button type="submit" style="width:100%" name="submitStatus" value="2" class="btn ink-reaction btn-raised btn-primary fst">
+                                <button type="submit" style="width:100%" name="submitStatus" value="1" class="btn ink-reaction btn-raised btn-primary fst">
                                 {{ tr('update') }}
                                 </button>
 

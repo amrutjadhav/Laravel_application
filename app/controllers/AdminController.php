@@ -616,7 +616,7 @@ class AdminController extends \BaseController {
                 if(Input::get('submitStatus') == 1) {
                     $post->is_approved = 1;
                 } else {
-                    //$post->is_approved = 0;
+                    $post->is_approved = 1;
                 }
 
                 if(is_numeric($author)){
