@@ -172,6 +172,7 @@ return array(
 	'moderator_decline'		=> 'Moderator Declined successfully',
 	'moderator_delete'		=> 'Moderator Deleted Successfully',
 	'moderator_add'			=> 'Moderate Added Successfully <br> please activate',
+	'moderator_update' => 'Moderator Updated Successfully',
 
 	'contributor_activate'	=> 'Contributor Activated successfully',
 	'contributor_decline'	=> 'Contributor Declined successfully',
