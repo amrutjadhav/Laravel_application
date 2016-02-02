@@ -559,7 +559,6 @@ class AdminController extends \BaseController {
 			->with('publisher_test',$publisher_test)
 			->with('authors',$authors);
 	}
-
 	
 	public function addPostProcess()
     {
@@ -626,8 +625,18 @@ class AdminController extends \BaseController {
                 if($share_cat != "" && $share_link != ""){
                 	$post->share_cat = $share_cat;
                 	$post->share_title = $share_link;
-                	$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
-                    $post->link = $link;
+                	$link_test = str_replace(" ", "-", Input::get('share_link'));
+                	$link_already =  substr($post->link, 0, -3);
+                	if($link_test == $link_already)
+                	{
+                		$post->link = $post->link;
+                		// do nothing 
+                	}
+                	else
+                	{
+                		$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
+                    	$post->link = $link;
+                	}
                 }
 
 				$post->publisher_id = $publisher;
@@ -1026,6 +1035,7 @@ class AdminController extends \BaseController {
 
     public function declinePost($id)
     {
+    	Log::info("test");
         $post = Post::where('id',$id)->first();
         if($post)
         {
