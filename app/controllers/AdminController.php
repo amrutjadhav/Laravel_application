@@ -626,16 +626,20 @@ class AdminController extends \BaseController {
                 	$post->share_cat = $share_cat;
                 	$post->share_title = $share_link;
                 	$link_test = str_replace(" ", "-", Input::get('share_link'));
+                	// Log::info("link = ".print_r($link_test,true));
                 	$link_already =  substr($post->link, 0, -3);
-                	if($link_test == $link_already)
+                	// Log::info("link_already = ".print_r($link_already,true));
+                	// Log::info(strcmp($link_test, $link_already));
+                	if(strcmp($link_test, $link_already))
                 	{
-                		$post->link = $post->link;
-                		// do nothing 
+                		// Log::info("false");
+                		$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
+                    	$post->link = $link;
                 	}
                 	else
                 	{
-                		$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
-                    	$post->link = $link;
+                		$post->link = $post->link;
+                		// do nothing 
                 	}
                 }
 
