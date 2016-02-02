@@ -514,7 +514,7 @@ class AdminController extends \BaseController {
 		return View::make('admin.pending_post')
 			->with('title',"Posts Management")
 			->with('page', "post")
-			->with('posts',$posts);
+			->with('posts',$posts)->withPage('posts');
 	}
 
 	public function adminPostSearch()
