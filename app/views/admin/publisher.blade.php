@@ -39,7 +39,10 @@
                                     <td>
                                         {{--<a class="btn ink-reaction btn-floating-action btn-info" href="{{route('addpublisher')}}"><i class="fa fa-plus"></i></a>--}}
                                         <a class="btn ink-reaction btn-floating-action btn-info" href="{{route('editPublisher', array('id' => $publisher->id))}}"><i class="fa fa-edit"></i></a>
+                                    @if($publisher->id == 1)
+                                    @else
                                         <a onclick="return confirm('Are you sure?')" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('deletePublisher',array('id' => $publisher->id))}}"><i class="fa fa-trash"></i></a>
+                                    @endif
                                     </td>
 
                                 </tr>

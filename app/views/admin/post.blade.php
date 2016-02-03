@@ -74,7 +74,7 @@
                                         }
                                     ?>
                                 </td>
-                                <td><?php $user = get_user_details($post->user_id); if($user){ echo $user->author_name; } ?></td>
+                                <td>{{{$post->author}}}</td>
                                 <td style="width: 297px;">
                                     @if($post->is_approved != 0)
                                         <a title="Un Publish" class="btn ink-reaction btn-floating-action btn-warning" href="{{route('adminPostDecline', array('id' => $post->id))}}"><i class="fa fa-times"></i></a>

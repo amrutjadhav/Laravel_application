@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="form-group">
-                        <input type="text" class="form-control" id="regular1" name="author_name" value="{{$admin->author_name}}">
+                        <input type="text" class="form-control" id="regular1" name="author_name" value="{{$admin->author_name}}" disabled>
                         <label for="regular1">{{ tr('author_name')}}</label>
                         </div>
 

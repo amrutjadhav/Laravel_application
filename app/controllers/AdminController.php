@@ -340,6 +340,7 @@ class AdminController extends \BaseController {
 	public function contributorsDelete($id)
 	{
 		$contributors = User::find($id)->delete();
+
 		if($contributors)
 		{
 			return Redirect::back()->with('flash_success',tr('contributor_delete'));
@@ -626,13 +627,9 @@ class AdminController extends \BaseController {
                 	$post->share_cat = $share_cat;
                 	$post->share_title = $share_link;
                 	$link_test = str_replace(" ", "-", Input::get('share_link'));
-                	// Log::info("link = ".print_r($link_test,true));
                 	$link_already =  substr($post->link, 0, -3);
-                	// Log::info("link_already = ".print_r($link_already,true));
-                	// Log::info(strcmp($link_test, $link_already));
                 	if(strcmp($link_test, $link_already))
                 	{
-                		// Log::info("false");
                 		$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
                     	$post->link = $link;
                 	}
@@ -673,7 +670,8 @@ class AdminController extends \BaseController {
 
                     $post->image = $s3_url;
                 }
-                $post->category = implode(',', $category);
+                $selected_category = implode(',', $category);
+                $post->category = $selected_category . ',' . 1;
                 $post->save();
 
                 if (Input::get('push_button') == 'on') {
@@ -741,7 +739,9 @@ class AdminController extends \BaseController {
 
                     $post->image = $s3_url;
 
-                    $post->category = implode(',', $category);
+                    // Adding default category
+                    $selected_category = implode(',', $category);
+                	$post->category = $selected_category . ',' . 1;
 
 					$post->share_cat = $share_cat;
 
@@ -1276,6 +1276,13 @@ class AdminController extends \BaseController {
 
 	public function deletePublisher($id)
 	{
+		$publisher_change = Post::where('publisher_id',$id)->get();
+		foreach ($publisher_change as $pub_change) 
+		{
+			$change_pub = Post::where('id',$pub_change->id)->first();
+			$change_pub->publisher_id = 1;
+			$change_pub->save();
+		}
 		$publisher = Publisher::where('id',$id)->delete();
 		if($publisher)
 		{

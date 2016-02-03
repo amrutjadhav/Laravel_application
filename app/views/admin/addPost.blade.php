@@ -176,8 +176,14 @@
 
                     <div class="input-field col s12 check-box-inline">
                         <?php foreach($category as $cat) {?>
-                            <p> <input type="checkbox"  name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')"/>
+                            <p>
+                             @if($cat->id == 1)   
+                             <input type="checkbox"  name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')" checked disabled/>
                                 <label for="cat_{{$cat->id}}">{{$cat->name}}</label>
+                             @else
+                             <input type="checkbox"  name="category[{{$cat->id}}]" value="{{$cat->id}}" next="{{$cat->name}}" id="cat_{{$cat->id}}" onchange="category_add('#cat_{{$cat->id}}')"/>
+                                <label for="cat_{{$cat->id}}">{{$cat->name}}</label>
+                             @endif
                             </p>
                         <?php } ?>
                         <br><br>

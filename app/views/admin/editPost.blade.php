@@ -194,8 +194,14 @@
 
                         <div class="input-field col s12 check-box-inline">
                             <?php foreach($category as $cat) {?>
-                            <p> <input type="checkbox"  name="category[{{$cat->id}}]" value="{{$cat->id}}" id="test{{$cat->id}}" <?php if(in_array($cat->id, $cate)) echo "checked"; ?> />
+                            <p> 
+                                @if($cat->id == 1)
+                                <input type="checkbox"  name="category[{{$cat->id}}]" value="{{$cat->id}}" id="test{{$cat->id}}" <?php if(in_array($cat->id, $cate)) ?> checked disabled />
                                 <label for="test{{$cat->id}}">{{$cat->name}}</label>
+                                @else
+                                <input type="checkbox"  name="category[{{$cat->id}}]" value="{{$cat->id}}" id="test{{$cat->id}}" <?php if(in_array($cat->id, $cate)) echo "checked"; ?> />
+                                <label for="test{{$cat->id}}">{{$cat->name}}</label>
+                                @endif
                             </p>
                             <?php } ?>
                             <br><br>

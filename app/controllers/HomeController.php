@@ -434,8 +434,29 @@ class HomeController extends BaseController {
             $admin->email = $admin_username;
             $admin->is_activated = 1;
             $admin->password = Hash::make($admin_password);
+            $admin->author_name = "Admin";
             $admin->role_id = 2;
             $admin->save();
+
+            // Default publisher
+
+            $publisher = new Publisher;
+            $publisher->name = Input::get('sitename');
+            if(Input::hasFile('picture'))
+            {
+            	$publisher->image = Setting::get('logo');
+            }
+            $publisher->save();
+
+            // Default category
+
+            $category = new Category;
+            $category->name = "Uncategory";
+            if(Input::hasFile('picture'))
+            {
+            	$category->pics = Setting::get('logo');
+            }
+            $category->save();
 
             return Redirect::to('/');
         }
