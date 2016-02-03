@@ -228,6 +228,13 @@
                     </ul><!--end /submenu -->
                 </li>
 
+                 <li id="pbnlite">
+                    <a href="{{route('pbnlite')}}" >
+                        <div class="gui-icon"><i class="md md-star"></i></div>
+                        <span class="title">{{ tr('pbn_lite')}}</span>
+                    </a>
+                </li><!--end /menu-li -->
+
 
                 <li id="admin_setting">
                     <a href="{{route('adminSetting')}}" >

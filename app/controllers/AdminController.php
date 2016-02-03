@@ -1321,6 +1321,69 @@ class AdminController extends \BaseController {
 		return Redirect::back()->with('flash_success',"Successfull");
 	}
 
+	// PBN Lite
+
+	public function pbnlite()
+	{
+		$s_date = date('Y-m-d'." "."00:00:00");
+		$e_date = date('Y-m-d'." "."23:59:59");
+
+		$pbnlite = PbnLite::where('created_at', '>=', $s_date )
+						->where('created_at', '<=', $e_date )->get();
+		 
+		$posts = Post::where('is_approved',1)->orderBy('created_at', 'desc')->paginate(10);
+		return View::make('admin.pbnlite')->withPage('pbnlite')->with('pbnlites',$pbnlite)
+			->with('posts',$posts);
+	}
+
+	public function pbnliteProcess()
+	{
+		$s_date = date('Y-m-d'." "."00:00:00");
+		$e_date = date('Y-m-d'." "."23:59:59");
+		foreach (Input::get('post') as $lite) 
+		{
+			$post = Post::find($lite);
+			$pbnlite = PbnLite::where('created_at', '>=', $s_date )
+						->where('created_at', '<=', $e_date )->count();
+			if($pbnlite < 10)
+			{
+				$pbn_lite = new PbnLite;
+				$pbn_lite->title = $post->title;
+				$pbn_lite->post_id = $lite;
+				$pbn_lite->save();
+			}
+			else
+			{
+				return Redirect::back()->with('flash_error',"Already 10 posts are selected");
+			}			
+		}
+		return Redirect::back()->with('flash_success',"Successfull");
+	}
+
+	public function pbnDate()
+	{
+		$s_date = date('Y-m-d H:i:s', strtotime(Input::get('selected_date')));
+		$e_date = date('Y-m-d H:i:s',strtotime(Input::get('selected_date')." "."23:59:59"));
+
+		$pbnlite = PbnLite::where('created_at', '>=', $s_date )
+						->where('created_at', '<=', $e_date )->get();
+		 
+		return View::make('admin.pbndate')->withPage('pbnlite')->with('pbnlites',$pbnlite);
+	}
+
+	public function adminDeletePbnLite($id)
+	{
+		$pbnlite = PbnLite::where('id',$id)->delete();
+		if($pbnlite)
+		{
+			return Redirect::back()->with('flash_success',"Successfull");
+		}
+		else
+		{
+			return Redirect::back()->with('flash_error',"Something went wrong");
+		}
+	}
+
 }
 
 

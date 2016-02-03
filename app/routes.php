@@ -173,6 +173,16 @@ Route::group(array('prefix' => 'admin', 'before' => 'admin'), function(){
 
 	Route::post('/mailConfig', array('as' => 'mailConfig', 'uses' => 'AdminController@mailConfig'));
 
+	// PBN lite
+
+	Route::get('/pbnlite', array('as' => 'pbnlite', 'uses' => 'AdminController@pbnlite'));
+
+	Route::post('/pbnlite', array('as' => 'pbnliteProcess', 'uses' => 'AdminController@pbnliteProcess'));
+
+	Route::get('/pbndate', array('as' => 'pbnDate', 'uses' => 'AdminController@pbnDate'));
+
+	Route::get('/deletePbnlite/{id}', array('as' => 'adminDeletePbnLite', 'uses' => 'AdminController@adminDeletePbnLite'));
+
 
 });
 

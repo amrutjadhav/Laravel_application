@@ -226,6 +226,9 @@ return array(
 	'update' => 'Update',		
 	'email_config' => 'Email Config',
 
+	// PBN lite
+
+	'pbn_lite' => 'PBN Lite',
 
 	
 );
