@@ -606,6 +606,9 @@ class AdminController extends \BaseController {
             if (Input::get('id') != "") 
             {
                 $post = Post::find(Input::get('id'));
+
+                Log::info($post->link);
+
                 $post->title = $title;
                 //$post->is_approved = 1;
                 $post->des = Input::get('des');
@@ -630,12 +633,14 @@ class AdminController extends \BaseController {
                 	$link_already =  substr($post->link, 0, -3);
                 	if(strcmp($link_test, $link_already))
                 	{
+                		Log::info("true");
                 		$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
                     	$post->link = $link;
                 	}
                 	else
                 	{
-                		$post->link = $post->link;
+                		Log::info("false");
+                		//$post->link = $post->link;
                 		// do nothing 
                 	}
                 }
@@ -673,6 +678,8 @@ class AdminController extends \BaseController {
                 $selected_category = implode(',', $category);
                 $post->category = $selected_category . ',' . 1;
                 $post->save();
+
+
 
                 if (Input::get('push_button') == 'on') {
 

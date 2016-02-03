@@ -344,7 +344,7 @@ class ApiController extends \BaseController
 
 			if(Input::get('share_link') != ""){
 				$link = str_replace(" ", "-", Input::get('share_link')) . '-' . rand(0, 99);
-				$post->link = $link;
+				//$post->link = $link;
 				$post->share_title = Input::get('share_link');
 			}
 
