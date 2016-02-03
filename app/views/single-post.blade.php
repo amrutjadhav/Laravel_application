@@ -57,7 +57,7 @@
         <ul class="right">
             <li><a data-target="modal2" class="waves-effect waves-light modal-trigger"><i class="fa fa-mobile"></i></a></li> 
             <li><a data-target="modal1" class="waves-effect waves-light modal-trigger"><i class="fa fa-bars"></i></a></li>
-            <li><a class="waves-effect waves-light search-btn" href="#!" id="search-icon" data-activates="search-content"><i class="fa fa-search"></i></a></li>
+            
 
         </ul>
 
