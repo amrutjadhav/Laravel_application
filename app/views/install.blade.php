@@ -221,6 +221,10 @@ $timezone = array (
 												<div class="tab-content clearfix">
 													<div class="tab-pane active" id="tab1">
 														<br/><br/>
+                                                        <div class="form-group">
+                                                            <input type="text" id="database_name" name="database_host" id="Address" class="form-control">
+                                                            <label for="Address" class="control-label">{{tr('database_host')}}</label>
+                                                        </div>
 														<div class="form-group">
 															<input type="text" id="database_name" name="database_name" id="Address" class="form-control">
 															<label for="Address" class="control-label">{{tr('database_name')}}</label>

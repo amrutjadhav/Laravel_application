@@ -131,10 +131,13 @@
       </h4>
       <div class="popup-top"></div>
         @foreach($cats as $cat)
-      <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
-        <img src="{{{$cat->pics}}}">
-        <span>{{{$cat->name}}}</span>
-      </a>
+          @if($cat->id == 1)
+            @else
+            <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
+                <img src="{{{$cat->pics}}}">
+                <span>{{{$cat->name}}}</span>
+            </a>
+            @endif
         @endforeach
     </div>
     
@@ -395,9 +398,17 @@ Notification.requestPermission();
 });
 
 setTimeout(function(){ 
-  <?php $single_note = route("shareLink",array("id" => 'news',"data" => $noti_post->link)); ?>
-notifyBrowser("{{$noti_post->title}}","{{substr($noti_post->des, 0, 20)}}","{{$single_note}}");
-console.log('note');
+  <?php
+  if($post_test != 0)
+  {
+     $single_note = route("shareLink",array("id" => 'news',"data" => $noti_post->link)); ?>
+  
+    notifyBrowser("{{$noti_post->title}}","{{substr($noti_post->des, 0, 20)}}","{{$single_note}}");
+    console.log('note');
+    <?php 
+  }
+  else
+  {} ?>
 }, 20000);
 
 </script>

@@ -25,9 +25,10 @@ class HomeController extends BaseController {
        		$post = Post::get();
 			$cats = Category::orderBy('order_type')->get();
 			$noti_post = Post::orderBy(DB::raw('RAND()'))->where('is_approved',1)->first();
+			$post_test = Post::count();
 			// i++ page count
 			counter('home');
-			return View::make('index')->with('posts',$post)->with('noti_post',$noti_post)->with('cats',$cats);
+			return View::make('index')->with('posts',$post)->with('noti_post',$noti_post)->with('cats',$cats)->with('post_test',$post_test);
         }
 
         catch(Exception $e){
@@ -378,6 +379,7 @@ class HomeController extends BaseController {
         $database_name = Input::get('database_name');
         $picture = Input::file('picture');
         $timezone = Input::get('timezone');
+        $database_host = Input::get('database_host');
 
 
         $validator = Validator::make(
@@ -390,6 +392,7 @@ class HomeController extends BaseController {
                 'sitename' => $sitename,
                 'picture' => $picture,
                 'timezone' => $timezone,
+                'database_host' => $database_host
                 
             ), array(
                 'password' => '',
@@ -399,7 +402,8 @@ class HomeController extends BaseController {
                 'admin_password' => 'required',
                 'admin_username' => 'required',
                 'timezone' => 'required',
-                'picture' => 'mimes:png,jpg'
+                'picture' => 'mimes:png,jpg',
+                'database_host' => 'required',
             )
         );
 
@@ -427,6 +431,7 @@ class HomeController extends BaseController {
             Setting::set('database_name',$database_name);
             Setting::set('timezone',$timezone);
             Setting::set('logo',$s3_url);
+            Setting::set('database_host',$database_host);
 
             import_db($username,$password,'localhost',$database_name);
 

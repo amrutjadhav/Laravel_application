@@ -124,10 +124,13 @@
         </h4>
         <div class="popup-top"></div>
         @foreach($cats as $cat)
-            <a href="{{{route('selectCat',array('id' => $cat->id))}}}" class="cat-link">
+            @if($cat->id == 1)
+            @else
+            <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
                 <img src="{{{$cat->pics}}}">
                 <span>{{{$cat->name}}}</span>
             </a>
+            @endif
         @endforeach
     </div>
 

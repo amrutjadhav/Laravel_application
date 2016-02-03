@@ -227,10 +227,13 @@
             <div class="popup-top"></div>
              <a href="javascript:void(0);" class="pull-right modal-action modal-close waves-effect waves-green btn-flat"><i class="fa fa-times"></i></a>
             @foreach($cats as $cat)
+                @if($cat->id == 1)
+                @else
                 <a href="{{route('selectCat',array('id' => $cat->id))}}" class="cat-link">
                     <img src="{{{$cat->pics}}}">
                     <span>{{{$cat->name}}}</span>
                 </a>
+                @endif
             @endforeach
         </div>
 
