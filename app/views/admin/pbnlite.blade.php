@@ -36,7 +36,7 @@
                         <td>{{$post->title}}</td>
                         <td>{{$post->created_at->diffForHumans()}}</td>
                         <td style="width: 297px;">
-                                <a target="_blank" title="View Post" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePbnLite', array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
+                                <a title="View Post" class="btn ink-reaction btn-floating-action btn-danger" href="{{route('adminDeletePbnLite', array('id' => $post->id))}}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 @endforeach
