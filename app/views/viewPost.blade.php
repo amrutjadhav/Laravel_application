@@ -17,10 +17,10 @@
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href="{{asset('inshorts/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="{{asset('inshorts/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="{{asset('inshorts/css/animate.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('inshorts/css/animate.css')}}">
+    <link href="{{asset('website_ui/css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{{asset('website_ui/css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{{asset('website_ui/css/animate.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('website_ui/css/animate.css')}}">
 
 
     <!-- Social Meta -->
@@ -166,8 +166,8 @@
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-    <script src="{{asset('inshorts/js/materialize.js')}}"></script>
-    <script src="{{asset('inshorts/js/init.js')}}"></script>
+    <script src="{{asset('website_ui/js/materialize.js')}}"></script>
+    <script src="{{asset('website_ui/js/init.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
 
