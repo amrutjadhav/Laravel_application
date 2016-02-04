@@ -180,7 +180,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" class="form-control time-mask" required id="pub" name="pub_time" value="{{{date('H:m',strtotime($post->created_at))}}}">
+                            <input type="text" class="form-control time-mask" required id="pub" name="pub_time" value="{{{date('H:i',strtotime($post->created_at))}}}">
                             <label for="regular1">Change {{tr('publish_time')}}</label>
                         </div>
 
