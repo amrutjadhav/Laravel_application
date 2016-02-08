@@ -572,6 +572,45 @@ class ApiController extends \BaseController
 
 		return Response::json($response_array);
 	}
+
+	public function pbnlite() {
+
+		$s_date = date('Y-m-d'." "."00:00:00");
+		$e_date = date('Y-m-d'." "."23:59:59");
+
+
+		$pbn_lites = PbnLite::where('pbn_lites.created_at', '>=', $s_date )
+						->where('pbn_lites.created_at', '<=', $e_date )
+						->leftJoin('posts','pbn_lites.post_id','=','posts.id')
+						->select('posts.id as post_id' , 'pbn_lites.title as post_title' ,'posts.url as url')
+						->get();
+
+		$count = count($pbn_lites);
+
+		if($pbn_lites) {
+
+			$post_data = array();
+
+			foreach ($pbn_lites as $pl => $pbn_lite) 
+			{
+				$post_data[$pl]['post_id'] = $pbn_lite->post_id;
+				$post_data[$pl]['title'] = $pbn_lite->post_title;
+				$post_data[$pl]['share'] = $pbn_lite->url;
+				$post_data['count'] = $count;
+			}
+
+			$response_array = array('success' => true, 'posts' => $post_data);
+
+		} else {
+
+			$response_array = array('success' => false, '' => "No Post Found Today");
+		}
+
+		return Response::json($response_array);
+
+
+	}
+
 }
 
 
