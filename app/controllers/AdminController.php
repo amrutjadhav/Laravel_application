@@ -747,8 +747,10 @@ class AdminController extends \BaseController {
                     $post->image = $s3_url;
 
                     // Adding default category
-                    $selected_category = implode(',', $category);
-                	$post->category = $selected_category . ',' . 1;
+                 	// $selected_category = implode(',', $category);
+                	// $post->category = $selected_category . ',' . 1;
+
+                	$post->category = implode(',', $category);
 
 					$post->share_cat = $share_cat;
 
