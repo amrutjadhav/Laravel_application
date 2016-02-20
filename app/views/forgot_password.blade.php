@@ -15,6 +15,7 @@
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/bootstrap.css?1422792965')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/materialadmin.css?1425466319')}}" />
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/font-awesome.min.css?1422529194')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset('admins/css/style.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('website_ui/css/animate.css')}}">
     <link type="text/css" rel="stylesheet" href="{{asset('admins/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
     <link rel="shortcut icon" type="image/png" href="{{Setting::get('logo')}}"/>
@@ -27,45 +28,46 @@
     <script type="text/javascript" src="../../assets/js/libs/utils/respond.min.js?1403934956"></script>
     <![endif]-->
 </head>
-<body class="menubar-hoverable header-fixed ">
+<body class="menubar-hoverable header-fixed wp-bg">
 
 @include('notification.notify')
 
 <!-- BEGIN LOGIN SECTION -->
 <section class="section-account">
-    <div class="img-backdrop" style="background-image: url('admins/img/signin-bg.jpg')"></div>
-    <div class="spacer"></div>
+ 
     <div class="card contain-sm style-transparent">
         <div class="card-body">
             <div class="row">
-                <div class="col-sm-6">
-                    <br/>
+                <div class="log-box text-left">
+                    <!-- <br/>
                     <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} {{tr('forgot_password')}}</span>
-                    <br/><br/>
+                    <br/><br/> -->
+                    <img class="wp-logo" src="{{Setting::get('logo')}}">
+
+                    <div class="log-box-inner">
                     <form class="form floating-label" action="{{route('processForgotpassword')}}" accept-charset="utf-8" method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="username" name="email">
-                            <label for="username">{{tr('admin_email')}}</label>
+                        <div class="wp-form-group">
+                            <span class="wp-label">{{tr('admin_email')}}</span>
+                            <input type="text" class="wp-text-box" id="username" name="email">
+                           
                         </div>
-                        <br/>
-                        <div class="row">
-                            <div class="col-xs-6 text-left">
-                                <div class="checkbox checkbox-inline checkbox-styled">
-                                     <span class="text-lg text-bold text-primary"><a href="{{route('login')}}">{{tr('login')}}</a></span>
-                                </div>
-                            </div><!--end .col -->
-                            <div class="col-xs-6 text-right">
-                                <button class="btn btn-info btn-raised" type="submit">
-                                    {{tr('admin_submit')}}
-                                </button>
-                            </div><!--end .col -->
-                        </div><!--end .row -->
+
+                        <div class="text-right">
+                            <button class="btn btn-info btn-raised btn-wp-submit" type="submit"> {{tr('admin_submit')}}</button>
+                        </div>                        
+                       
+
                     </form>
-                </div><!--end .col -->
-                <div class="col-sm-5 col-sm-offset-1 text-center">
-                    <br><br>
+                    </div>
+
+                    <br>
+
+                    <p class="hepls-block"><a href="{{route('login')}}">{{tr('login')}}</a></p>
+                    <p class="hepls-block"><a href="{{URL::to('/')}}"><i class="fa fa-arrow-left"></i> Back to {{Setting::get('sitename')}}</a></p>
+
 
                 </div><!--end .col -->
+                
             </div><!--end .row -->
         </div><!--end .card-body -->
     </div><!--end .card -->
