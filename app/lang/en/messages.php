@@ -147,6 +147,7 @@ return array(
 	'database_password'	=> 'Database Password',
 	'database_username'	=> 'Database Username',
 	'database_name'		=> 'Database Name',
+	'database_host' => 'Database Hostname',
 	'DATABASE_CONFIGURATION'	=> 'DATABASE CONFIGURATION',
 	'ADMIN_CONFIGURATION'		=> 'ADMIN CONFIGURATION',
 	'WEBSITE_CONFIGURATION'		=> 'WEBSITE CONFIGURATION',

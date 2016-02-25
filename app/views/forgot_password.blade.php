@@ -42,7 +42,7 @@
                     <!-- <br/>
                     <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} {{tr('forgot_password')}}</span>
                     <br/><br/> -->
-                    <img class="wp-logo" src="{{Setting::get('logo')}}">
+                    <img class="wp-logo" src="{{asset('image/appoets-logo.png')}}">
 
                     <div class="log-box-inner">
                     <form class="form floating-label" action="{{route('processForgotpassword')}}" accept-charset="utf-8" method="post">

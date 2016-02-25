@@ -42,7 +42,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="log-box text-left">
-                <img class="wp-logo" src="{{Setting::get('logo')}}">
+                <img class="wp-logo" src="{{asset('image/appoets-logo.png')}}">
                 <div class="log-box-inner">
                     <form class="form floating-label" action="{{route('loginProcess')}}" accept-charset="utf-8" method="post">
                         <!-- <span class="text-lg text-bold text-primary">{{Setting::get('sitename')}} {{tr('login')}}</span>
