@@ -1,0 +1,49 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: aravinth
+ * Date: 5/7/15
+ * Time: 11:58 AM
+ */
+?>
+<?php if(Session::has('flash_errors')): ?>
+    <?php if(is_array(Session::get('flash_errors'))): ?>
+        <div class="alert alert-danger" style="margin-top: 40px;">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <ul>
+                <?php foreach(Session::get('flash_errors') as $errors): ?>
+                     <?php if(is_array($errors)): ?>
+                        <?php foreach($errors as $error): ?>
+                            <li> <?php echo $error; ?> </li>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <li> <?php echo $errors; ?> </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php else: ?>
+        <div class="alert alert-danger" style="margin-top: 40px;">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <?php echo Session::get('flash_errors'); ?>
+
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php if(Session::has('flash_error')): ?>
+    <div class="alert alert-danger" style="margin-top: 40px;">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <?php echo Session::get('flash_error'); ?>
+
+    </div>
+<?php endif; ?>
+
+
+<?php if(Session::has('flash_success')): ?>
+    <div class="alert alert-success" style="margin-top: 40px;" >
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <?php echo Session::get('flash_success'); ?>
+
+    </div>
+<?php endif; ?>

@@ -156,7 +156,11 @@ class ModerateController extends \BaseController {
 
                     $post->image = $s3_url;
                 }
-                $post->category = implode(',', $category);
+
+                $selected_category = implode(',', $category);
+                $post->category = $selected_category . ',' . 1;
+
+                //$post->category = implode(',', $category);
                 $post->save();
                 if ($post) {
                     return Redirect::route('moderatePost')->with('flash_success', tr('post_update'));
@@ -209,7 +213,10 @@ class ModerateController extends \BaseController {
 
                     $post->image = $s3_url;
 
-                    $post->category = implode(',', $category);
+                    $selected_category = implode(',', $category);
+                    $post->category = $selected_category . ',' . 1;
+
+                    //$post->category = implode(',', $category);
 
                     $post->share_cat = $share_cat;
 

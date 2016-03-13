@@ -57,9 +57,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'pointblank',
-			'username'  => 'root',
-			'password'  => '',
+			'database'  => Setting::get('database_name'),
+			'username'  => Setting::get('username'),
+			'password'  => Setting::get('password'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
