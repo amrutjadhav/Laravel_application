@@ -115,7 +115,7 @@ i.right
 .text-justify{text-align: justify;}
 .card-title a{color: #fff;font-weight: 400;font-size: 20px;}
 .card-title a:hover{color:#00b0ff;text-decoration: none;}
-.card .card-image .card-title{padding: 3vh;}
+.card .card-image .card-title{padding: 1vh;}
 
 .btn.submit i{
   position: relative;
