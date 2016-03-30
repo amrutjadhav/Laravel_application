@@ -243,42 +243,32 @@ class HomeController extends BaseController {
                 $fb = route("shareLink",array("id" => $cat_name,"data" => $post->link));
                 $twitter = route("shareLink",array("id" => $cat_name,"data" => $post->link));
 
-        	$append ='<div class="col m6 s12 l4">
-		          <div class="single-post card animated zoomIn">
-		              <div class="card-image">
-		                <a href="javascript:void(0);"><img src="'.$post->image.'"></a>
-		                <span class="card-title">'.$post->title.'<em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
-		              </div>
-		              <div class="card-content">
-		               <p class="text-justify">'.$post->des.'</p>';
+          $append ='<div class="col m6 s12 l4">
+                          <div class="single-post card animated zoomIn">
+                              <div class="card-image">
+                                <a href="javascript:void(0);"><img src="'.$post->image.'" style="
+    position: relative;
+"></a>
+ <span class="card-title"><em class="time-ago right">'.$post->created_at->diffForHumans().'</em></span>
+                              </div>
+                              <div class="card-content">
+                                <b style="    font-size: large;    font-family: sans-serif;">'.$post->title.'</b> <hr>
+                               <p class="text-justify">'.$post->des.'</p>';
 
-		               if($publisher_image) { 
-		               $append .='<div class="au-btm">
-			               
-				               <div class="au-left">
-				               <a href="'.$post->url.'" target="_blank">
-				               	<img src="'.$publisher_image.'">
-				               	 </a>
-				               </div>
-			              
-						</div>';
-						}
+                                      $append .='</div>
+                              <div class="card-action text-center">
 
-		              $append .='</div>
+                                <a target="_blank" href="http://www.facebook.com/sharer.php?u='.$fb.'" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left$
+                                <a target="_blank" href="http://twitter.com/share?text='.$post->title.'...&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue acce$
+                                <a target="_blank" href="'.$post->url.'" target="_blank" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More </a>
 
-		              <div class="card-action text-center">
+                              </div>
 
-		                <a target="_blank" href="http://www.facebook.com/sharer.php?u='.$fb.'" class="full waves-effect waves-light btn light-blue darken-4"><i class="fa fa-facebook left"></i>Share on Facebook</a>
-		                <a target="_blank" href="http://twitter.com/share?text='.$post->title.'...&url='.$twitter.'" class="full waves-effect waves-light btn no-right-mar light-blue accent-3"><i class="fa fa-twitter left"></i>Share on Twitter</a>
-		                <a target="_blank" href="'.$post->url.'" target="_blank" class="full-btn waves-effect waves-light btn no-right-mar mat-clr">Read More </a>
 
-		              </div>
-		             
-		              
-		          </div>  	
-		      </div>';
+                          </div>
+                      </div>';
 
-		      echo $append;
+                         echo $append;
 
         }
 	}
