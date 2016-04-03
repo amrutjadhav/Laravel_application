@@ -286,7 +286,8 @@ Route::get('/postDetails', array('as' => 'postDetails', 'uses' => 'ApiController
 Route::get('/getPostCat', array('as' => 'getPostCat', 'uses' => 'ApiController@getPostCat'));
 
 Route::get('/singlePost' , array('as' => 'singlePost' , 'uses' => 'ApiController@singlePost'));
-
+Route::get('/getNewPostCat', array('as' => 'getPostNewCat', 'uses' => 'ApiController@getNewPostCat'));
+Route::get('/adddummypost', array('as' => 'adddummypost', 'uses' => 'AdminController@adddummypost'));
 //PBN LITE
 
 Route::get('/postpbnlite' , array('as' => 'postpbnlite' , 'uses' => 'ApiController@pbnlite')); 
