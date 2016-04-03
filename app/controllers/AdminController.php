@@ -13,6 +13,42 @@ class AdminController extends \BaseController {
 			->with('post_count',$post_count)
 			->withPosts($posts);
 	}
+	public function adddummypost(){
+    	$validator = Validator::make(
+			array(
+				'count' => $count,
+			), array(
+				'count' => 'required|integer',
+							)
+		);
+
+    	for ($i=0; $i <$count ; $i++) { 
+    		 $title=$i."Penny The Miracle Pup Celebrates A Birthday No One Thought She Would Live To See";
+		 $post = new Posts;
+		 $post->title = $title;
+		 $post->image= 'http://awsd007-atpict.rhcloud.com/uploads/penny-the-miracle-pup-celebrates-a-birthday-no-one-thought-she-would-live-to-see-1457978235.jpg';
+	     $post->des = 'Candice a devoted rescue and foster pawrent rescued Penny who was Born to an inexperienced mother bred too soon Penny was the only pup in her litter of five to make it to four-days-old.Now Penny has now grown bigger and stronger and is a year old and as hearty as can be Meanwhile Candice is devoting her life to transform the 12-acre ranch into a rescue and rehab facility for dogs.';
+	     $post->category='17,1';
+	     $post->link='penny-the-miracle-pup-celebrates-a-birthday-no-one-thought-she-would-live-to-see-70';
+	     $post->url = 'http://barkpost.com/good/pup-celebrates-birthday-no-one-thought-she-would-see';
+	     $post->created_at= '2016-03-15 00:20:00';
+	     $post->updated_at= '2016-03-30 04:42:28';
+	     $post->is_approved = 1;
+	     $post->title_tag= 'Penny Birthday';
+	     $post->meta_des = 'Penny the miracle puppy';
+	     $post->timestamp='hi';
+	     $post->share_cat=1;
+		 $post->author = 'admin';
+	     $post->publisher=1;
+	     $post->user_id=2;
+		 $post->publisher_id = 1;
+		 $post->share_title='penny-the-miracle-pup-celebrates-a-birthday-no-one-thought-she-would-live-to-see';
+		 $post.save();
+    	}
+    	
+
+	}
+
 
 	public function moderatorManagement()
 	{
